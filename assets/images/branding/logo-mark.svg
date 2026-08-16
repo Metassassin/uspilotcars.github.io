@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="US Pilot Cars logo mark">
+<rect width="64" height="64" rx="10" fill="#e8871e"/>
+<path d="M14 40 L26 22 L38 40 Z" fill="#0f2436"/>
+<rect x="30" y="34" width="20" height="8" fill="#0f2436"/>
+<circle cx="34" cy="46" r="4" fill="#0f2436"/>
+<circle cx="46" cy="46" r="4" fill="#0f2436"/>
+</svg>
