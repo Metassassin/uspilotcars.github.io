@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-label="Advertisement creative placeholder">
+<rect width="400" height="500" fill="#17324a"/>
+<rect width="400" height="500" fill="none" stroke="#e8871e" stroke-width="6"/>
+<text x="200" y="240" font-family="Arial, sans-serif" font-size="22" fill="#e8871e" text-anchor="middle" font-weight="700">ADVERTISER</text>
+<text x="200" y="270" font-family="Arial, sans-serif" font-size="22" fill="#e8871e" text-anchor="middle" font-weight="700">CREATIVE</text>
+<text x="200" y="310" font-family="Arial, sans-serif" font-size="14" fill="#c8d4dc" text-anchor="middle">Placeholder image</text>
+</svg>
