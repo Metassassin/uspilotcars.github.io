@@ -1,0 +1,6 @@
+{
+  "_schema_notes": "Truck stop listings, grouped by state slug. No individual truck stop listings were captured during the initial audit -- this file is the framework the owner fills in per the Advertising/Migration docs. sourceStatus is 'placeholder' for every state until real listings are migrated.",
+  "legacyNotice": "If you don't see the state you want, it's because we couldn't find any truck stops there yet. Truck stops can request a free listing, or you can email us the name and location of a truck stop to add.",
+  "legacyContactEmail": "info@uspilotcars.com",
+  "states": {}
+}

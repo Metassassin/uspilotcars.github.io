@@ -1,0 +1,49 @@
+{
+  "_schema_notes": "One entry per state/province. sourceStatus 'migrated' means the content was transcribed from the legacy site's regulations page during the 2026-08-16 audit and should still be verified against the current permit before a move. sourceStatus 'placeholder' means the legacy content has not yet been migrated into this file -- the generated page will show a clear 'not yet migrated' notice instead of inventing regulatory content.",
+  "states": {
+    "new-mexico": {
+      "sourceStatus": "migrated",
+      "roadConditions": {
+        "phone": "(800) 432-4269",
+        "url": "http://www.nmroads.com/"
+      },
+      "quickFacts": {
+        "permitNeeded": "Over 8'6\" wide, over 14' high, or trailer over 57'6\" long",
+        "specialInfo": "Insurance must be on file with the permit office",
+        "travelWindow": "Sunrise to sunset, Monday through Saturday. No travel Sundays.",
+        "holidayRestrictions": "No movement on New Year's Day, Memorial Day, Independence Day, Labor Day, Thanksgiving, or Christmas. If a holiday falls on a day other than Monday or Saturday, the restriction runs from sunset the day before through sunrise the day after. If it falls on a Monday, movement is prohibited from sunset the preceding Saturday until sunrise the following Tuesday. If it falls on a Saturday, movement is prohibited from sunset the preceding Friday until sunrise the following Monday.",
+        "curfews": "Albuquerque & Espanola: 7-9am and 4-6pm. Santa Fe: 7-9am and 11:30am-1:30pm and 4-6pm."
+      },
+      "escortRequirements": {
+        "sourceUrl": "http://www.nmcpr.state.nm.us/nmac/parts/title18/18.019.0008.htm",
+        "rules": [
+          "Over 8'6\" wide, if deemed a hazard: 1 pilot vehicle",
+          "Over 14' wide: 1 pilot vehicle in front on 2-lane roads, in rear on 4-lane roads",
+          "Over 20' wide for 5+ miles: police escort plus flagman",
+          "Over 90' up to 110' long: 1 pilot vehicle in front on 2-lane roads, in rear on 4-lane roads",
+          "Over 110' long: 2 pilot vehicles, front and rear",
+          "16' and over in height: 1 escort with height pole in front (plus an extra person or pilot vehicle to check overhead clearance)",
+          "18' and over in height: 1 escort with height pole in front and 1 pilot vehicle in rear (plus clearance coordination with utilities and local authorities)"
+        ]
+      },
+      "equipmentRequirements": {
+        "vehicle": "Must be DOT-inspected annually with certification carried at all NM ports of entry. Wheelbase at least 100 inches; must not exceed 1.5 ton capacity. Insurance minimum 25/50/10, proof carried in the vehicle.",
+        "signs": "\"OVERSIZE LOAD\" sign, 5' x 1' minimum, black letters 10\" x 1\" on a yellow background, mounted front and rear or on top of the vehicle.",
+        "lights": "2 rotating amber lights (rotating, flashing, or strobe) mounted on top at vehicle width (not to exceed 8'), visible at 1,000 feet minimum in normal sunlight.",
+        "flags": "2 red or fluorescent orange flags, minimum 12\" per side, mounted front and rear or on top.",
+        "additional": "Two-way radio; rear-view mirrors on both sides; one fire extinguisher (2.5 lb CO2 or dry chemical or equivalent); identification signage showing company name, address, and state authority number on both sides (removable magnetic signs are acceptable); 3 red flares or reflectors."
+      },
+      "operatorRequirements": "At least 18 years of age.",
+      "permitOffice": {
+        "name": "New Mexico Department of Public Safety, Motor Transportation Division",
+        "hours": "7:30am-5pm MST",
+        "address": "P.O. Box 1628, Santa Fe, NM 87504",
+        "phone": "(505) 827-0376",
+        "fax": "(505) 827-0071 / 827-0384 / 827-0385",
+        "osOwPermitPhone": "(505) 827-0665",
+        "url": "http://www.nmshtd.state.nm.us/main.asp?secid=11401"
+      },
+      "disclaimer": "These are guidelines only and are subject to change without notice. Always verify current requirements against the permit issued by the pertinent permit office before a move."
+    }
+  }
+}

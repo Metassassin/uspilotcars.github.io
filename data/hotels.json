@@ -1,0 +1,31 @@
+{
+  "_schema_notes": "Hotel listings, grouped by state. sourceStatus 'migrated' = pulled from the legacy site during the 2026-08-16 audit. Legacy site sold 4-line 'red fill' highlighted hotel placements as an ad product -- see the advertising model doc for pricing.",
+  "states": {
+    "texas": {
+      "sourceStatus": "migrated",
+      "listings": [
+        {
+          "city": "Amarillo",
+          "name": "Baymont by Wyndham",
+          "address": "1700 I-40 East",
+          "phone": "806-372-1425",
+          "notes": ["Discounted rates", "Pet friendly"]
+        },
+        {
+          "city": "Borger",
+          "name": "Motel 6 / Studio 6",
+          "address": "100 Bulldog Blvd.",
+          "phone": "806-273-9556",
+          "notes": ["Discounted rates", "Pet friendly"]
+        },
+        {
+          "city": "Dumas",
+          "name": "Motel 6 / Studio 6",
+          "address": "1712 S. Dumas Ave.",
+          "phone": "806-935-0212",
+          "notes": ["Discounted rates", "Pet friendly room"]
+        }
+      ]
+    }
+  }
+}
