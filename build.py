@@ -14,6 +14,8 @@ No third-party dependencies. Python 3.8+ standard library only.
 """
 import json
 import os
+import shutil
+from datetime import date
 import re
 import html
 import shutil
@@ -23,13 +25,52 @@ DATA = os.path.join(ROOT, "data")
 
 SITE_NAME = "US Pilot Cars"
 SITE_TAGLINE = "Pilot Car & Escort Vehicle Directory"
-SITE_URL = "https://uspilotcars.example.github.io"  # update after you know your Pages URL
+SITE_URL = os.environ.get("SITE_URL", "https://uspilotcars.com").rstrip("/")
+
+# Everything the website serves is written here. Cloudflare Pages publishes
+# this folder. Source files (build.py, data/, docs) stay out of it, so they
+# are never served to visitors.
+OUT = os.path.join(ROOT, "dist")
 
 # ---------------------------------------------------------------- load data
 with open(os.path.join(DATA, "states.json")) as f:
     STATES = json.load(f)
 with open(os.path.join(DATA, "advertisements.json")) as f:
-    ADS = json.load(f)["listings"]
+    ALL_ADS = json.load(f)["listings"]
+with open(os.path.join(DATA, "adjacency.json")) as f:
+    ADJACENCY = json.load(f)
+
+
+def is_live(ad, today=None):
+    """An ad shows only if it is switched on and inside its date window.
+
+    Missing dates mean "no limit", so existing ads keep working. When an
+    advertiser cancels, setting endDate makes the ad drop off by itself on
+    that day -- nobody has to remember to delete it.
+    """
+    today = today or date.today().isoformat()
+    if ad.get("active") is False:
+        return False
+    if ad.get("startDate") and ad["startDate"] > today:
+        return False
+    if ad.get("endDate") and ad["endDate"] < today:
+        return False
+    return True
+
+
+ADS = [a for a in ALL_ADS if is_live(a)]
+
+# Revenue order. Index 0 is most prominent. A higher-paying tier ALWAYS
+# outranks a lower one; "priority" only orders ads within the same tier,
+# so a mistyped number can never push a basic listing above a banner.
+TIER_ORDER = ["global_banner", "state_banner", "super_listing",
+              "bold_listing", "basic_listing"]
+
+
+def ad_sort_key(a):
+    tier = a.get("tier", "basic_listing")
+    rank = TIER_ORDER.index(tier) if tier in TIER_ORDER else len(TIER_ORDER)
+    return (rank, a.get("priority", 999), a.get("businessName", "").lower())
 with open(os.path.join(DATA, "regulations.json")) as f:
     REGS = json.load(f)["states"]
 with open(os.path.join(DATA, "hotels.json")) as f:
@@ -211,6 +252,18 @@ def ad_card(ad, base, sidebar_style=False):
     """
 
 
+def canonical_url(path):
+    """Cloudflare Pages serves /directory/texas.html at /directory/texas
+    and redirects the .html form there, so canonical addresses (and the
+    sitemap) use the clean form. Pointing a canonical at an address that
+    redirects would confuse search engines."""
+    if path.endswith("index.html"):
+        path = path[: -len("index.html")]
+    elif path.endswith(".html"):
+        path = path[: -len(".html")]
+    return f"{SITE_URL}/{path}"
+
+
 def page_shell(*, base, title, meta_description, active_key, body_html,
                active_region_slug=None, breadcrumbs=None, canonical_path=""):
     crumbs_html = ""
@@ -230,7 +283,13 @@ def page_shell(*, base, title, meta_description, active_key, body_html,
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(meta_description)}">
-<link rel="canonical" href="{SITE_URL}/{canonical_path}">
+<link rel="canonical" href="{canonical_url(canonical_path)}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{SITE_NAME}">
+<meta property="og:title" content="{esc(title)}">
+<meta property="og:description" content="{esc(meta_description)}">
+<meta property="og:url" content="{canonical_url(canonical_path)}">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="{base}assets/images/branding/logo-mark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -264,8 +323,8 @@ def page_shell(*, base, title, meta_description, active_key, body_html,
 """
 
 
-def write(path, contents):
-    full = os.path.join(ROOT, path)
+def write(path, contents, *, into=None):
+    full = os.path.join(into or OUT, path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
     with open(full, "w") as f:
         f.write(contents)
@@ -354,7 +413,7 @@ def build_home():
 
 
 def ads_for_placement(slug):
-    return sorted([a for a in ADS if slug in a.get("placement", [])], key=lambda a: a.get("priority", 999))
+    return sorted([a for a in ADS if slug in a.get("placement", [])], key=ad_sort_key)
 
 
 # ---------------------------------------------------------------- DIRECTORY
@@ -403,64 +462,127 @@ def build_directory_hub():
     write("directory/index.html", html_out)
 
 
+def tel_href(phone):
+    return "tel:" + re.sub(r"[^0-9+]", "", phone or "")
+
+
+def service_chips(services):
+    return "".join(f'<span class="svc-chip">{esc(SERVICE_LABELS.get(s, s))}</span>'
+                   for s in services or [])
+
+
+def company_row(a):
+    """One pilot car company in the city table. Paid upgrades (bold and
+    above) are visibly bolder than basic listings -- that difference is
+    what a Bold Listing customer is paying for."""
+    tier = a.get("tier", "basic_listing")
+    row_class = "row-basic" if tier == "basic_listing" else "row-bold"
+    name = esc(a["businessName"])
+    if a.get("website"):
+        name = f'<a href="{esc(a["website"])}" target="_blank" rel="nofollow noopener">{name}</a>'
+    phones = "".join(
+        f'<a href="{tel_href(ph)}">{esc(ph)}</a>'
+        for ph in (a.get("phone"), a.get("phone2")) if ph)
+    chips = service_chips(a.get("services"))
+    return f"""<tr class="{row_class}">
+      <td class="city">{esc(a.get("city") or "")}</td>
+      <td><div class="co-name">{name}</div>{f'<div class="co-svcs">{chips}</div>' if chips else ''}</td>
+      <td class="phone">{phones}</td>
+    </tr>"""
+
+
+def hotel_row(h):
+    """A paid hotel placement, shown INSIDE the city table among the pilot
+    car companies for the same city. That adjacency is the product: a
+    driver looking up Amarillo pilot cars sees the Amarillo hotel right
+    there. (The previous rebuild moved hotels to a separate page, which
+    removed exactly what hotel advertisers were paying for.)"""
+    notes = " &middot; ".join(esc(n) for n in h.get("notes") or [])
+    name = esc(h["name"])
+    if h.get("website"):
+        name = f'<a href="{esc(h["website"])}" target="_blank" rel="nofollow noopener">{name}</a>'
+    phone = f'<a href="{tel_href(h["phone"])}">{esc(h["phone"])}</a>' if h.get("phone") else ""
+    return f"""<tr class="row-hotel">
+      <td class="city">{esc(h.get("city") or "")}</td>
+      <td><div class="hotel-tag">Hotel</div><div class="co-name">{name}</div>
+          <div class="hotel-meta">{esc(h.get("address") or "")}{' &middot; ' + notes if notes else ''}</div></td>
+      <td class="phone">{phone}</td>
+    </tr>"""
+
+
+def nearby_html(slug, section):
+    """Links to neighbouring states/provinces, generated from
+    data/adjacency.json -- nobody maintains these by hand."""
+    neighbours = [n for n in ADJACENCY.get(slug, []) if n in SLUG_TO_NAME]
+    if not neighbours:
+        return ""
+    links = "".join(
+        f'<li><a href="../{section}/{n}.html">{esc(SLUG_TO_NAME[n])}</a></li>'
+        for n in sorted(neighbours, key=lambda n: SLUG_TO_NAME[n]))
+    label = "pilot car directories" if section == "directory" else "regulations"
+    return f"""<nav class="panel nearby" aria-label="Nearby {label}">
+      <h2>Nearby {label}</h2><ul>{links}</ul></nav>"""
+
+
 def build_directory_state_pages():
     for r in ALL_REGIONS:
         base = "../"
         slug = r["slug"]
         name = r["name"]
-        region_ads = ads_for_placement(slug)
-        banner_ads = [a for a in region_ads if a["tier"] in ("state_banner", "global_banner")]
-        other_ads = [a for a in region_ads if a["tier"] not in ("state_banner", "global_banner")]
+        region_ads = ads_for_placement(slug)          # already tier-ordered
+        hotels = [h for h in HOTELS.get(slug, {}).get("listings", []) if is_live(h)]
 
-        if region_ads:
-            listing_rows = "".join(
-                f"""<tr>
-                  <td>{esc(a.get("city") or "")}</td>
-                  <td>{esc(a["businessName"])}{' <span class="svc-chip" style="margin-left:6px">' + ' '.join(SERVICE_LABELS.get(s,s)[:1] for s in a.get('services',[])) + '</span>' if a.get('services') else ''}</td>
-                  <td class="phone"><a href="tel:{re.sub(r'[^0-9+]','',a.get('phone') or '')}">{esc(a.get('phone') or '')}</a></td>
-                </tr>"""
-                for a in sorted(region_ads, key=lambda a: a.get("priority", 999))
-            )
+        # 1. Banners and super listings: big cards at the TOP of the page.
+        featured = [a for a in region_ads
+                    if a["tier"] in ("state_banner", "global_banner", "super_listing")]
+        featured_html = ""
+        if featured:
+            featured_html = f"""<section class="featured-ads" aria-label="Featured companies">
+              {''.join(ad_card(a, base) for a in featured)}</section>"""
+
+        # 2. The city table: every company plus hotels, grouped by city.
+        #    Within a city: hotel placement first, then companies by tier.
+        rows = [(a.get("city") or "", 1, ad_sort_key(a), company_row(a)) for a in region_ads]
+        rows += [(h.get("city") or "", 0, (0,), hotel_row(h)) for h in hotels]
+        rows.sort(key=lambda x: (x[0].lower(), x[1], x[2]))
+
+        if rows:
+            legend = "".join(f'<span class="svc-chip">{esc(v)}</span>' for v in SERVICE_LABELS.values())
             table_html = f"""
             <div class="panel">
               <h2>{esc(name)} Pilot Car Listings</h2>
+              <p class="legend">Services offered are shown under each company: {legend}</p>
+              <div class="table-scroll">
               <table class="listing-table">
                 <thead><tr><th>City</th><th>Company</th><th>Phone</th></tr></thead>
-                <tbody>{listing_rows}</tbody>
+                <tbody>{''.join(row for *_, row in rows)}</tbody>
               </table>
-            </div>
-            """
-            cards_html = "".join(ad_card(a, base) for a in other_ads)
-            banners_html = "".join(ad_card(a, base) for a in banner_ads)
-            reg_note = ""
-            if slug in REGS:
-                reg_note = f'<div class="callout" style="margin-top:14px">Planning a move through {esc(name)}? Review the <a href="../regulations/{slug}.html">{esc(name)} pilot car regulations</a> before you dispatch.</div>'
-            main_content = f"""
-              {banners_html}
-              {table_html}
-              <div class="panel">
-                <h2>Featured &amp; Additional Listings</h2>
-                <div class="feature-grid">{cards_html or '<p>No additional featured listings for this state yet.</p>'}</div>
               </div>
-              {reg_note}
-            """
+            </div>"""
         else:
-            main_content = f"""
+            table_html = f"""
             <div class="panel">
-              <h2>Listings Coming Soon</h2>
-              <p><strong>Migration placeholder:</strong> {esc(name)} pilot car listings have not yet been migrated from the legacy site into this data set. This is a structural placeholder, not a claim that no companies operate here.</p>
-              <p>If you operate a pilot car service in {esc(name)}, <a href="../advertise/index.html">get listed here</a>, or call <a href="tel:8662592750">866-259-2750</a> for a free quote.</p>
-            </div>
-            """
+              <h2>No {esc(name)} listings yet</h2>
+              <p>We don't have any {esc(name)} pilot car companies listed yet.</p>
+              <p>Run a pilot car service in {esc(name)}? <a href="../advertise/index.html">Get listed here</a>,
+                 or call <a href="tel:8662592750">866-259-2750</a>.</p>
+            </div>"""
+
+        reg_note = ""
+        if slug in REGS:
+            reg_note = f'<div class="callout">Planning a move through {esc(name)}? Review the <a href="../regulations/{slug}.html">{esc(name)} pilot car regulations</a> before you dispatch.</div>'
 
         body = f"""
         <div class="page-header">
           <div class="eyebrow">Pilot Car Directory</div>
           <h1>{esc(name)} Pilot Car Service</h1>
-          <p>Find {esc(name)} pilot car, escort car, and flag car companies. Call directly or visit a company's website for a quote.</p>
+          <p>Find {esc(name)} pilot car, escort car, and flag car companies. Tap a phone number to call.</p>
         </div>
-        <div class="content" style="max-width:1180px">
-          {main_content}
+        <div class="content content-wide">
+          {featured_html}
+          {table_html}
+          {reg_note}
+          {nearby_html(slug, "directory")}
         </div>
         """
         html_out = page_shell(base=base, title=f"{name} Pilot Car, Pilot Car Service, Pilot Car Directory | {SITE_NAME}",
@@ -575,9 +697,8 @@ def build_regulations_state_pages():
         else:
             body_main = f"""
             <div class="panel">
-              <h2>Not Yet Migrated</h2>
-              <p><strong>Migration placeholder:</strong> {esc(name)}'s detailed regulation content has not yet been migrated from the legacy site into this data set. We deliberately show this notice instead of guessing at regulatory requirements.</p>
-              <p>For {esc(name)}, contact the state or provincial Department of Transportation / permit office directly, or check the legacy guideline page during migration.</p>
+              <h2>{esc(name)} regulations coming soon</h2>
+              <p>We haven't published a {esc(name)} summary yet. Until we do, please contact the {esc(name)} permit office or Department of Transportation directly for current pilot car requirements.</p>
               <p><a href="../directory/{slug}.html">View the {esc(name)} pilot car directory &rarr;</a></p>
             </div>
             """
@@ -587,7 +708,7 @@ def build_regulations_state_pages():
           <h1>{esc(name)} Pilot Car Regulations</h1>
           <p>Guidelines for {esc(name)} pilot car, escort car, and flag car regulations. Always confirm current requirements with the permit office.</p>
         </div>
-        <div class="content" style="max-width:900px">{body_main}</div>
+        <div class="content" style="max-width:900px">{body_main}{nearby_html(slug, "regulations")}</div>
         """
         html_out = page_shell(base=base, title=f"{name} Pilot Car Regulations | {SITE_NAME}",
                                meta_description=f"{name} pilot car regulations and flag car regulations guidelines. Escort, permit, and equipment requirements.",
@@ -666,7 +787,7 @@ def build_resources():
       </div>
       <div class="panel">
         <h2>Other States</h2>
-        <p><strong>Migration placeholder:</strong> additional state hotel lists have not yet been migrated from the legacy site. Add them to <code>data/hotels.json</code> and re-run <code>build.py</code>.</p>
+        <p>Hotels offering pilot car rates also appear on each state's directory page, right alongside the local pilot car companies. Own a hotel that welcomes pilot car drivers? <a href="../advertise/index.html">Get your hotel listed</a>.</p>
       </div>
     </div>
     """
@@ -687,7 +808,7 @@ def build_resources():
       </div>
       <div class="panel">
         <h2>Migration Placeholder</h2>
-        <p>Individual truck stop listings were not captured in the initial audit and are marked as a placeholder rather than invented. Populate <code>data/truck_stops.json</code> per state as listings are migrated or sold, then re-run <code>build.py</code>.</p>
+        <p>State-by-state truck stop listings are on the way. In the meantime, the state DOT road conditions links on our <a href="road-conditions.html">road conditions page</a> list rest areas and truck parking for most states.</p>
       </div>
       <div class="panel">
         <h2>Jump to a State's Pilot Car Directory</h2>
@@ -755,6 +876,9 @@ def build_advertise():
 
 
 # ---------------------------------------------------------------- PRIVACY
+# OWNER TO-DO (not shown to visitors): this page carries forward the old
+# site's consent wording. Before launch, have it reviewed -- it now needs to
+# mention Jotform and Square, which handle customer details at checkout.
 def build_privacy():
     base = ""
     body = f"""
@@ -762,7 +886,7 @@ def build_privacy():
     <div class="content" style="max-width:800px">
       <div class="panel">
         <p>By giving us your phone number or email address, you acknowledge that you may receive text or email messages related to your account (2 messages/month maximum). Message and data rates may apply. Reply STOP to opt out of future messages; your account will then be closed.</p>
-        <p><strong>Migration placeholder:</strong> this page carries forward the legacy site's consent language. Replace with your full privacy policy text as part of migration, and have it reviewed for your current SMS/email vendor and applicable law.</p>
+
       </div>
     </div>
     """
@@ -817,33 +941,48 @@ LEGACY_REGULATIONS_OVERRIDES = {
 }
 LEGACY_REGULATIONS_NO_URL = {"new-brunswick", "newfoundland-and-labrador", "quebec"}
 
-LEGACY_TRUCK_STOP_OVERRIDES = {
-    "washington": "washington_pilot_car.html",   # legacy hub linked the wrong file
-    "west-virginia": "west_virginia_pilot_car.html",
-}
+# The legacy truck stop hub linked Washington and West Virginia to the
+# DIRECTORY filenames by mistake. The previous rebuild copied that typo, so
+# the old Washington and West Virginia directory addresses were being sent
+# to the truck stop page. Those filenames belong to the directory; truck
+# stops use the standard pattern like every other state.
+LEGACY_TRUCK_STOP_OVERRIDES = {}
 # States with no legacy truck-stop URL at all (not present in the legacy hub list)
 LEGACY_TRUCK_STOP_NO_URL = {"hawaii"}
 
 
+REDIRECTS = {}
+
+
 def redirect_stub(old_path, new_relpath):
-    depth = old_path.count("/")
-    base = "../" * depth if depth else ""
-    target = base + new_relpath
-    html_out = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url={target}">
-<link rel="canonical" href="{SITE_URL}/{new_relpath}">
-<title>Redirecting… | {SITE_NAME}</title>
-</head>
-<body>
-<p>This page has moved. <a href="{target}">Continue to the new page &rarr;</a></p>
-</body>
-</html>
-"""
-    write(old_path, html_out)
+    """Record a permanent (301) redirect for Cloudflare's _redirects file.
+
+    Real server redirects replace the old meta-refresh stub pages: faster
+    for visitors and they pass search ranking properly. If two rules ever
+    claim the same old address, the first one wins and the build says so
+    rather than silently overwriting (which is how the WA/WV bug hid)."""
+    target = "/" + new_relpath
+    if target.endswith("index.html"):
+        target = target[: -len("index.html")]
+    elif target.endswith(".html"):
+        target = target[: -len(".html")]
+    if old_path in REDIRECTS and REDIRECTS[old_path] != target:
+        print(f"  WARNING: /{old_path} already redirects to {REDIRECTS[old_path]}; ignoring {target}")
+        return old_path, new_relpath
+    REDIRECTS[old_path] = target
     return old_path, new_relpath
+
+
+def write_redirects_file():
+    lines = ["# Generated by build.py -- do not edit by hand.",
+             "# Old uspilotcars.com addresses -> new pages (permanent redirects)."]
+    for old, target in sorted(REDIRECTS.items()):
+        lines.append(f"/{old} {target} 301")
+        # Cloudflare may strip .html before matching; cover both forms.
+        if old.endswith(".html"):
+            lines.append(f"/{old[:-5]} {target} 301")
+    write("_redirects", "\n".join(lines) + "\n")
+    return len(REDIRECTS)
 
 
 def build_legacy_redirects():
@@ -891,9 +1030,9 @@ def write_migration_map(rows):
         "",
         "Generated by `build.py` from the same data that drives the redirect stubs, so this file and the live redirects can never drift apart. Re-run `python3 build.py` after any change to `data/states.json` and this file regenerates automatically.",
         "",
-        "Every row below has a real, working redirect stub committed at the OLD URL path (a static HTML file with a `<meta http-equiv=\"refresh\">` and a `rel=\"canonical\"` pointing at the NEW URL). This is the standard way to preserve SEO equity on a host, like GitHub Pages, that has no server-side redirect config.",
+        "Every row below becomes a permanent (301) server redirect in `dist/_redirects`, which Cloudflare Pages applies before serving any page.",
         "",
-        "| Old URL | New URL | Redirect Stub Committed? | Notes |",
+        "| Old URL | New URL | Redirected? | Notes |",
         "|---|---|---|---|",
     ]
     for old, new, redirect, note in rows:
@@ -909,7 +1048,7 @@ def write_migration_map(rows):
         lines.append(f"- `/regulations/{slug}.html` (province had no linked legacy regulations page)")
     lines.append(f"- `/resources/truck-stops.html` for Hawaii (not present in the legacy truck stop hub)")
     lines.append("")
-    write("MIGRATION_MAP.md", "\n".join(lines))
+    write("MIGRATION_MAP.md", "\n".join(lines), into=ROOT)
 
 
 def build_root_files():
@@ -920,7 +1059,7 @@ def build_root_files():
     for r in ALL_REGIONS:
         urls.append(f"directory/{r['slug']}.html")
         urls.append(f"regulations/{r['slug']}.html")
-    entries = "\n".join(f"  <url><loc>{SITE_URL}/{u}</loc></url>" for u in urls)
+    entries = "\n".join(f"  <url><loc>{canonical_url(u)}</loc></url>" for u in urls)
     write("sitemap.xml", f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{entries}\n</urlset>\n')
 
     write("404.html", page_shell(base="", title=f"Page Not Found | {SITE_NAME}",
@@ -931,7 +1070,16 @@ def build_root_files():
           canonical_path="404.html"))
 
 
+def prepare_output():
+    """Start from an empty dist/ every time, then copy the static assets."""
+    if os.path.isdir(OUT):
+        shutil.rmtree(OUT)
+    shutil.copytree(os.path.join(ROOT, "assets"), os.path.join(OUT, "assets"),
+                    ignore=shutil.ignore_patterns("file.txt", ".DS_Store"))
+
+
 if __name__ == "__main__":
+    prepare_output()
     build_home()
     build_directory_hub()
     build_directory_state_pages()
@@ -943,4 +1091,5 @@ if __name__ == "__main__":
     build_root_files()
     migration_rows = build_legacy_redirects()
     write_migration_map(migration_rows)
-    print(f"Build complete. {len(migration_rows)} legacy redirect stubs written.")
+    n = write_redirects_file()
+    print(f"Build complete -> dist/   ({n} old addresses redirected)")

@@ -425,3 +425,49 @@ footer.site-footer .links{ display:flex; gap:16px; flex-wrap:wrap; margin-top:10
   }
   .scrim.is-open{ display:block; }
 }
+
+/* ===================================================================
+   Directory page additions (2026 rebuild)
+   =================================================================== */
+.content-wide{ max-width:1180px; }
+
+/* Paid featured ads sit at the very top of a state page */
+.featured-ads{ display:grid; gap:16px; margin-bottom:20px;
+  grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); }
+.featured-ads .ad--banner{ grid-column:1 / -1; }
+
+/* City table */
+.table-scroll{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.legend{ font-size:.92rem; color:var(--ink-muted); margin:0 0 12px; }
+.legend .svc-chip{ margin:0 4px 4px 0; }
+.listing-table .city{ font-weight:600; white-space:nowrap; }
+.listing-table .co-svcs{ margin-top:4px; }
+.listing-table .co-svcs .svc-chip{ margin:0 4px 4px 0; }
+.listing-table .phone a{ display:block; }
+
+/* Bold listing = visibly heavier than basic. That difference is the product. */
+.row-bold .co-name{ font-weight:700; font-size:1.06rem; }
+.row-bold .city{ font-weight:700; }
+
+/* Hotel placement, inline among the companies of the same city */
+.row-hotel td{ background:var(--amber-100); }
+.row-hotel td:first-child{ box-shadow:inset 4px 0 0 var(--amber-500); }
+.hotel-tag{ display:inline-block; font-size:.72rem; font-weight:700; letter-spacing:.06em;
+  text-transform:uppercase; color:#8a4b0c; margin-bottom:2px; }
+.row-hotel .co-name{ font-weight:700; }
+.hotel-meta{ font-size:.9rem; color:var(--ink-muted); }
+
+/* Nearby states */
+.nearby ul{ list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:8px; }
+.nearby a{ display:inline-block; padding:6px 12px; border:1px solid var(--border-strong);
+  border-radius:var(--radius-sm); text-decoration:none; }
+.nearby a:hover, .nearby a:focus{ border-color:var(--navy-line); }
+
+/* Phones: the table stacks into cards so nothing scrolls sideways */
+@media (max-width: 640px){
+  .listing-table thead{ display:none; }
+  .listing-table, .listing-table tbody, .listing-table tr, .listing-table td{ display:block; width:100%; }
+  .listing-table tr{ border-bottom:1px solid var(--border); padding:8px 0; }
+  .listing-table td{ border-bottom:none; padding:2px 12px; }
+  .listing-table .phone a{ display:inline-block; margin-right:12px; padding:4px 0; }
+}

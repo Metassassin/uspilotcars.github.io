@@ -1,0 +1,403 @@
+{
+ "alberta": [
+  "british-columbia",
+  "montana",
+  "northwest-territories",
+  "saskatchewan"
+ ],
+ "british-columbia": [
+  "alaska",
+  "alberta",
+  "idaho",
+  "montana",
+  "northwest-territories",
+  "washington",
+  "yukon"
+ ],
+ "manitoba": [
+  "minnesota",
+  "north-dakota",
+  "ontario",
+  "saskatchewan"
+ ],
+ "new-brunswick": [
+  "maine",
+  "nova-scotia",
+  "quebec"
+ ],
+ "newfoundland-and-labrador": [
+  "quebec"
+ ],
+ "northwest-territories": [
+  "alberta",
+  "british-columbia",
+  "saskatchewan",
+  "yukon"
+ ],
+ "nova-scotia": [
+  "new-brunswick"
+ ],
+ "ontario": [
+  "manitoba",
+  "michigan",
+  "minnesota",
+  "new-york",
+  "ohio",
+  "pennsylvania",
+  "quebec"
+ ],
+ "quebec": [
+  "maine",
+  "new-brunswick",
+  "new-hampshire",
+  "new-york",
+  "newfoundland-and-labrador",
+  "ontario",
+  "vermont"
+ ],
+ "saskatchewan": [
+  "alberta",
+  "manitoba",
+  "montana",
+  "north-dakota",
+  "northwest-territories"
+ ],
+ "yukon": [
+  "alaska",
+  "british-columbia",
+  "northwest-territories"
+ ],
+ "alabama": [
+  "florida",
+  "georgia",
+  "mississippi",
+  "tennessee"
+ ],
+ "alaska": [
+  "british-columbia",
+  "yukon"
+ ],
+ "arizona": [
+  "california",
+  "colorado",
+  "nevada",
+  "new-mexico",
+  "utah"
+ ],
+ "arkansas": [
+  "louisiana",
+  "mississippi",
+  "missouri",
+  "oklahoma",
+  "tennessee",
+  "texas"
+ ],
+ "california": [
+  "arizona",
+  "nevada",
+  "oregon"
+ ],
+ "colorado": [
+  "arizona",
+  "kansas",
+  "nebraska",
+  "new-mexico",
+  "oklahoma",
+  "utah",
+  "wyoming"
+ ],
+ "connecticut": [
+  "massachusetts",
+  "new-york",
+  "rhode-island"
+ ],
+ "delaware": [
+  "maryland",
+  "new-jersey",
+  "pennsylvania"
+ ],
+ "florida": [
+  "alabama",
+  "georgia"
+ ],
+ "georgia": [
+  "alabama",
+  "florida",
+  "north-carolina",
+  "south-carolina",
+  "tennessee"
+ ],
+ "hawaii": [],
+ "idaho": [
+  "british-columbia",
+  "montana",
+  "nevada",
+  "oregon",
+  "utah",
+  "washington",
+  "wyoming"
+ ],
+ "illinois": [
+  "indiana",
+  "iowa",
+  "kentucky",
+  "missouri",
+  "wisconsin"
+ ],
+ "indiana": [
+  "illinois",
+  "kentucky",
+  "michigan",
+  "ohio"
+ ],
+ "iowa": [
+  "illinois",
+  "minnesota",
+  "missouri",
+  "nebraska",
+  "south-dakota",
+  "wisconsin"
+ ],
+ "kansas": [
+  "colorado",
+  "missouri",
+  "nebraska",
+  "oklahoma"
+ ],
+ "kentucky": [
+  "illinois",
+  "indiana",
+  "missouri",
+  "ohio",
+  "tennessee",
+  "virginia",
+  "west-virginia"
+ ],
+ "louisiana": [
+  "arkansas",
+  "mississippi",
+  "texas"
+ ],
+ "maine": [
+  "new-brunswick",
+  "new-hampshire",
+  "quebec"
+ ],
+ "maryland": [
+  "delaware",
+  "pennsylvania",
+  "virginia",
+  "west-virginia"
+ ],
+ "massachusetts": [
+  "connecticut",
+  "new-hampshire",
+  "new-york",
+  "rhode-island",
+  "vermont"
+ ],
+ "michigan": [
+  "indiana",
+  "ohio",
+  "ontario",
+  "wisconsin"
+ ],
+ "minnesota": [
+  "iowa",
+  "manitoba",
+  "north-dakota",
+  "ontario",
+  "south-dakota",
+  "wisconsin"
+ ],
+ "mississippi": [
+  "alabama",
+  "arkansas",
+  "louisiana",
+  "tennessee"
+ ],
+ "missouri": [
+  "arkansas",
+  "illinois",
+  "iowa",
+  "kansas",
+  "kentucky",
+  "nebraska",
+  "oklahoma",
+  "tennessee"
+ ],
+ "montana": [
+  "alberta",
+  "british-columbia",
+  "idaho",
+  "north-dakota",
+  "saskatchewan",
+  "south-dakota",
+  "wyoming"
+ ],
+ "nebraska": [
+  "colorado",
+  "iowa",
+  "kansas",
+  "missouri",
+  "south-dakota",
+  "wyoming"
+ ],
+ "nevada": [
+  "arizona",
+  "california",
+  "idaho",
+  "oregon",
+  "utah"
+ ],
+ "new-hampshire": [
+  "maine",
+  "massachusetts",
+  "quebec",
+  "vermont"
+ ],
+ "new-jersey": [
+  "delaware",
+  "new-york",
+  "pennsylvania"
+ ],
+ "new-mexico": [
+  "arizona",
+  "colorado",
+  "oklahoma",
+  "texas",
+  "utah"
+ ],
+ "new-york": [
+  "connecticut",
+  "massachusetts",
+  "new-jersey",
+  "ontario",
+  "pennsylvania",
+  "quebec",
+  "vermont"
+ ],
+ "north-carolina": [
+  "georgia",
+  "south-carolina",
+  "tennessee",
+  "virginia"
+ ],
+ "north-dakota": [
+  "manitoba",
+  "minnesota",
+  "montana",
+  "saskatchewan",
+  "south-dakota"
+ ],
+ "ohio": [
+  "indiana",
+  "kentucky",
+  "michigan",
+  "ontario",
+  "pennsylvania",
+  "west-virginia"
+ ],
+ "oklahoma": [
+  "arkansas",
+  "colorado",
+  "kansas",
+  "missouri",
+  "new-mexico",
+  "texas"
+ ],
+ "oregon": [
+  "california",
+  "idaho",
+  "nevada",
+  "washington"
+ ],
+ "pennsylvania": [
+  "delaware",
+  "maryland",
+  "new-jersey",
+  "new-york",
+  "ohio",
+  "ontario",
+  "west-virginia"
+ ],
+ "rhode-island": [
+  "connecticut",
+  "massachusetts"
+ ],
+ "south-carolina": [
+  "georgia",
+  "north-carolina"
+ ],
+ "south-dakota": [
+  "iowa",
+  "minnesota",
+  "montana",
+  "nebraska",
+  "north-dakota",
+  "wyoming"
+ ],
+ "tennessee": [
+  "alabama",
+  "arkansas",
+  "georgia",
+  "kentucky",
+  "mississippi",
+  "missouri",
+  "north-carolina",
+  "virginia"
+ ],
+ "texas": [
+  "arkansas",
+  "louisiana",
+  "new-mexico",
+  "oklahoma"
+ ],
+ "utah": [
+  "arizona",
+  "colorado",
+  "idaho",
+  "nevada",
+  "new-mexico",
+  "wyoming"
+ ],
+ "vermont": [
+  "massachusetts",
+  "new-hampshire",
+  "new-york",
+  "quebec"
+ ],
+ "virginia": [
+  "kentucky",
+  "maryland",
+  "north-carolina",
+  "tennessee",
+  "west-virginia"
+ ],
+ "washington": [
+  "british-columbia",
+  "idaho",
+  "oregon"
+ ],
+ "west-virginia": [
+  "kentucky",
+  "maryland",
+  "ohio",
+  "pennsylvania",
+  "virginia"
+ ],
+ "wisconsin": [
+  "illinois",
+  "iowa",
+  "michigan",
+  "minnesota"
+ ],
+ "wyoming": [
+  "colorado",
+  "idaho",
+  "montana",
+  "nebraska",
+  "south-dakota",
+  "utah"
+ ]
+}
