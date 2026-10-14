@@ -1,0 +1,12 @@
+{
+  "city": "Dumas",
+  "name": "Motel 6 / Studio 6",
+  "address": "1712 S. Dumas Ave.",
+  "phone": "806-935-0212",
+  "notes": [
+    "Discounted rates",
+    "Pet friendly room"
+  ],
+  "state": "texas",
+  "active": true
+}

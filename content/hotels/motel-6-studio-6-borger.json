@@ -1,0 +1,12 @@
+{
+  "city": "Borger",
+  "name": "Motel 6 / Studio 6",
+  "address": "100 Bulldog Blvd.",
+  "phone": "806-273-9556",
+  "notes": [
+    "Discounted rates",
+    "Pet friendly"
+  ],
+  "state": "texas",
+  "active": true
+}

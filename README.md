@@ -6,12 +6,14 @@ the US and Canada.
 ## How it works
 
 ```
-data/*.json  ──►  build.py  ──►  dist/  ──►  Cloudflare Pages  ──►  uspilotcars.com
-(the content)    (turns content   (the finished
-                  into pages)      website)
+Pages CMS ──► content/ + data/ ──► build.py ──► dist/ ──► Cloudflare ──► uspilotcars.com
+(grandma's     (the content,       (turns content   (finished
+ editor)        saved on GitHub)    into pages)      website)
 ```
 
-- **Content** lives in `data/` — advertisements, hotels, regulations.
+- **Grandma edits** companies, ads, and hotels at **app.pagescms.org**. Each
+  Save stores a small file in `content/` on GitHub.
+- **Other content** (regulations, the state list) lives in `data/`.
 - **`build.py`** turns that content into web pages. Nobody runs it by hand:
   Cloudflare runs it automatically every time something changes on GitHub.
 - **`dist/`** is the finished site. It's rebuilt from scratch each time and
@@ -25,8 +27,9 @@ image, and the payment.
 
 | Folder / file | What it is |
 |---|---|
-| `data/advertisements.json` | Every company listing and ad |
-| `data/hotels.json` | Hotels, by state |
+| `content/listings/` | One file per company listing or ad (edited in Pages CMS) |
+| `content/hotels/` | One file per hotel (edited in Pages CMS) |
+| `.pages.yml` | Decides what the Pages CMS editor shows. Grandma never touches it. |
 | `data/regulations.json` | Pilot car rules, by state |
 | `data/adjacency.json` | Which states border which (drives "Nearby" links) |
 | `data/states.json` | The list of states and provinces |
@@ -41,7 +44,10 @@ image, and the payment.
   level, so a typo can never push a basic listing above a banner.
 - **An ad with an `endDate` disappears by itself the day after that date.**
   When someone cancels, set the end date — no need to delete anything.
-- **`"active": false`** hides an ad without deleting it.
+- **"Show on the website" switched off** hides a listing without deleting it.
+- **A mistyped entry can't break the site.** If a file can't be read, the
+  build skips it, notes it in the Cloudflare build log, and publishes
+  everything else.
 - **Hotels appear inside the state's company table**, in their own city,
   highlighted — right where drivers are already looking.
 

@@ -1,0 +1,12 @@
+{
+  "city": "Amarillo",
+  "name": "Baymont by Wyndham",
+  "address": "1700 I-40 East",
+  "phone": "806-372-1425",
+  "notes": [
+    "Discounted rates",
+    "Pet friendly"
+  ],
+  "state": "texas",
+  "active": true
+}

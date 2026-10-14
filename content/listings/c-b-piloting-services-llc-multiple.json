@@ -1,0 +1,24 @@
+{
+  "id": "cb-piloting",
+  "businessName": "C B Piloting Services, LLC",
+  "tier": "bold_listing",
+  "placement": [
+    "sitewide"
+  ],
+  "image": "/assets/images/advertisements/placeholder-sidebar.svg",
+  "description": "Family operated. WA & NY certified / TX flagging certified. Lead, chase, height pole, and steering capable. $2M insurance. \"Safety is key!\"",
+  "city": "Multiple",
+  "state": "Nationwide",
+  "phone": "479-670-2176",
+  "phone2": null,
+  "email": null,
+  "website": null,
+  "externalUrl": null,
+  "services": [
+    "height_pole",
+    "steering"
+  ],
+  "featured": false,
+  "priority": 3,
+  "active": true
+}

@@ -35,8 +35,82 @@ OUT = os.path.join(ROOT, "dist")
 # ---------------------------------------------------------------- load data
 with open(os.path.join(DATA, "states.json")) as f:
     STATES = json.load(f)
-with open(os.path.join(DATA, "advertisements.json")) as f:
-    ALL_ADS = json.load(f)["listings"]
+CONTENT = os.path.join(ROOT, "content")
+
+
+def load_folder(folder):
+    """Read every .json file in a content folder (one file per business).
+
+    These files are written by Pages CMS when grandma clicks Save. A file
+    that can't be read is SKIPPED WITH A WARNING rather than stopping the
+    build -- one bad entry must never prevent every other change from
+    going live.
+    """
+    items = []
+    path = os.path.join(CONTENT, folder)
+    if not os.path.isdir(path):
+        return items
+    for fn in sorted(os.listdir(path)):
+        if not fn.endswith(".json"):
+            continue
+        try:
+            with open(os.path.join(path, fn), encoding="utf-8") as f:
+                item = json.load(f)
+            if not isinstance(item, dict):
+                raise ValueError("not a single entry")
+            item["_file"] = fn
+            items.append(item)
+        except Exception as e:
+            print(f"  WARNING: skipped content/{folder}/{fn} ({e})")
+    return items
+
+
+def as_list(v):
+    """Form fields can arrive as a list, a single string, or empty."""
+    if not v:
+        return []
+    if isinstance(v, str):
+        return [v]
+    return [x for x in v if x]
+
+
+def clean_url(u):
+    """People type 'na-pcs.com' -- make it a working link."""
+    u = (u or "").strip()
+    if u and not re.match(r"^https?://", u, re.I):
+        u = "https://" + u
+    return u
+
+
+def clean_listing(a):
+    a["businessName"] = (a.get("businessName") or "").strip()
+    if not a["businessName"]:
+        print(f"  WARNING: skipped content/listings/{a.get('_file')} (no business name)")
+        return None
+    if a.get("tier") not in TIER_ORDER:
+        a["tier"] = "basic_listing"
+    a["placement"] = as_list(a.get("placement"))
+    a["services"] = as_list(a.get("services"))
+    for k in ("city", "phone", "phone2", "description"):
+        a[k] = (a.get(k) or "").strip()
+    a["website"] = clean_url(a.get("website"))
+    img = (a.get("image") or "").strip()
+    a["image"] = img.lstrip("/")      # page code adds the right "../" prefix
+    try:
+        a["priority"] = int(a.get("priority") or 100)
+    except (TypeError, ValueError):
+        a["priority"] = 100
+    return a
+
+
+def clean_hotel(h):
+    h["name"] = (h.get("name") or "").strip()
+    if not h["name"] or not h.get("state"):
+        print(f"  WARNING: skipped content/hotels/{h.get('_file')} (needs a name and a state)")
+        return None
+    h["notes"] = as_list(h.get("notes"))
+    h["website"] = clean_url(h.get("website"))
+    return h
 with open(os.path.join(DATA, "adjacency.json")) as f:
     ADJACENCY = json.load(f)
 
@@ -58,7 +132,6 @@ def is_live(ad, today=None):
     return True
 
 
-ADS = [a for a in ALL_ADS if is_live(a)]
 
 # Revenue order. Index 0 is most prominent. A higher-paying tier ALWAYS
 # outranks a lower one; "priority" only orders ads within the same tier,
@@ -71,10 +144,17 @@ def ad_sort_key(a):
     tier = a.get("tier", "basic_listing")
     rank = TIER_ORDER.index(tier) if tier in TIER_ORDER else len(TIER_ORDER)
     return (rank, a.get("priority", 999), a.get("businessName", "").lower())
+
+
+ALL_ADS = [a for a in (clean_listing(x) for x in load_folder("listings")) if a]
+ADS = [a for a in ALL_ADS if is_live(a)]
+
+HOTELS = {}
+for _h in (clean_hotel(x) for x in load_folder("hotels")):
+    if _h:
+        HOTELS.setdefault(_h["state"], {"listings": []})["listings"].append(_h)
 with open(os.path.join(DATA, "regulations.json")) as f:
     REGS = json.load(f)["states"]
-with open(os.path.join(DATA, "hotels.json")) as f:
-    HOTELS = json.load(f)["states"]
 with open(os.path.join(DATA, "truck_stops.json")) as f:
     TRUCKSTOPS = json.load(f)
 

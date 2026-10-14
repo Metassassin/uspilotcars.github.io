@@ -1,0 +1,21 @@
+{
+  "id": "tumbleweed-pilot-car",
+  "businessName": "Tumbleweed Pilot Car",
+  "tier": "basic_listing",
+  "placement": [
+    "new-mexico"
+  ],
+  "image": null,
+  "description": null,
+  "city": "Albuquerque",
+  "state": "New Mexico",
+  "phone": "(505) 417-2621",
+  "phone2": null,
+  "email": null,
+  "website": null,
+  "externalUrl": null,
+  "services": [],
+  "featured": false,
+  "priority": 9,
+  "active": true
+}

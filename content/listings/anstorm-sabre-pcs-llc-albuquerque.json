@@ -1,0 +1,21 @@
+{
+  "id": "anstorm-sabre",
+  "businessName": "Anstorm Sabre PCS, LLC",
+  "tier": "bold_listing",
+  "placement": [
+    "new-mexico"
+  ],
+  "image": null,
+  "description": null,
+  "city": "Albuquerque",
+  "state": "New Mexico",
+  "phone": "402-270-2125",
+  "phone2": null,
+  "email": null,
+  "website": "https://marcyolsufka.wixsite.com/mysite",
+  "externalUrl": "https://marcyolsufka.wixsite.com/mysite",
+  "services": [],
+  "featured": false,
+  "priority": 10,
+  "active": true
+}

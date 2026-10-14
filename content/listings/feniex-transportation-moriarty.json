@@ -1,0 +1,21 @@
+{
+  "id": "feniex-transportation",
+  "businessName": "Feniex Transportation",
+  "tier": "basic_listing",
+  "placement": [
+    "new-mexico"
+  ],
+  "image": null,
+  "description": null,
+  "city": "Moriarty",
+  "state": "New Mexico",
+  "phone": "505-452-7459",
+  "phone2": null,
+  "email": null,
+  "website": null,
+  "externalUrl": null,
+  "services": [],
+  "featured": false,
+  "priority": 13,
+  "active": true
+}

@@ -1,0 +1,21 @@
+{
+  "id": "tomahawk-service",
+  "businessName": "Tomahawk Service LLC",
+  "tier": "basic_listing",
+  "placement": [
+    "new-mexico"
+  ],
+  "image": null,
+  "description": null,
+  "city": "Socorro",
+  "state": "New Mexico",
+  "phone": "480-239-7887",
+  "phone2": null,
+  "email": null,
+  "website": null,
+  "externalUrl": null,
+  "services": [],
+  "featured": false,
+  "priority": 17,
+  "active": true
+}
