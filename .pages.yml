@@ -1,0 +1,353 @@
+# =====================================================================
+# Pages CMS setup for site
+#
+# This file decides what appears in the editor at app.pagescms.org.
+# Grandma never sees or edits it.
+#
+# Every Save in the editor saves a small file to GitHub; Cloudflare then
+# rebuilds the website automatically. Changes are live in ~2 minutes.
+# =====================================================================
+
+media:
+  input: assets/images/advertisements
+  output: /assets/images/advertisements
+  rename: safe
+  categories: [image]
+
+settings:
+  # Keep any extra details stored in an entry (old IDs, email, etc.)
+  # even though the form doesn't show them.
+  content:
+    merge: true
+  commit:
+    templates:
+      create: "Added {filename} (via Pages CMS)"
+      update: "Updated {filename} (via Pages CMS)"
+      delete: "Removed {filename} (via Pages CMS)"
+
+components:
+  state_list:
+    type: select
+    options:
+      values:
+          - { name: alabama, label: "Alabama" }
+          - { name: alaska, label: "Alaska" }
+          - { name: arizona, label: "Arizona" }
+          - { name: arkansas, label: "Arkansas" }
+          - { name: california, label: "California" }
+          - { name: colorado, label: "Colorado" }
+          - { name: connecticut, label: "Connecticut" }
+          - { name: delaware, label: "Delaware" }
+          - { name: florida, label: "Florida" }
+          - { name: georgia, label: "Georgia" }
+          - { name: hawaii, label: "Hawaii" }
+          - { name: idaho, label: "Idaho" }
+          - { name: illinois, label: "Illinois" }
+          - { name: indiana, label: "Indiana" }
+          - { name: iowa, label: "Iowa" }
+          - { name: kansas, label: "Kansas" }
+          - { name: kentucky, label: "Kentucky" }
+          - { name: louisiana, label: "Louisiana" }
+          - { name: maine, label: "Maine" }
+          - { name: maryland, label: "Maryland" }
+          - { name: massachusetts, label: "Massachusetts" }
+          - { name: michigan, label: "Michigan" }
+          - { name: minnesota, label: "Minnesota" }
+          - { name: mississippi, label: "Mississippi" }
+          - { name: missouri, label: "Missouri" }
+          - { name: montana, label: "Montana" }
+          - { name: nebraska, label: "Nebraska" }
+          - { name: nevada, label: "Nevada" }
+          - { name: new-hampshire, label: "New Hampshire" }
+          - { name: new-jersey, label: "New Jersey" }
+          - { name: new-mexico, label: "New Mexico" }
+          - { name: new-york, label: "New York" }
+          - { name: north-carolina, label: "North Carolina" }
+          - { name: north-dakota, label: "North Dakota" }
+          - { name: ohio, label: "Ohio" }
+          - { name: oklahoma, label: "Oklahoma" }
+          - { name: oregon, label: "Oregon" }
+          - { name: pennsylvania, label: "Pennsylvania" }
+          - { name: rhode-island, label: "Rhode Island" }
+          - { name: south-carolina, label: "South Carolina" }
+          - { name: south-dakota, label: "South Dakota" }
+          - { name: tennessee, label: "Tennessee" }
+          - { name: texas, label: "Texas" }
+          - { name: utah, label: "Utah" }
+          - { name: vermont, label: "Vermont" }
+          - { name: virginia, label: "Virginia" }
+          - { name: washington, label: "Washington" }
+          - { name: west-virginia, label: "West Virginia" }
+          - { name: wisconsin, label: "Wisconsin" }
+          - { name: wyoming, label: "Wyoming" }
+          - { name: alberta, label: "Alberta (Canada)" }
+          - { name: british-columbia, label: "British Columbia (Canada)" }
+          - { name: manitoba, label: "Manitoba (Canada)" }
+          - { name: new-brunswick, label: "New Brunswick (Canada)" }
+          - { name: newfoundland-and-labrador, label: "Newfoundland and Labrador (Canada)" }
+          - { name: northwest-territories, label: "Northwest Territories (Canada)" }
+          - { name: nova-scotia, label: "Nova Scotia (Canada)" }
+          - { name: ontario, label: "Ontario (Canada)" }
+          - { name: quebec, label: "Quebec (Canada)" }
+          - { name: saskatchewan, label: "Saskatchewan (Canada)" }
+          - { name: yukon, label: "Yukon (Canada)" }
+
+content:
+  # -------------------------------------------------------------------
+  - name: listings
+    label: Companies & Ads
+    type: collection
+    path: content/listings
+    format: json
+    filename: "{businessName}-{city}.json"
+    view:
+      primary: businessName
+      fields: [businessName, tier, city, active, endDate]
+      sort: [businessName, city, tier]
+      search: [businessName, city, phone]
+      default:
+        sort: businessName
+        order: asc
+    fields:
+      - name: businessName
+        label: Business name
+        type: string
+        required: true
+
+      - name: tier
+        label: Ad package
+        type: select
+        required: true
+        default: basic_listing
+        description: >-
+          Bigger packages ALWAYS appear above smaller ones on the page,
+          no matter what else you set.
+        options:
+          values:
+            - { name: global_banner, label: "Sitewide banner (top of every page)" }
+            - { name: state_banner,  label: "State banner (top of a state page)" }
+            - { name: super_listing, label: "Super listing (large box with picture)" }
+            - { name: bold_listing,  label: "Bold listing" }
+            - { name: basic_listing, label: "Basic listing" }
+
+      - name: placement
+        label: Where it appears
+        type: select
+        description: >-
+          Pick every state this listing appears in (a 4-state package gets
+          4 states). Choose "Every page" for ads that run across the whole site.
+        options:
+          multiple: true
+          placeholder: Choose states
+          values:
+            - { name: sitewide, label: "★ Every page of the site" }
+            - { name: alabama, label: "Alabama" }
+            - { name: alaska, label: "Alaska" }
+            - { name: arizona, label: "Arizona" }
+            - { name: arkansas, label: "Arkansas" }
+            - { name: california, label: "California" }
+            - { name: colorado, label: "Colorado" }
+            - { name: connecticut, label: "Connecticut" }
+            - { name: delaware, label: "Delaware" }
+            - { name: florida, label: "Florida" }
+            - { name: georgia, label: "Georgia" }
+            - { name: hawaii, label: "Hawaii" }
+            - { name: idaho, label: "Idaho" }
+            - { name: illinois, label: "Illinois" }
+            - { name: indiana, label: "Indiana" }
+            - { name: iowa, label: "Iowa" }
+            - { name: kansas, label: "Kansas" }
+            - { name: kentucky, label: "Kentucky" }
+            - { name: louisiana, label: "Louisiana" }
+            - { name: maine, label: "Maine" }
+            - { name: maryland, label: "Maryland" }
+            - { name: massachusetts, label: "Massachusetts" }
+            - { name: michigan, label: "Michigan" }
+            - { name: minnesota, label: "Minnesota" }
+            - { name: mississippi, label: "Mississippi" }
+            - { name: missouri, label: "Missouri" }
+            - { name: montana, label: "Montana" }
+            - { name: nebraska, label: "Nebraska" }
+            - { name: nevada, label: "Nevada" }
+            - { name: new-hampshire, label: "New Hampshire" }
+            - { name: new-jersey, label: "New Jersey" }
+            - { name: new-mexico, label: "New Mexico" }
+            - { name: new-york, label: "New York" }
+            - { name: north-carolina, label: "North Carolina" }
+            - { name: north-dakota, label: "North Dakota" }
+            - { name: ohio, label: "Ohio" }
+            - { name: oklahoma, label: "Oklahoma" }
+            - { name: oregon, label: "Oregon" }
+            - { name: pennsylvania, label: "Pennsylvania" }
+            - { name: rhode-island, label: "Rhode Island" }
+            - { name: south-carolina, label: "South Carolina" }
+            - { name: south-dakota, label: "South Dakota" }
+            - { name: tennessee, label: "Tennessee" }
+            - { name: texas, label: "Texas" }
+            - { name: utah, label: "Utah" }
+            - { name: vermont, label: "Vermont" }
+            - { name: virginia, label: "Virginia" }
+            - { name: washington, label: "Washington" }
+            - { name: west-virginia, label: "West Virginia" }
+            - { name: wisconsin, label: "Wisconsin" }
+            - { name: wyoming, label: "Wyoming" }
+            - { name: alberta, label: "Alberta (Canada)" }
+            - { name: british-columbia, label: "British Columbia (Canada)" }
+            - { name: manitoba, label: "Manitoba (Canada)" }
+            - { name: new-brunswick, label: "New Brunswick (Canada)" }
+            - { name: newfoundland-and-labrador, label: "Newfoundland and Labrador (Canada)" }
+            - { name: northwest-territories, label: "Northwest Territories (Canada)" }
+            - { name: nova-scotia, label: "Nova Scotia (Canada)" }
+            - { name: ontario, label: "Ontario (Canada)" }
+            - { name: quebec, label: "Quebec (Canada)" }
+            - { name: saskatchewan, label: "Saskatchewan (Canada)" }
+            - { name: yukon, label: "Yukon (Canada)" }
+
+      - name: city
+        label: City or service area
+        type: string
+        description: Spell it the same way as other listings in that city, e.g. AMARILLO.
+
+      - name: phone
+        label: Phone
+        type: string
+
+      - name: phone2
+        label: Second phone (optional)
+        type: string
+
+      - name: website
+        label: Website (optional)
+        type: string
+        description: e.g. www.example.com
+
+      - name: services
+        label: Services offered
+        type: select
+        options:
+          multiple: true
+          values:
+            - { name: height_pole,  label: "Height pole" }
+            - { name: route_survey, label: "Route survey" }
+            - { name: multi_car,    label: "Multiple cars" }
+            - { name: steering,     label: "Steering" }
+
+      - name: description
+        label: Ad text (super listings and banners only)
+        type: text
+        options:
+          maxlength: 400
+
+      - name: image
+        label: Ad picture (super listings and banners only)
+        type: image
+        description: Upload the picture the customer sent. JPG or PNG.
+
+      - name: priority
+        label: Order within its package
+        type: number
+        default: 100
+        description: >-
+          Only matters between ads of the SAME package. Lower number shows
+          first (1 = top). If it doesn't matter, leave it at 100.
+        options:
+          min: 1
+          max: 999
+
+      - name: active
+        label: Show on the website
+        type: boolean
+        default: true
+        description: Turn off to hide this listing without deleting it.
+
+      # IMPORTANT: default "" keeps these EMPTY on new listings. Without it
+      # the editor pre-fills today's date, and a new ad would quietly
+      # disappear from the website tomorrow.
+      - name: startDate
+        label: Start showing on (optional)
+        type: date
+        default: ""
+        options:
+          format: yyyy-MM-dd
+
+      - name: endDate
+        label: Last day shown (optional)
+        type: date
+        default: ""
+        description: >-
+          When a customer cancels, set this to the last day they paid for.
+          The listing disappears by itself the day after.
+        options:
+          format: yyyy-MM-dd
+
+      - name: notes
+        label: Private notes (never shown on the website)
+        type: text
+
+  # -------------------------------------------------------------------
+  - name: hotels
+    label: Hotels
+    type: collection
+    path: content/hotels
+    format: json
+    filename: "{name}-{city}.json"
+    view:
+      primary: name
+      fields: [name, city, state, active, endDate]
+      sort: [name, city, state]
+      search: [name, city]
+      default:
+        sort: name
+        order: asc
+    fields:
+      - name: name
+        label: Hotel name
+        type: string
+        required: true
+
+      - name: state
+        label: State
+        component: state_list
+        required: true
+
+      - name: city
+        label: City
+        type: string
+        required: true
+        description: >-
+          The hotel appears among the pilot car companies for this city,
+          so spell it the same way they do.
+
+      - name: address
+        label: Street address
+        type: string
+
+      - name: phone
+        label: Phone
+        type: string
+
+      - name: website
+        label: Website (optional)
+        type: string
+
+      - name: notes
+        label: Highlights
+        type: string
+        list: true
+        description: One per line, e.g. "Pet friendly", "Pilot car rate $45".
+
+      - name: active
+        label: Show on the website
+        type: boolean
+        default: true
+
+      - name: endDate
+        label: Last day shown (optional)
+        type: date
+        default: ""
+        options:
+          format: yyyy-MM-dd
+
+      - name: privateNotes
+        label: Private notes (never shown on the website)
+        type: text
