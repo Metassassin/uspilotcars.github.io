@@ -366,3 +366,99 @@ content:
       - name: privateNotes
         label: Private notes (never shown on the website)
         type: text
+
+  # -------------------------------------------------------------------
+  - name: regulations
+    label: Regulations
+    type: collection
+    path: content/regulations
+    format: json
+    filename: "{region}.json"
+    view:
+      primary: region
+      fields: [region, lastVerified]
+      sort: [region, lastVerified]
+      default:
+        sort: region
+        order: asc
+    fields:
+      - name: region
+        label: State / province
+        component: state_list
+        required: true
+      - name: body
+        label: Regulations
+        type: rich-text
+        description: >-
+          Use the heading button for sections like "When Permit Is Needed" and
+          bullet points for each rule. Paste links as normal.
+        options:
+          format: html
+          media: false
+      - name: lastVerified
+        label: Last checked against the state's current rules
+        type: date
+        default: ""
+        description: Shown to visitors. Leave empty until someone has re-checked this state.
+        options:
+          format: yyyy-MM-dd
+      - name: sourceUrl
+        label: Official state source (optional)
+        type: string
+        description: Link to the state DOT permit page, e.g. https://www.txdot.gov
+      - name: notes
+        label: Private notes (never shown on the website)
+        type: text
+
+  # -------------------------------------------------------------------
+  - name: services
+    label: Design Services page
+    type: file
+    path: content/services.json
+    format: json
+    fields:
+      - name: enabled
+        label: Show this page on the website
+        type: boolean
+        default: true
+      - name: inquiryEmail
+        label: Email address that receives inquiries
+        type: string
+        description: >-
+          The form starts working once a real address is here. The first
+          message sends a confirmation email to this address -- click the
+          link in it once to switch the form on.
+      - name: formAlias
+        label: Private form code (optional)
+        type: string
+        description: >-
+          After confirming, FormSubmit can give you a random code to use
+          instead of your email, so spammers can't read your address from
+          the page. Paste it here.
+      - name: navLabel
+        label: Menu label
+        type: string
+      - name: headline
+        label: Page headline
+        type: string
+      - name: intro
+        label: Introduction
+        type: text
+      - name: relationshipNotice
+        label: Note shown at the top
+        type: text
+        description: Makes clear this is a separate, paid service.
+      - name: services
+        label: Services offered
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Service
+            type: string
+          - name: description
+            label: Short description
+            type: text
+          - name: startingPrice
+            label: Starting price (optional)
+            type: string
