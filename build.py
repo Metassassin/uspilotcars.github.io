@@ -1017,6 +1017,108 @@ def build_regulations_state_pages():
 
 
 # ---------------------------------------------------------------- RESOURCES
+def load_hotel_chains():
+    path = os.path.join(CONTENT, "hotel_chains.json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            chains = json.load(f).get("chains") or []
+    except FileNotFoundError:
+        return []
+    except Exception as e:
+        print(f"  WARNING: content/hotel_chains.json could not be read ({e})")
+        return []
+    return sorted([c for c in chains if c.get("name") and c.get("active", True) is not False],
+                  key=lambda c: c["name"].lower())
+
+
+def write_hotels_page(base):
+    hotels = sorted(
+        [h for st in HOTELS.values() for h in st["listings"] if is_live(h)],
+        key=lambda h: (SLUG_TO_NAME.get(h["state"], h["state"]), (h.get("city") or "").lower(), h["name"].lower()))
+    states_with = sorted({h["state"] for h in hotels}, key=lambda s: SLUG_TO_NAME.get(s, s))
+
+    rows = []
+    for h in hotels:
+        st = h["state"]; st_name = SLUG_TO_NAME.get(st, st)
+        name = esc(h["name"])
+        if h.get("website"):
+            name = f'<a href="{esc(h["website"])}" target="_blank" rel="nofollow noopener">{name}</a>'
+        notes = " &middot; ".join(esc(n) for n in h.get("notes") or [])
+        phone = f'<a href="{tel_href(h["phone"])}">{esc(h["phone"])}</a>' if h.get("phone") else ""
+        rows.append(f"""<tr data-state="{esc(st)}" data-sort-state="{esc(st_name.lower())}"
+            data-sort-city="{esc((h.get('city') or '').lower())}" data-sort-name="{esc(h['name'].lower())}">
+          <td data-label="State"><a href="../directory/{esc(st)}.html">{esc(st_name)}</a></td>
+          <td data-label="City" class="city">{esc(h.get("city") or "")}<div class="hotel-meta">{esc(h.get("address") or "")}</div></td>
+          <td data-label="Hotel"><div class="co-name">{name}</div>{f'<div class="hotel-meta">{notes}</div>' if notes else ''}</td>
+          <td data-label="Phone" class="phone">{phone}</td>
+        </tr>""")
+
+    state_opts = "".join(f'<option value="{esc(s)}">{esc(SLUG_TO_NAME.get(s, s))}</option>' for s in states_with)
+    if rows:
+        hotel_table = f"""
+        <div class="table-tools">
+          <label>Search <input type="search" placeholder="Hotel, city or state" data-table-search="hotel-table" autocomplete="off"></label>
+          <label>State <select data-table-state="hotel-table"><option value="">All states</option>{state_opts}</select></label>
+        </div>
+        <p class="table-count" aria-live="polite" data-table-count="hotel-table">{len(rows)} hotels</p>
+        <div class="table-scroll">
+        <table class="data-table" id="hotel-table" data-sortable>
+          <thead><tr>
+            <th data-sort-key="state" aria-sort="ascending"><button type="button">State</button></th>
+            <th data-sort-key="city"><button type="button">City</button></th>
+            <th data-sort-key="name"><button type="button">Hotel</button></th>
+            <th>Phone</th>
+          </tr></thead>
+          <tbody>{''.join(rows)}</tbody>
+        </table>
+        </div>
+        <p class="table-empty" data-table-empty="hotel-table" hidden>No hotels match that search.</p>"""
+    else:
+        hotel_table = "<p>No hotels are listed yet.</p>"
+
+    chains = load_hotel_chains()
+    chain_rows = "".join(f"""<tr data-sort-name="{esc(c['name'].lower())}">
+          <td data-label="Chain"><strong>{esc(c['name'])}</strong>{f'<span class="svc-chip deal-chip">{esc(c["note"])}</span>' if c.get('note') else ''}</td>
+          <td data-label="Reservations" class="phone">{f'<a href="{tel_href(c["phone"])}">{esc(c["phone"])}</a>' if c.get('phone') else ''}</td>
+          <td data-label="Website">{f'<a href="{esc(c["website"])}" target="_blank" rel="nofollow noopener">Visit site &#8599;</a>' if c.get('website') else ''}</td>
+        </tr>""" for c in chains)
+    chain_panel = f"""
+      <div class="panel">
+        <h2>Major hotel chains</h2>
+        <p>Central reservation numbers. Some chains offer special rates for pilot car drivers &mdash; look for the tag.</p>
+        <div class="table-tools">
+          <label>Search chains <input type="search" placeholder="e.g. Motel 6" data-table-search="chain-table" autocomplete="off"></label>
+        </div>
+        <div class="table-scroll">
+        <table class="data-table" id="chain-table" data-sortable>
+          <thead><tr><th data-sort-key="name" aria-sort="ascending"><button type="button">Chain</button></th><th>Reservations</th><th>Website</th></tr></thead>
+          <tbody>{chain_rows}</tbody>
+        </table>
+        </div>
+        <p class="table-empty" data-table-empty="chain-table" hidden>No chains match that search.</p>
+      </div>""" if chains else ""
+
+    body = f"""
+    <div class="page-header"><div class="eyebrow">Resources</div><h1>Find a Hotel</h1>
+    <p>Pilot-car-friendly hotels by state, plus reservation numbers for the major chains. Search, pick a state, or tap a column heading to sort.</p></div>
+    <div class="content" style="max-width:1100px">
+      <div class="panel">
+        <h2>Hotels that welcome pilot car drivers</h2>
+        {hotel_table}
+      </div>
+      <div class="callout">
+        Own a hotel that welcomes pilot car drivers? A highlighted listing in your city is available &mdash;
+        see the <a href="../advertise/index.html">advertising page</a>. Hotel listings also appear on each state's directory page.
+      </div>
+      {chain_panel}
+    </div>
+    """
+    write("resources/hotels.html", page_shell(base=base, title=f"Find a Hotel | {SITE_NAME}",
+          meta_description="Pilot-car-friendly hotels by state, searchable and sortable, plus reservation numbers for major hotel chains.",
+          active_key="resources", body_html=body, canonical_path="resources/hotels.html",
+          breadcrumbs=[("Home", "index.html"), ("Resources", "resources/index.html"), ("Find a Hotel", None)]))
+
+
 def build_resources():
     base = "../"
 
@@ -1063,36 +1165,8 @@ def build_resources():
           active_key="resources", body_html=rc_body, canonical_path="resources/road-conditions.html",
           breadcrumbs=[("Home", "index.html"), ("Resources", "resources/index.html"), ("Road Conditions", None)]))
 
-    # Hotels
-    tx = HOTELS.get("texas", {}).get("listings", [])
-    tx_rows = "".join(f"""
-      <tr><td>{esc(h["city"])}</td><td>{esc(h["name"])}</td><td>{esc(h["address"])}</td>
-      <td class="phone"><a href="tel:{re.sub(r'[^0-9+]','',h['phone'])}">{esc(h["phone"])}</a></td>
-      <td>{', '.join(esc(n) for n in h.get("notes",[]))}</td></tr>""" for h in tx)
-    hotel_body = f"""
-    <div class="page-header"><div class="eyebrow">Resources</div><h1>Hotel List</h1>
-    <p>Need a motel room on the road? Discounted, pet-friendly, pilot-car-friendly hotel listings by state.</p></div>
-    <div class="content" style="max-width:1000px">
-      <div class="panel">
-        <h2>Texas</h2>
-        <table class="listing-table">
-          <thead><tr><th>City</th><th>Hotel</th><th>Address</th><th>Phone</th><th>Notes</th></tr></thead>
-          <tbody>{tx_rows}</tbody>
-        </table>
-      </div>
-      <div class="callout">
-        Hotel owner? A highlighted 4-line placement in your city is available — see the <a href="../advertise/index.html">advertising page</a> for current rates.
-      </div>
-      <div class="panel">
-        <h2>Other States</h2>
-        <p>Hotels offering pilot car rates also appear on each state's directory page, right alongside the local pilot car companies. Own a hotel that welcomes pilot car drivers? <a href="../advertise/index.html">Get your hotel listed</a>.</p>
-      </div>
-    </div>
-    """
-    write("resources/hotels.html", page_shell(base=base, title=f"Hotel List | {SITE_NAME}",
-          meta_description="Discounted and pilot-car-friendly hotel listings by state for oversize load travel.",
-          active_key="resources", body_html=hotel_body, canonical_path="resources/hotels.html",
-          breadcrumbs=[("Home", "index.html"), ("Resources", "resources/index.html"), ("Hotel List", None)]))
+    # Hotels -- every state, searchable and sortable
+    write_hotels_page(base)
 
     # Truck stops
     def ts_grid(regions):
@@ -1105,7 +1179,7 @@ def build_resources():
         <strong>{esc(TRUCKSTOPS["legacyNotice"])}</strong> Email <a href="mailto:{esc(TRUCKSTOPS["legacyContactEmail"])}">{esc(TRUCKSTOPS["legacyContactEmail"])}</a> to suggest a listing.
       </div>
       <div class="panel">
-        <h2>Migration Placeholder</h2>
+        <h2>Coming soon</h2>
         <p>State-by-state truck stop listings are on the way. In the meantime, the state DOT road conditions links on our <a href="road-conditions.html">road conditions page</a> list rest areas and truck parking for most states.</p>
       </div>
       <div class="panel">

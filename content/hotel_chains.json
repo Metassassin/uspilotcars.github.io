@@ -1,0 +1,200 @@
+{
+  "chains": [
+    {
+      "name": "BAYMONT INNS AND SUITES",
+      "phone": "1-888-288-5090",
+      "website": "http://www.baymontinns.com",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "BEST WESTERN MOTELS",
+      "phone": "1-800-528-1234",
+      "website": "http://www.bestwestern.com/",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "BUDGETEL",
+      "phone": "1-800-428-3438",
+      "website": "http://www.budgetel.com",
+      "note": "Hidden: the Budgetel brand was renamed Baymont years ago.",
+      "active": false
+    },
+    {
+      "name": "CHOICE HOTELS",
+      "phone": "1-800-4-CHOICE",
+      "website": "http://www.choicehotels.com",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "CLARION HOTELS",
+      "phone": "1-800-4-CHOICE",
+      "website": "http://www.clarionhotel.com/",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "COMFORT INN",
+      "phone": "1-800-4-CHOICE",
+      "website": "http://www.comfortinn.com/",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "COUNTRY INNS AND SUITES",
+      "phone": "1-800-456-4000",
+      "website": "http://www.countryinns.com/",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "COURTYARD BY MARRIOTT",
+      "phone": "1-800-321-2211",
+      "website": "http://www.marriott.com/courtyard/travel.mi",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "DAYS INN",
+      "phone": "1-800-DAYSINN",
+      "website": "http://www.daysinn.com",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "DOUBLETREE INNS",
+      "phone": "1-800-222-TREE",
+      "website": "http://doubletree.hilton.com",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "ECONO LODGES",
+      "phone": "1-800-553-2666",
+      "website": "http://www.econolodge.com/",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "FOUR POINTS HOTELS",
+      "phone": "1-800-325-3535",
+      "website": "http://www.starwoodhotels.com/fourpoints/index.html",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "HAMPTON INNS",
+      "phone": "1-800-HAMPTON",
+      "website": "http://hamptoninn1.hilton.com/",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "HILTON HOTELS",
+      "phone": "1-800-HILTONS",
+      "website": "http://www1.hilton.com/",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "HOLIDAY INN",
+      "phone": "1-800-HOLIDAY",
+      "website": "http://www.holidayinn.com/",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "HOWARD JOHNSONS",
+      "phone": "1-800-I-GO-HOJO",
+      "website": "http://www.hojo.com/",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "LA QUINTA INNS AND SUITES",
+      "phone": "1-800-753-3757",
+      "website": "https://www.lq.com",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "MAGNUSON HOTELS",
+      "phone": "1-866-904-1309",
+      "website": "https://www.magnusonhotels.com/",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "MARRIOTT HOTELS",
+      "phone": "1-800-228-9290",
+      "website": "http://www.marriott.com/",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "MOTEL 6",
+      "phone": "1-800-466-8356",
+      "website": "https://www.motel6.com/en/cp/pilot-cars.html",
+      "note": "Special rate for pilot car drivers",
+      "active": true
+    },
+    {
+      "name": "MY PLACE HOTELS",
+      "phone": "1-855-200-5685",
+      "website": "http://www.myplacehotels.com/",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "QUALITY INN",
+      "phone": "1-877-424-6423",
+      "website": "https://www.choicehotels.com/quality-inn",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "RADISSON HOTELS",
+      "phone": "1-800-333-3333",
+      "website": "http://www.radisson.com/",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "RAMADA",
+      "phone": "1-800-2-RAMADA",
+      "website": "http://www.ramada.com/",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "RED LION HOTELS",
+      "phone": "1-800-547-8010",
+      "website": "https://www.redlion.com",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "RED ROOF INNS",
+      "phone": "1-800-THE-ROOF",
+      "website": "https://www.redroof.com/deals/partner/US_Canada_Pilot_Cars",
+      "note": "Special rate for pilot car drivers",
+      "active": true
+    },
+    {
+      "name": "SHERATON HOTELS",
+      "phone": "1-800-325-3535",
+      "website": "http://www.starwoodhotels.com/sheraton/index.html",
+      "note": "",
+      "active": true
+    },
+    {
+      "name": "TRAVELODGE",
+      "phone": "1-800-578-7878",
+      "website": "http://www.travelodge.com/",
+      "note": "",
+      "active": true
+    }
+  ]
+}

@@ -525,3 +525,48 @@ footer.site-footer .links{ display:flex; gap:16px; flex-wrap:wrap; margin-top:10
 .inquiry-form .btn[disabled]{ opacity:.55; cursor:not-allowed; }
 .form-note{ background:var(--amber-100); padding:10px 14px; border-radius:var(--radius-sm); }
 .hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+
+/* Searchable / sortable tables (hotels, and reusable for other lists) */
+.table-tools{ display:flex; flex-wrap:wrap; gap:12px 18px; align-items:flex-end; margin:0 0 10px; }
+.table-tools label{ display:flex; flex-direction:column; gap:4px; font-weight:600; font-size:.9rem; }
+.table-tools input, .table-tools select{ font:inherit; padding:9px 12px; min-width:220px;
+  border:1px solid var(--border-strong); border-radius:var(--radius-sm); background:#fff; }
+.table-count{ font-size:.9rem; color:var(--ink-muted); margin:0 0 8px; }
+.table-empty{ padding:14px; background:var(--amber-100); border-radius:var(--radius-sm); }
+.data-table{ width:100%; border-collapse:collapse; }
+.data-table th, .data-table td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top; }
+.data-table th{ background:var(--navy-900); color:#fff; font-size:.85rem; letter-spacing:.03em; }
+.data-table th button{ all:unset; cursor:pointer; display:inline-flex; gap:6px; align-items:center; }
+.data-table th button::after{ content:"\2195"; opacity:.45; font-size:.85em; }
+.data-table th[aria-sort="ascending"] button::after{ content:"\25B2"; opacity:1; }
+.data-table th[aria-sort="descending"] button::after{ content:"\25BC"; opacity:1; }
+.data-table th button:focus-visible{ outline:2px solid var(--amber-500); outline-offset:3px; }
+.data-table tr[hidden]{ display:none !important; }
+.data-table .phone a{ white-space:nowrap; }
+.deal-chip{ margin-left:8px; background:var(--amber-100); border-color:var(--amber-500); color:#6b3a06; }
+@media (max-width: 640px){
+  .data-table thead{ display:none; }
+  .data-table, .data-table tbody, .data-table tr, .data-table td{ display:block; width:100%; }
+  .data-table tr{ border-bottom:1px solid var(--border); padding:8px 0; }
+  .data-table td{ border:none; padding:3px 12px; }
+  .data-table td[data-label]::before{ content:attr(data-label); display:block; font-size:.72rem;
+    text-transform:uppercase; letter-spacing:.06em; color:var(--ink-muted); }
+  .table-tools input, .table-tools select{ min-width:0; width:100%; }
+  .table-tools label{ flex:1 1 100%; }
+}
+
+/* Text-only banners match the shape of picture banners (about 500x215),
+   so a missing picture never makes one advertiser's space bigger or smaller. */
+.banner-row .banner-fallback{ aspect-ratio:500 / 215; min-height:0; overflow:hidden; }
+.banner-row .bf-desc{ display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+
+/* Phones: one swipeable row instead of a tall stack, so every page's
+   content starts right after the sponsors. The next banner peeks in. */
+@media (max-width: 640px){
+  .banner-row{ display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:10px;
+    padding-bottom:6px; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
+  .banner-row > .banner-ad{ flex:0 0 88%; scroll-snap-align:start; }
+  .banner-row .banner-fallback{ padding:14px 16px; gap:4px; }
+  .banner-row .bf-name{ font-size:1.05rem; }
+  .banner-row .bf-desc{ font-size:.85rem; -webkit-line-clamp:2; }
+}

@@ -41,4 +41,59 @@
       });
     });
   });
+  // ---- Sortable + searchable tables --------------------------------------
+  // <table data-sortable id="x">  with  <th data-sort-key="city"><button>
+  // Each row carries  data-sort-city="..."  values to sort by.
+  // <input data-table-search="x">   filters rows by their text.
+  // <select data-table-state="x">   filters rows by data-state.
+  // Reusable for any list on the site (hotels now, truck stops later).
+  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  document.querySelectorAll("table[data-sortable]").forEach(function (table) {
+    var tbody = table.tBodies[0];
+    var heads = table.querySelectorAll("th[data-sort-key]");
+    heads.forEach(function (th) {
+      var btn = th.querySelector("button");
+      if (!btn) return;
+      btn.addEventListener("click", function () {
+        var key = "sort" + cap(th.getAttribute("data-sort-key"));
+        var asc = th.getAttribute("aria-sort") !== "ascending";
+        heads.forEach(function (o) { o.removeAttribute("aria-sort"); });
+        th.setAttribute("aria-sort", asc ? "ascending" : "descending");
+        var rows = Array.prototype.slice.call(tbody.rows);
+        rows.sort(function (a, b) {
+          var x = a.dataset[key] || "", y = b.dataset[key] || "";
+          var c = x.localeCompare(y, undefined, { numeric: true, sensitivity: "base" });
+          if (c === 0) c = (a.dataset.sortName || "").localeCompare(b.dataset.sortName || "");
+          return asc ? c : -c;
+        });
+        rows.forEach(function (r) { tbody.appendChild(r); });
+      });
+    });
+  });
+
+  function applyFilters(id) {
+    var table = document.getElementById(id);
+    if (!table) return;
+    var search = document.querySelector('[data-table-search="' + id + '"]');
+    var state = document.querySelector('[data-table-state="' + id + '"]');
+    var count = document.querySelector('[data-table-count="' + id + '"]');
+    var empty = document.querySelector('[data-table-empty="' + id + '"]');
+    var q = search ? search.value.trim().toLowerCase() : "";
+    var st = state ? state.value : "";
+    var shown = 0, total = table.tBodies[0].rows.length;
+    Array.prototype.forEach.call(table.tBodies[0].rows, function (r) {
+      var ok = (!q || r.textContent.toLowerCase().indexOf(q) !== -1) &&
+               (!st || r.getAttribute("data-state") === st);
+      r.hidden = !ok;
+      if (ok) shown++;
+    });
+    if (count) count.textContent = shown === total ? total + " hotels" : "Showing " + shown + " of " + total;
+    if (empty) empty.hidden = shown !== 0;
+  }
+
+  document.querySelectorAll("[data-table-search],[data-table-state]").forEach(function (el) {
+    var id = el.getAttribute("data-table-search") || el.getAttribute("data-table-state");
+    el.addEventListener(el.tagName === "SELECT" ? "change" : "input", function () { applyFilters(id); });
+  });
 })();
