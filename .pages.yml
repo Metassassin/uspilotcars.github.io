@@ -1,5 +1,5 @@
 # =====================================================================
-# Pages CMS setup for site
+# Pages CMS setup for uspilotcars.com
 #
 # This file decides what appears in the editor at app.pagescms.org.
 # Grandma never sees or edits it.
@@ -232,9 +232,24 @@ content:
             - { name: multi_car,    label: "Multiple cars" }
             - { name: steering,     label: "Steering" }
 
+      - name: highlight
+        label: Highlighted background (Expanded Bold)
+        type: boolean
+        default: false
+        description: The paid upgrade that colours this listing's row so it stands out.
+
+      - name: badges
+        label: Other badges
+        type: string
+        list: true
+        description: Anything outside the four services, one per line, e.g. WITPAC or NY Cert.
+
       - name: description
-        label: Ad text (super listings and banners only)
+        label: Short tagline or ad text
         type: text
+        description: >-
+          For listings, a short line under the name (e.g. "Veteran owned and
+          operated"). For super listings and banners, the ad text.
         options:
           maxlength: 400
 
