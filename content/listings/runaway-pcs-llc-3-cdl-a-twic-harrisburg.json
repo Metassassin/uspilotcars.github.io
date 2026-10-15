@@ -1,0 +1,25 @@
+{
+  "businessName": "RUNAWAY PCS LLC 3, CDL A, TWIC",
+  "tier": "basic_listing",
+  "placement": [
+    "pennsylvania"
+  ],
+  "city": "HARRISBURG",
+  "phone": "570-516-4112",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "multi_car"
+  ],
+  "badges": [
+    "WITPAC"
+  ],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page pennsylvania_pilot_car.html, row 5. Original cell colour: #ffffff."
+}

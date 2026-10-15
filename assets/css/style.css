@@ -471,3 +471,10 @@ footer.site-footer .links{ display:flex; gap:16px; flex-wrap:wrap; margin-top:10
   .listing-table td{ border-bottom:none; padding:2px 12px; }
   .listing-table .phone a{ display:inline-block; margin-right:12px; padding:4px 0; }
 }
+
+/* Imported legacy products (2026 migration) */
+/* Expanded Bold: the paid highlighted row */
+.row-highlight td{ background:#fff7c2; }
+.row-highlight td:first-child{ box-shadow:inset 4px 0 0 var(--amber-500); }
+.co-tag{ font-size:.88rem; color:var(--ink-muted); font-style:italic; margin-top:2px; }
+.badge-chip{ background:var(--navy-800); color:#fff; border-color:var(--navy-800); }

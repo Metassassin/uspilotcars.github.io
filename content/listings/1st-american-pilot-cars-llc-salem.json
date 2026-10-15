@@ -1,0 +1,26 @@
+{
+  "businessName": "1ST AMERICAN PILOT CARS LLC",
+  "tier": "basic_listing",
+  "placement": [
+    "oregon"
+  ],
+  "city": "SALEM",
+  "phone": "503-645-4276",
+  "phone2": "503-553-9944",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page oregon_pilot_car.html, row 32. Original cell colour: white."
+}

@@ -1,0 +1,24 @@
+{
+  "businessName": "THELMA'S FLAG CAR SERVICE LLC",
+  "tier": "basic_listing",
+  "placement": [
+    "ohio"
+  ],
+  "city": "YOUNGSTOWN",
+  "phone": "330-770-2779",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page ohio_pilot_car.html, row 10. Original cell colour: #ffffff."
+}

@@ -1,0 +1,24 @@
+{
+  "businessName": "BECKY'S PILOT CAR, LLC",
+  "tier": "basic_listing",
+  "placement": [
+    "colorado"
+  ],
+  "city": "BUENA VISTA",
+  "phone": "(719)429-9617",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "multi_car"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page colorado_pilot_car.html, row 5. Original cell colour: #ffffff."
+}

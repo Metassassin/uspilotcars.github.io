@@ -1,0 +1,24 @@
+{
+  "businessName": "I'M WITH HIM LLC",
+  "tier": "basic_listing",
+  "placement": [
+    "florida"
+  ],
+  "city": "SANFORD",
+  "phone": "407-760-6574",
+  "phone2": "",
+  "website": "http://floridapilotcar.net",
+  "services": [
+    "height_pole",
+    "multi_car"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page florida_pilot_car.html, row 16. Original cell colour: white."
+}

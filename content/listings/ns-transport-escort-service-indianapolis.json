@@ -1,0 +1,21 @@
+{
+  "businessName": "NS TRANSPORT & ESCORT SERVICE",
+  "tier": "bold_listing",
+  "placement": [
+    "indiana"
+  ],
+  "city": "INDIANAPOLIS",
+  "phone": "(765) 542-0069",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "highlight": true,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page indiana_pilot_car.html, row 20. Original cell colour: #00ff00."
+}

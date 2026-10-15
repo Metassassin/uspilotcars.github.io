@@ -1,0 +1,21 @@
+{
+  "businessName": "VIK'S PILOT CAR SERVICES",
+  "tier": "basic_listing",
+  "placement": [
+    "texas"
+  ],
+  "city": "LAREDO",
+  "phone": "(916) 877-0818",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page texas_pilot_car.html, row 47. Original cell colour: white."
+}

@@ -1,0 +1,25 @@
+{
+  "businessName": "GARY'S PILOT CAR DISPATCH",
+  "tier": "basic_listing",
+  "placement": [
+    "oregon"
+  ],
+  "city": "PORTLAND",
+  "phone": "503-775-6250",
+  "phone2": "",
+  "website": "HTTPS://pilotcarco.com",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page oregon_pilot_car.html, row 24. Original cell colour: #ffffff."
+}

@@ -1,0 +1,26 @@
+{
+  "businessName": "JIM'S ESCORT SERVICE",
+  "tier": "basic_listing",
+  "placement": [
+    "michigan"
+  ],
+  "city": "MENOMINEE",
+  "phone": "715-587-0554",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page michigan_pilot_car.html, row 10. Original cell colour: #ffffff."
+}

@@ -1,0 +1,25 @@
+{
+  "businessName": "DeCURTIS ENTERPRISES 4 TWIC",
+  "tier": "basic_listing",
+  "placement": [
+    "florida"
+  ],
+  "city": "DEFUNIAK SPRINGS,",
+  "phone": "850-496-7303",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "steering"
+  ],
+  "badges": [
+    "WITPAC"
+  ],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page florida_pilot_car.html, row 2. Original cell colour: white."
+}

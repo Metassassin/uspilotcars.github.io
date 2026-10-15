@@ -1,0 +1,21 @@
+{
+  "businessName": "Cayias",
+  "tier": "global_banner",
+  "placement": [
+    "sitewide"
+  ],
+  "city": "",
+  "phone": "",
+  "phone2": "",
+  "website": "https://www.cayias.com/",
+  "services": [],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "/assets/images/advertisements/cayias-com.png",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported ad from old site. Shown on 56 directory pages. Image 504x219."
+}

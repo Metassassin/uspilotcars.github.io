@@ -1,0 +1,26 @@
+{
+  "businessName": "1ST CHOICE PILOTS",
+  "tier": "basic_listing",
+  "placement": [
+    "oregon"
+  ],
+  "city": "SALEM",
+  "phone": "503-282-2902",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page oregon_pilot_car.html, row 29. Original cell colour: #ffffff."
+}

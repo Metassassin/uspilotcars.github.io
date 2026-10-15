@@ -1,0 +1,25 @@
+{
+  "businessName": "FROG TRUCK ESCORT",
+  "tier": "super_listing",
+  "placement": [
+    "arkansas",
+    "louisiana",
+    "mississippi",
+    "oklahoma",
+    "texas"
+  ],
+  "city": "",
+  "phone": "",
+  "phone2": "",
+  "website": "http://www.Louisianafrog.com",
+  "services": [],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "/assets/images/advertisements/louisianafrog-com.png",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported ad from old site. Shown on 5 directory pages. Image 229x86."
+}

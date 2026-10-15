@@ -1,0 +1,23 @@
+{
+  "businessName": "COAST2COAST",
+  "tier": "super_listing",
+  "placement": [
+    "arkansas",
+    "louisiana",
+    "mississippi"
+  ],
+  "city": "",
+  "phone": "",
+  "phone2": "",
+  "website": "https://www.c2cescorts.com/",
+  "services": [],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "/assets/images/advertisements/c2cescorts-com.png",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported ad from old site. Shown on 3 directory pages. Image 330x188."
+}

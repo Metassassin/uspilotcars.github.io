@@ -1,0 +1,25 @@
+{
+  "businessName": "TAMMY BZZZ'S PILOT CAR SERVICE",
+  "tier": "basic_listing",
+  "placement": [
+    "south-dakota"
+  ],
+  "city": "YANKTON",
+  "phone": "402-366-2028",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "multi_car"
+  ],
+  "badges": [
+    "WITPAC"
+  ],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page south_dakota_pilot_car.html, row 9. Original cell colour: #ffffff."
+}

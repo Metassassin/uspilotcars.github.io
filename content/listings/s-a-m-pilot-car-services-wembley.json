@@ -1,0 +1,21 @@
+{
+  "businessName": "S.A.M. Pilot Car Services",
+  "tier": "basic_listing",
+  "placement": [
+    "alberta"
+  ],
+  "city": "WEMBLEY",
+  "phone": "780-814-4211",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page alberta_pilot_cars.html, row 4. Original cell colour: #ffffff."
+}

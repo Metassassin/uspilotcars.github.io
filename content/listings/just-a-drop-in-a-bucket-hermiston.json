@@ -1,0 +1,21 @@
+{
+  "businessName": "JUST A DROP IN A BUCKET",
+  "tier": "basic_listing",
+  "placement": [
+    "oregon"
+  ],
+  "city": "HERMISTON",
+  "phone": "541-701-1371",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page oregon_pilot_car.html, row 8. Original cell colour: #ffffff."
+}

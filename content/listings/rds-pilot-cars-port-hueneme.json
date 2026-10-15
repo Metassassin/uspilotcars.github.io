@@ -1,0 +1,23 @@
+{
+  "businessName": "RDS PILOT CARS",
+  "tier": "basic_listing",
+  "placement": [
+    "california"
+  ],
+  "city": "PORT HUENEME",
+  "phone": "661-578-8041",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page california_pilot_car.html, row 27. Original cell colour: #ffffff."
+}

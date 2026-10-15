@@ -1,0 +1,27 @@
+{
+  "businessName": "MID STATES PILOT CARS",
+  "tier": "bold_listing",
+  "placement": [
+    "texas"
+  ],
+  "city": "FRISCO",
+  "phone": "469-352-8515",
+  "phone2": "",
+  "website": "http://midstatespilotcar.com",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [
+    "WITPAC"
+  ],
+  "highlight": true,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page texas_pilot_car.html, row 29. Original cell colour: #fc9840."
+}

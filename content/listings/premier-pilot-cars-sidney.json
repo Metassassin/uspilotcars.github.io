@@ -1,0 +1,25 @@
+{
+  "businessName": "PREMIER PILOT CARS",
+  "tier": "basic_listing",
+  "placement": [
+    "nebraska"
+  ],
+  "city": "SIDNEY",
+  "phone": "308-566-0196",
+  "phone2": "",
+  "website": "http://www.pdspilotcars.com",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page nebraska_pilot_car.html, row 17. Original cell colour: white."
+}

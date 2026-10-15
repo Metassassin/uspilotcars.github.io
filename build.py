@@ -82,15 +82,66 @@ def clean_url(u):
     return u
 
 
+# Accept either the internal code ("super_listing") or the words shown in
+# the editor ("Super listing (large box with picture)"). Editors and form
+# tools don't always store what you expect; the site should understand both.
+TIER_WORDS = [            # checked in order -- most specific first
+    ("sitewide", "global_banner"), ("global", "global_banner"),
+    ("state banner", "state_banner"), ("banner", "state_banner"),
+    ("super", "super_listing"), ("bold", "bold_listing"), ("basic", "basic_listing"),
+]
+
+
+def normalize_tier(value, fn):
+    v = (value or "").strip()
+    if v in TIER_ORDER:
+        return v
+    low = v.lower().replace("_", " ")
+    for word, tier in TIER_WORDS:
+        if word in low:
+            return tier
+    if v:
+        print(f"  WARNING: content/listings/{fn}: unrecognised ad package {v!r} -- showing it as a basic listing")
+    return "basic_listing"
+
+
+def region_lookup():
+    with open(os.path.join(DATA, "states.json")) as f:
+        s = json.load(f)
+    table = {"sitewide": "sitewide", "every page of the site": "sitewide",
+             "★ every page of the site": "sitewide", "every page": "sitewide"}
+    for r in s["us_states"] + s["ca_provinces"]:
+        for key in (r["slug"], r["name"], r["name"] + " (Canada)",
+                    r["slug"].replace("-", "_"), r["slug"].replace("-", " ")):
+            table[key.lower()] = r["slug"]
+    return table
+
+
+REGION_LOOKUP = region_lookup()
+
+
+def normalize_placement(values, fn):
+    out = []
+    for v in as_list(values):
+        slug = REGION_LOOKUP.get(str(v).strip().lower())
+        if slug:
+            if slug not in out:
+                out.append(slug)
+        else:
+            print(f"  WARNING: content/listings/{fn}: unrecognised state {v!r} -- ignored")
+    return out
+
+
 def clean_listing(a):
     a["businessName"] = (a.get("businessName") or "").strip()
     if not a["businessName"]:
         print(f"  WARNING: skipped content/listings/{a.get('_file')} (no business name)")
         return None
-    if a.get("tier") not in TIER_ORDER:
-        a["tier"] = "basic_listing"
-    a["placement"] = as_list(a.get("placement"))
+    a["tier"] = normalize_tier(a.get("tier"), a.get("_file"))
+    a["placement"] = normalize_placement(a.get("placement"), a.get("_file"))
     a["services"] = as_list(a.get("services"))
+    a["badges"] = [str(b).strip() for b in as_list(a.get("badges")) if str(b).strip()]
+    a["highlight"] = bool(a.get("highlight"))
     for k in ("city", "phone", "phone2", "description"):
         a[k] = (a.get(k) or "").strip()
     a["website"] = clean_url(a.get("website"))
@@ -148,6 +199,9 @@ def ad_sort_key(a):
 
 ALL_ADS = [a for a in (clean_listing(x) for x in load_folder("listings")) if a]
 ADS = [a for a in ALL_ADS if is_live(a)]
+_counts = {t_: sum(1 for a in ADS if a["tier"] == t_) for t_ in TIER_ORDER}
+print("Listings on the site: " + ", ".join(f"{n} {t_.replace('_', ' ')}" for t_, n in _counts.items())
+      + f"  ({len(ALL_ADS) - len(ADS)} hidden by date or switched off)")
 
 HOTELS = {}
 for _h in (clean_hotel(x) for x in load_folder("hotels")):
@@ -557,16 +611,20 @@ def company_row(a):
     what a Bold Listing customer is paying for."""
     tier = a.get("tier", "basic_listing")
     row_class = "row-basic" if tier == "basic_listing" else "row-bold"
+    if a.get("highlight"):
+        row_class += " row-highlight"
     name = esc(a["businessName"])
     if a.get("website"):
         name = f'<a href="{esc(a["website"])}" target="_blank" rel="nofollow noopener">{name}</a>'
     phones = "".join(
         f'<a href="{tel_href(ph)}">{esc(ph)}</a>'
         for ph in (a.get("phone"), a.get("phone2")) if ph)
-    chips = service_chips(a.get("services"))
+    chips = service_chips(a.get("services")) + "".join(
+        f'<span class="svc-chip badge-chip">{esc(b)}</span>' for b in a.get("badges") or [])
+    tag = f'<div class="co-tag">{esc(a["description"])}</div>' if a.get("description") and tier in ("basic_listing", "bold_listing") else ""
     return f"""<tr class="{row_class}">
       <td class="city">{esc(a.get("city") or "")}</td>
-      <td><div class="co-name">{name}</div>{f'<div class="co-svcs">{chips}</div>' if chips else ''}</td>
+      <td><div class="co-name">{name}</div>{tag}{f'<div class="co-svcs">{chips}</div>' if chips else ''}</td>
       <td class="phone">{phones}</td>
     </tr>"""
 
@@ -989,6 +1047,44 @@ LEGACY_STATIC = {
     "road_conditions_information.html": "resources/road-conditions.html",
     "thanks-basic.html": "advertise/index.html",
     "purchasethanks.html": "advertise/index.html",
+
+    # Found in the server copy (htdocs) but missing from the original map.
+    # Old order/thank-you/demo pages -> the Advertise page.
+    "BASIC_Listing.html": "advertise/index.html",
+    "freelisting.html": "advertise/index.html",
+    "freelistingreturn.html": "advertise/index.html",
+    "thanks.html": "advertise/index.html",
+    "thanks4.html": "advertise/index.html",
+    "thanks-superbold.html": "advertise/index.html",
+    "thankspermit.html": "advertise/index.html",
+    "thankspurchase.html": "advertise/index.html",
+    "thankyou.html": "advertise/index.html",
+    "special_offer.html": "advertise/index.html",
+    "right_column_ad.html": "advertise/index.html",
+    "ad_demo.html": "advertise/index.html",
+    "addemo2.html": "advertise/index.html",
+    "demo.html": "advertise/index.html",
+    "demo_page.html": "advertise/index.html",
+    "demo_page2.html": "advertise/index.html",
+    "itsdemo.html": "advertise/index.html",
+    # Old single-company and duplicate pages -> their state's directory.
+    "bandb.html": "directory/alabama.html",            # B and B Pilot Car Service (AL)
+    "golddust.html": "directory/louisiana.html",       # Gold Dust Pilot Cars (LA)
+    "florida_pilot_car2.html": "directory/florida.html",
+    "pilot_car_directory-test.html": "directory/index.html",
+    "site_search.html": "directory/index.html",
+    "route_surveys.html": "directory/index.html",
+    # Guides
+    "quebec_guidelines.html": "regulations/quebec.html",
+    "pilot_car_service_guide.html": "regulations/index.html",
+    "oversize_load_permits.html": "resources/index.html",
+    "pilot_car_store.html": "index.html",
+    # Old trade-fair travel pages (unrelated to pilot cars) -> home.
+    "domotex_carpet_fair.html": "index.html",
+    "ipm_fair_essen.html": "index.html",
+    "ish_fair_frankfurt.html": "index.html",
+    "ism_confectionary_fair.html": "index.html",
+    "iwa_sporting_arms_fair.html": "index.html",
 }
 
 # Legacy directory-page filenames that don't match the simple

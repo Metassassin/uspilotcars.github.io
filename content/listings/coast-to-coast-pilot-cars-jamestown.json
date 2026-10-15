@@ -1,0 +1,21 @@
+{
+  "businessName": "COAST-TO-COAST PILOT CARS",
+  "tier": "basic_listing",
+  "placement": [
+    "new-york"
+  ],
+  "city": "JAMESTOWN",
+  "phone": "330-610-2492",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page new_york_pilot_car.html, row 5. Original cell colour: white."
+}

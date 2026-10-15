@@ -1,0 +1,28 @@
+{
+  "businessName": "Sentinelpilotcar",
+  "tier": "state_banner",
+  "placement": [
+    "california",
+    "florida",
+    "indiana",
+    "kansas",
+    "maryland",
+    "minnesota",
+    "ohio",
+    "texas"
+  ],
+  "city": "",
+  "phone": "",
+  "phone2": "",
+  "website": "https://www.sentinelpilotcar.com/",
+  "services": [],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "/assets/images/advertisements/sentinelpilotcar-com.png",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported ad from old site. Shown on 8 directory pages. Image 503x81."
+}

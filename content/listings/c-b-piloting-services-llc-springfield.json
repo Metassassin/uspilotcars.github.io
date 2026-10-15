@@ -1,0 +1,26 @@
+{
+  "businessName": "C B PILOTING SERVICES LLC",
+  "tier": "basic_listing",
+  "placement": [
+    "missouri"
+  ],
+  "city": "SPRINGFIELD",
+  "phone": "479-670-2176",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page missouri_pilot_car.html, row 14. Original cell colour: #ffffff."
+}

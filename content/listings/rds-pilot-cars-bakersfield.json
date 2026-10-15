@@ -1,0 +1,23 @@
+{
+  "businessName": "RDS PILOT CARS",
+  "tier": "bold_listing",
+  "placement": [
+    "california"
+  ],
+  "city": "BAKERSFIELD",
+  "phone": "661-578-8041",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole"
+  ],
+  "badges": [],
+  "highlight": true,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page california_pilot_car.html, row 3. Original cell colour: #00ff00."
+}

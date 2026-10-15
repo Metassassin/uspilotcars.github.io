@@ -1,0 +1,22 @@
+{
+  "name": "ATREA INN",
+  "state": "texas",
+  "city": "AMARILLO",
+  "address": "Paramount Blvd",
+  "phone": "806-803-2590",
+  "website": "http://www.atreainnamarillo.com",
+  "notes": [
+    "Dining, Shopping",
+    "& Entertainment",
+    "Minutes away",
+    "$45 Pilot Car Rate",
+    "& I-40",
+    "Free Parking",
+    "FREE Breakfast",
+    "Newly Renovated",
+    "*Pet Friendly*"
+  ],
+  "active": true,
+  "endDate": "",
+  "privateNotes": "Imported from old site page texas_pilot_car.html, row 3. Original cell colour: #ff0000."
+}

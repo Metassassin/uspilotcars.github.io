@@ -1,0 +1,29 @@
+{
+  "businessName": "ABC COLT 1 2 3 4 WITPAC, CEVO (+",
+  "tier": "bold_listing",
+  "placement": [
+    "ohio"
+  ],
+  "city": "YOUNGSTOWN",
+  "phone": "716-222-2658",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [
+    "WITPAC",
+    "BUCKET TRUCK"
+  ],
+  "highlight": true,
+  "description": "We never leave you hanging!",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page ohio_pilot_car.html, row 9. Original cell colour: #00ff00."
+}

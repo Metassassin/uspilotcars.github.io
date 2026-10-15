@@ -1,0 +1,26 @@
+{
+  "businessName": "GC PILOT CAR SUPPLY, LLC",
+  "tier": "basic_listing",
+  "placement": [
+    "kansas"
+  ],
+  "city": "GARDEN CITY",
+  "phone": "620-272-4563",
+  "phone2": "520-395-7739",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page kansas_pilot_car.html, row 10. Original cell colour: #ffffff."
+}

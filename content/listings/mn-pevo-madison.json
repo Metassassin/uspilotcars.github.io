@@ -1,0 +1,25 @@
+{
+  "businessName": "MN-PEVO",
+  "tier": "basic_listing",
+  "placement": [
+    "north-dakota"
+  ],
+  "city": "MADISON",
+  "phone": "218-831-2777",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page north_dakota_pilot_car.html, row 4. Original cell colour: #ffffff."
+}

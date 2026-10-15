@@ -1,0 +1,25 @@
+{
+  "businessName": "GARY'S PILOT CAR DISPATCH",
+  "tier": "basic_listing",
+  "placement": [
+    "washington"
+  ],
+  "city": "VANCOUVER",
+  "phone": "503-775-6250",
+  "phone2": "",
+  "website": "http://pilotcarco.COM",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page washington_pilot_car.html, row 21. Original cell colour: #ffffff."
+}

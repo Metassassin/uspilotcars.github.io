@@ -1,0 +1,26 @@
+{
+  "businessName": "NORTH AMERICAN TRANSPORT SVCS.",
+  "tier": "basic_listing",
+  "placement": [
+    "iowa"
+  ],
+  "city": "DAVENPORT",
+  "phone": "217-860-2201",
+  "phone2": "",
+  "website": "http://na-pcs.com",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page iowa_pilot_car.html, row 6. Original cell colour: #ffffff."
+}

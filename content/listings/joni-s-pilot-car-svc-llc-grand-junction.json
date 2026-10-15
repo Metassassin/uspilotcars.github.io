@@ -1,0 +1,24 @@
+{
+  "businessName": "JONI'S PILOT CAR SVC., LLC",
+  "tier": "basic_listing",
+  "placement": [
+    "colorado"
+  ],
+  "city": "GRAND JUNCTION",
+  "phone": "970-250-6442",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page colorado_pilot_car.html, row 23. Original cell colour: #ffffff."
+}

@@ -1,0 +1,27 @@
+{
+  "businessName": "C & H PILOT TRANSPORT, LLC",
+  "tier": "basic_listing",
+  "placement": [
+    "nebraska"
+  ],
+  "city": "NORFOLK",
+  "phone": "402-803-0644",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "steering"
+  ],
+  "badges": [
+    "unlisted_code_5"
+  ],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page nebraska_pilot_car.html, row 13. Original cell colour: white."
+}

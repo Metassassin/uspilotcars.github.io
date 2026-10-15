@@ -1,0 +1,23 @@
+{
+  "businessName": "REILAND PILOT CAR",
+  "tier": "basic_listing",
+  "placement": [
+    "oklahoma"
+  ],
+  "city": "TULSA",
+  "phone": "432-250-5439",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "route_survey"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page oklahoma_pilot_car.html, row 23. Original cell colour: #ffffff."
+}

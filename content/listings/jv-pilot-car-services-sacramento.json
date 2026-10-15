@@ -1,0 +1,21 @@
+{
+  "businessName": "JV PILOT CAR SERVICES",
+  "tier": "basic_listing",
+  "placement": [
+    "california"
+  ],
+  "city": "SACRAMENTO",
+  "phone": "916-477-0179",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page california_pilot_car.html, row 29. Original cell colour: #ffffff."
+}

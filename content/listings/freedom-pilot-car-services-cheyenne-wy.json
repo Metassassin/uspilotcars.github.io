@@ -1,0 +1,26 @@
+{
+  "businessName": "FREEDOM PILOT CAR SERVICES",
+  "tier": "bold_listing",
+  "placement": [
+    "colorado"
+  ],
+  "city": "CHEYENNE, WY",
+  "phone": "307-757-5877",
+  "phone2": "307-369-3671",
+  "website": "http://freedompilotcars.com",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [],
+  "highlight": true,
+  "description": "Veteran Owned and Operated",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page colorado_pilot_car.html, row 9. Original cell colour: #00ff00."
+}

@@ -1,0 +1,25 @@
+{
+  "businessName": "RK PILOT SERVICES",
+  "tier": "basic_listing",
+  "placement": [
+    "washington"
+  ],
+  "city": "SEATTLE",
+  "phone": "208-777-8950",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page washington_pilot_car.html, row 11. Original cell colour: #ffffff."
+}

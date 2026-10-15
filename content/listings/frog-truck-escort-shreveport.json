@@ -1,0 +1,26 @@
+{
+  "businessName": "FROG TRUCK ESCORT",
+  "tier": "bold_listing",
+  "placement": [
+    "louisiana"
+  ],
+  "city": "SHREVEPORT",
+  "phone": "318-469-3748",
+  "phone2": "318-393-6118",
+  "website": "https://louisianafrog.com/",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [],
+  "highlight": true,
+  "description": "Friendly, professional & experienced!",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page louisiana_pilot_car.html, row 14. Original cell colour: #00ff00."
+}

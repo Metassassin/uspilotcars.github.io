@@ -1,0 +1,27 @@
+{
+  "businessName": "LANE 3 PILOT CAR 1 3 /WITPAC/TWIC/NY CERT./CEVO",
+  "tier": "bold_listing",
+  "placement": [
+    "tennessee"
+  ],
+  "city": "JOHNSON CITY",
+  "phone": "907-957-0107",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "multi_car",
+    "height_pole"
+  ],
+  "badges": [
+    "WITPAC",
+    "NY CERT"
+  ],
+  "highlight": true,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page tennesee_pilot_car.html, row 8. Original cell colour: #00ff00."
+}

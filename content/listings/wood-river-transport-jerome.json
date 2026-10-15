@@ -1,0 +1,25 @@
+{
+  "businessName": "WOOD RIVER TRANSPORT",
+  "tier": "basic_listing",
+  "placement": [
+    "idaho"
+  ],
+  "city": "JEROME",
+  "phone": "208-731-4198",
+  "phone2": "",
+  "website": "https://sites.google.com/view/woodriverpilotcarservices/home",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page idaho_pilot_car.html, row 8. Original cell colour: #ffffff."
+}

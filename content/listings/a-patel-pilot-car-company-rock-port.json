@@ -1,0 +1,26 @@
+{
+  "businessName": "A PATEL PILOT CAR COMPANY",
+  "tier": "basic_listing",
+  "placement": [
+    "missouri"
+  ],
+  "city": "ROCK PORT",
+  "phone": "785-206-0065",
+  "phone2": "",
+  "website": "http://www.patelpilotcar.com/",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page missouri_pilot_car.html, row 11. Original cell colour: #ffffff."
+}

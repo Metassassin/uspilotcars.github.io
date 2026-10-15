@@ -1,0 +1,28 @@
+{
+  "businessName": "365 PILOTS",
+  "tier": "basic_listing",
+  "placement": [
+    "south-carolina"
+  ],
+  "city": "BLACKSBURG",
+  "phone": "866-795-0150",
+  "phone2": "",
+  "website": "https://365pilots.com/",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [
+    "unlisted_code_5"
+  ],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page south_carolina_pilot_car.html, row 2. Original cell colour: #ffffff."
+}

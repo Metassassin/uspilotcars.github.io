@@ -1,0 +1,24 @@
+{
+  "businessName": "SHOTGUN PILOT CAR SERVICES, INC",
+  "tier": "basic_listing",
+  "placement": [
+    "oklahoma"
+  ],
+  "city": "CLAREMORE",
+  "phone": "815-474-0171",
+  "phone2": "815-530-4936",
+  "website": "",
+  "services": [
+    "height_pole",
+    "multi_car"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page oklahoma_pilot_car.html, row 1. Original cell colour: #ffffff."
+}

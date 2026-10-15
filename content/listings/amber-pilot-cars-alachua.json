@@ -1,0 +1,26 @@
+{
+  "businessName": "AMBER PILOT CARS",
+  "tier": "basic_listing",
+  "placement": [
+    "florida"
+  ],
+  "city": "ALACHUA",
+  "phone": "919-809-2313",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "steering"
+  ],
+  "badges": [
+    "WITPAC"
+  ],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page florida_pilot_car.html, row 1. Original cell colour: white."
+}

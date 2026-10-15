@@ -1,0 +1,23 @@
+{
+  "businessName": "TUMBLEWEED PILOT CARS 1 /$50 off 1st service",
+  "tier": "basic_listing",
+  "placement": [
+    "colorado"
+  ],
+  "city": "COLORADO SPRINGS",
+  "phone": "973-670-3230",
+  "phone2": "",
+  "website": "https://sarajune1986.wixsite.com/tumbleweedpcs",
+  "services": [
+    "height_pole"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page colorado_pilot_car.html, row 10. Original cell colour: #ffffff."
+}

@@ -1,0 +1,21 @@
+{
+  "businessName": "JR'S PILOT ESCORT SERVICE",
+  "tier": "basic_listing",
+  "placement": [
+    "arkansas"
+  ],
+  "city": "FT SMITH",
+  "phone": "479-831-3352",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page arkansas_pilot_car.html, row 5. Original cell colour: #ffffff."
+}

@@ -1,0 +1,26 @@
+{
+  "businessName": "MIDWEST PILOT CARS",
+  "tier": "basic_listing",
+  "placement": [
+    "kentucky"
+  ],
+  "city": "LOUISVILLE",
+  "phone": "605-670-9654",
+  "phone2": "",
+  "website": "http://midwestpilotcars.com",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page kentucky_pilot_car.html, row 9. Original cell colour: white."
+}

@@ -1,0 +1,23 @@
+{
+  "businessName": "MACK'S PILOT CARS",
+  "tier": "basic_listing",
+  "placement": [
+    "ohio"
+  ],
+  "city": "CLEVELAND",
+  "phone": "216-218-3419",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page ohio_pilot_car.html, row 5. Original cell colour: #ffffff."
+}

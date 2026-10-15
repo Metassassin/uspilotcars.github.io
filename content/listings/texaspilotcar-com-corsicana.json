@@ -1,0 +1,27 @@
+{
+  "businessName": "TEXASPILOTCAR.COM",
+  "tier": "basic_listing",
+  "placement": [
+    "texas"
+  ],
+  "city": "CORSICANA",
+  "phone": "903-654-9759",
+  "phone2": "",
+  "website": "http://TEXASPILOTCAR.COM",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [
+    "PERMITS"
+  ],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page texas_pilot_car.html, row 16. Original cell colour: #ffffff."
+}

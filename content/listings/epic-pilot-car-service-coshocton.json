@@ -1,0 +1,25 @@
+{
+  "businessName": "EPIC PILOT CAR SERVICE",
+  "tier": "basic_listing",
+  "placement": [
+    "ohio"
+  ],
+  "city": "COSHOCTON",
+  "phone": "740-502-0511",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page ohio_pilot_car.html, row 6. Original cell colour: #ffffff."
+}

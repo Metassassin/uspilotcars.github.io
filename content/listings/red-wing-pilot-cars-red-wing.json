@@ -1,0 +1,23 @@
+{
+  "businessName": "RED WING PILOT CARS",
+  "tier": "basic_listing",
+  "placement": [
+    "minnesota"
+  ],
+  "city": "RED WING",
+  "phone": "651-380-5578",
+  "phone2": "",
+  "website": "http://www.redwingpilotcars.com",
+  "services": [
+    "height_pole"
+  ],
+  "badges": [],
+  "highlight": false,
+  "description": "",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page minnesota_pilot_car.html, row 8. Original cell colour: #ffffff."
+}

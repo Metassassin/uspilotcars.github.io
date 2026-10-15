@@ -1,0 +1,27 @@
+{
+  "businessName": "ORNERY'S PILOT CAR",
+  "tier": "bold_listing",
+  "placement": [
+    "colorado"
+  ],
+  "city": "DENVER METRO",
+  "phone": "303-517-8881",
+  "phone2": "303-570-7650",
+  "website": "https://ornerys-pilot-car.business.site/",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [
+    "NATIONWIDE"
+  ],
+  "highlight": true,
+  "description": "NATIONWIDE SERVICE",
+  "image": "",
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page colorado_pilot_car.html, row 17. Original cell colour: #00ff00."
+}
