@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="site-logo" viewBox="-8 -6 336 104" role="img" aria-label="US &amp; Canada Pilot Cars">
+  <!--
+    US & Canada Pilot Cars logo, redrawn from the original.
+    Normal colours match the site (white + amber on navy). Hovering the logo
+    switches every part back to the ORIGINAL colours on a white plate --
+    see "Logo" in assets/css/style.css. Part names (class="lg-...") are what
+    the hover styling looks for, so keep them if this file is ever edited.
+  -->
+  <rect class="lg-plate" x="-8" y="-6" width="336" height="104" rx="10" fill="#ffffff" fill-opacity="0"/>
+  <text class="lg-type" x="2" y="37" font-size="40" font-family="Oswald, 'Arial Narrow', Arial, sans-serif"
+        font-weight="700" textLength="304" lengthAdjust="spacingAndGlyphs"><tspan class="lg-us" fill="#ffffff">US &amp; </tspan><tspan class="lg-ca" fill="#e8871e">CANADA</tspan></text>
+  <path class="lg-line" d="M2 43 H308 L266 85 M2 49 H293.5 L254.5 88" fill="none" stroke="#e8871e" stroke-width="2.6" stroke-linejoin="miter"/>
+  <text class="lg-type lg-pilot" x="2" y="88" font-size="40" font-family="Oswald, 'Arial Narrow', Arial, sans-serif"
+        font-weight="700" textLength="247" lengthAdjust="spacingAndGlyphs" fill="#ffffff">PILOT CARS</text>
+  <path class="lg-star1" d="M261.0,57.5 L263.1,63.1 L269.1,63.4 L264.4,67.1 L266.0,72.9 L261.0,69.6 L256.0,72.9 L257.6,67.1 L252.9,63.4 L258.9,63.1 Z" fill="#e8871e"/>
+  <path class="lg-star2" d="M301.0,66.0 L303.7,73.3 L311.5,73.6 L305.4,78.4 L307.5,85.9 L301.0,81.6 L294.5,85.9 L296.6,78.4 L290.5,73.6 L298.3,73.3 Z" fill="#ffffff"/>
+</svg>

@@ -582,3 +582,55 @@ footer.site-footer .links{ display:flex; gap:16px; flex-wrap:wrap; margin-top:10
 .lineup td.pos{ font-variant-numeric:tabular-nums; width:3.5em; }
 .lineup-state summary{ cursor:pointer; display:flex; gap:12px; align-items:baseline; }
 .lineup-state h3{ margin:16px 0 8px; font-size:1rem; }
+
+/* Nationwide Sponsors section -- sitewide banners, under each page's title */
+.sponsor-band{ margin:18px 40px 0; padding:14px 16px 16px; background:#fff;
+  border:1px solid var(--border); border-top:4px solid var(--amber-500); border-radius:var(--radius-sm); }
+.sponsor-band-head{ display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 10px; margin-bottom:12px; }
+.sponsor-band-head h2{ margin:0; font-size:1rem; letter-spacing:.08em; text-transform:uppercase; color:var(--navy-900); }
+.sb-mark{ color:var(--amber-500); font-size:1rem; }
+.sb-note{ font-size:.85rem; color:var(--ink-muted); }
+.hero + .sponsor-band{ margin-top:22px; }
+@media (max-width: 640px){
+  .sponsor-band{ margin:12px 12px 0; padding:10px 10px 12px; }
+  .sponsor-band-head{ margin-bottom:8px; }
+  .sb-note{ flex-basis:100%; font-size:.8rem; }
+}
+
+/* ===================================================================
+   Logo (assets/images/branding/logo-wordmark.svg, drawn inline)
+   Site colours normally; the ORIGINAL logo colours on hover/keyboard focus.
+   =================================================================== */
+.site-logo{ display:block; width:100%; height:auto; overflow:visible; }
+.site-logo .lg-type{ font-family:var(--font-display); }
+.site-logo .lg-plate{ fill:#fff; fill-opacity:0; }
+.site-logo .lg-us, .site-logo .lg-pilot, .site-logo .lg-star2{ fill:#fff; }
+.site-logo .lg-ca, .site-logo .lg-star1{ fill:var(--amber-500); }
+.site-logo .lg-line{ stroke:var(--amber-500); }
+.site-logo *{ transition:fill .25s ease, fill-opacity .25s ease, stroke .25s ease; }
+
+.logo-link:hover .site-logo .lg-plate,
+.logo-link:focus-visible .site-logo .lg-plate{ fill-opacity:1; }
+.logo-link:hover .site-logo .lg-us,
+.logo-link:focus-visible .site-logo .lg-us,
+.logo-link:hover .site-logo .lg-star2,
+.logo-link:focus-visible .site-logo .lg-star2{ fill:#0000FE; }
+.logo-link:hover .site-logo .lg-ca,
+.logo-link:focus-visible .site-logo .lg-ca,
+.logo-link:hover .site-logo .lg-star1,
+.logo-link:focus-visible .site-logo .lg-star1{ fill:#FE0000; }
+.logo-link:hover .site-logo .lg-pilot,
+.logo-link:focus-visible .site-logo .lg-pilot{ fill:#000; }
+.logo-link:hover .site-logo .lg-line,
+.logo-link:focus-visible .site-logo .lg-line{ stroke:#FE0000; }
+/* the original had a thin black outline on the coloured words */
+.logo-link:hover .site-logo .lg-us, .logo-link:hover .site-logo .lg-ca,
+.logo-link:focus-visible .site-logo .lg-us, .logo-link:focus-visible .site-logo .lg-ca{
+  stroke:#000; stroke-width:.8px; paint-order:stroke; }
+.logo-link:focus-visible{ outline:2px solid var(--amber-500); outline-offset:4px; border-radius:8px; }
+@media (prefers-reduced-motion: reduce){ .site-logo *{ transition:none; } }
+
+.sidebar-brand .logo-link{ display:block; max-width:236px; text-decoration:none; }
+.sidebar-brand .brand-tagline{ display:block; margin-top:8px; font-size:.72rem; letter-spacing:.06em;
+  text-transform:uppercase; color:#9fb0bd; }
+.topbar .logo-link{ display:block; width:140px; }

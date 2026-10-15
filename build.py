@@ -322,6 +322,22 @@ def region_slugify_check(slug):
 
 
 # ---------------------------------------------------------------- fragments
+def load_logo():
+    """The logo is drawn inline (not as an <img>) so hovering can recolour it.
+    It lives in ONE file: assets/images/branding/logo-wordmark.svg."""
+    path = os.path.join(ROOT, "assets", "images", "branding", "logo-wordmark.svg")
+    try:
+        svg = open(path, encoding="utf-8").read()
+    except FileNotFoundError:
+        return f'<span class="brand-text">{esc(SITE_NAME)}</span>'
+    svg = re.sub(r"<\?xml[^>]*\?>", "", svg)
+    svg = re.sub(r"<!--.*?-->", "", svg, flags=re.S)      # keep pages lean
+    return svg.strip()
+
+
+LOGO_SVG = load_logo()
+
+
 def sidebar_html(base, active_key, active_region_slug=None):
     nav_html_parts = []
     for key, label, href in NAV_ITEMS:
@@ -360,10 +376,10 @@ def sidebar_html(base, active_key, active_region_slug=None):
     return f"""
     <aside class="sidebar" id="primary-sidebar">
       <div class="sidebar-brand">
-        <a href="{base}index.html" aria-label="{SITE_NAME} home">
-          <img class="badge" src="{base}assets/images/branding/logo-mark.svg" alt="" width="38" height="38">
-          <span class="brand-text">{SITE_NAME}<small>{SITE_TAGLINE}</small></span>
+        <a class="logo-link" href="{base}index.html" aria-label="{SITE_NAME} home">
+          {LOGO_SVG}
         </a>
+        <span class="brand-tagline">{SITE_TAGLINE}</span>
       </div>
       <div class="sidebar-scroll">
         <nav class="nav-section" aria-label="Primary">
@@ -388,9 +404,8 @@ def sidebar_html(base, active_key, active_region_slug=None):
 def topbar_html(base):
     return f"""
     <div class="topbar">
-      <a class="brand" href="{base}index.html">
-        <img class="badge" src="{base}assets/images/branding/logo-mark.svg" alt="" width="28" height="28" style="width:28px;height:28px;border-radius:6px;">
-        {SITE_NAME}
+      <a class="logo-link" href="{base}index.html" aria-label="{SITE_NAME} home">
+        {LOGO_SVG}
       </a>
       <button class="menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="primary-sidebar">&#9776; Menu</button>
     </div>
@@ -462,12 +477,43 @@ def sitewide_banners():
     return sorted([a for a in ADS if a["tier"] == "global_banner"], key=ad_sort_key)
 
 
+SPONSOR_SECTION_TITLE = "Nationwide Sponsors"
+SPONSOR_SECTION_NOTE = "Featured on every page across the US &amp; Canada"
+
+
 def sitewide_banner_block(base):
+    """The Sitewide Banner ads, in their own labelled section so visitors can
+    tell they are the site's nationwide sponsors, not part of the page."""
     ads = sitewide_banners()
     if not ads:
         return ""
-    return ('<section class="banner-row" aria-label="Sponsors">'
-            + "".join(banner_ad(a, base) for a in ads) + "</section>")
+    return f"""<section class="sponsor-band" aria-labelledby="sponsor-band-title">
+      <div class="sponsor-band-head">
+        <span class="sb-mark" aria-hidden="true">&#9733;</span>
+        <h2 id="sponsor-band-title">{SPONSOR_SECTION_TITLE}</h2>
+        <span class="sb-note">{SPONSOR_SECTION_NOTE}</span>
+      </div>
+      <div class="banner-row">{"".join(banner_ad(a, base) for a in ads)}</div>
+    </section>"""
+
+
+def place_after_page_banner(body, block):
+    """Insert the sponsor section right after the page's title banner
+    (the dark 'page-header' on inner pages, the 'hero' on the home page).
+    Finds the banner's real closing tag by counting nested tags."""
+    if not block:
+        return body
+    m = re.search(r'<(div|section) class="(?:page-header|hero)"', body)
+    if not m:
+        return block + body
+    tag = m.group(1)
+    depth = 0
+    for t_ in re.finditer(rf"<(/?){tag}\b[^>]*>", body[m.start():]):
+        depth += -1 if t_.group(1) else 1
+        if depth == 0:
+            end = m.start() + t_.end()
+            return body[:end] + block + body[end:]
+    return block + body
 
 
 def sponsor_aside(base):
@@ -531,8 +577,7 @@ def page_shell(*, base, title, meta_description, active_key, body_html,
 <div class="main-col">
   <main id="main-content">
   {crumbs_html and f'<div style="padding:14px 40px 0"><div class="breadcrumbs-wrap">{crumbs_html}</div></div>' or ""}
-  <div class="banner-wrap">{sitewide_banner_block(base)}</div>
-  {body_html}
+  {place_after_page_banner(body_html, sitewide_banner_block(base))}
   </main>
   <footer class="site-footer">
     <div><strong>{SITE_NAME} LLC</strong> &trade; — All rights reserved.</div>
@@ -1354,7 +1399,7 @@ def build_lineup():
                 "<th>Package</th><th>Order no.</th><th>Last day shown</th></tr></thead><tbody>" + rows + "</tbody></table></div>")
 
     sections = [
-        ("Sitewide banners &mdash; top of every page", table(sitewide_banners())),
+        ("Nationwide Sponsors &mdash; under the title of every page", table(sitewide_banners())),
         ("Sponsor column &mdash; right side of regulations pages",
          table(sorted([a for a in ADS if "sitewide" in a["placement"] and a["tier"] != "global_banner"], key=ad_sort_key))),
     ]
