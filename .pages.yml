@@ -462,3 +462,37 @@ content:
           - name: startingPrice
             label: Starting price (optional)
             type: string
+
+  # -------------------------------------------------------------------
+  - name: hotel_chains
+    label: Hotel chains (Find a Hotel page)
+    type: file
+    path: content/hotel_chains.json
+    format: json
+    fields:
+      - name: chains
+        label: Chains
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name}"
+        fields:
+          - name: name
+            label: Chain name
+            type: string
+            required: true
+          - name: phone
+            label: Reservation phone
+            type: string
+          - name: website
+            label: Website
+            type: string
+          - name: note
+            label: Tag (optional)
+            type: string
+            description: Short tag shown next to the name, e.g. "Special rate for pilot car drivers".
+          - name: active
+            label: Show on the website
+            type: boolean
+            default: true
