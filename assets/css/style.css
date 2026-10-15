@@ -570,3 +570,15 @@ footer.site-footer .links{ display:flex; gap:16px; flex-wrap:wrap; margin-top:10
   .banner-row .bf-name{ font-size:1.05rem; }
   .banner-row .bf-desc{ font-size:.85rem; -webkit-line-clamp:2; }
 }
+
+/* Pinned listings: paid "Top listing" spot above every city */
+.row-pinned td{ background:#eef4ff; }
+.row-pinned td:first-child{ box-shadow:inset 4px 0 0 var(--navy-700); }
+.row-pinned.row-highlight td{ background:#fff7c2; }
+.pin-tag{ display:inline-block; font-size:.72rem; font-weight:700; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--navy-700); margin-bottom:2px; }
+
+/* Ad lineup page */
+.lineup td.pos{ font-variant-numeric:tabular-nums; width:3.5em; }
+.lineup-state summary{ cursor:pointer; display:flex; gap:12px; align-items:baseline; }
+.lineup-state h3{ margin:16px 0 8px; font-size:1rem; }

@@ -142,6 +142,7 @@ def clean_listing(a):
     a["services"] = as_list(a.get("services"))
     a["badges"] = [str(b).strip() for b in as_list(a.get("badges")) if str(b).strip()]
     a["highlight"] = bool(a.get("highlight"))
+    a["pinned"] = bool(a.get("pinned"))
     for k in ("city", "phone", "phone2", "description"):
         a[k] = (a.get(k) or "").strip()
     a["website"] = clean_url(a.get("website"))
@@ -203,6 +204,7 @@ ALL_ADS = [a for a in (clean_listing(x) for x in load_folder("listings")) if a]
 ADS = [a for a in ALL_ADS if is_live(a)]
 _counts = {t_: sum(1 for a in ADS if a["tier"] == t_) for t_ in TIER_ORDER}
 print("Listings on the site: " + ", ".join(f"{n} {t_.replace('_', ' ')}" for t_, n in _counts.items())
+      + f", {sum(1 for a in ADS if a['pinned'])} pinned"
       + f"  ({len(ALL_ADS) - len(ADS)} hidden by date or switched off)")
 
 HOTELS = {}
@@ -692,7 +694,7 @@ def service_chips(services):
                    for s in services or [])
 
 
-def company_row(a):
+def company_row(a, pinned=False):
     """One pilot car company in the city table. Paid upgrades (bold and
     above) are visibly bolder than basic listings -- that difference is
     what a Bold Listing customer is paying for."""
@@ -700,6 +702,8 @@ def company_row(a):
     row_class = "row-basic" if tier == "basic_listing" else "row-bold"
     if a.get("highlight"):
         row_class += " row-highlight"
+    if pinned:
+        row_class += " row-pinned"
     name = esc(a["businessName"])
     if a.get("website"):
         name = f'<a href="{esc(a["website"])}" target="_blank" rel="nofollow noopener">{name}</a>'
@@ -711,7 +715,7 @@ def company_row(a):
     tag = f'<div class="co-tag">{esc(a["description"])}</div>' if a.get("description") and tier in ("basic_listing", "bold_listing") else ""
     return f"""<tr class="{row_class}">
       <td class="city">{esc(a.get("city") or "")}</td>
-      <td><div class="co-name">{name}</div>{tag}{f'<div class="co-svcs">{chips}</div>' if chips else ''}</td>
+      <td>{'<div class="pin-tag">&#9733; Top listing</div>' if pinned else ''}<div class="co-name">{name}</div>{tag}{f'<div class="co-svcs">{chips}</div>' if chips else ''}</td>
       <td class="phone">{phones}</td>
     </tr>"""
 
@@ -771,11 +775,21 @@ def build_directory_state_pages():
 
         # 2. The city table: every company plus hotels, grouped by city.
         #    Within a city: hotel placement first, then companies by tier.
-        rows = [(a.get("city") or "", 1, ad_sort_key(a), company_row(a)) for a in region_ads]
+        # "Pin to top of the state list" (a paid upgrade): those listings come
+        # first, above every city, in package-then-order sequence. Everyone
+        # else stays grouped by city as on the old site.
+        # Banner and super ads already have their own spot above the table.
+        # They also appear IN the table only if they list a city -- otherwise
+        # a blank-city row would sort to the very top, giving a free "top of
+        # the list" spot that pinned customers pay for.
+        table_ads = [a for a in region_ads
+                     if a["tier"] in ("bold_listing", "basic_listing") or (a.get("city") or "").strip()]
+        pinned = [a for a in table_ads if a.get("pinned")]        # region_ads is already in order
+        rows = [(a.get("city") or "", 1, ad_sort_key(a), company_row(a)) for a in table_ads if not a.get("pinned")]
         rows += [(h.get("city") or "", 0, (0,), hotel_row(h)) for h in hotels]
         rows.sort(key=lambda x: (x[0].lower(), x[1], x[2]))
 
-        if rows:
+        if rows or pinned:
             legend = "".join(f'<span class="svc-chip">{esc(v)}</span>' for v in SERVICE_LABELS.values())
             table_html = f"""
             <div class="panel">
@@ -784,7 +798,7 @@ def build_directory_state_pages():
               <div class="table-scroll">
               <table class="listing-table">
                 <thead><tr><th>City</th><th>Company</th><th>Phone</th></tr></thead>
-                <tbody>{''.join(row for *_, row in rows)}</tbody>
+                <tbody>{''.join(company_row(a, pinned=True) for a in pinned)}{''.join(row for *_, row in rows)}</tbody>
               </table>
               </div>
             </div>"""
@@ -1321,6 +1335,59 @@ def build_services():
           canonical_path="design-services-thanks.html", breadcrumbs=[("Home", "index.html"), ("Thanks", None)]))
 
 
+def build_lineup():
+    """Ad lineup: every paid position in the exact order visitors see it,
+    with each ad's order number. For checking 'who's on top' before and
+    after a change. Not linked from the site and hidden from search engines."""
+    base = ""
+
+    def table(ads, show_pin=False):
+        if not ads:
+            return '<p class="hotel-meta">None right now.</p>'
+        rows = "".join(
+            f"<tr><td class='pos'>{i}</td><td><strong>{esc(a['businessName'])}</strong>"
+            f"{'<div class=hotel-meta>' + esc(a['city']) + '</div>' if a.get('city') else ''}</td>"
+            f"<td>{esc(TIER_LABEL.get(a['tier'], a['tier']))}</td><td class='pos'>{a.get('priority', 100)}</td>"
+            f"<td>{esc(a.get('endDate') or '')}</td></tr>"
+            for i, a in enumerate(ads, 1))
+        return ("<div class='table-scroll'><table class='data-table lineup'><thead><tr><th>#</th><th>Advertiser</th>"
+                "<th>Package</th><th>Order no.</th><th>Last day shown</th></tr></thead><tbody>" + rows + "</tbody></table></div>")
+
+    sections = [
+        ("Sitewide banners &mdash; top of every page", table(sitewide_banners())),
+        ("Sponsor column &mdash; right side of regulations pages",
+         table(sorted([a for a in ADS if "sitewide" in a["placement"] and a["tier"] != "global_banner"], key=ad_sort_key))),
+    ]
+    state_blocks = []
+    for r in ALL_REGIONS:
+        region_ads = ads_for_placement(r["slug"])
+        featured = ([a for a in region_ads if a["tier"] == "state_banner"]
+                    + [a for a in region_ads if a["tier"] == "super_listing"])
+        pinned = [a for a in region_ads if a.get("pinned")]
+        if not featured and not pinned:
+            continue
+        state_blocks.append(f"""<details class="panel lineup-state"><summary><strong>{esc(r['name'])}</strong>
+          <span class="hotel-meta">{len(featured)} featured, {len(pinned)} pinned</span></summary>
+          <h3>Featured at the top of the {esc(r['name'])} page</h3>{table(featured)}
+          <h3>Pinned to the top of the {esc(r['name'])} list</h3>{table(pinned)}</details>""")
+
+    body = f"""
+    <div class="page-header"><div class="eyebrow">For the site owner</div><h1>Ad lineup</h1>
+      <p>Every paid position, in the order visitors see it. To move an ad, change its
+      <strong>Order within its package</strong> number in the editor (lower shows first). A higher package
+      always sits above a lower one. Changes appear here and on the site a couple of minutes after saving.</p></div>
+    <div class="content" style="max-width:1000px">
+      {''.join(f'<div class="panel"><h2>{h}</h2>{b}</div>' for h, b in sections)}
+      <h2 style="margin:28px 0 10px">By state</h2>
+      {''.join(state_blocks) or '<p>No state has featured or pinned listings yet.</p>'}
+    </div>"""
+    html_out = page_shell(base=base, title=f"Ad lineup | {SITE_NAME}", meta_description="Ad lineup.",
+                          active_key="", body_html=body, canonical_path="ad-lineup.html",
+                          breadcrumbs=[("Home", "index.html"), ("Ad lineup", None)])
+    html_out = html_out.replace("<head>", '<head>\n<meta name="robots" content="noindex, nofollow">', 1)
+    write("ad-lineup.html", html_out)
+
+
 def build_privacy():
     base = ""
     body = f"""
@@ -1571,6 +1638,7 @@ if __name__ == "__main__":
     build_advertise()
     build_privacy()
     build_services()
+    build_lineup()
     build_root_files()
     migration_rows = build_legacy_redirects()
     write_migration_map(migration_rows)
