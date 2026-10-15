@@ -102,8 +102,8 @@ content:
     filename: "{businessName}-{city}.json"
     view:
       primary: businessName
-      fields: [businessName, tier, city, active, endDate]
-      sort: [businessName, city, tier]
+      fields: [businessName, tier, priority, pinned, city, active, endDate]
+      sort: [businessName, tier, priority, city]
       search: [businessName, city, phone]
       default:
         sort: businessName
@@ -264,10 +264,21 @@ content:
         default: 100
         description: >-
           Only matters between ads of the SAME package. Lower number shows
-          first (1 = top). If it doesn't matter, leave it at 100.
+          first. Tip: use 10, 20, 30 so there's room to fit someone in
+          between later. See the current order on every page at
+          uspilotcars.com/ad-lineup.html
         options:
           min: 1
           max: 999
+
+      - name: pinned
+        label: Pin to top of the state list
+        type: boolean
+        default: false
+        description: >-
+          Paid upgrade. Puts this listing above every city in the company
+          list on each of its state pages, marked "Top listing". Pinned
+          listings are ordered by package, then by the order number above.
 
       - name: active
         label: Show on the website
