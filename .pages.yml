@@ -124,7 +124,7 @@ content:
           no matter what else you set.
         options:
           values:
-            - { name: global_banner, label: "Sitewide banner (top of every page)" }
+            - { name: global_banner, label: "Sitewide banner (Nationwide Sponsors, every page)" }
             - { name: state_banner,  label: "State banner (top of a state page)" }
             - { name: super_listing, label: "Super listing (large box with picture)" }
             - { name: bold_listing,  label: "Bold listing" }
