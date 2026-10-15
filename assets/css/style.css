@@ -478,3 +478,50 @@ footer.site-footer .links{ display:flex; gap:16px; flex-wrap:wrap; margin-top:10
 .row-highlight td:first-child{ box-shadow:inset 4px 0 0 var(--amber-500); }
 .co-tag{ font-size:.88rem; color:var(--ink-muted); font-style:italic; margin-top:2px; }
 .badge-chip{ background:var(--navy-800); color:#fff; border-color:var(--navy-800); }
+
+/* ===================================================================
+   Ads everywhere (2026): sitewide banner block, state ads, sponsor column
+   =================================================================== */
+.banner-wrap{ padding:16px 40px 0; }
+.banner-wrap:empty{ display:none; }
+.banner-row{ display:grid; gap:14px; grid-template-columns:repeat(auto-fit, minmax(min(100%, 380px), 1fr)); }
+.banner-ad{ display:block; border-radius:var(--radius-sm); overflow:hidden; background:var(--navy-950);
+  box-shadow:0 1px 3px rgba(0,0,0,.18); transition:transform .12s ease, box-shadow .12s ease; }
+.banner-ad:hover, .banner-ad:focus-visible{ transform:translateY(-1px); box-shadow:0 4px 12px rgba(0,0,0,.22); }
+.banner-ad img{ display:block; width:100%; height:auto; }
+.banner-fallback{ display:flex; flex-direction:column; justify-content:center; gap:6px; min-height:150px;
+  padding:20px 24px; color:#fff; background:linear-gradient(135deg, var(--navy-800), var(--navy-950));
+  border-top:4px solid var(--amber-500); }
+.bf-name{ font-size:1.35rem; font-weight:700; }
+.bf-desc{ color:#d6dde3; font-size:.95rem; }
+.bf-phone{ color:var(--amber-500); font-weight:700; }
+.featured-ads .banner-ad{ grid-column:1 / -1; }
+
+.with-aside{ display:grid; gap:24px; grid-template-columns:minmax(0, 1fr) 300px; max-width:1180px; }
+.with-aside .main-stack{ min-width:0; }
+.sponsor-aside{ display:flex; flex-direction:column; gap:14px; }
+.aside-label{ font-size:.75rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-muted); }
+@media (max-width: 980px){ .with-aside{ grid-template-columns:1fr; } }
+
+/* Imported regulations */
+.reg-body h2{ margin:22px 0 8px; font-size:1.2rem; }
+.reg-body h2:first-child{ margin-top:0; }
+.reg-body h3{ margin:14px 0 6px; font-size:1.02rem; }
+.reg-body ul{ margin:0 0 6px 1.1em; }
+.reg-body li{ margin:3px 0; }
+.reg-body a{ overflow-wrap:anywhere; }
+
+/* Design services */
+.svc-grid{ display:grid; gap:14px; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); margin:18px 0 24px; }
+.svc-card{ background:#fff; border:1px solid var(--border); border-radius:var(--radius-sm); padding:16px 18px; }
+.svc-card h3{ margin:0 0 6px; font-size:1.05rem; }
+.svc-price{ margin-top:8px; font-weight:700; color:var(--amber-600); }
+.inquiry-form{ display:flex; flex-direction:column; gap:14px; }
+.inquiry-form label{ display:flex; flex-direction:column; gap:5px; font-weight:600; }
+.inquiry-form input, .inquiry-form select, .inquiry-form textarea{ font:inherit; padding:10px 12px;
+  border:1px solid var(--border-strong); border-radius:var(--radius-sm); background:#fff; }
+.inquiry-form .form-row{ display:grid; gap:14px; grid-template-columns:1fr 1fr; }
+@media (max-width: 640px){ .inquiry-form .form-row{ grid-template-columns:1fr; } .banner-wrap{ padding:12px 14px 0; } }
+.inquiry-form .btn[disabled]{ opacity:.55; cursor:not-allowed; }
+.form-note{ background:var(--amber-100); padding:10px 14px; border-radius:var(--radius-sm); }
+.hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }

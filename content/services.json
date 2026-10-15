@@ -1,0 +1,23 @@
+{
+  "enabled": true,
+  "navLabel": "Website & Ad Design",
+  "headline": "Need a website or an ad that works?",
+  "intro": "We design websites, advertisements, and logos for pilot car companies, hotels, and trucking businesses. Tell us what you need and we'll get back to you with ideas and a price.",
+  "relationshipNotice": "Design services are a separate, paid service. They are not included with directory listings or advertising packages.",
+  "services": [
+    {
+      "title": "Website design",
+      "description": "A clean, mobile-friendly website for your company."
+    },
+    {
+      "title": "Advertisement design",
+      "description": "Banner and listing artwork sized for this directory."
+    },
+    {
+      "title": "Logo design",
+      "description": "A simple, professional logo you can use everywhere."
+    }
+  ],
+  "inquiryEmail": "your-email@example.com",
+  "formAlias": ""
+}

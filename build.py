@@ -146,6 +146,8 @@ def clean_listing(a):
         a[k] = (a.get(k) or "").strip()
     a["website"] = clean_url(a.get("website"))
     img = (a.get("image") or "").strip()
+    if "placeholder" in os.path.basename(img).lower():
+        img = ""                      # stock placeholder art is never shown to visitors
     a["image"] = img.lstrip("/")      # page code adds the right "../" prefix
     try:
         a["priority"] = int(a.get("priority") or 100)
@@ -209,6 +211,50 @@ for _h in (clean_hotel(x) for x in load_folder("hotels")):
         HOTELS.setdefault(_h["state"], {"listings": []})["listings"].append(_h)
 with open(os.path.join(DATA, "regulations.json")) as f:
     REGS = json.load(f)["states"]
+
+# Regulations edited in Pages CMS (one file per state) take priority over the
+# older hand-written data/regulations.json entries.
+REG_PAGES = {}
+for _doc in load_folder("regulations"):
+    _slug = (_doc.get("region") or "").strip()
+    if _slug:
+        REG_PAGES[_slug] = _doc
+
+
+def has_regs(slug):
+    return slug in REG_PAGES or slug in REGS
+
+
+SERVICES_DEFAULTS = {
+    "enabled": True,
+    "navLabel": "Website & Ad Design",
+    "headline": "Need a website or an ad that works?",
+    "intro": "We design websites, advertisements, and logos for pilot car companies, hotels, and trucking businesses. Tell us what you need and we'll get back to you with ideas and a price.",
+    "relationshipNotice": "Design services are a separate, paid service. They are not included with directory listings or advertising packages.",
+    "services": [
+        {"title": "Website design", "description": "A clean, mobile-friendly website for your company."},
+        {"title": "Advertisement design", "description": "Banner and listing artwork sized for this directory."},
+        {"title": "Logo design", "description": "A simple, professional logo you can use everywhere."},
+    ],
+    "inquiryEmail": "your-email@example.com",
+    "formAlias": "",
+}
+
+
+def load_services():
+    path = os.path.join(CONTENT, "services.json")
+    data = dict(SERVICES_DEFAULTS)
+    try:
+        with open(path, encoding="utf-8") as f:
+            data.update({k: v for k, v in json.load(f).items() if v not in (None, "")})
+    except FileNotFoundError:
+        pass
+    except Exception as e:
+        print(f"  WARNING: content/services.json could not be read ({e}) -- using defaults")
+    return data
+
+
+SERVICES = load_services()
 with open(os.path.join(DATA, "truck_stops.json")) as f:
     TRUCKSTOPS = json.load(f)
 
@@ -261,6 +307,8 @@ NAV_ITEMS = [
     ("advertise", "Advertise With Us", "advertise/"),
     ("privacy", "Privacy & Security", "privacy.html"),
 ]
+if SERVICES.get("enabled", True):
+    NAV_ITEMS.append(("services", SERVICES.get("navLabel") or "Website & Ad Design", "design-services.html"))
 
 
 def esc(s):
@@ -386,6 +434,50 @@ def ad_card(ad, base, sidebar_style=False):
     """
 
 
+def banner_ad(ad, base):
+    """A paid banner, shown the way the old site showed it: the advertiser's
+    own artwork, full width, clickable. If there's no artwork yet, a clean
+    text version so the advertiser still gets their space."""
+    name = esc(ad["businessName"])
+    href = ad.get("website") or ""
+    if ad.get("image"):
+        inner = f'<img src="{base}{esc(ad["image"])}" alt="{name} advertisement" loading="lazy" decoding="async">'
+    else:
+        bits = [f'<span class="bf-name">{name}</span>']
+        if ad.get("description"):
+            bits.append(f'<span class="bf-desc">{esc(ad["description"])}</span>')
+        if ad.get("phone"):
+            bits.append(f'<span class="bf-phone">&#9742; {esc(ad["phone"])}</span>')
+        inner = f'<span class="banner-fallback">{"".join(bits)}</span>'
+    if href:
+        return f'<a class="banner-ad" href="{esc(href)}" target="_blank" rel="sponsored noopener">{inner}</a>'
+    return f'<div class="banner-ad">{inner}</div>'
+
+
+def sitewide_banners():
+    """Every Sitewide Banner, whatever states are ticked -- the package
+    itself means 'top of every page'."""
+    return sorted([a for a in ADS if a["tier"] == "global_banner"], key=ad_sort_key)
+
+
+def sitewide_banner_block(base):
+    ads = sitewide_banners()
+    if not ads:
+        return ""
+    return ('<section class="banner-row" aria-label="Sponsors">'
+            + "".join(banner_ad(a, base) for a in ads) + "</section>")
+
+
+def sponsor_aside(base):
+    """Right-hand column of sitewide text ads (super and bold listings set to
+    'Every page'), as on the old site's regulations pages."""
+    ads = sorted([a for a in ADS if "sitewide" in a["placement"] and a["tier"] != "global_banner"], key=ad_sort_key)
+    if not ads:
+        return ""
+    return ('<aside class="sponsor-aside" aria-label="Sponsors"><div class="aside-label">Sponsors</div>'
+            + "".join(ad_card(a, base) for a in ads) + "</aside>")
+
+
 def canonical_url(path):
     """Cloudflare Pages serves /directory/texas.html at /directory/texas
     and redirects the .html form there, so canonical addresses (and the
@@ -437,6 +529,7 @@ def page_shell(*, base, title, meta_description, active_key, body_html,
 <div class="main-col">
   <main id="main-content">
   {crumbs_html and f'<div style="padding:14px 40px 0"><div class="breadcrumbs-wrap">{crumbs_html}</div></div>' or ""}
+  <div class="banner-wrap">{sitewide_banner_block(base)}</div>
   {body_html}
   </main>
   <footer class="site-footer">
@@ -484,12 +577,6 @@ def build_home():
       <div class="stat"><div class="num">866-259-2750</div><div class="label">Toll-Free Dispatch</div></div>
     </div>
     <div class="content">
-      <div class="panel" style="margin-bottom:24px">
-        <h2 style="margin-bottom:14px">Sitewide Featured Advertisers</h2>
-        <div class="feature-grid">
-          {"".join(ad_card(a, base) for a in ads_for_placement("sitewide") if a["tier"] == "global_banner")}
-        </div>
-      </div>
       <div class="two-col">
         <div>
           <div class="panel">
@@ -671,12 +758,16 @@ def build_directory_state_pages():
         hotels = [h for h in HOTELS.get(slug, {}).get("listings", []) if is_live(h)]
 
         # 1. Banners and super listings: big cards at the TOP of the page.
-        featured = [a for a in region_ads
-                    if a["tier"] in ("state_banner", "global_banner", "super_listing")]
+        # Sitewide banners are already at the top of every page. Here: this
+        # state's own paid ads, between that block and the listings table,
+        # as on the old site.
+        state_banners = [a for a in region_ads if a["tier"] == "state_banner"]
+        supers = [a for a in region_ads if a["tier"] == "super_listing"]
         featured_html = ""
-        if featured:
-            featured_html = f"""<section class="featured-ads" aria-label="Featured companies">
-              {''.join(ad_card(a, base) for a in featured)}</section>"""
+        if state_banners or supers:
+            featured_html = (f'<section class="featured-ads" aria-label="Featured in {esc(name)}">'
+                             + "".join(banner_ad(a, base) for a in state_banners)
+                             + "".join(ad_card(a, base) for a in supers) + "</section>")
 
         # 2. The city table: every company plus hotels, grouped by city.
         #    Within a city: hotel placement first, then companies by tier.
@@ -707,7 +798,7 @@ def build_directory_state_pages():
             </div>"""
 
         reg_note = ""
-        if slug in REGS:
+        if has_regs(slug):
             reg_note = f'<div class="callout">Planning a move through {esc(name)}? Review the <a href="../regulations/{slug}.html">{esc(name)} pilot car regulations</a> before you dispatch.</div>'
 
         body = f"""
@@ -737,7 +828,7 @@ def build_regulations_hub():
     def region_grid(regions):
         tiles = []
         for r in regions:
-            has = r["slug"] in REGS
+            has = has_regs(r["slug"])
             note = "" if has else " (verify)"
             cls = "" if has else "is-unavailable"
             tiles.append(f'<a class="region-tile {cls}" data-filter-text="{esc(r["name"])}" href="{r["slug"]}.html"><span>{esc(r["name"])}{note}</span></a>')
@@ -773,13 +864,79 @@ def build_regulations_hub():
     write("regulations/index.html", html_out)
 
 
+from html.parser import HTMLParser
+
+
+class _Sanitizer(HTMLParser):
+    """Keep simple formatting from the rich-text editor; drop everything else.
+    Text is always escaped, links must be web, email or phone links."""
+    ALLOWED = {"p", "br", "h2", "h3", "h4", "ul", "ol", "li", "strong", "b", "em", "i", "a"}
+    DROP_CONTENT = {"script", "style", "iframe", "object", "embed", "form"}
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.out, self.skip = [], 0
+
+    def handle_starttag(self, tag, attrs):
+        if tag in self.DROP_CONTENT:
+            self.skip += 1; return
+        if self.skip or tag not in self.ALLOWED:
+            return
+        if tag == "a":
+            href = dict(attrs).get("href", "") or ""
+            if re.match(r"^(https?://|mailto:|tel:)", href, re.I):
+                ext = ' target="_blank" rel="noopener"' if href.lower().startswith("http") else ""
+                self.out.append(f'<a href="{esc(href)}"{ext}>')
+            else:
+                self.out.append("<a>")
+        elif tag == "br":
+            self.out.append("<br>")
+        else:
+            self.out.append(f"<{tag}>")
+
+    def handle_endtag(self, tag):
+        if tag in self.DROP_CONTENT:
+            self.skip = max(0, self.skip - 1); return
+        if not self.skip and tag in self.ALLOWED and tag != "br":
+            self.out.append(f"</{tag}>")
+
+    def handle_data(self, data):
+        if not self.skip:
+            self.out.append(esc(data))
+
+
+def sanitize_html(raw):
+    s = _Sanitizer()
+    s.feed(raw or "")
+    s.close()
+    return "".join(s.out)
+
+
+def render_reg_page(page, name):
+    verified = (page.get("lastVerified") or "").strip()
+    when = (f"Last checked {esc(verified)}." if verified
+            else "This information comes from our previous website and hasn't been re-checked yet.")
+    src = (page.get("sourceUrl") or "").strip()
+    src_html = (f' <a href="{esc(src)}" target="_blank" rel="noopener">Official source</a>.'
+                if re.match(r"^https?://", src) else "")
+    return f"""
+            <div class="disclaimer">
+              <strong>Verify before you move:</strong> {when} Rules change often &mdash; always confirm with the
+              {esc(name)} permit office before you dispatch.{src_html}
+            </div>
+            <div class="panel reg-body">{sanitize_html(page.get("body"))}</div>"""
+
+
 def build_regulations_state_pages():
     for r in ALL_REGIONS:
         base = "../"
         slug = r["slug"]
         name = r["name"]
-        data = REGS.get(slug)
-        if data:
+        page = REG_PAGES.get(slug)
+        data = None if page else REGS.get(slug)
+        if page:
+            body_main = render_reg_page(page, name)
+        elif data:
             qf = data["quickFacts"]
             esc_rules = "".join(f"<li>{esc(x)}</li>" for x in data["escortRequirements"]["rules"])
             body_main = f"""
@@ -846,7 +1003,10 @@ def build_regulations_state_pages():
           <h1>{esc(name)} Pilot Car Regulations</h1>
           <p>Guidelines for {esc(name)} pilot car, escort car, and flag car regulations. Always confirm current requirements with the permit office.</p>
         </div>
-        <div class="content" style="max-width:900px">{body_main}{nearby_html(slug, "regulations")}</div>
+        <div class="content with-aside">
+          <div class="main-stack">{body_main}{nearby_html(slug, "regulations")}</div>
+          {sponsor_aside(base)}
+        </div>
         """
         html_out = page_shell(base=base, title=f"{name} Pilot Car Regulations | {SITE_NAME}",
                                meta_description=f"{name} pilot car regulations and flag car regulations guidelines. Escort, permit, and equipment requirements.",
@@ -1017,6 +1177,76 @@ def build_advertise():
 # OWNER TO-DO (not shown to visitors): this page carries forward the old
 # site's consent wording. Before launch, have it reviewed -- it now needs to
 # mention Jotform and Square, which handle customer details at checkout.
+def services_form_target():
+    """Where the form sends. A private FormSubmit code (formAlias) is used if
+    set -- it hides the email address from spammers -- otherwise the email."""
+    alias = (SERVICES.get("formAlias") or "").strip()
+    email = (SERVICES.get("inquiryEmail") or "").strip()
+    live = bool(alias) or (bool(re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", email)) and not email.lower().endswith("@example.com"))
+    return (alias or email), live
+
+
+def build_services():
+    if not SERVICES.get("enabled", True):
+        return
+    base = ""
+    target, live = services_form_target()
+    if not live:
+        print("  NOTE: design services form is waiting for a real email address (Pages CMS -> Design Services)")
+    cards = "".join(
+        f'<div class="svc-card"><h3>{esc(s.get("title", ""))}</h3><p>{esc(s.get("description", ""))}</p>'
+        + (f'<div class="svc-price">{esc(s["startingPrice"])}</div>' if s.get("startingPrice") else "")
+        + "</div>"
+        for s in SERVICES.get("services") or [] if s.get("title"))
+    options = "".join(f"<option>{esc(s.get('title'))}</option>" for s in SERVICES.get("services") or [] if s.get("title"))
+    status = ("" if live else
+              '<p class="form-note">Online inquiries open soon. In the meantime, call '
+              '<a href="tel:8662592750">866-259-2750</a>.</p>')
+    body = f"""
+    <div class="page-header"><div class="eyebrow">Design Services</div><h1>{esc(SERVICES.get("headline"))}</h1>
+      <p>{esc(SERVICES.get("intro"))}</p></div>
+    <div class="content" style="max-width:900px">
+      <div class="callout">{esc(SERVICES.get("relationshipNotice"))}</div>
+      <div class="svc-grid">{cards}</div>
+      <div class="panel">
+        <h2>Tell us about your project</h2>
+        {status}
+        <form class="inquiry-form" action="https://formsubmit.co/{esc(target)}" method="POST">
+          <input type="hidden" name="_subject" value="New design services inquiry from uspilotcars.com">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="{SITE_URL}/design-services-thanks.html">
+          <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+          <div class="form-row">
+            <label>Your name <input type="text" name="name" required autocomplete="name"></label>
+            <label>Email <input type="email" name="email" required autocomplete="email"></label>
+          </div>
+          <div class="form-row">
+            <label>Phone (optional) <input type="tel" name="phone" autocomplete="tel"></label>
+            <label>Business name (optional) <input type="text" name="business" autocomplete="organization"></label>
+          </div>
+          <label>What do you need?
+            <select name="service" required><option value="">Choose one</option>{options}<option>Something else</option></select>
+          </label>
+          <label>Tell us a little about it
+            <textarea name="message" rows="6" required></textarea>
+          </label>
+          <button class="btn" type="submit"{"" if live else " disabled"}>Send my inquiry</button>
+        </form>
+      </div>
+    </div>"""
+    write("design-services.html", page_shell(base=base, title=f"Website & Advertisement Design | {SITE_NAME}",
+          meta_description="Website, advertisement and logo design for pilot car companies, hotels and trucking businesses.",
+          active_key="services", body_html=body, canonical_path="design-services.html",
+          breadcrumbs=[("Home", "index.html"), ("Design Services", None)]))
+    thanks = """
+    <div class="page-header"><div class="eyebrow">Design Services</div><h1>Thanks &mdash; we got your message</h1>
+      <p>We'll get back to you soon, usually within one business day.</p></div>
+    <div class="content" style="max-width:900px"><p><a class="btn" href="index.html">Back to the directory</a></p></div>"""
+    write("design-services-thanks.html", page_shell(base=base, title=f"Thanks | {SITE_NAME}",
+          meta_description="Thanks for your inquiry.", active_key="services", body_html=thanks,
+          canonical_path="design-services-thanks.html", breadcrumbs=[("Home", "index.html"), ("Thanks", None)]))
+
+
 def build_privacy():
     base = ""
     body = f"""
@@ -1232,6 +1462,8 @@ def build_root_files():
     urls = ["index.html", "directory/index.html", "regulations/index.html",
             "resources/index.html", "resources/road-conditions.html", "resources/hotels.html",
             "resources/truck-stops.html", "advertise/index.html", "privacy.html"]
+    if SERVICES.get("enabled", True):
+        urls.append("design-services.html")
     for r in ALL_REGIONS:
         urls.append(f"directory/{r['slug']}.html")
         urls.append(f"regulations/{r['slug']}.html")
@@ -1264,6 +1496,7 @@ if __name__ == "__main__":
     build_resources()
     build_advertise()
     build_privacy()
+    build_services()
     build_root_files()
     migration_rows = build_legacy_redirects()
     write_migration_map(migration_rows)
