@@ -959,20 +959,22 @@ content:
               label: Brown
           description: Red is the classic choice.
         - name: highlights
-          label: Extra coloured words (optional)
+          label: Words to style differently (optional)
           type: object
           list:
             collapsible:
               collapsed: true
               summary: '{text}'
-          description: Words to pick out in their own colour, e.g. "Bucket Trucks" in Teal.
+          description: 'Pick out words in any line: give them their own colour, make them bold or not bold, italic,
+            or underlined. Type the words exactly as they appear in the line, e.g. "CALL FOR QUOTE!" or "Bucket
+            Trucks".'
           fields:
           - name: text
             label: Words
             type: string
             required: true
           - name: color
-            label: Colour
+            label: Colour (optional)
             type: select
             options:
               values:
@@ -1020,8 +1022,25 @@ content:
                 label: Purple
               - name: brown
                 label: Brown
+            description: Leave empty to keep the line's colour.
+          - name: weight
+            label: Bold
+            type: select
+            default: same
+            options:
+              values:
+              - name: same
+                label: Same as the line
+              - name: bold
+                label: Bold
+              - name: regular
+                label: Not bold
+          - name: italic
+            label: Italic
+            type: boolean
+            default: false
           - name: underline
-            label: Underline these words
+            label: Underline
             type: boolean
             default: false
         - name: font
