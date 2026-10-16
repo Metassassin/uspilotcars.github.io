@@ -120,4 +120,105 @@
     window.addEventListener("load", fitLegacy);
     window.addEventListener("resize", scheduleFit);
   }
+  // ---- Nationwide Sponsors: slow auto-scroll on phones ------------------
+  // A steady drift so every sponsor gets equal time on screen. Loops
+  // seamlessly (a hidden copy of the row follows the real one). Stops while
+  // someone touches it and resumes 4s after they let go; has a Pause button;
+  // never moves for people who ask their phone to reduce motion; rests when
+  // off screen, folded away, or in a background tab.
+  (function () {
+    var row = document.querySelector(".sec-national .banner-row");
+    if (!row) return;
+    var phone = window.matchMedia("(max-width: 640px)");
+    var calm = window.matchMedia("(prefers-reduced-motion: reduce)");
+    var SPEED = 28;                         // pixels per second -- about one banner every 11s
+    var originals = Array.prototype.slice.call(row.children);
+    if (originals.length < 2) return;
+    var running = false, held = false, userPaused = false, onScreen = true;
+    var pos = 0, last = null, resumeTimer = null, btn = null;
+
+    function addCopies() {
+      if (row.querySelector(".is-clone")) return;
+      originals.forEach(function (n) {
+        var c = n.cloneNode(true);
+        c.classList.add("is-clone");
+        c.setAttribute("aria-hidden", "true");          // screen readers hear each sponsor once
+        c.querySelectorAll("a, button").forEach(function (a) { a.setAttribute("tabindex", "-1"); });
+        c.querySelectorAll("img").forEach(function (i) { i.alt = ""; });
+        row.appendChild(c);
+      });
+    }
+    function removeCopies() { row.querySelectorAll(".is-clone").forEach(function (n) { n.remove(); }); }
+    function loopLength() {
+      var first = row.querySelector(".is-clone");
+      return first ? first.offsetLeft - originals[0].offsetLeft : 0;
+    }
+    function frame(t) {
+      if (!running) return;
+      if (last === null) last = t;
+      var dt = Math.min(t - last, 100) / 1000;
+      last = t;
+      var visible = onScreen && !document.hidden && row.offsetParent !== null;
+      if (!held && !userPaused && visible) {
+        pos += SPEED * dt;
+        var L = loopLength();
+        if (L > 0 && pos >= L) pos -= L;                 // seamless: the copy looks identical
+        row.scrollLeft = pos;
+      }
+      requestAnimationFrame(frame);
+    }
+    function makeButton() {
+      btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "autoscroll-toggle";
+      btn.setAttribute("aria-label", "Pause the moving sponsor banners");
+      btn.textContent = "\u275A\u275A Pause";
+      btn.addEventListener("click", function () {
+        userPaused = !userPaused;
+        btn.textContent = userPaused ? "\u25B6 Play" : "\u275A\u275A Pause";
+        btn.setAttribute("aria-label", userPaused ? "Play the moving sponsor banners" : "Pause the moving sponsor banners");
+        if (!userPaused) { pos = row.scrollLeft; last = null; }
+      });
+      row.parentNode.insertBefore(btn, row);
+    }
+    function start() {
+      if (running) return;
+      addCopies();
+      row.classList.add("is-autoscroll");
+      if (!btn) makeButton();
+      btn.hidden = false;
+      running = true; last = null; pos = row.scrollLeft;
+      requestAnimationFrame(frame);
+    }
+    function stop() {
+      running = false;
+      row.classList.remove("is-autoscroll");
+      removeCopies();
+      if (btn) btn.hidden = true;
+    }
+    function decide() { (phone.matches && !calm.matches) ? start() : stop(); }
+
+    function hold() { held = true; clearTimeout(resumeTimer); }
+    function release() {
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(function () {
+        var L = loopLength();
+        pos = L > 0 ? row.scrollLeft % L : row.scrollLeft;   // carry on from where they left it
+        held = false; last = null;
+      }, 4000);
+    }
+    row.addEventListener("touchstart", hold, { passive: true });
+    row.addEventListener("touchend", release);
+    row.addEventListener("pointerdown", hold);
+    row.addEventListener("pointerup", release);
+    row.addEventListener("focusin", hold);
+    row.addEventListener("focusout", release);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (es) { onScreen = es[0].isIntersecting; }).observe(row);
+    }
+    [phone, calm].forEach(function (m) {
+      if (m.addEventListener) m.addEventListener("change", decide); else if (m.addListener) m.addListener(decide);
+    });
+    decide();
+  })();
 })();

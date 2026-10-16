@@ -1090,6 +1090,21 @@ def canonical_url(path):
     return f"{SITE_URL}/{path}"
 
 
+def asset_version(rel):
+    """A short code that changes whenever the file changes. Added to the
+    file's address (style.css?v=1a2b3c4d) so phones and browsers fetch the
+    new version after every update instead of reusing an old saved copy."""
+    import hashlib
+    try:
+        with open(os.path.join(ROOT, rel), "rb") as f:
+            return hashlib.md5(f.read()).hexdigest()[:8]
+    except OSError:
+        return "0"
+
+
+ASSET_V = {k: asset_version(f"assets/{k}") for k in ("css/style.css", "js/main.js", "js/cart.js")}
+
+
 def page_shell(*, base, title, meta_description, active_key, body_html,
                active_region_slug=None, breadcrumbs=None, canonical_path=""):
     crumbs_html = ""
@@ -1119,7 +1134,7 @@ def page_shell(*, base, title, meta_description, active_key, body_html,
 <link rel="icon" href="{base}assets/images/branding/logo-mark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{base}assets/css/style.css">
+<link rel="stylesheet" href="{base}assets/css/style.css?v={ASSET_V['css/style.css']}">
 </head>
 <body>
 <a class="visually-hidden" href="#main-content">Skip to main content</a>
@@ -1143,7 +1158,7 @@ def page_shell(*, base, title, meta_description, active_key, body_html,
   </footer>
 </div>
 </div>
-<script src="{base}assets/js/main.js"></script>
+<script src="{base}assets/js/main.js?v={ASSET_V['js/main.js']}"></script>
 </body>
 </html>
 """
@@ -1806,62 +1821,196 @@ def build_resources():
 
 
 # ---------------------------------------------------------------- ADVERTISE
+SECTION_WHERE = {
+    "table": "State page — company list",
+    "bold": "State page — company list, in bold",
+    "highlight": "State page — company list, bold on green",
+    "hotel": "State page — among the companies in your city",
+    "super": "State page — Super Listings section",
+    "state": "State page — State Listings, near the top",
+    "nationwide": "Every page — Nationwide Sponsors",
+}
+
+
+def load_pricing():
+    """Advertising prices, editable in Pages CMS (content/pricing.json).
+    Annual price: typed in, or worked out as the old site did -- pay for 11
+    months, get 1 free."""
+    data = _load_json("pricing.json") or {"packages": []}
+    free = int(data.get("annualFreeMonths") or 1)
+    out = []
+    for p_ in data.get("packages") or []:
+        if not isinstance(p_, dict) or p_.get("active") is False or not p_.get("name"):
+            continue
+        def num(v):
+            try:
+                return round(float(v), 2) if v not in (None, "") else None
+            except (TypeError, ValueError):
+                return None
+        m, a = num(p_.get("monthly")), num(p_.get("annual"))
+        if a is None and m is not None:
+            a = round(m * (12 - free), 2)
+        pid = p_.get("id") or re.sub(r"[^a-z0-9]+", "-", p_["name"].lower()).strip("-")
+        try:
+            n_states = int(p_.get("states") if p_.get("states") not in (None, "") else 1)
+        except (TypeError, ValueError):
+            n_states = 1
+        out.append(dict(id=pid, name=p_["name"], section=p_.get("section") or "table", states=n_states,
+                        monthly=m, annual=a, description=p_.get("description") or "", badge=p_.get("badge") or ""))
+    data["packages"] = out
+    return data
+
+
+PRICING = load_pricing()
+
+
+def _money(v):
+    return f"${v:,.2f}" if v is not None else ""
+
+
+def order_target():
+    alias = (PRICING.get("formAlias") or "").strip()
+    email = (PRICING.get("orderEmail") or "").strip()
+    live = bool(alias) or (bool(re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", email)) and not email.lower().endswith("@example.com"))
+    return (alias or email), live
+
+
 def build_advertise():
     base = "../"
-    tiers = [
-        ("Basic Listing", "$29.99 / year", "Your company name, city, and phone number in the state directory of your choice. Free website link included."),
-        ("Make Mine Bold", "$6.99 / month", "Bold-type treatment for an existing listing so it stands out from plain listings on the page."),
-        ("4-State Bold Listing", "$12.99 / month", "Bold-type listing (with bolded city) across four states of your choice."),
-        ("Single-State Super Listing", "$85.00 value", "A listing roughly 2/3 larger than a standard bold listing, linkable to a page with your company information."),
-        ("4-State Super Listing", "$109.00 value", "The larger super-listing format, across four states of your choice."),
-        ("Single-State Banner Ad", "$149.00 value", "A 2-column, 3-line full-color banner ad in the state of your choice, near the top of the page, linkable to your website."),
-        ("4-State Banner Ad", "$299.00 value", "The full-color banner ad format across four states of your choice."),
-        ("Expanded Bold Listing", "$14.99 / month", "Bold listing with a highlighted background for extra visibility."),
-        ("Hotel Highlight Placement", "from $440/yr (annual)", "A 4-line highlighted placement for your hotel inserted into a state/city hotel list."),
-    ]
-    tier_rows = "".join(f"<tr><td>{esc(t[0])}</td><td>{esc(t[1])}</td><td>{esc(t[2])}</td></tr>" for t in tiers)
+    rows = []
+    for p_ in PRICING["packages"]:
+        badge = f'<span class="price-badge">{esc(p_["badge"])}</span>' if p_["badge"] else ""
+        def add_btn(billing, price):
+            if price is None:
+                return '<span class="price-na">&mdash;</span>'
+            label = "monthly" if billing == "monthly" else "yearly"
+            return (f'<div class="price">{_money(price)}<span>/{ "mo" if billing == "monthly" else "yr"}</span></div>'
+                    f'<button type="button" class="btn btn-add" data-add="{esc(p_["id"])}" data-billing="{billing}" '
+                    f'aria-label="Add {esc(p_["name"])}, billed {label}, to cart">Add to cart</button>')
+        rows.append(f"""<tr>
+          <td data-label="Package"><strong>{esc(p_["name"])}</strong>{badge}<div class="pkg-desc">{esc(p_["description"])}</div></td>
+          <td data-label="Where it appears">{esc(SECTION_WHERE.get(p_["section"], ""))}
+             <div class="pkg-states">{"Every page" if p_["states"] == 0 else ("1 state" if p_["states"] == 1 else f'{p_["states"]} states')}</div></td>
+          <td data-label="Monthly" class="price-cell">{add_btn("monthly", p_["monthly"])}</td>
+          <td data-label="Yearly (1 mo. free)" class="price-cell">{add_btn("annual", p_["annual"])}</td>
+        </tr>""")
+    pkgs_json = json.dumps([{k: p_[k] for k in ("id", "name", "section", "states", "monthly", "annual")} for p_ in PRICING["packages"]])
     body = f"""
-    <div class="page-header">
-      <div class="eyebrow">Advertise Here</div>
-      <h1>US Pilot Cars Marketing Opportunities</h1>
-      <p>Over half a million hits monthly, from an extremely targeted pilot car / oversize load audience. No setup fees. No long-term contracts. Cancel anytime.</p>
-    </div>
-    <div class="content" style="max-width:1100px">
-      <div class="feature-grid" style="margin-bottom:20px">
-        <div class="feature-card"><h3>Over 500K Hits / Month</h3><p>High-traffic, highly targeted for the pilot car industry.</p></div>
-        <div class="feature-card"><h3>No Setup Fees</h3><p>No long-term contracts. Cancel anytime, for any reason.</p></div>
-        <div class="feature-card"><h3>Free Website Link</h3><p>If you have a website, we'll link to it at no extra charge.</p></div>
+    <div class="page-header"><div class="eyebrow">Advertise With Us</div><h1>Advertise on US Pilot Cars</h1>
+      <p>Put your company in front of the truckers, dispatchers and permit offices already looking for pilot cars.
+         Pick the packages you want, add them to your cart, and tell us about your ad.</p></div>
+    <div class="content" style="max-width:1180px">
+      <div class="panel reasons">
+        <h2>Need a great reason?</h2>
+        <ul class="reason-list">
+          <li>Over half a million hits monthly</li><li>Extremely targeted visitors from the pilot car industry</li>
+          <li>Extremely competitive rates</li><li>No setup fees</li><li>No long-term contracts</li>
+          <li>Cancel anytime, for any reason</li><li>Automatic monthly or yearly billing</li><li>All major credit cards accepted</li>
+        </ul>
       </div>
       <div class="panel">
-        <h2>Listing &amp; Ad Tiers <span style="font-weight:400;font-size:.7em;color:var(--ink-muted)">(migrated from legacy pricing — verify current rates before publishing)</span></h2>
-        <table class="listing-table">
-          <thead><tr><th>Product</th><th>Price</th><th>What you get</th></tr></thead>
-          <tbody>{tier_rows}</tbody>
+        <h2>Packages &amp; prices</h2>
+        <p>Pay yearly and get <strong>one month free</strong>. No setup fees, no long-term contract, cancel anytime.</p>
+        <div class="table-scroll">
+        <table class="data-table price-table">
+          <thead><tr><th>Package</th><th>Where it appears</th><th>Monthly</th><th>Yearly (1 month free)</th></tr></thead>
+          <tbody>{"".join(rows)}</tbody>
         </table>
-        <p style="margin-top:14px">Annual subscriptions typically include one month free versus paying monthly. All major credit cards accepted; billing is automatic monthly or annual.</p>
+        </div>
+        <p class="hotel-meta">Want more than 4 states? <a href="mailto:info@uspilotcars.com">Email us</a> or call
+           <a href="tel:8662592750">866-259-2750</a>.</p>
+      </div>
+      <div class="callout specialty">
+        <h2>Need a specialty ad?</h2>
+        <p>Pilot car products or services, a small ad on your home state, or something on over 300 pages &mdash;
+           call <a href="tel:8662592750">866-259-2750</a> for a free quote. You'll love our rates.</p>
       </div>
       <div class="panel">
-        <h2>Need a Specialty or Multi-State Ad?</h2>
-        <p>Want a small ad on your home state? Want it on over 300 pages? Call for a free quote — no matter what kind of advertising you need.</p>
-        <a class="btn btn-primary" href="tel:8662592750">Call 866-259-2750 for a Free Quote</a>
-      </div>
-      <div class="panel">
-        <h2>Example: A Live Featured Listing</h2>
-        <p>Here's how a state banner placement actually renders on a directory page:</p>
-        {ad_card({"businessName":"Your Company Name","tier":"state_banner","description":"Your tagline / certifications / equipment go here.","city":"Your City, ST","services":["height_pole","route_survey"],"phone":"555-555-5555","website":"https://example.com","image":"assets/images/advertisements/placeholder-banner-wide.svg"}, base)}
+        <h2>Need help with your artwork?</h2>
+        <p>No logo or ad picture yet? <a href="../design-services.html">Our design service</a> can make one for you.</p>
       </div>
     </div>
-    """
-    write("advertise/index.html", page_shell(base=base, title=f"Advertise Your Pilot Car Company | {SITE_NAME}",
-          meta_description="Advertising opportunities for pilot car and escort vehicle companies: bold listings, super listings, and banner ads by state.",
+    <div class="cart-bar" id="cart-bar" hidden>
+      <span class="cart-count" aria-live="polite"></span>
+      <a class="btn btn-primary" href="order.html">Review &amp; order &rarr;</a>
+    </div>
+    <script type="application/json" id="uspc-packages">{pkgs_json}</script>
+    <script src="../assets/js/cart.js?v={ASSET_V['js/cart.js']}"></script>"""
+    write("advertise/index.html", page_shell(base=base, title=f"Advertise With Us | {SITE_NAME}",
+          meta_description="Advertising packages and prices for pilot car companies and hotels on US Pilot Cars: listings, super listings, state banner ads and nationwide sponsorship.",
           active_key="advertise", body_html=body, canonical_path="advertise/index.html",
           breadcrumbs=[("Home", "index.html"), ("Advertise", None)]))
+    build_order_pages(pkgs_json)
 
 
-# ---------------------------------------------------------------- PRIVACY
-# OWNER TO-DO (not shown to visitors): this page carries forward the old
-# site's consent wording. Before launch, have it reviewed -- it now needs to
-# mention Jotform and Square, which handle customer details at checkout.
+def build_order_pages(pkgs_json):
+    base = "../"
+    target, live = order_target()
+    if not live:
+        print("  NOTE: advertising order form is waiting for an email address (Pages CMS -> Advertising prices)")
+    state_opts = "".join(f'<option value="{esc(r["name"])}">{esc(r["name"])}</option>' for r in US_STATES + CA_PROVINCES)
+    cc = (PRICING.get("ccEmail") or "").strip()
+    body = f"""
+    <div class="page-header"><div class="eyebrow">Advertise With Us</div><h1>Your order</h1>
+      <p>Check your packages, then tell us about your business and your ad. We'll confirm everything and set up billing with you.</p></div>
+    <div class="content" style="max-width:980px">
+      <noscript><div class="callout">This order page needs JavaScript. Please call <a href="tel:8662592750">866-259-2750</a> and we'll take your order by phone.</div></noscript>
+      <div class="panel" id="cart-panel">
+        <h2>Packages</h2>
+        <div id="cart-list"><p>Your cart is empty. <a href="index.html">Choose a package</a>.</p></div>
+      </div>
+      <form class="inquiry-form order-form" id="order-form" action="https://formsubmit.co/{esc(target)}" method="POST" enctype="multipart/form-data" hidden>
+        <input type="hidden" name="_subject" value="New advertising order from uspilotcars.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="{SITE_URL}/advertise/thanks.html">
+        <input type="hidden" name="_autoresponse" value="Thank you for your US Pilot Cars advertising order! We have your details and will be in touch shortly to confirm your ad and set up billing. Questions? Call 866-259-2750.">
+        {f'<input type="hidden" name="_cc" value="{esc(cc)}">' if cc else ''}
+        <input type="hidden" name="Order summary" id="order-summary">
+        <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+        <div class="panel">
+          <h2>Your business</h2>
+          <div class="form-row">
+            <label>Company name <input type="text" name="Company name" required autocomplete="organization"></label>
+            <label>Contact name <input type="text" name="Contact name" required autocomplete="name"></label>
+          </div>
+          <div class="form-row">
+            <label>Email <input type="email" name="email" required autocomplete="email"></label>
+            <label>Phone <input type="tel" name="Phone" required autocomplete="tel"></label>
+          </div>
+          <div class="form-row">
+            <label>Website (optional) <input type="text" name="Website" placeholder="www.example.com"></label>
+            <label>Business city &amp; state <input type="text" name="Business location" placeholder="e.g. Rifle, CO"></label>
+          </div>
+        </div>
+        <div id="item-forms"></div>
+        <div class="panel">
+          <h2>Anything else?</h2>
+          <label>Notes (optional) <textarea name="Notes" rows="4"></textarea></label>
+          <label class="check"><input type="checkbox" name="Wants design help" value="Yes"> I'd like help designing my ad or logo</label>
+          <p class="form-note">No payment is taken on this page. We'll contact you to confirm your ad and set up monthly or yearly billing.
+             Pictures can be JPG, PNG or PDF, up to 10&nbsp;MB in total.</p>
+          <p class="hotel-meta">By sending this you agree to our <a href="../privacy.html">privacy policy</a>.</p>
+          <p class="form-error" id="order-error" role="alert" hidden></p>
+          <button class="btn btn-primary" type="submit"{"" if live else " disabled"}>Send my order</button>
+        </div>
+      </form>
+    </div>
+    <script type="application/json" id="uspc-packages">{pkgs_json}</script>
+    <template id="state-options"><option value="">Choose a state</option>{state_opts}</template>
+    <script src="../assets/js/cart.js?v={ASSET_V['js/cart.js']}"></script>"""
+    write("advertise/order.html", _noindex(page_shell(base=base, title=f"Your order | {SITE_NAME}",
+          meta_description="Your advertising order.", active_key="advertise", body_html=body,
+          canonical_path="advertise/order.html", breadcrumbs=[("Home", "index.html"), ("Advertise", "advertise/index.html"), ("Your order", None)])))
+    thanks = """
+    <div class="page-header"><div class="eyebrow">Advertise With Us</div><h1>Thank you &mdash; we have your order</h1>
+      <p>We'll be in touch shortly to confirm your ad and set up billing. Questions? Call <a href="tel:8662592750">866-259-2750</a>.</p></div>
+    <div class="content" style="max-width:900px"><p><a class="btn btn-primary" href="../index.html">Back to the directory</a></p></div>
+    <script>try{localStorage.removeItem("uspc-cart")}catch(e){}</script>"""
+    write("advertise/thanks.html", _noindex(page_shell(base=base, title=f"Thank you | {SITE_NAME}",
+          meta_description="Thank you for your order.", active_key="advertise", body_html=thanks,
+          canonical_path="advertise/thanks.html", breadcrumbs=[("Home", "index.html"), ("Thank you", None)])))
+
+
 def services_form_target():
     """Where the form sends. A private FormSubmit code (formAlias) is used if
     set -- it hides the email address from spammers -- otherwise the email."""

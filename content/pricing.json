@@ -1,0 +1,129 @@
+{
+  "orderEmail": "info@uspilotcars.com",
+  "formAlias": "",
+  "ccEmail": "",
+  "annualFreeMonths": 1,
+  "packages": [
+    {
+      "id": "basic",
+      "name": "Basic Listing",
+      "section": "table",
+      "states": 1,
+      "monthly": null,
+      "annual": 29.99,
+      "description": "Your company name, city and phone in the state directory of your choice. If you have a website, we link to it free.",
+      "active": true,
+      "badge": ""
+    },
+    {
+      "id": "make-bold",
+      "name": "Make My Listing Bold",
+      "section": "bold",
+      "states": 1,
+      "monthly": 6.99,
+      "annual": null,
+      "description": "Upgrades your listing to bold type so it stands out from the plain listings around it.",
+      "active": true,
+      "badge": ""
+    },
+    {
+      "id": "expanded",
+      "name": "Expand My Listing (bold with green background)",
+      "section": "highlight",
+      "states": 1,
+      "monthly": 14.99,
+      "annual": null,
+      "description": "Your listing in bold with a green background — the most eye-catching spot in the company table.",
+      "active": true,
+      "badge": ""
+    },
+    {
+      "id": "bold-1",
+      "name": "Single State Bold Listing",
+      "section": "bold",
+      "states": 1,
+      "monthly": 9.99,
+      "annual": null,
+      "description": "A bold listing in the state of your choice, with your city bolded too. Free link to your website.",
+      "active": true,
+      "badge": ""
+    },
+    {
+      "id": "bold-4",
+      "name": "4 State Bold Listing",
+      "section": "bold",
+      "states": 4,
+      "monthly": 12.99,
+      "annual": null,
+      "description": "A bold listing in the four states of your choice, cities bolded. Free link to your website.",
+      "active": true,
+      "badge": ""
+    },
+    {
+      "id": "super-1",
+      "name": "Single State Super Listing",
+      "section": "super",
+      "states": 1,
+      "monthly": 25.99,
+      "annual": null,
+      "description": "A larger listing in the Super Listings section of the state of your choice, linked to your website.",
+      "active": true,
+      "badge": ""
+    },
+    {
+      "id": "super-4",
+      "name": "4 State Super Listing",
+      "section": "super",
+      "states": 4,
+      "monthly": 35.99,
+      "annual": null,
+      "description": "The Super Listing in the four states of your choice.",
+      "active": true,
+      "badge": ""
+    },
+    {
+      "id": "banner-1",
+      "name": "Single State Banner Ad",
+      "section": "state",
+      "states": 1,
+      "monthly": 47.99,
+      "annual": null,
+      "description": "A full-colour ad, any colours you choose, in the State Listings section near the top of the state page. Linked to your website.",
+      "active": true,
+      "badge": ""
+    },
+    {
+      "id": "banner-4",
+      "name": "4 State Banner Ad",
+      "section": "state",
+      "states": 4,
+      "monthly": 59.99,
+      "annual": null,
+      "description": "The full-colour banner ad in the four states of your choice.",
+      "active": true,
+      "badge": ""
+    },
+    {
+      "id": "hotel",
+      "name": "1 City Hotel Listing",
+      "section": "hotel",
+      "states": 1,
+      "monthly": 40.0,
+      "annual": null,
+      "description": "A 4-line highlighted listing for your hotel, placed right among the pilot car companies for your city.",
+      "active": true,
+      "badge": ""
+    },
+    {
+      "id": "nationwide",
+      "name": "Nationwide Sponsor",
+      "section": "nationwide",
+      "states": 0,
+      "monthly": 149.99,
+      "annual": null,
+      "description": "Your ad on every page of the site, in the Nationwide Sponsors section under each page's title.",
+      "active": true,
+      "badge": "Price to be confirmed"
+    }
+  ]
+}
