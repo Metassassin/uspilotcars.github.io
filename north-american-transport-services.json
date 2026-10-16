@@ -1,0 +1,17 @@
+{
+  "businessName": "North American Transport Services",
+  "phone": "866-259-2750",
+  "website": "http://na-pcs.com",
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Moved from Directory listings into Ads. Check this against grandma's records.",
+  "placements": [
+    {
+      "type": "nationwide",
+      "image": "/assets/images/advertisements/na-pcs-com.png"
+    }
+  ]
+}

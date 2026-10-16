@@ -1,0 +1,17 @@
+{
+  "businessName": "NY NJ Routing & Pilot Cars",
+  "phone": "918-886-0992",
+  "website": "",
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Nationwide sponsor. Artwork from the old site -- check against grandma's records.",
+  "placements": [
+    {
+      "type": "nationwide",
+      "image": "/assets/images/advertisements/ny-nj-routing.png"
+    }
+  ]
+}

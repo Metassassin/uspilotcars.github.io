@@ -1,0 +1,17 @@
+{
+  "businessName": "LegalShield",
+  "phone": "",
+  "website": "http://leona21.wearelagalshield.com",
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Nationwide sponsor. Artwork from the old site -- check against grandma's records.",
+  "placements": [
+    {
+      "type": "nationwide",
+      "image": "/assets/images/advertisements/legalshield.png"
+    }
+  ]
+}

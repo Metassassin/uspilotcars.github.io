@@ -1,0 +1,67 @@
+{
+  "businessName": "NY Truck Escorts & Permits",
+  "phone": "(631) 669-3742",
+  "website": "http://www.newyorktruckescorts.com",
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Nationwide sponsor. Keeps its original design from the old site (stored with the ad). To change its wording, ask for help or replace it with a new ad.",
+  "legacyBox": {
+    "w": 485,
+    "h": 359,
+    "parts": [
+      {
+        "x": 364,
+        "y": 0,
+        "w": 115,
+        "h": 349,
+        "type": "text",
+        "html": "<p><span style=\"font-weight:700;text-decoration:underline;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.36em;--fs:14\"><br></span></p><p><span style=\"font-weight:700;text-decoration:underline;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.36em;--fs:14\"><br></span></p><p><span style=\"font-weight:700;text-decoration:underline;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.36em;--fs:14\">SERVICES:</span></p><p><span style=\"font-weight:700;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.33em;--fs:12\">PILOT CARS </span></p><p><span style=\"font-weight:700;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.33em;--fs:12\">PERMITS  </span></p><p><span style=\"font-weight:700;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.33em;--fs:12\">SURVEYS    </span></p><p><span style=\"font-weight:700;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.33em;--fs:12\">BUCKET TRUCKS </span><span style=\"font-weight:700;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.45em;--fs:11\"></span></p><p><span style=\"font-weight:700;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.45em;--fs:11\">POLICE ARRANGEMENTS</span></p><p><span style=\"font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.18em;--fs:11\"><br></span></p>",
+        "color": ""
+      },
+      {
+        "x": 108,
+        "y": 0,
+        "w": 257,
+        "h": 359,
+        "type": "text",
+        "html": "<span style=\"font-weight:700;text-decoration:underline;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.46em;--fs:13\"><br></span><span style=\"font-weight:700;text-decoration:underline;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.46em;--fs:13\"><br></span><span style=\"font-weight:700;text-decoration:underline;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.46em;--fs:13\"><br></span><span style=\"font-weight:700;text-decoration:underline;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.36em;--fs:14\">PILOTS</span><span style=\"font-weight:700;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.36em;--fs:14\"> for the </span><span style=\"font-weight:700;text-decoration:underline;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.36em;--fs:14\">NY METRO AREA;</span><p style=\"text-align:center\"><span style=\"font-weight:700;text-decoration:underline;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.36em;--fs:14\">PERMITS</span><span style=\"font-weight:700;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.36em;--fs:14\"> &amp; </span><span style=\"font-weight:700;text-decoration:underline;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.36em;--fs:14\">DISPATCHING</span><span style=\"font-weight:700;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.36em;--fs:14\"> for the </span><span style=\"font-weight:700;text-decoration:underline;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.36em;--fs:14\">ENTIRE UNITED STATES</span></p><p style=\"text-align:center\"><span style=\"color:#000080;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.19em;--fs:21\">(631) 669-3742</span></p><p style=\"text-align:center\"><span style=\"font-weight:700;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:8.0px;--fs:12\">WOMEN BUSINESS ENTERPRISE </span></p>",
+        "color": ""
+      },
+      {
+        "x": 0,
+        "y": 0,
+        "w": 108,
+        "h": 249,
+        "type": "img",
+        "src": "/assets/images/advertisements/legacy/3d66a8661e95.png"
+      },
+      {
+        "x": 107,
+        "y": 278,
+        "w": 378,
+        "h": 10,
+        "type": "text",
+        "html": "<p style=\"text-align:center\"><span style=\"font-weight:700;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.46em;--fs:13\">SC&amp;RA Member</span></p>",
+        "color": ""
+      },
+      {
+        "x": 107,
+        "y": 307,
+        "w": 378,
+        "h": 18,
+        "type": "text",
+        "html": "<p style=\"text-align:center\"><span style=\"font-weight:700;font-family:\"Comic Sans MS\", cursive, Arial, sans-serif;line-height:1.46em;--fs:13\">Insured &amp; NYS Certified * Workman’s Comp</span></p>",
+        "color": ""
+      }
+    ]
+  },
+  "placements": [
+    {
+      "type": "nationwide",
+      "image": ""
+    }
+  ]
+}

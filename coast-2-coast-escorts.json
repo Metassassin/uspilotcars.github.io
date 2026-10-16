@@ -1,0 +1,66 @@
+{
+  "businessName": "Coast 2 Coast Escorts",
+  "phone": "318-432-4270",
+  "website": "https://www.c2cescorts.com/",
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Nationwide sponsor. Keeps its original design from the old site (stored with the ad). To change its wording, ask for help or replace it with a new ad.",
+  "legacyBox": {
+    "w": 494,
+    "h": 282,
+    "parts": [
+      {
+        "x": 0,
+        "y": 0,
+        "w": 494,
+        "h": 282,
+        "type": "fill",
+        "color": "#000000"
+      },
+      {
+        "x": 65,
+        "y": 198,
+        "w": 225,
+        "h": 25,
+        "type": "text",
+        "html": "<p style=\"text-align:center\"><span style=\"color:#ffff00;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.21em;--fs:19\">318-432-4270</span></p>",
+        "color": "#000000"
+      },
+      {
+        "x": 344,
+        "y": 17,
+        "w": 133,
+        "h": 243,
+        "type": "text",
+        "html": "<p style=\"text-align:center\"><span style=\"color:#ffff00;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.18em;--fs:11\"><br></span></p><p style=\"text-align:center\"><span style=\"color:#ffff00;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.18em;--fs:11\">PERMIT DIVISION</span></p><p style=\"text-align:center\"><span style=\"color:#ffff00;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.18em;--fs:11\"><br></span></p><p style=\"text-align:center\"><span style=\"color:#ffff00;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.18em;--fs:11\">BUCKET TRUCK DIVISION</span></p><p style=\"text-align:center\"><span style=\"color:#ffff00;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.18em;--fs:11\"><br></span></p><p style=\"text-align:center\"><span style=\"color:#ffff00;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.18em;--fs:11\">ESCORTS</span></p><p style=\"text-align:center\"><span style=\"color:#ffff00;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.18em;--fs:11\"><br></span></p><p style=\"text-align:center\"><span style=\"color:#ffff00;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.18em;--fs:11\">ROUTE SURVEY</span></p><p style=\"text-align:center\"><span style=\"color:#ffff00;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.18em;--fs:11\"><br></span></p><p style=\"text-align:center\"><span style=\"color:#ffff00;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.18em;--fs:11\">HEIGHT POLE</span></p><p style=\"text-align:center\"><span style=\"color:#ffff00;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.18em;--fs:11\"><br></span></p><p style=\"text-align:center\"><span style=\"color:#ffff00;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.18em;--fs:11\">HOT STICK</span></p><p style=\"text-align:center\"><span style=\"color:#ffff00;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.18em;--fs:11\">(LA,MS,AR ONLY)</span></p><p style=\"text-align:center\"><span style=\"color:#ffff00;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.18em;--fs:11\"><br></span></p><p style=\"text-align:center\"><span style=\"color:#ffff00;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.18em;--fs:11\">STEERMAN</span></p>",
+        "color": "#000000"
+      },
+      {
+        "x": 5,
+        "y": 231,
+        "w": 345,
+        "h": 31,
+        "type": "text",
+        "html": "<p style=\"text-align:center\"><span style=\"color:#ffff00;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.18em;--fs:11\">ESCORT COORDINATORS (SPECIFIC TO CARRIER)</span></p><p style=\"text-align:center\"><span style=\"color:#ffff00;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.18em;--fs:11\">MULTI-CARS / NATIONAL SERVICE</span></p>",
+        "color": "#000000"
+      },
+      {
+        "x": 5,
+        "y": 9,
+        "w": 330,
+        "h": 189,
+        "type": "img",
+        "src": "/assets/images/advertisements/legacy/ddbfeb24698a.jpg"
+      }
+    ]
+  },
+  "placements": [
+    {
+      "type": "nationwide",
+      "image": ""
+    }
+  ]
+}

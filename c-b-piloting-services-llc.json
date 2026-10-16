@@ -1,0 +1,40 @@
+{
+  "businessName": "C B Piloting Services, LLC",
+  "phone": "479-670-2176",
+  "website": "",
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Nationwide sponsor. Keeps its original design from the old site (stored with the ad). To change its wording, ask for help or replace it with a new ad.",
+  "legacyBox": {
+    "w": 496,
+    "h": 215,
+    "parts": [
+      {
+        "x": 0,
+        "y": 0,
+        "w": 496,
+        "h": 215,
+        "type": "img",
+        "src": "/assets/images/advertisements/legacy/f5681db7d9f4.png"
+      },
+      {
+        "x": 54,
+        "y": 23,
+        "w": 389,
+        "h": 159,
+        "type": "text",
+        "html": "<p style=\"text-align:center\"><span style=\"font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.19em;--fs:21\">C B PILOTING SERVICES, LLC</span><span style=\"font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.21em;--fs:19\"> </span></p><p style=\"text-align:center\"><span style=\"color:#ff0000;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.21em;--fs:19\">479-670-2176</span></p><p style=\"text-align:center\"><span style=\"font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.17em;--fs:12\">FAMILY OPERATED </span></p><p style=\"text-align:center\"><span style=\"font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.17em;--fs:12\"></span></p><p style=\"text-align:center\"><span style=\"font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.21em;--fs:14\">WA &amp; NY CERT. / TX FLAGGING CERT.</span></p><p style=\"text-align:center\"><span style=\"font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.17em;--fs:12\">LEAD/ CHASE/ HEIGHT POLE/ STEERING</span></p><p style=\"text-align:center\"><span style=\"font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.17em;--fs:12\">$2M INSURANCE</span></p><p style=\"text-align:center\"><span style=\"color:#ff0000;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.19em;--fs:16\"><br></span></p><p style=\"text-align:center\"><span style=\"color:#ff0000;font-weight:700;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.21em;--fs:14\">SAFETY IS KEY!</span></p><p style=\"text-align:center\"><span style=\"color:#ffffff;font-family:Tahoma, Verdana, 'Segoe UI', Arial, sans-serif;line-height:1.18em;--fs:11\"><br></span></p>",
+        "color": "#ddff17"
+      }
+    ]
+  },
+  "placements": [
+    {
+      "type": "nationwide",
+      "image": ""
+    }
+  ]
+}

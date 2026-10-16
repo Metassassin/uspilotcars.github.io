@@ -1,0 +1,27 @@
+{
+  "businessName": "Sentinel Pilot Car Services",
+  "phone": "",
+  "website": "https://www.sentinelpilotcar.com/",
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Imported ad from old site. Shown on 8 directory pages. Image 503x81. Moved from Directory listings into Ads. Check this against grandma's records.",
+  "placements": [
+    {
+      "type": "state_picture",
+      "states": [
+        "california",
+        "florida",
+        "indiana",
+        "kansas",
+        "maryland",
+        "minnesota",
+        "ohio",
+        "texas"
+      ],
+      "image": "/assets/images/advertisements/sentinelpilotcar-com.png"
+    }
+  ]
+}

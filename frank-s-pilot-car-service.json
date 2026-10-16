@@ -1,0 +1,49 @@
+{
+  "businessName": "Frank's Pilot Car Service",
+  "phone": "505-330-6188",
+  "website": null,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Moved from Directory listings into Ads. Check this against grandma's records. State listing design converted from his strip on the old site.",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "new-mexico"
+      ],
+      "background": "solid",
+      "color1": "white",
+      "border": "thin",
+      "lines": [
+        {
+          "text": "FRANKS’ PILOT CAR | 505-330-6188",
+          "size": "large",
+          "bold": true
+        },
+        {
+          "text": "ALL STATES CERTIFIED | VERY EXPERIENCED",
+          "size": "medium",
+          "bold": true
+        },
+        {
+          "text": "HEIGHT POLE & ROUTE SURVEYS OUR SPECIALTY!! |CALL NOW!",
+          "size": "medium",
+          "bold": true
+        }
+      ],
+      "borderColor": "black",
+      "textColor": "black",
+      "font": "tahoma",
+      "phoneColor": "red",
+      "highlights": [
+        {
+          "text": "CALL NOW!",
+          "color": "red"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "businessName": "Valid Transportation & Pilot Car Service",
+  "phone": "559-363-5656",
+  "website": "https://validtransportationpilotcarservice.com/",
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Moved from Directory listings into Ads. Check this against grandma's records.",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "new-mexico"
+      ],
+      "background": "solid",
+      "color1": "white",
+      "phoneColor": "red",
+      "font": "tahoma",
+      "align": "center",
+      "border": "none",
+      "lines": [
+        {
+          "text": "Madera, CA (serving the Western US, incl. Gallup / Lordsburg / San Jon / Tucumcari / Santa Rosa, NM) | Valid Transportation & Pilot Car Service | 559-363-5656",
+          "size": "medium",
+          "bold": true
+        },
+        {
+          "text": "\"Your loads are safe & sound with us.\" Serving California and the Western US. Height pole, route surveys, Utah certification, multiple vehicles, steering.",
+          "size": "normal",
+          "bold": true
+        }
+      ]
+    }
+  ]
+}

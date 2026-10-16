@@ -229,12 +229,29 @@ def clean_ad(a):
     a["image"] = img.lstrip("/")
     a.setdefault("tier", "super_listing")
     a.setdefault("placement", [])
+    # "Where this ad appears" (chosen on the ad itself). Each entry is one
+    # placement type with only the fields that type needs.
+    a["_new"] = isinstance(a.get("placements"), list)
+    a["_nat"], a["_state"], a["_super"] = None, [], []
+    for b in a.get("placements") or []:
+        if not isinstance(b, dict):
+            continue
+        kind = (b.get("type") or b.get("_block") or "").lower()
+        b = dict(b, states=[s for s in as_list(b.get("states")) if s])
+        if kind == "nationwide":
+            a["_nat"] = b
+        elif kind in ("state_design", "state_picture"):
+            a["_state"].append(dict(b, _kind=kind))
+        elif kind == "super":
+            a["_super"].append(b)
     return a
 
 
 AD_LIBRARY = {}
+AD_LIST = []
 for _a in (clean_ad(x) for x in load_folder("ads")):
     if _a:
+        AD_LIST.append(_a)
         stem = os.path.splitext(_a["_file"])[0]
         for key in (stem, _a["_file"], "content/ads/" + _a["_file"], "/content/ads/" + _a["_file"]):
             AD_LIBRARY[key.lower()] = _a
@@ -271,6 +288,43 @@ def lineup_ads(items, where):
         if ad is not None and id(ad) not in seen_:
             seen_.add(id(ad)); out.append(ad)
     return out
+
+
+def ordered(members, lineup_items, where):
+    """Ads that chose this spot, in the order set on the State page (or the
+    Nationwide Sponsors list). Anything not in that list goes after, A-Z.
+    Older ads with no placements of their own still appear if listed."""
+    listed = lineup_ads(lineup_items, where)
+    member_ids = {id(a) for a in members}
+    head = [a for a in listed if id(a) in member_ids or not a["_new"]]
+    head_ids = {id(a) for a in head}
+    tail = sorted([a for a in members if id(a) not in head_ids], key=lambda a: a["businessName"].lower())
+    return head + tail
+
+
+def state_view(ad, slug):
+    for b in ad["_state"]:
+        if slug in b["states"]:
+            if b["_kind"] == "state_picture":
+                return dict(ad, image=(b.get("image") or "").lstrip("/"), strip={})
+            return dict(ad, strip=b, image="")
+    return ad                       # older ad: its own fields
+
+
+def super_view(ad, slug):
+    for b in ad["_super"]:
+        if slug in b["states"]:
+            return dict(ad, location=(b.get("location") or "").strip(), services=as_list(b.get("services")),
+                        description=(b.get("text") or "").strip(), image=(b.get("image") or "").lstrip("/"),
+                        _pin=slug in as_list(b.get("pinStates")))
+    return ad
+
+
+def nationwide_view(ad):
+    b = ad["_nat"]
+    if b and b.get("image"):
+        return dict(ad, image=b["image"].lstrip("/"))
+    return ad
 
 
 def _load_json(rel):
@@ -675,8 +729,9 @@ def banner_ad(ad, base):
 def sitewide_banners():
     """Nationwide Sponsors, in the order set in the editor. (Falls back to
     the older 'Sitewide banner' package if no nationwide list exists yet.)"""
-    if NATIONWIDE is not None:
-        return lineup_ads(NATIONWIDE.get("sponsors"), "Nationwide Sponsors")
+    if NATIONWIDE is not None or any(a["_nat"] for a in AD_LIST):
+        members = [a for a in AD_LIST if a["_nat"] and is_live(a)]
+        return [nationwide_view(a) for a in ordered(members, (NATIONWIDE or {}).get("sponsors"), "Nationwide Sponsors")]
     return sorted([a for a in ADS if a["tier"] == "global_banner"], key=ad_sort_key)
 
 
@@ -741,8 +796,14 @@ def _col(name, default):
 
 
 def _ink_for(bg_hex):
+    """Black or white text, whichever contrasts more with the background
+    (WCAG relative luminance -- pure green is bright, so it gets black)."""
+    def lin(c):
+        c /= 255
+        return c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4
     r, g, b = (int(bg_hex[i:i + 2], 16) for i in (1, 3, 5))
-    return "#000000" if (0.299 * r + 0.587 * g + 0.114 * b) > 150 else "#ffffff"
+    L = 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b)
+    return "#000000" if (L + 0.05) / 0.05 >= 1.05 / (L + 0.05) else "#ffffff"
 
 
 def strip_background(st, base):
@@ -899,22 +960,32 @@ def super_ad(ad, base, pinned=False):
 SUPER_TWO_COLUMN_MIN = 6
 
 
+def state_ads_for(slug, state_name):
+    """Who appears in this state's State Listings and Super Listings, in
+    order -- used by the state pages AND the owner's lineup page, so the two
+    can never disagree."""
+    lu = LINEUPS.get(slug) or {}
+    st_members = [a for a in AD_LIST if is_live(a) and any(slug in b["states"] for b in a["_state"])]
+    state_listings = [state_view(a, slug) for a in ordered(st_members, lu.get("stateListings"), f"{state_name} State listings")]
+    su_members = [a for a in AD_LIST if is_live(a) and any(slug in b["states"] for b in a["_super"])]
+    lineup_pins = {id(a) for a, it in lineup_entries(lu.get("superListings"), state_name) if it.get("pinned")}
+    supers = [(super_view(a, slug), id(a) in lineup_pins) for a in ordered(su_members, lu.get("superListings"), f"{state_name} Super listings")]
+    pinned = [v for v, lp in supers if lp or v.get("_pin")]
+    rest = [v for v, lp in supers if not (lp or v.get("_pin"))]
+    return state_listings, pinned, rest
+
+
 def state_sections(slug, state_name, base):
     """Sections 4 and 5 for one state, from that state's lineup.
     Section 4 is titled "State Listings" on every page (not the state's name):
     companies from anywhere can advertise on any state's page."""
-    lu = LINEUPS.get(slug) or {}
-    state_listings = lineup_ads(lu.get("stateListings"), f"{state_name} State listings")
-    supers = lineup_entries(lu.get("superListings"), f"{state_name} Super listings")
-    # Paid "pin to top": pinned Super listings come first, in their list order.
-    pinned = [a for a, it in supers if it.get("pinned")]
-    rest = [a for a, it in supers if not it.get("pinned")]
+    state_listings, pinned, rest = state_ads_for(slug, state_name)
     html_ = ""
     if state_listings:
         html_ += page_section("state", "&#9670; State Listings", f"Pilot car companies serving {esc(state_name)}",
                               f'<div class="strip-grid">{"".join(compact_ad(a, base) for a in state_listings)}</div>',
                               count=len(state_listings), extra_class="sponsor-band in-content")
-    if supers:
+    if pinned or rest:
         inner = ""
         if pinned:
             inner += f'<div class="super-pinned-row">{"".join(super_ad(a, base, pinned=True) for a in pinned)}</div>'
@@ -922,8 +993,8 @@ def state_sections(slug, state_name, base):
             one = " super-list-one" if len(rest) < SUPER_TWO_COLUMN_MIN else ""
             inner += f'<div class="super-list{one}">{"".join(super_ad(a, base) for a in rest)}</div>'
         html_ += page_section("super", "Super Listings", f"Featured companies serving {esc(state_name)}",
-                              inner, count=len(supers), extra_class="sponsor-band in-content")
-    return html_, state_listings + [a for a, _ in supers]
+                              inner, count=len(pinned) + len(rest), extra_class="sponsor-band in-content")
+    return html_, state_listings + pinned + rest
 
 
 def place_after_page_banner(body, block):
@@ -1803,6 +1874,17 @@ def build_services():
           canonical_path="design-services-thanks.html", breadcrumbs=[("Home", "index.html"), ("Thanks", None)]))
 
 
+def placement_summary(a):
+    bits = []
+    if a.get("_nat"):
+        bits.append("Nationwide")
+    if a.get("_state"):
+        bits.append(f"State listing ({sum(len(b['states']) for b in a['_state'])} states)")
+    if a.get("_super"):
+        bits.append(f"Super listing ({sum(len(b['states']) for b in a['_super'])} states)")
+    return ", ".join(bits) or a.get("package") or TIER_LABEL.get(a.get("tier"), "")
+
+
 def build_lineup():
     """Ad lineup: every paid position in the exact order visitors see it,
     with each ad's order number. For checking 'who's on top' before and
@@ -1815,7 +1897,7 @@ def build_lineup():
         rows = "".join(
             f"<tr><td class='pos'>{i}</td><td><strong>{esc(a['businessName'])}</strong>"
             f"{'<div class=hotel-meta>' + esc(a['city']) + '</div>' if a.get('city') else ''}</td>"
-            f"<td>{esc(a.get('package') or TIER_LABEL.get(a.get('tier'), ''))}</td>"
+            f"<td>{esc(placement_summary(a))}</td>"
             f"<td>{esc(a.get('endDate') or '')}</td></tr>"
             for i, a in enumerate(ads, 1))
         return ("<div class='table-scroll'><table class='data-table lineup'><thead><tr><th>#</th><th>Advertiser</th>"
@@ -1825,16 +1907,15 @@ def build_lineup():
     state_blocks = []
     for r in ALL_REGIONS:
         lu = LINEUPS.get(r["slug"]) or {}
-        sl = lineup_ads(lu.get("stateListings"), r["name"])
-        su_e = lineup_entries(lu.get("superListings"), r["name"])
-        su = [a for a, it in su_e if it.get("pinned")] + [a for a, it in su_e if not it.get("pinned")]
+        sl, su_pin, su_rest = state_ads_for(r["slug"], r["name"])
+        su = su_pin + su_rest
         pinned = [a for a in ads_for_placement(r["slug"]) if a.get("pinned")]
         if not (sl or su or pinned):
             continue
         state_blocks.append(f"""<details class="panel lineup-state"><summary><strong>{esc(r['name'])}</strong>
           <span class="hotel-meta">{len(sl)} state listings, {len(su)} super listings, {len(pinned)} pinned</span></summary>
           <h3>State listings</h3>{table(sl)}
-          <h3>Super listings{(" &mdash; " + str(sum(1 for _, it in su_e if it.get("pinned"))) + " pinned to the top") if any(it.get("pinned") for _, it in su_e) else ""}</h3>{table(su)}
+          <h3>Super listings{(" &mdash; " + str(len(su_pin)) + " pinned to the top") if su_pin else ""}</h3>{table(su)}
           <h3>Pinned to the top of the company list</h3>{table(pinned)}</details>""")
 
     body = f"""

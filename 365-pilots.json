@@ -1,0 +1,17 @@
+{
+  "businessName": "365 Pilots",
+  "phone": "1-866-795-0150",
+  "website": "",
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Nationwide sponsor. Artwork from the old site -- check against grandma's records.",
+  "placements": [
+    {
+      "type": "nationwide",
+      "image": "/assets/images/advertisements/365-pilots.jpg"
+    }
+  ]
+}
