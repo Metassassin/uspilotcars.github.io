@@ -844,3 +844,35 @@ details.page-section > summary .sec-toggle{ order:3; }
 .picker-h{ margin:14px 0 8px; font-size:.95rem; }
 .state-picker{ grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); }
 .state-picker .region-tile .code{ background:var(--amber-100); color:#6b3a06; border-radius:999px; padding:0 8px; font-weight:700; }
+
+/* State listing strips: keep the old site's proportions.
+   Text scales with the strip's own width (reference: the old 509px strip,
+   ~480px of text area), never larger than designed and never below 85%, so a
+   strip that is narrower than the original wraps the way the original did
+   instead of growing taller. */
+.ad-strip-built .sl-line{
+  font-size:clamp(max(calc(var(--fs) * .85px), 8px), calc(var(--fs) * 100cqw / 470), calc(var(--fs) * 1.08px)); }
+/* Strips in the same row are the same height, content centred -- no holes. */
+.strip-grid{ align-items:stretch; }
+.strip-grid > .ad-strip, .strip-grid > .ad-strip-built{ height:100%; }
+.ad-strip-img{ display:flex; align-items:center; justify-content:center; background:#fff; }
+/* Two-column strips: the left column only takes the room its words need;
+   the right column (usually the longer details) gets the rest. */
+.ad-strip-built:has(.sl-lines-right) > .sl-lines:not(.sl-lines-right){ flex:0 1 auto; max-width:42%; }
+.ad-strip-built .sl-lines-right{ flex:1 1 auto; }
+/* Phones: don't shrink strip text -- a full-width strip can wrap instead.
+   Never below 10px, so the small print stays readable. */
+@media (max-width: 640px){
+  .ad-strip-built .sl-line{ font-size:max(calc(var(--fs) * 1px), 10px); }
+}
+/* ...but never narrower than its longest word. */
+.ad-strip-built:has(.sl-lines-right) > .sl-lines:not(.sl-lines-right){ min-width:min-content; overflow-wrap:normal; }
+.ad-strip-built:has(.sl-lines-right) > .sl-lines:not(.sl-lines-right) .sl-line{ overflow-wrap:normal; }
+
+/* Nationwide Sponsors auto-scroll on phones (see main.js) */
+.sec-national .banner-row.is-autoscroll{ scroll-snap-type:none; scrollbar-width:none; }
+.sec-national .banner-row.is-autoscroll::-webkit-scrollbar{ display:none; }
+.autoscroll-toggle{ display:block; margin:0 0 8px auto; font:600 .78rem/1 inherit; padding:6px 10px;
+  border:1px solid var(--border-strong); border-radius:999px; background:#fff; color:var(--navy-900); cursor:pointer; }
+.autoscroll-toggle:focus-visible{ outline:2px solid var(--amber-500); outline-offset:2px; }
+@media (min-width: 641px){ .autoscroll-toggle{ display:none; } }
