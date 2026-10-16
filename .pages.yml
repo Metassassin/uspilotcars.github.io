@@ -1796,6 +1796,87 @@ content:
         name: superListings
         label: Super Listings - in this order
         description: Pick ads top to bottom. Tick "Pin to the top" for customers who pay for the top spot here.
+  - name: pricing
+    label: Advertising prices
+    type: file
+    path: content/pricing.json
+    format: json
+    fields:
+    - name: orderEmail
+      label: Orders are emailed to
+      type: string
+      required: true
+      description: Every order from the Advertise page arrives here, with any artwork attached. The very first order
+        sends a confirmation email to this address -- click its link once to switch orders on.
+    - name: ccEmail
+      label: Also send a copy to (optional)
+      type: string
+      description: Another address that gets a copy of each order.
+    - name: formAlias
+      label: Private form code (optional)
+      type: string
+      description: After confirming, FormSubmit can give you a random code to use instead of the email address,
+        so spammers cannot read it.
+    - name: packages
+      label: Packages
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{name}'
+      description: Shown on the Advertise page in this order.
+      fields:
+      - name: name
+        label: Package name
+        type: string
+        required: true
+      - name: id
+        label: Code (leave as is)
+        type: string
+        description: Used to keep carts working. Only set this for a new package.
+      - name: section
+        label: Where it appears
+        type: select
+        required: true
+        options:
+          values:
+          - name: table
+            label: Company list (plain)
+          - name: bold
+            label: Company list (bold)
+          - name: highlight
+            label: Company list (bold, green background)
+          - name: hotel
+            label: Hotel listing in a city
+          - name: super
+            label: Super Listings section
+          - name: state
+            label: State Listings section (banner ad)
+          - name: nationwide
+            label: Nationwide Sponsors (every page)
+      - name: states
+        label: States included
+        type: number
+        description: 1 or 4, etc. Use 0 for Nationwide (every page).
+      - name: monthly
+        label: Monthly price ($)
+        type: number
+        description: Leave empty if this package is yearly only.
+      - name: annual
+        label: Yearly price ($, optional)
+        type: number
+        description: Leave empty to charge 11 months (1 month free), like the old site.
+      - name: description
+        label: Description
+        type: text
+      - name: badge
+        label: Small label (optional)
+        type: string
+        description: e.g. "Most popular".
+      - name: active
+        label: Show on the Advertise page
+        type: boolean
+        default: true
 - name: directory
   label: Directory
   type: group
