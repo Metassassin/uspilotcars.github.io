@@ -46,9 +46,23 @@
       ],
       "lines": [
         {
-          "text": "RIFLE, CO",
+          "text": "RIFLE, CO | TWO PISTOLS PILOT ESCORT SERVICES",
           "size": "normal",
-          "bold": true,
+          "bold": false,
+          "italic": false,
+          "underline": false
+        },
+        {
+          "text": "970-274-1337 | 970-948-4276 | DENVER 303-667-7007",
+          "size": "normal",
+          "bold": false,
+          "italic": false,
+          "underline": false
+        },
+        {
+          "text": "SAFETY ALWAYS COMES FIRST | HEIGHT POLE | 2 CARS",
+          "size": "small",
+          "bold": false,
           "italic": false,
           "underline": false
         }
@@ -60,6 +74,12 @@
       "nameColor": "black",
       "nameBigger": false,
       "phoneColor": "red",
+      "highlights": [
+        {
+          "text": "303-667-7007",
+          "color": "red"
+        }
+      ],
       "font": "tahoma",
       "align": "center",
       "border": "thin",
