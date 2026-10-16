@@ -14,13 +14,12 @@
       "states": [
         "new-mexico"
       ],
-      "location": "Albuquerque, NM",
+      "location": "ALBUQUERQUE, NM",
       "services": [
         "route_survey"
       ],
-      "text": "Route survey capable.",
-      "pinStates": [],
-      "image": ""
+      "text": "",
+      "pinStates": []
     }
   ]
 }

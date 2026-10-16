@@ -1,0 +1,51 @@
+{
+  "businessName": "D & R Pilot Car Service",
+  "phone": "936-444-6080",
+  "website": "",
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Added from the New Mexico page on the old site.",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "new-mexico"
+      ],
+      "background": "solid",
+      "color1": "white",
+      "border": "thin",
+      "font": "times",
+      "align": "center",
+      "lines": [
+        {
+          "text": "D & R PILOT CAR SERVICE | 936-444-6080",
+          "size": "large",
+          "bold": true
+        },
+        {
+          "text": "$1 M Gen. Liability | 2 CARS | HEIGHT POLE | CALL FOR QUOTE!",
+          "size": "normal",
+          "bold": true
+        },
+        {
+          "text": "CHECK, CASH, COM, T, DD | QUALIFIED US & CANADA",
+          "size": "normal",
+          "bold": true
+        }
+      ],
+      "borderColor": "black",
+      "textColor": "black",
+      "phoneColor": "red",
+      "highlights": [
+        {
+          "text": "CALL FOR QUOTE!",
+          "color": "green",
+          "underline": true
+        }
+      ]
+    }
+  ]
+}

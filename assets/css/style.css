@@ -831,3 +831,16 @@ details.page-section > summary .sec-toggle{ order:3; }
 /* Logo beside the text -- left (default) or right, never behind it */
 .ad-strip-built.logo-right .sl-logo{ order:2; }
 .ad-strip-built .sl-logo{ max-height:72px; max-width:28%; width:auto; height:auto; }
+/* Second column of text (e.g. Valid: name left, phone and details right) */
+.ad-strip-built .sl-lines-right{ flex:1.6; }
+.ad-strip-built.logo-right .sl-logo{ order:3; }
+@container (max-width: 420px){ .ad-strip-built{ flex-wrap:wrap; } .ad-strip-built .sl-lines{ flex-basis:100%; } }
+.se-phones{ color:#d40000; font-weight:700; }
+
+/* Listing counts beside each state (sidebar) and on the home page picker */
+.placard{ display:flex; align-items:center; justify-content:center; gap:5px; }
+.pc-count{ font-size:.66rem; font-weight:700; padding:0 5px; border-radius:999px; background:var(--amber-500); color:#1b1206; line-height:1.5; }
+.nav-link .pc-count{ margin-left:6px; }
+.picker-h{ margin:14px 0 8px; font-size:.95rem; }
+.state-picker{ grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); }
+.state-picker .region-tile .code{ background:var(--amber-100); color:#6b3a06; border-radius:999px; padding:0 8px; font-weight:700; }

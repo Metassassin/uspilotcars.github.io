@@ -1,0 +1,23 @@
+{
+  "businessName": "Professional Oversize Escort Services",
+  "phone": "307-275-6814",
+  "website": "",
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Added from the New Mexico page on the old site.",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "new-mexico"
+      ],
+      "location": "CHEYENNE, WY",
+      "services": [],
+      "text": "",
+      "pinStates": []
+    }
+  ]
+}

@@ -1,91 +1,23 @@
 {
   "businessName": "Two Pistols Pilot Escort Services",
-  "package": "State listing",
-  "strip": {
-    "lines": [
-      {
-        "text": "RIFLE, CO | TWO PISTOLS PILOT ESCORT SERVICES",
-        "size": "normal",
-        "bold": true,
-        "italic": false,
-        "underline": false
-      },
-      {
-        "text": "970-274-1337 | 970-948-4276 | Denver 303-667-7007",
-        "size": "normal",
-        "bold": false,
-        "italic": false,
-        "underline": false,
-        "color": "red"
-      },
-      {
-        "text": "SAFETY ALWAYS COMES FIRST! | HEIGHT POLE | 2 CARS",
-        "size": "small",
-        "bold": true,
-        "italic": false,
-        "underline": false
-      }
-    ],
-    "background": "solid",
-    "color1": "bright-green",
-    "direction": "right",
-    "nameBigger": false,
-    "font": "tahoma",
-    "align": "center",
-    "border": "thin",
-    "borderColor": "black",
-    "borderStyle": "solid"
-  },
+  "phone": "970-274-1337",
+  "website": "http://www.pilotescortservices.com/",
   "active": true,
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Added from the New Mexico page on the old site.",
   "placements": [
     {
-      "type": "state_design",
+      "type": "super",
       "states": [
-        "colorado",
         "new-mexico"
       ],
-      "lines": [
-        {
-          "text": "RIFLE, CO | TWO PISTOLS PILOT ESCORT SERVICES",
-          "size": "normal",
-          "bold": false,
-          "italic": false,
-          "underline": false
-        },
-        {
-          "text": "970-274-1337 | 970-948-4276 | DENVER 303-667-7007",
-          "size": "normal",
-          "bold": false,
-          "italic": false,
-          "underline": false
-        },
-        {
-          "text": "SAFETY ALWAYS COMES FIRST | HEIGHT POLE | 2 CARS",
-          "size": "small",
-          "bold": false,
-          "italic": false,
-          "underline": false
-        }
-      ],
-      "background": "solid",
-      "color1": "bright-green",
-      "direction": "right",
-      "textColor": "black",
-      "nameColor": "black",
-      "nameBigger": false,
-      "phoneColor": "red",
-      "highlights": [
-        {
-          "text": "303-667-7007",
-          "color": "red"
-        }
-      ],
-      "font": "tahoma",
-      "align": "center",
-      "border": "thin",
-      "borderColor": "black",
-      "borderStyle": "solid"
+      "location": "RIFLE, CO",
+      "services": [],
+      "text": "",
+      "pinStates": []
     }
-  ],
-  "phone": "970-274-1337 | 970-948-4276"
+  ]
 }

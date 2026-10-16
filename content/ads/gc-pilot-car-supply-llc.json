@@ -1,0 +1,61 @@
+{
+  "businessName": "GC Pilot Car Supply, LLC",
+  "phone": "620-272-4563 | 520-395-7739",
+  "website": "",
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Added from the New Mexico page on the old site.",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "new-mexico"
+      ],
+      "background": "solid",
+      "color1": "white",
+      "border": "thick",
+      "font": "tahoma",
+      "align": "center",
+      "lines": [
+        {
+          "text": "NATIONWIDE | GC PILOT CAR SUPPLY, LLC",
+          "size": "normal",
+          "bold": true
+        },
+        {
+          "text": "620-272-4563 | 520-395-7739",
+          "size": "large",
+          "bold": true
+        },
+        {
+          "text": "Highly Experienced * Height Pole * Route Surveys * Steering",
+          "size": "normal",
+          "bold": true
+        }
+      ],
+      "borderColor": "black",
+      "textColor": "black",
+      "phoneColor": "red",
+      "nameFont": "courier",
+      "nameBigger": true
+    },
+    {
+      "type": "super",
+      "states": [
+        "new-mexico"
+      ],
+      "location": "NATIONWIDE",
+      "services": [
+        "height_pole",
+        "route_survey",
+        "multi_car",
+        "steering"
+      ],
+      "text": "",
+      "pinStates": []
+    }
+  ]
+}

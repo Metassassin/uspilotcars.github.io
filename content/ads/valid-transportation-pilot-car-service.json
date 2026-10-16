@@ -15,23 +15,75 @@
         "new-mexico"
       ],
       "background": "solid",
-      "color1": "white",
-      "phoneColor": "red",
+      "color1": "mid-green",
+      "border": "thick",
       "font": "tahoma",
       "align": "center",
-      "border": "none",
       "lines": [
         {
-          "text": "Madera, CA (serving the Western US, incl. Gallup / Lordsburg / San Jon / Tucumcari / Santa Rosa, NM) | Valid Transportation & Pilot Car Service | 559-363-5656",
+          "text": "VALID",
+          "size": "x-large",
+          "bold": true,
+          "spaced": true,
+          "font": "times"
+        },
+        {
+          "text": "Transportation",
           "size": "medium",
+          "bold": true,
+          "italic": true,
+          "font": "times"
+        },
+        {
+          "text": "& Pilot Car",
+          "size": "medium",
+          "bold": true,
+          "italic": true,
+          "font": "times"
+        }
+      ],
+      "linesRight": [
+        {
+          "text": "559-363-5656",
+          "size": "x-large",
+          "bold": true,
+          "spaced": true,
+          "font": "times"
+        },
+        {
+          "text": "“YOUR LOADS ARE SAFE & SOUND WITH US!”",
+          "size": "normal",
           "bold": true
         },
         {
-          "text": "\"Your loads are safe & sound with us.\" Serving California and the Western US. Height pole, route surveys, Utah certification, multiple vehicles, steering.",
-          "size": "normal",
+          "text": "SERVING CALIFORNIA & THE WESTERN US * HEIGHT POLE * ROUTE SURVEYS",
+          "size": "small",
+          "bold": true
+        },
+        {
+          "text": "UTAH CERTIFICATION * MULTIPLE VEHICLES * STEERING",
+          "size": "small",
           "bold": true
         }
-      ]
+      ],
+      "borderColor": "black",
+      "textColor": "black",
+      "phoneColor": "white"
+    },
+    {
+      "type": "super",
+      "states": [
+        "new-mexico"
+      ],
+      "location": "MADERA, CA",
+      "services": [
+        "height_pole",
+        "route_survey",
+        "multi_car",
+        "steering"
+      ],
+      "text": "",
+      "pinStates": []
     }
   ]
 }

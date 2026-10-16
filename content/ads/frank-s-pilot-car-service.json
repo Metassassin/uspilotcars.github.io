@@ -44,6 +44,20 @@
           "color": "red"
         }
       ]
+    },
+    {
+      "type": "super",
+      "states": [
+        "new-mexico"
+      ],
+      "location": "ALBUQUERQUE, NM",
+      "services": [
+        "height_pole",
+        "route_survey",
+        "multi_car"
+      ],
+      "text": "",
+      "pinStates": []
     }
   ]
 }

@@ -1,0 +1,23 @@
+{
+  "businessName": "Siler Ranch Pilot Service",
+  "phone": "623-910-3236",
+  "website": "",
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Added from the New Mexico page on the old site.",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "new-mexico"
+      ],
+      "location": "PEORIA, AZ",
+      "services": [],
+      "text": "",
+      "pinStates": []
+    }
+  ]
+}

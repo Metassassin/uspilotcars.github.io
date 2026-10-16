@@ -4,19 +4,35 @@
       "state": "new-mexico",
       "stateListings": [
         {
-          "ad": "content/ads/frank-s-pilot-car-service.json"
+          "ad": "content/ads/new-tex-pilot-services.json"
         },
         {
           "ad": "content/ads/valid-transportation-pilot-car-service.json"
+        },
+        {
+          "ad": "content/ads/d-r-pilot-car-service.json"
+        },
+        {
+          "ad": "content/ads/twin-guns-transportation-heavy-haul.json"
+        },
+        {
+          "ad": "content/ads/gc-pilot-car-supply-llc.json"
+        },
+        {
+          "ad": "content/ads/frank-s-pilot-car-service.json"
         }
       ],
       "superListings": [
         {
-          "ad": "content/ads/north-american-transport-services-new-mexico.json",
+          "ad": "content/ads/two-pistols-pilot-escort-services.json",
           "pinned": false
         },
         {
-          "ad": "content/ads/new-tex-pilot-services.json",
+          "ad": "content/ads/anstorm-sabre-pcs-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/siler-ranch-pilot-service.json",
           "pinned": false
         },
         {
@@ -24,11 +40,75 @@
           "pinned": false
         },
         {
+          "ad": "content/ads/frank-s-pilot-car-service.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/new-tex-pilot-services.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/s-g-pilot-services-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/twin-guns-transportation-heavy-haul.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/lights-on-pilot-services-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/tomahawk-service-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/roadrunner-pilot-car.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/professional-oversize-escort-services.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/rochelle-s-pc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/rockin-jt.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/gc-pilot-car-supply-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/a-better-choice-oes.json",
+          "pinned": false
+        },
+        {
           "ad": "content/ads/loveland-pilot-car.json",
           "pinned": false
         },
         {
+          "ad": "content/ads/valid-transportation-pilot-car-service.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/aaa-mountain-pilot-car-service.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/s-g-transport-llc.json",
+          "pinned": false
+        },
+        {
           "ad": "content/ads/hartsfield-escort-pcs.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/az-transport-services.json",
           "pinned": false
         }
       ]
@@ -37,9 +117,6 @@
       "state": "texas",
       "stateListings": [
         {
-          "ad": "content/ads/frog-truck-escort.json"
-        },
-        {
           "ad": "content/ads/sentinel-pilot-car-services.json"
         }
       ],
@@ -47,14 +124,6 @@
         {
           "ad": "content/ads/new-tex-pilot-services.json",
           "pinned": false
-        }
-      ]
-    },
-    {
-      "state": "louisiana",
-      "stateListings": [
-        {
-          "ad": "content/ads/frog-truck-escort.json"
         }
       ]
     }

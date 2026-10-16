@@ -10,19 +10,55 @@
   "notes": "Moved from Directory listings into Ads. Check this against grandma's records.",
   "placements": [
     {
+      "type": "state_design",
+      "states": [
+        "new-mexico"
+      ],
+      "background": "gradient",
+      "color1": "red",
+      "border": "thin",
+      "font": "tahoma",
+      "align": "center",
+      "lines": [
+        {
+          "text": "NEW-TEX PILOT SERVICES",
+          "size": "huge",
+          "bold": true,
+          "spaced": true,
+          "font": "decorative"
+        },
+        {
+          "text": "CERTIFIED | (432) 250-5865 |INSURED",
+          "size": "medium",
+          "bold": true
+        },
+        {
+          "text": "HEIGHT POLE / MULTIPLE VEHICLES / TRANSPORTER",
+          "size": "medium",
+          "bold": true,
+          "italic": true
+        }
+      ],
+      "color2": "orange",
+      "color3": "yellow",
+      "direction": "right",
+      "borderColor": "black",
+      "textColor": "black",
+      "phoneColor": "white"
+    },
+    {
       "type": "super",
       "states": [
         "new-mexico",
         "texas"
       ],
-      "location": "Carlsbad / Eunice / Hobbs / Jal, NM",
+      "location": "MIDLAND/LUBBOCK/PECOS, TX",
       "services": [
         "height_pole",
         "multi_car"
       ],
-      "text": "Certified, insured. Height pole, multiple vehicles, transporter. Serving Carlsbad, Eunice, Hobbs, and Jal, NM, and Midland / Lubbock / Pecos, TX.",
-      "pinStates": [],
-      "image": ""
+      "text": "",
+      "pinStates": []
     }
   ]
 }

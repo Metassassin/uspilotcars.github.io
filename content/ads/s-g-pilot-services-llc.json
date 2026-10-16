@@ -1,0 +1,23 @@
+{
+  "businessName": "S G Pilot Services, LLC",
+  "phone": "206-293-2672",
+  "website": "",
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Added from the New Mexico page on the old site.",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "new-mexico"
+      ],
+      "location": "RIO RANCHO, NM",
+      "services": [],
+      "text": "",
+      "pinStates": []
+    }
+  ]
+}

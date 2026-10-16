@@ -1,0 +1,62 @@
+{
+  "businessName": "Twin Guns Transportation & Heavy Haul",
+  "phone": "970-456-2169",
+  "website": "",
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Added from the New Mexico page on the old site.",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "new-mexico"
+      ],
+      "background": "solid",
+      "color1": "white",
+      "border": "thick",
+      "font": "tahoma",
+      "align": "center",
+      "lines": [
+        {
+          "text": "RIFLE, CO | TWIN GUNS TRANSPORTATION & HEAVY HAUL",
+          "size": "normal",
+          "bold": true
+        },
+        {
+          "text": "970-456-2169 | CALL FOR A BID!",
+          "size": "large",
+          "bold": true
+        },
+        {
+          "text": "PILOT CARS as well as TRUCK FLEET!",
+          "size": "normal",
+          "bold": true
+        }
+      ],
+      "borderColor": "black",
+      "textColor": "black",
+      "phoneColor": "red",
+      "nameFont": "decorative",
+      "nameBigger": true,
+      "highlights": [
+        {
+          "text": "CALL FOR A BID!",
+          "color": "green"
+        }
+      ]
+    },
+    {
+      "type": "super",
+      "states": [
+        "new-mexico"
+      ],
+      "location": "RIFLE, CO",
+      "services": [],
+      "text": "",
+      "pinStates": []
+    }
+  ]
+}

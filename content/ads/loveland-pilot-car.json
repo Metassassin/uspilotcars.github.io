@@ -14,14 +14,13 @@
       "states": [
         "new-mexico"
       ],
-      "location": "Albuquerque, NM / Phoenix, AZ",
+      "location": "ALBUQUERQUE, NM/PHOENIX, AZ",
       "services": [
         "height_pole",
         "multi_car"
       ],
-      "text": "Height pole and multiple-car capable.",
-      "pinStates": [],
-      "image": ""
+      "text": "",
+      "pinStates": []
     }
   ]
 }

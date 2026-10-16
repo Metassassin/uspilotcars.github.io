@@ -14,14 +14,13 @@
       "states": [
         "new-mexico"
       ],
-      "location": "Farmington, NM",
+      "location": "FARMINGTON, NM",
       "services": [
         "height_pole",
         "multi_car"
       ],
-      "text": "Height pole and multiple-car capable.",
-      "pinStates": [],
-      "image": ""
+      "text": "",
+      "pinStates": []
     }
   ]
 }

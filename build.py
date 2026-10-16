@@ -457,9 +457,25 @@ STATE_CODES = {
     "wisconsin": "WI", "wyoming": "WY",
 }
 
+def listing_counts():
+    counts = {}
+    for a in ADS:
+        for s in a.get("placement") or []:
+            if s != "sitewide":
+                counts[s] = counts.get(s, 0) + 1
+    return counts
+
+
+LISTING_COUNTS = listing_counts()
+
+
+def count_label(slug):
+    n = LISTING_COUNTS.get(slug, 0)
+    return f"{n} listing{'s' if n != 1 else ''}"
+
+
 NAV_ITEMS = [
     ("home", "Home", ""),
-    ("directory", "Pilot Car Directory", "directory/"),
     ("regulations", "Pilot Car Regulations", "regulations/"),
     ("resources", "Resources", "resources/"),
     ("advertise", "Advertise With Us", "advertise/"),
@@ -517,8 +533,11 @@ def sidebar_html(base, active_key, active_region_slug=None):
         active = "is-active" if r["slug"] == active_region_slug else ""
         href = f'{base}directory/{r["slug"]}.html'
         code = STATE_CODES.get(r["slug"], r["name"][:2].upper())
+        n = LISTING_COUNTS.get(r["slug"], 0)
         placards.append(
-            f'<a class="placard {active}" href="{href}" title="{esc(r["name"])} pilot car directory">{esc(code)}</a>'
+            f'<a class="placard {active}" href="{href}" title="{esc(r["name"])}: {count_label(r["slug"])}" '
+            f'aria-label="{esc(r["name"])}, {count_label(r["slug"])}">{esc(code)}'
+            f'{f"<span class=pc-count>{n}</span>" if n else ""}</a>'
         )
     placard_block = "\n".join(placards)
 
@@ -526,7 +545,10 @@ def sidebar_html(base, active_key, active_region_slug=None):
     for r in CA_PROVINCES:
         active = "is-active" if r["slug"] == active_region_slug else ""
         href = f'{base}directory/{r["slug"]}.html'
-        ca_links.append(f'<a class="nav-link {active}" style="padding-left:28px;font-size:.86rem" href="{href}">{esc(r["name"])}</a>')
+        n = LISTING_COUNTS.get(r["slug"], 0)
+        ca_links.append(f'<a class="nav-link {active}" style="padding-left:28px;font-size:.86rem" href="{href}" '
+                        f'aria-label="{esc(r["name"])}, {count_label(r["slug"])}">{esc(r["name"])}'
+                        f'{f" <span class=pc-count>{n}</span>" if n else ""}</a>')
     ca_block = "\n".join(ca_links)
 
     return f"""
@@ -784,7 +806,7 @@ PALETTE = {
     "black": "#000000", "white": "#ffffff", "light-gray": "#ebebeb", "gray": "#808080",
     "red": "#ff0000", "dark-red": "#a80000", "pink": "#ff6b6b", "light-pink": "#fff5ff",
     "orange": "#ff8000", "yellow": "#ffff00", "gold": "#e6b800",
-    "bright-green": "#00ff00", "green": "#07b300", "dark-green": "#006400", "olive": "#adca56",
+    "bright-green": "#00ff00", "mid-green": "#00d700", "green": "#07b300", "dark-green": "#006400", "olive": "#adca56",
     "aqua": "#00ffff", "teal": "#008080", "blue": "#0000ff", "navy": "#000080", "purple": "#800080",
     "brown": "#553f1f",
 }
@@ -797,6 +819,8 @@ FONTS = {
     "georgia": "Georgia, 'Times New Roman', serif",
     "times": "'Times New Roman', Times, Georgia, serif",
     "impact": "Impact, 'Arial Narrow Bold', 'Arial Black', sans-serif",
+    "courier": "'Courier New', Courier, 'Nimbus Mono PS', monospace",
+    "decorative": "Algerian, 'Copperplate Gothic Bold', Copperplate, 'Copperplate Gothic Light', Georgia, serif",
 }
 SIZES = {"small": 9, "normal": 11, "medium": 13, "large": 15, "x-large": 19, "huge": 24}   # old-site px
 DIRECTIONS = {"right": "to right", "down": "to bottom", "diagonal": "135deg"}
@@ -850,7 +874,7 @@ def strip_line_html(text, ad, st, ink):
     for h in st.get("highlights") or []:
         w = (h.get("text") or "").strip()
         if w:
-            extra[w.lower()] = _col(h.get("color"), ink)
+            extra[w.lower()] = (_col(h.get("color"), ink), bool(h.get("underline")))
     alts = []
     if name:
         alts.append("(?P<name>" + re.escape(name) + ")")
@@ -868,11 +892,14 @@ def strip_line_html(text, ad, st, ink):
                 css.append(f"color:{name_c}")
             if st.get("nameBigger"):
                 css.append("font-size:1.25em")
+            if (st.get("nameFont") or "").lower() in FONTS:
+                css.append(f"font-family:{FONTS[st['nameFont'].lower()]}")
             style = f' style="{";".join(css)}"' if css else ""
             out.append(f'<a class="sl-name" href="{esc(ad["website"])}" target="_blank" rel="sponsored noopener"{style}>{esc(seg)}</a>'
                        if ad.get("website") else f'<span class="sl-name"{style}>{esc(seg)}</span>')
         elif m.lastgroup == "extra":
-            out.append(f'<span style="color:{extra[seg.lower()]}">{esc(seg)}</span>')
+            c_, u_ = extra[seg.lower()]
+            out.append(f'<span style="color:{c_}{";text-decoration:underline" if u_ else ""}">{esc(seg)}</span>')
         else:
             style = f' style="color:{phone_c}"' if phone_c else ""
             out.append(f'<a class="sl-phone" href="{tel_href(seg)}"{style}>{esc(seg)}</a>')
@@ -891,29 +918,36 @@ def built_strip(ad, base):
     border_css = (f";border:{bw}px {'dashed' if (st.get('borderStyle') or '').lower() == 'dashed' else 'solid'} "
                   f"{_col(st.get('borderColor'), 'black')}") if bw else ";border:1px solid rgba(0,0,0,.15)"
     align = "left" if (st.get("align") or "").lower() == "left" else "center"
-    lines = []
-    for ln in st.get("lines") or []:
-        text = (ln.get("text") or "").strip()
-        if not text:
-            continue
-        px = SIZES.get((ln.get("size") or "normal").lower(), 11)
-        css = [f"--fs:{px}"]
-        css.append("font-weight:700" if ln.get("bold", True) is not False else "font-weight:400")
-        if ln.get("italic"):
-            css.append("font-style:italic")
-        if ln.get("underline"):
-            css.append("text-decoration:underline")
-        if ln.get("color"):
-            css.append(f"color:{_col(ln['color'], ink)}")
-        if ln.get("font") and ln["font"].lower() in FONTS:
-            css.append(f"font-family:{FONTS[ln['font'].lower()]}")
-        lines.append(f'<div class="sl-line" style="{";".join(css)}">{strip_line_html(text, ad, st, ink)}</div>')
+    def render_lines(items):
+        out_ = []
+        for ln in items or []:
+            text = (ln.get("text") or "").strip()
+            if not text:
+                continue
+            px = SIZES.get((ln.get("size") or "normal").lower(), 11)
+            css = [f"--fs:{px}"]
+            css.append("font-weight:700" if ln.get("bold", True) is not False else "font-weight:400")
+            if ln.get("italic"):
+                css.append("font-style:italic")
+            if ln.get("underline"):
+                css.append("text-decoration:underline")
+            if ln.get("spaced"):
+                css.append("letter-spacing:.14em")
+            if ln.get("color"):
+                css.append(f"color:{_col(ln['color'], ink)}")
+            if ln.get("font") and ln["font"].lower() in FONTS:
+                css.append(f"font-family:{FONTS[ln['font'].lower()]}")
+            out_.append(f'<div class="sl-line" style="{";".join(css)}">{strip_line_html(text, ad, st, ink)}</div>')
+        return "".join(out_)
+    left_html = render_lines(st.get("lines"))
+    right_html = render_lines(st.get("linesRight"))
     logo = (f'<img class="sl-logo" src="{base}{esc(st["logo"].lstrip("/"))}" alt="" loading="lazy">'
             if st.get("logo") else "")
     right = (st.get("logoPosition") or "left").lower() == "right"
     cls = "ad-strip ad-strip-built" + (" logo-right" if right else "")
     return (f'<div class="{cls}" style="{bg_css}{border_css};color:{ink};font-family:{font};text-align:{align}">'
-            f'{logo}<div class="sl-lines">{"".join(lines)}</div></div>')
+            f'{logo}<div class="sl-lines">{left_html}</div>'
+            + (f'<div class="sl-lines sl-lines-right">{right_html}</div>' if right_html else "") + '</div>')
 
 
 def auto_strip(ad):
@@ -967,7 +1001,12 @@ def super_ad(ad, base, pinned=False):
     if ad.get("description"):
         parts.append(f'<div class="se-desc">{esc(ad["description"])}</div>')
     if ad.get("phone"):
-        parts.append(f'<a class="se-phone" href="{tel_href(ad["phone"])}">{esc(ad["phone"])}</a>')
+        nums = _PHONE_RE.findall(ad["phone"])
+        if len(nums) > 1:     # e.g. "620-272-4563 | 520-395-7739": each number tap-to-call
+            parts.append('<div class="se-phones">' + " | ".join(
+                f'<a class="se-phone" href="{tel_href(n)}">{esc(n)}</a>' for n in nums) + "</div>")
+        else:
+            parts.append(f'<a class="se-phone" href="{tel_href(ad["phone"])}">{esc(ad["phone"])}</a>')
     return f'<div class="super-entry{" super-pinned" if pinned else ""}">{"".join(parts)}</div>'
 
 
@@ -1096,7 +1135,7 @@ def page_shell(*, base, title, meta_description, active_key, body_html,
     <div><strong>{SITE_NAME} LLC</strong> &trade; — All rights reserved.</div>
     <div class="links">
       <a href="{base}index.html">Home</a>
-      <a href="{base}directory/index.html">Find a Pilot Car</a>
+      <a href="{base}index.html#find-a-state">Find a Pilot Car</a>
       <a href="{base}advertise/index.html">Advertise Your Company</a>
       <a href="{base}regulations/index.html">Pilot Car Regulations</a>
       <a href="{base}privacy.html">Privacy</a>
@@ -1118,6 +1157,19 @@ def write(path, contents, *, into=None):
 
 
 # ---------------------------------------------------------------- HOME
+def home_state_picker():
+    """Every state and province with its number of listings -- replaces the
+    old Pilot Car Directory page (on phones the sidebar sits behind the Menu
+    button, so the home page needs its own way to pick a state)."""
+    def tiles(regions):
+        return "".join(
+            f'<a class="region-tile" href="directory/{r["slug"]}.html" aria-label="{esc(r["name"])}, {count_label(r["slug"])}">'
+            f'<span>{esc(r["name"])}</span><span class="code">{LISTING_COUNTS.get(r["slug"], 0)}</span></a>'
+            for r in regions)
+    return (f'<h3 class="picker-h">United States</h3><div class="region-grid state-picker">{tiles(US_STATES)}</div>'
+            f'<h3 class="picker-h">Canada</h3><div class="region-grid state-picker">{tiles(CA_PROVINCES)}</div>')
+
+
 def build_home():
     base = ""
     body = f"""
@@ -1126,7 +1178,7 @@ def build_home():
       <h1>Find a Pilot Car. Fast.</h1>
       <p class="lead">The pilot car, escort vehicle, and flag car directory truckers, dispatchers, and permit offices already know — now easier to scan, faster on a phone, and just as fast to call.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="directory/index.html">Find A Pilot Car &rarr;</a>
+        <a class="btn btn-primary" href="#find-a-state">Find A Pilot Car &rarr;</a>
         <a class="btn btn-outline" style="color:#fff;border-color:#fff" href="advertise/index.html">Advertise Your Company</a>
       </div>
     </section>
@@ -1143,17 +1195,12 @@ def build_home():
             <h2>Extensive Pilot Car Directory</h2>
             <p>Pilot cars are essential for the safety of your truck driver, their cargo, and other drivers on the road while transporting larger-than-normal loads. Wherever you need a pilot driver, our directory helps you find qualified, licensed drivers and dispatchers who can get your cargo to its destination safely and on time.</p>
             <p>Alongside contact information for pilot, escort, and flag car providers, we offer everything companies need to plan an oversize move: <a href="resources/road-conditions.html">road conditions</a>, <a href="resources/hotels.html">hotel lists</a>, permitting and insurance resources, and <a href="regulations/index.html">state and province guidelines</a>.</p>
-            <a class="btn btn-primary" href="directory/index.html">Browse the Directory</a>
+            <a class="btn btn-primary" href="#find-a-state">Choose a State</a>
           </div>
-          <div class="panel">
+          <div class="panel" id="find-a-state">
             <h2>Links to Drivers in Every US State and Canadian Province</h2>
             <p>When you're transporting oversize machinery across state or provincial lines, an escort service that knows local roads, curfews, and permit rules keeps your driver, your cargo, and the public safe. We list pilot car operators for every US state (except Hawaii, where the legacy directory did not maintain listings) and 11 Canadian provinces and territories.</p>
-            <div class="region-grid" style="margin-top:12px">
-              <a class="region-tile" href="directory/new-mexico.html"><span>New Mexico</span><span class="code">NM</span></a>
-              <a class="region-tile" href="directory/texas.html"><span>Texas</span><span class="code">TX</span></a>
-              <a class="region-tile" href="directory/california.html"><span>California</span><span class="code">CA</span></a>
-              <a class="region-tile" href="directory/index.html"><span>All States &rarr;</span></a>
-            </div>
+            {home_state_picker()}
           </div>
           <div class="feature-grid">
             <div class="feature-card">
@@ -1167,12 +1214,6 @@ def build_home():
               <h3>Hotel List</h3>
               <p>Discounted, pilot-car-friendly hotels near common oversize routes.</p>
               <a href="resources/hotels.html">Find A Hotel &rarr;</a>
-            </div>
-            <div class="feature-card">
-              <div class="icon">&#128666;</div>
-              <h3>Truck Stop List</h3>
-              <p>Truck stop and fuel stop locations by state for overnight parking.</p>
-              <a href="resources/truck-stops.html">View Truck Stops &rarr;</a>
             </div>
           </div>
         </div>
@@ -1384,7 +1425,7 @@ def build_directory_state_pages():
                                meta_description=f"Find a {name} pilot car service. {name} pilot car directory and listings for escort and flag car companies.",
                                active_key="directory", active_region_slug=slug, body_html=body,
                                canonical_path=f"directory/{slug}.html",
-                               breadcrumbs=[("Home", "index.html"), ("Pilot Car Directory", "directory/index.html"), (name, None)])
+                               breadcrumbs=[("Home", "index.html"), (name, None)])
         write(f"directory/{slug}.html", html_out)
 
 
@@ -1685,6 +1726,10 @@ def write_hotels_page(base):
           breadcrumbs=[("Home", "index.html"), ("Resources", "resources/index.html"), ("Find a Hotel", None)]))
 
 
+def _noindex(html_out):
+    return html_out.replace("<head>", '<head>\n<meta name="robots" content="noindex, follow">', 1)
+
+
 def build_resources():
     base = "../"
 
@@ -1698,7 +1743,7 @@ def build_resources():
       <div class="feature-grid">
         <div class="feature-card"><h3>Road Conditions</h3><p>All the latest road conditions links and phone numbers on one page.</p><a href="road-conditions.html">View Road Conditions &rarr;</a></div>
         <div class="feature-card"><h3>Hotel List</h3><p>Discounted, pilot-car-friendly hotels along common routes.</p><a href="hotels.html">Find A Hotel &rarr;</a></div>
-        <div class="feature-card"><h3>Truck Stop List</h3><p>Truck stop and fuel stop locations by state.</p><a href="truck-stops.html">View Truck Stops &rarr;</a></div>
+
         <div class="feature-card"><h3>Weather</h3><p>Check the weather anywhere, any state, with a forecast and moving animation map.</p><a href="https://www.accuweather.com/" target="_blank" rel="nofollow noopener">AccuWeather &#8599;</a></div>
         <div class="feature-card"><h3>Sunrise &amp; Sunset Tables</h3><p>Exact legal sunrise and sunset times for any city, per the US Naval Observatory — accepted at ports of entry in every state.</p><a href="https://www.sunrisesunset.com/USA/" target="_blank" rel="nofollow noopener">USA tables &#8599;</a> &middot; <a href="https://www.sunrisesunset.com/Canada/" target="_blank" rel="nofollow noopener">Canada tables &#8599;</a></div>
       </div>
@@ -1754,10 +1799,10 @@ def build_resources():
       </div>
     </div>
     """
-    write("resources/truck-stops.html", page_shell(base=base, title=f"Truck Stop Directory | {SITE_NAME}",
+    write("resources/truck-stops.html", _noindex(page_shell(base=base, title=f"Truck Stop Directory | {SITE_NAME}",
           meta_description="Truck stop and fuel stop directory by state for pilot car drivers and heavy-haul operators.",
           active_key="resources", body_html=ts_body, canonical_path="resources/truck-stops.html",
-          breadcrumbs=[("Home", "index.html"), ("Resources", "resources/index.html"), ("Truck Stops", None)]))
+          breadcrumbs=[("Home", "index.html"), ("Resources", "resources/index.html"), ("Truck Stops", None)])))
 
 
 # ---------------------------------------------------------------- ADVERTISE
@@ -1969,7 +2014,7 @@ def build_privacy():
 # Old flat-file URL -> new nested URL. Static entries are pages that don't
 # follow the per-state pattern; the per-state patterns are generated below.
 LEGACY_STATIC = {
-    "pilot_car_directory.html": "directory/index.html",
+    "pilot_car_directory.html": "index.html",
     "state_pilot_car_guidelines.html": "regulations/index.html",
     "marketing_opportunities.html": "advertise/index.html",
     "us_pilot_car_privacy.html": "privacy.html",
@@ -2002,9 +2047,9 @@ LEGACY_STATIC = {
     "bandb.html": "directory/alabama.html",            # B and B Pilot Car Service (AL)
     "golddust.html": "directory/louisiana.html",       # Gold Dust Pilot Cars (LA)
     "florida_pilot_car2.html": "directory/florida.html",
-    "pilot_car_directory-test.html": "directory/index.html",
-    "site_search.html": "directory/index.html",
-    "route_surveys.html": "directory/index.html",
+    "pilot_car_directory-test.html": "index.html",
+    "site_search.html": "index.html",
+    "route_surveys.html": "index.html",
     # Guides
     "quebec_guidelines.html": "regulations/quebec.html",
     "pilot_car_service_guide.html": "regulations/index.html",
@@ -2160,9 +2205,9 @@ def write_migration_map(rows):
 
 def build_root_files():
     write("robots.txt", "User-agent: *\nAllow: /\nSitemap: " + SITE_URL + "/sitemap.xml\n")
-    urls = ["index.html", "directory/index.html", "regulations/index.html",
+    urls = ["index.html", "regulations/index.html",
             "resources/index.html", "resources/road-conditions.html", "resources/hotels.html",
-            "resources/truck-stops.html", "advertise/index.html", "privacy.html"]
+            "advertise/index.html", "privacy.html"]
     if SERVICES.get("enabled", True):
         urls.append("design-services.html")
     for r in ALL_REGIONS:
@@ -2175,7 +2220,7 @@ def build_root_files():
           meta_description="Page not found.",
           active_key="home",
           body_html=f"""<div class="page-header"><h1>Page Not Found</h1><p>That page moved or never existed. Try the directory or regulations index.</p></div>
-          <div class="content"><a class="btn btn-primary" href="index.html">Back to Home</a> <a class="btn btn-outline" href="directory/index.html">Pilot Car Directory</a></div>""",
+          <div class="content"><a class="btn btn-primary" href="index.html">Back to Home</a> <a class="btn btn-outline" href="index.html#find-a-state">Find a State</a></div>""",
           canonical_path="404.html"))
 
 
@@ -2190,7 +2235,10 @@ def prepare_output():
 if __name__ == "__main__":
     prepare_output()
     build_home()
-    build_directory_hub()
+    # The Pilot Car Directory page is retired: states are in the sidebar (with
+    # counts) and on the home page. Its addresses send visitors home.
+    redirect_stub("directory/index.html", "index.html")
+    redirect_stub("directory/", "index.html")
     build_directory_state_pages()
     build_regulations_hub()
     build_regulations_state_pages()

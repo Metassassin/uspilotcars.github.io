@@ -1,0 +1,23 @@
+{
+  "businessName": "Roadrunner Pilot Car",
+  "phone": "719-281-0806",
+  "website": "",
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Added from the New Mexico page on the old site.",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "new-mexico"
+      ],
+      "location": "PUEBLO, CO",
+      "services": [],
+      "text": "",
+      "pinStates": []
+    }
+  ]
+}
