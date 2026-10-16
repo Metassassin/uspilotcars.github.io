@@ -1913,182 +1913,26 @@ content:
     type: collection
     path: content/listings
     format: json
-    filename: '{businessName}-{city}.json'
+    filename: '{businessName}.json'
     view:
       primary: businessName
       fields:
       - businessName
       - tier
-      - pinned
-      - city
       - active
-      - endDate
       sort:
       - businessName
-      - tier
-      - priority
-      - city
       search:
       - businessName
-      - city
       - phone
       default:
         sort: businessName
         order: asc
     fields:
     - name: businessName
-      label: Business name
+      label: Company name
       type: string
       required: true
-    - name: tier
-      label: Listing type
-      type: select
-      required: true
-      default: basic_listing
-      description: How this company appears in the state's company table. Ads go under Advertising > Ads.
-      options:
-        values:
-        - name: basic_listing
-          label: Basic listing
-        - name: bold_listing
-          label: Bold listing
-    - name: placement
-      label: Where it appears
-      type: select
-      description: Pick every state this listing appears in (a 4-state package gets 4 states). Choose "Every page"
-        for ads that run across the whole site.
-      options:
-        multiple: true
-        placeholder: Choose states
-        values:
-        - name: sitewide
-          label: ★ Every page of the site
-        - name: alabama
-          label: Alabama
-        - name: alaska
-          label: Alaska
-        - name: arizona
-          label: Arizona
-        - name: arkansas
-          label: Arkansas
-        - name: california
-          label: California
-        - name: colorado
-          label: Colorado
-        - name: connecticut
-          label: Connecticut
-        - name: delaware
-          label: Delaware
-        - name: florida
-          label: Florida
-        - name: georgia
-          label: Georgia
-        - name: hawaii
-          label: Hawaii
-        - name: idaho
-          label: Idaho
-        - name: illinois
-          label: Illinois
-        - name: indiana
-          label: Indiana
-        - name: iowa
-          label: Iowa
-        - name: kansas
-          label: Kansas
-        - name: kentucky
-          label: Kentucky
-        - name: louisiana
-          label: Louisiana
-        - name: maine
-          label: Maine
-        - name: maryland
-          label: Maryland
-        - name: massachusetts
-          label: Massachusetts
-        - name: michigan
-          label: Michigan
-        - name: minnesota
-          label: Minnesota
-        - name: mississippi
-          label: Mississippi
-        - name: missouri
-          label: Missouri
-        - name: montana
-          label: Montana
-        - name: nebraska
-          label: Nebraska
-        - name: nevada
-          label: Nevada
-        - name: new-hampshire
-          label: New Hampshire
-        - name: new-jersey
-          label: New Jersey
-        - name: new-mexico
-          label: New Mexico
-        - name: new-york
-          label: New York
-        - name: north-carolina
-          label: North Carolina
-        - name: north-dakota
-          label: North Dakota
-        - name: ohio
-          label: Ohio
-        - name: oklahoma
-          label: Oklahoma
-        - name: oregon
-          label: Oregon
-        - name: pennsylvania
-          label: Pennsylvania
-        - name: rhode-island
-          label: Rhode Island
-        - name: south-carolina
-          label: South Carolina
-        - name: south-dakota
-          label: South Dakota
-        - name: tennessee
-          label: Tennessee
-        - name: texas
-          label: Texas
-        - name: utah
-          label: Utah
-        - name: vermont
-          label: Vermont
-        - name: virginia
-          label: Virginia
-        - name: washington
-          label: Washington
-        - name: west-virginia
-          label: West Virginia
-        - name: wisconsin
-          label: Wisconsin
-        - name: wyoming
-          label: Wyoming
-        - name: alberta
-          label: Alberta (Canada)
-        - name: british-columbia
-          label: British Columbia (Canada)
-        - name: manitoba
-          label: Manitoba (Canada)
-        - name: new-brunswick
-          label: New Brunswick (Canada)
-        - name: newfoundland-and-labrador
-          label: Newfoundland and Labrador (Canada)
-        - name: northwest-territories
-          label: Northwest Territories (Canada)
-        - name: nova-scotia
-          label: Nova Scotia (Canada)
-        - name: ontario
-          label: Ontario (Canada)
-        - name: quebec
-          label: Quebec (Canada)
-        - name: saskatchewan
-          label: Saskatchewan (Canada)
-        - name: yukon
-          label: Yukon (Canada)
-    - name: city
-      label: City or service area
-      type: string
-      description: Spell it the same way as other listings in that city, e.g. AMARILLO.
     - name: phone
       label: Phone
       type: string
@@ -2099,6 +1943,193 @@ content:
       label: Website (optional)
       type: string
       description: e.g. www.example.com
+    - name: locations
+      label: Locations
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{city}, {state}'
+      description: Every city this company serves. Click "Add an entry", pick the state, type the city. The company
+        shows up under that city on that state's page. Only fill in the other boxes if this location is different
+        from the rest.
+      fields:
+      - name: state
+        label: State
+        type: select
+        required: true
+        options:
+          values:
+          - name: alabama
+            label: Alabama
+          - name: alaska
+            label: Alaska
+          - name: arizona
+            label: Arizona
+          - name: arkansas
+            label: Arkansas
+          - name: california
+            label: California
+          - name: colorado
+            label: Colorado
+          - name: connecticut
+            label: Connecticut
+          - name: delaware
+            label: Delaware
+          - name: florida
+            label: Florida
+          - name: georgia
+            label: Georgia
+          - name: hawaii
+            label: Hawaii
+          - name: idaho
+            label: Idaho
+          - name: illinois
+            label: Illinois
+          - name: indiana
+            label: Indiana
+          - name: iowa
+            label: Iowa
+          - name: kansas
+            label: Kansas
+          - name: kentucky
+            label: Kentucky
+          - name: louisiana
+            label: Louisiana
+          - name: maine
+            label: Maine
+          - name: maryland
+            label: Maryland
+          - name: massachusetts
+            label: Massachusetts
+          - name: michigan
+            label: Michigan
+          - name: minnesota
+            label: Minnesota
+          - name: mississippi
+            label: Mississippi
+          - name: missouri
+            label: Missouri
+          - name: montana
+            label: Montana
+          - name: nebraska
+            label: Nebraska
+          - name: nevada
+            label: Nevada
+          - name: new-hampshire
+            label: New Hampshire
+          - name: new-jersey
+            label: New Jersey
+          - name: new-mexico
+            label: New Mexico
+          - name: new-york
+            label: New York
+          - name: north-carolina
+            label: North Carolina
+          - name: north-dakota
+            label: North Dakota
+          - name: ohio
+            label: Ohio
+          - name: oklahoma
+            label: Oklahoma
+          - name: oregon
+            label: Oregon
+          - name: pennsylvania
+            label: Pennsylvania
+          - name: rhode-island
+            label: Rhode Island
+          - name: south-carolina
+            label: South Carolina
+          - name: south-dakota
+            label: South Dakota
+          - name: tennessee
+            label: Tennessee
+          - name: texas
+            label: Texas
+          - name: utah
+            label: Utah
+          - name: vermont
+            label: Vermont
+          - name: virginia
+            label: Virginia
+          - name: washington
+            label: Washington
+          - name: west-virginia
+            label: West Virginia
+          - name: wisconsin
+            label: Wisconsin
+          - name: wyoming
+            label: Wyoming
+          - name: alberta
+            label: Alberta (Canada)
+          - name: british-columbia
+            label: British Columbia (Canada)
+          - name: manitoba
+            label: Manitoba (Canada)
+          - name: new-brunswick
+            label: New Brunswick (Canada)
+          - name: newfoundland-and-labrador
+            label: Newfoundland and Labrador (Canada)
+          - name: northwest-territories
+            label: Northwest Territories (Canada)
+          - name: nova-scotia
+            label: Nova Scotia (Canada)
+          - name: ontario
+            label: Ontario (Canada)
+          - name: quebec
+            label: Quebec (Canada)
+          - name: saskatchewan
+            label: Saskatchewan (Canada)
+          - name: yukon
+            label: Yukon (Canada)
+      - name: city
+        label: City
+        type: string
+        required: true
+        description: e.g. AMARILLO, or STATEWIDE.
+      - name: phone
+        label: Phone here (optional)
+        type: string
+        description: Only if this location uses a different number.
+      - name: phone2
+        label: Second phone here (optional)
+        type: string
+      - name: style
+        label: Listing style here (optional)
+        type: select
+        default: same
+        options:
+          values:
+          - name: same
+            label: Same as the company
+          - name: basic
+            label: Basic
+          - name: bold
+            label: Bold
+          - name: highlight
+            label: Bold on green
+        description: For a customer who pays for bold in some states but not others.
+      - name: pinned
+        label: Pin to the top of this state's list (paid)
+        type: boolean
+        default: false
+    - name: tier
+      label: Listing type
+      type: select
+      required: true
+      default: basic_listing
+      description: Applies to every location unless a location says otherwise.
+      options:
+        values:
+        - name: basic_listing
+          label: Basic listing
+        - name: bold_listing
+          label: Bold listing
+    - name: highlight
+      label: Green background (Expand My Listing)
+      type: boolean
+      default: false
+      description: The paid upgrade that colours this listing's row so it stands out.
     - name: services
       label: Services offered
       type: select
@@ -2113,11 +2144,6 @@ content:
           label: Multiple cars
         - name: steering
           label: Steering
-    - name: highlight
-      label: Highlighted background (Expanded Bold)
-      type: boolean
-      default: false
-      description: The paid upgrade that colours this listing's row so it stands out.
     - name: badges
       label: Other badges
       type: string
@@ -2136,12 +2162,6 @@ content:
       options:
         min: 1
         max: 999
-    - name: pinned
-      label: Pin to top of the state list
-      type: boolean
-      default: false
-      description: Paid upgrade. Puts this listing above every city in the company list on each of its state pages,
-        marked "Top listing". Pinned listings are ordered by package, then by the order number above.
     - name: active
       label: Show on the website
       type: boolean
