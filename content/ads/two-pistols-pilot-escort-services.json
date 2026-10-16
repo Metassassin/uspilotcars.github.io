@@ -78,13 +78,6 @@
       "nameColor": "black",
       "nameBigger": false,
       "phoneColor": "red",
-      "highlights": [
-        {
-          "text": "303-667-7007",
-          "color": "red",
-          "underline": false
-        }
-      ],
       "font": "tahoma",
       "align": "center",
       "border": "thin",
