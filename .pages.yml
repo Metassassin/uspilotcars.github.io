@@ -216,6 +216,8 @@ content:
           type: select
           options:
             values:
+            - name: home
+              label: ★ Home page
             - name: alabama
               label: Alabama
             - name: alaska
@@ -340,7 +342,8 @@ content:
               label: Yukon (Canada)
             multiple: true
             placeholder: Choose states
-          description: The strip appears in the State Listings section of each state ticked here.
+          description: The strip appears in the State Listings section of each state ticked here. Choose "Home page"
+            to show it on the home page too.
           required: true
         - name: lines
           label: Lines of text (left column)
@@ -1137,6 +1140,8 @@ content:
           type: select
           options:
             values:
+            - name: home
+              label: ★ Home page
             - name: alabama
               label: Alabama
             - name: alaska
@@ -1261,7 +1266,8 @@ content:
               label: Yukon (Canada)
             multiple: true
             placeholder: Choose states
-          description: The picture appears in the State Listings section of each state ticked here.
+          description: The picture appears in the State Listings section of each state ticked here. Choose "Home
+            page" to show it on the home page too.
           required: true
         - name: image
           label: Strip picture
@@ -1632,6 +1638,8 @@ content:
         required: true
         options:
           values:
+          - name: home
+            label: ★ Home page
           - name: alabama
             label: Alabama
           - name: alaska
