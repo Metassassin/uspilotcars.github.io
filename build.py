@@ -558,6 +558,7 @@ def sidebar_html(base, active_key, active_region_slug=None):
           {LOGO_SVG}
         </a>
         <span class="brand-tagline">{SITE_TAGLINE}</span>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">&#9790; Dark mode</button>
       </div>
       <div class="sidebar-scroll">
         <nav class="nav-section" aria-label="Primary">
@@ -585,7 +586,10 @@ def topbar_html(base):
       <a class="logo-link" href="{base}index.html" aria-label="{SITE_NAME} home">
         {LOGO_SVG}
       </a>
-      <button class="menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="primary-sidebar">&#9776; Menu</button>
+      <div class="topbar-actions">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">&#9790; Dark mode</button>
+        <button class="menu-toggle" data-menu-toggle aria-expanded="false" aria-controls="primary-sidebar">&#9776; Menu</button>
+      </div>
     </div>
     """
 
@@ -1106,7 +1110,7 @@ ASSET_V = {k: asset_version(f"assets/{k}") for k in ("css/style.css", "js/main.j
 
 
 def page_shell(*, base, title, meta_description, active_key, body_html,
-               active_region_slug=None, breadcrumbs=None, canonical_path=""):
+               active_region_slug=None, breadcrumbs=None, canonical_path="", show_sponsors=True):
     crumbs_html = ""
     if breadcrumbs:
         parts = []
@@ -1120,6 +1124,8 @@ def page_shell(*, base, title, meta_description, active_key, body_html,
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
+<script>/* theme: the visitor's choice, else their device setting -- set before the page paints, so no flash */
+(function(){{try{{var t=localStorage.getItem("uspc-theme");if(t!=="dark"&&t!=="light"){{t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}}document.documentElement.setAttribute("data-theme",t)}}catch(e){{}}}})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title>
@@ -1144,7 +1150,7 @@ def page_shell(*, base, title, meta_description, active_key, body_html,
 <div class="main-col">
   <main id="main-content">
   {crumbs_html and f'<div style="padding:14px 40px 0"><div class="breadcrumbs-wrap">{crumbs_html}</div></div>' or ""}
-  {place_after_page_banner(body_html, sitewide_banner_block(base))}
+  {place_after_page_banner(body_html, sitewide_banner_block(base) if show_sponsors else "")}
   </main>
   <footer class="site-footer">
     <div><strong>{SITE_NAME} LLC</strong> &trade; — All rights reserved.</div>
@@ -1172,6 +1178,18 @@ def write(path, contents, *, into=None):
 
 
 # ---------------------------------------------------------------- HOME
+def home_state_listings():
+    """State Listing ads placed on the home page (the "Home page" choice in
+    an ad's state list), in the order set under State page order."""
+    base = ""
+    ads, _pin, _rest = state_ads_for("home", "the home page")
+    if not ads:
+        return ""
+    return page_section("state", "&#9670; State Listings", "Featured pilot car companies",
+                        f'<div class="strip-grid">{"".join(compact_ad(a, base) for a in ads)}</div>',
+                        count=len(ads), extra_class="sponsor-band home-band")
+
+
 def home_state_picker():
     """Every state and province with its number of listings -- replaces the
     old Pilot Car Directory page (on phones the sidebar sits behind the Menu
@@ -1197,6 +1215,7 @@ def build_home():
         <a class="btn btn-outline" style="color:#fff;border-color:#fff" href="advertise/index.html">Advertise Your Company</a>
       </div>
     </section>
+    {home_state_listings()}
     <div class="stat-strip">
       <div class="stat"><div class="num">50</div><div class="label">US States Covered</div></div>
       <div class="stat"><div class="num">11</div><div class="label">Canadian Provinces</div></div>
@@ -1308,7 +1327,7 @@ def service_chips(services):
                    for s in services or [])
 
 
-def company_row(a, pinned=False):
+def company_row(a, pinned=False, show_city=True):
     """One pilot car company in the city table. Paid upgrades (bold and
     above) are visibly bolder than basic listings -- that difference is
     what a Bold Listing customer is paying for."""
@@ -1327,14 +1346,16 @@ def company_row(a, pinned=False):
     chips = service_chips(a.get("services")) + "".join(
         f'<span class="svc-chip badge-chip">{esc(b)}</span>' for b in a.get("badges") or [])
     tag = f'<div class="co-tag">{esc(a["description"])}</div>' if a.get("description") and tier in ("basic_listing", "bold_listing") else ""
+    city_cell = f'<td class="city">{esc(a.get("city") or "")}</td>' if show_city else ""
+    city_line = (f'<div class="co-city">{esc(a.get("city"))}</div>' if pinned and not show_city and a.get("city") else "")
     return f"""<tr class="{row_class}">
-      <td class="city">{esc(a.get("city") or "")}</td>
-      <td>{'<div class="pin-tag">&#9733; Top listing</div>' if pinned else ''}<div class="co-name">{name}</div>{tag}{f'<div class="co-svcs">{chips}</div>' if chips else ''}</td>
+      {city_cell}
+      <td>{'<div class="pin-tag">&#9733; Top listing</div>' if pinned else ''}<div class="co-name">{name}</div>{city_line}{tag}{f'<div class="co-svcs">{chips}</div>' if chips else ''}</td>
       <td class="phone">{phones}</td>
     </tr>"""
 
 
-def hotel_row(h):
+def hotel_row(h, show_city=True):
     """A paid hotel placement, shown INSIDE the city table among the pilot
     car companies for the same city. That adjacency is the product: a
     driver looking up Amarillo pilot cars sees the Amarillo hotel right
@@ -1345,8 +1366,9 @@ def hotel_row(h):
     if h.get("website"):
         name = f'<a href="{esc(h["website"])}" target="_blank" rel="nofollow noopener">{name}</a>'
     phone = f'<a href="{tel_href(h["phone"])}">{esc(h["phone"])}</a>' if h.get("phone") else ""
+    city_cell = f'<td class="city">{esc(h.get("city") or "")}</td>' if show_city else ""
     return f"""<tr class="row-hotel">
-      <td class="city">{esc(h.get("city") or "")}</td>
+      {city_cell}
       <td><div class="hotel-tag">Hotel</div><div class="co-name">{name}</div>
           <div class="hotel-meta">{esc(h.get("address") or "")}{' &middot; ' + notes if notes else ''}</div></td>
       <td class="phone">{phone}</td>
@@ -1359,8 +1381,13 @@ def nearby_html(slug, section):
     neighbours = [n for n in ADJACENCY.get(slug, []) if n in SLUG_TO_NAME]
     if not neighbours:
         return ""
+    def count(n):
+        c = LISTING_COUNTS.get(n, 0) if section == "directory" else 0
+        return f' <span class="pc-count">{c}</span>' if c else ""
     links = "".join(
-        f'<li><a href="../{section}/{n}.html">{esc(SLUG_TO_NAME[n])}</a></li>'
+        f'<li><a href="../{section}/{n}.html"'
+        f'{f" aria-label=" + chr(34) + esc(SLUG_TO_NAME[n]) + ", " + count_label(n) + chr(34) if section == "directory" else ""}>'
+        f'{esc(SLUG_TO_NAME[n])}{count(n)}</a></li>'
         for n in sorted(neighbours, key=lambda n: SLUG_TO_NAME[n]))
     label = "pilot car directories" if section == "directory" else "regulations"
     return f"""<nav class="panel nearby" aria-label="Nearby {label}">
@@ -1393,9 +1420,28 @@ def build_directory_state_pages():
         table_ads = [a for a in region_ads
                      if a["tier"] in ("bold_listing", "basic_listing") or (a.get("city") or "").strip()]
         pinned = [a for a in table_ads if a.get("pinned")]        # region_ads is already in order
-        rows = [(a.get("city") or "", 1, ad_sort_key(a), company_row(a)) for a in table_ads if not a.get("pinned")]
-        rows += [(h.get("city") or "", 0, (0,), hotel_row(h)) for h in hotels]
-        rows.sort(key=lambda x: (x[0].lower(), x[1], x[2]))
+        rows = [(a.get("city") or "", 1, ad_sort_key(a), company_row(a, show_city=False)) for a in table_ads if not a.get("pinned")]
+        rows += [(h.get("city") or "", 0, (0,), hotel_row(h, show_city=False)) for h in hotels]
+        rows.sort(key=lambda x: (" ".join(x[0].lower().split()), x[1], x[2]))
+        # Group by city, so each city appears once with its companies under it.
+        # Spelling variants ("AMARILLO" / "Amarillo") share a group, shown
+        # with the most common spelling.
+        groups = []
+        for city, kind, _k, html_row in rows:
+            key = " ".join(city.lower().split())
+            if not groups or groups[-1]["key"] != key:
+                groups.append({"key": key, "names": [], "rows": [], "companies": 0})
+            groups[-1]["names"].append(city.strip())
+            groups[-1]["rows"].append(html_row)
+            groups[-1]["companies"] += kind == 1
+        def group_title(g):
+            names = [n for n in g["names"] if n] or ["Other"]
+            return max(set(names), key=lambda n: (names.count(n), n.isupper()))
+        def group_html(title, body, count):
+            return (f'<tbody class="city-group"><tr class="city-head"><th colspan="2" scope="rowgroup">{esc(title)}'
+                    f'{f" <span class=cg-count>{count}</span>" if count > 1 else ""}</th></tr>{body}</tbody>')
+        pinned_html = group_html("\u2605 Top listings", "".join(company_row(a, pinned=True, show_city=False) for a in pinned), 0) if pinned else ""
+        groups_html = "".join(group_html(group_title(g), "".join(g["rows"]), g["companies"]) for g in groups)
 
         if rows or pinned:
             legend = "".join(f'<span class="svc-chip">{esc(v)}</span>' for v in SERVICE_LABELS.values())
@@ -1403,8 +1449,8 @@ def build_directory_state_pages():
               <p class="legend">Services offered are shown under each company: {legend}</p>
               <div class="table-scroll">
               <table class="listing-table">
-                <thead><tr><th>City</th><th>Company</th><th>Phone</th></tr></thead>
-                <tbody>{''.join(company_row(a, pinned=True) for a in pinned)}{''.join(row for *_, row in rows)}</tbody>
+                <thead><tr><th>Company</th><th>Phone</th></tr></thead>
+                {pinned_html}{groups_html}
               </table>
               </div>"""
             table_html = page_section("basic", f"{esc(name)} Pilot Car Directory", "Every company, by city",
@@ -2000,7 +2046,8 @@ def build_order_pages(pkgs_json):
     <script src="../assets/js/cart.js?v={ASSET_V['js/cart.js']}"></script>"""
     write("advertise/order.html", _noindex(page_shell(base=base, title=f"Your order | {SITE_NAME}",
           meta_description="Your advertising order.", active_key="advertise", body_html=body,
-          canonical_path="advertise/order.html", breadcrumbs=[("Home", "index.html"), ("Advertise", "advertise/index.html"), ("Your order", None)])))
+          canonical_path="advertise/order.html", breadcrumbs=[("Home", "index.html"), ("Advertise", "advertise/index.html"), ("Your order", None)],
+          show_sponsors=False)))
     thanks = """
     <div class="page-header"><div class="eyebrow">Advertise With Us</div><h1>Thank you &mdash; we have your order</h1>
       <p>We'll be in touch shortly to confirm your ad and set up billing. Questions? Call <a href="tel:8662592750">866-259-2750</a>.</p></div>

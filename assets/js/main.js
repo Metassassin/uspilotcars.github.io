@@ -221,4 +221,33 @@
     });
     decide();
   })();
+  // ---- Dark mode switch ---------------------------------------------------
+  // Remembers the visitor's choice; until they choose, follows the device.
+  (function () {
+    var root = document.documentElement;
+    var btns = document.querySelectorAll("[data-theme-toggle]");
+    function paint() {
+      var dark = root.getAttribute("data-theme") === "dark";
+      btns.forEach(function (b) {
+        b.setAttribute("aria-pressed", dark ? "true" : "false");
+        b.innerHTML = dark ? "&#9728; Light mode" : "&#9790; Dark mode";
+      });
+    }
+    btns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        try { localStorage.setItem("uspc-theme", next); } catch (e) {}
+        paint();
+      });
+    });
+    var mq = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
+    function follow(e) {
+      var chosen = null;
+      try { chosen = localStorage.getItem("uspc-theme"); } catch (er) {}
+      if (chosen !== "dark" && chosen !== "light") { root.setAttribute("data-theme", e.matches ? "dark" : "light"); paint(); }
+    }
+    if (mq) { if (mq.addEventListener) mq.addEventListener("change", follow); else if (mq.addListener) mq.addListener(follow); }
+    paint();
+  })();
 })();

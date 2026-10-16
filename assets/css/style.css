@@ -933,3 +933,77 @@ body:has(#cart-bar:not([hidden])){ padding-bottom:84px; }
   .price-table tbody td.price-cell{ flex:1 1 0; min-width:0; box-sizing:border-box; }
 }
 @media (max-width: 640px){ .price-table td.price-cell{ white-space:normal; } }
+
+/* ===================================================================
+   Directory table grouped by city: one header per city
+   =================================================================== */
+.listing-table .city-head th{ text-align:left; padding:9px 12px; background:var(--paper-dim-2);
+  border-top:2px solid var(--navy-700); font-family:var(--font-display); font-size:.95rem;
+  letter-spacing:.06em; text-transform:uppercase; color:var(--ink); }
+.cg-count{ display:inline-block; margin-left:6px; font-family:var(--font-body); font-size:.7rem; font-weight:700;
+  padding:0 7px; border-radius:999px; background:var(--navy-700); color:#fff; letter-spacing:0; vertical-align:2px; }
+.co-city{ font-size:.8rem; font-weight:700; text-transform:uppercase; color:var(--ink-muted); margin-top:1px; }
+@media (max-width: 640px){ .listing-table .city-head th{ display:block; } }
+
+/* Breadcrumbs ("Home / New Mexico"): readable on the light page background */
+.breadcrumbs{ color:var(--ink-muted); }
+.breadcrumbs a{ color:var(--navy-700); text-decoration:underline; text-underline-offset:2px; }
+.breadcrumbs .sep{ color:var(--ink-faint); }
+
+/* State Listings on the home page */
+.home-band{ margin:22px 40px 0; }
+@media (max-width: 640px){ .home-band{ margin:14px 12px 0; } }
+
+/* Theme switch */
+.theme-toggle{ display:inline-flex; align-items:center; gap:6px; font:600 .8rem/1 var(--font-body); padding:7px 11px;
+  border:1px solid var(--navy-line); border-radius:999px; background:transparent; color:#e6edf2; cursor:pointer; }
+.theme-toggle:hover{ border-color:var(--amber-500); }
+.theme-toggle:focus-visible{ outline:2px solid var(--amber-500); outline-offset:2px; }
+.sidebar-brand .theme-toggle{ margin-top:12px; }
+
+/* ===================================================================
+   Dark theme. Advertisers' artwork and designed strips keep their own
+   colours in both themes; everything around them goes dark.
+   =================================================================== */
+[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#13202b; --paper-dim:#0c161f; --paper-dim-2:#1a2a37;
+  --border:#2b3d4c; --border-strong:#3c5163;
+  --ink:#e4ecf1; --ink-muted:#aab8c3; --ink-faint:#8395a2;
+  --amber-100:#3b2b16;
+}
+[data-theme="dark"] body{ background:var(--paper-dim); color:var(--ink); }
+[data-theme="dark"] main a:not(.btn):not(.region-tile){ color:#9cc8ee; }
+[data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, [data-theme="dark"] h4{ color:var(--ink); }
+[data-theme="dark"] .page-header h1, [data-theme="dark"] .hero h1{ color:#fff; }
+[data-theme="dark"] .breadcrumbs a{ color:#9cc8ee; }
+[data-theme="dark"] .btn-outline{ color:var(--ink); border-color:var(--border-strong); }
+[data-theme="dark"] .btn-primary, [data-theme="dark"] .btn-primary:visited{ color:var(--navy-950); }
+[data-theme="dark"] .ad-name, [data-theme="dark"] .price, [data-theme="dark"] .sponsor-band-head h2{ color:var(--ink); }
+[data-theme="dark"] footer.site-footer a{ color:#9cc8ee; }
+[data-theme="dark"] .svc-card, [data-theme="dark"] .sponsor-band, [data-theme="dark"] .lbox-flow,
+[data-theme="dark"] .ad-compact-text, [data-theme="dark"] .super-ad, [data-theme="dark"] .super-list,
+[data-theme="dark"] .autoscroll-toggle{ background:var(--paper); color:var(--ink); }
+[data-theme="dark"] input, [data-theme="dark"] select, [data-theme="dark"] textarea{ background:var(--paper-dim); color:var(--ink); border-color:var(--border-strong); }
+[data-theme="dark"] .row-highlight td, [data-theme="dark"] .row-pinned.row-highlight td{ background:#1d3a24; }
+[data-theme="dark"] .row-pinned td, [data-theme="dark"] .super-entry.super-pinned{ background:#1a2d42; }
+[data-theme="dark"] .pin-tag, [data-theme="dark"] .pkg-states, [data-theme="dark"] .state-band .sb-mark{ color:#9cc8ee; }
+[data-theme="dark"] .se-name a{ color:#8fb8ff; }
+[data-theme="dark"] .se-phone, [data-theme="dark"] .se-phones, [data-theme="dark"] .se-svc{ color:#ff8a8a; }
+[data-theme="dark"] .price-badge, [data-theme="dark"] .deal-chip,
+[data-theme="dark"] .state-picker .region-tile .code{ color:#f5c48a; }
+[data-theme="dark"] .form-error{ background:#4a1d1d; color:#ffd6d6; }
+[data-theme="dark"] .listing-table .city-head th{ border-top-color:#3c5f80; }
+[data-theme="dark"] .sec-count, [data-theme="dark"] .cg-count{ background:#2c4f6c; }
+.topbar-actions{ display:flex; align-items:center; gap:8px; }
+.topbar .theme-toggle{ padding:8px 10px; }
+/* one switch at a time: the phone header has its own below 900px */
+@media (max-width: 900px){ .sidebar-brand .theme-toggle{ display:none; } }
+@media (min-width: 901px){ .topbar .theme-toggle{ display:none; } }
+.breadcrumbs .sep{ color:var(--ink-muted); }
+[data-theme="dark"] .hotel-tag{ color:#f5c48a; }
+/* "Skip to main content" (for keyboard users): high contrast in both themes */
+a.visually-hidden, [data-theme="dark"] a.visually-hidden{ color:var(--navy-950); background:var(--amber-500); }
+a.visually-hidden:focus, a.visually-hidden:focus-visible{ position:fixed; top:10px; left:10px; z-index:200;
+  width:auto; height:auto; clip:auto; clip-path:none; overflow:visible; white-space:nowrap; margin:0;
+  padding:10px 14px; border-radius:var(--radius-sm); font-weight:700; box-shadow:0 4px 14px rgba(0,0,0,.3); }
