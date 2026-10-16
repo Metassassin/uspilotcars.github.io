@@ -1,0 +1,26 @@
+{
+  "businessName": "RM PILOT CAR",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "760-490-4034",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "steering"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "california",
+      "city": "APPLE VALLEY"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page california_pilot_car.html, row 2. Original cell colour: #ffffff."
+}

@@ -1,0 +1,26 @@
+{
+  "businessName": "MandK PILOT SERVICE, INC.",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "(248) 761-5343",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "multi_car"
+  ],
+  "badges": [
+    "CAN LEGAL"
+  ],
+  "description": "",
+  "locations": [
+    {
+      "state": "michigan",
+      "city": "SOUTHFIELD"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page michigan_pilot_car.html, row 14. Original cell colour: #ffffff."
+}

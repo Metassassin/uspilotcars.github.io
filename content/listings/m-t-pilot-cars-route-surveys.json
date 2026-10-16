@@ -1,0 +1,22 @@
+{
+  "businessName": "M & T PILOT CARS/ROUTE SURVEYS",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "716-945-5814",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "new-york",
+      "city": "GREAT VALLEY"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page new_york_pilot_car.html, row 4. Original cell colour: white."
+}

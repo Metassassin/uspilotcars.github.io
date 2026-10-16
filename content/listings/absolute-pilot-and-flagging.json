@@ -1,0 +1,27 @@
+{
+  "businessName": "ABSOLUTE PILOT AND FLAGGING",
+  "tier": "bold_listing",
+  "highlight": true,
+  "phone": "503-269-6705",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "steering"
+  ],
+  "badges": [
+    "FLAGGING"
+  ],
+  "description": "",
+  "locations": [
+    {
+      "state": "oregon",
+      "city": "JEFFERSON"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page oregon_pilot_car.html, row 9. Original cell colour: #00ff00."
+}

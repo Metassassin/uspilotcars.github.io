@@ -1,0 +1,24 @@
+{
+  "businessName": "AMERICAN PILOT CAR SERVICE",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "661-472-9100",
+  "phone2": "661-747-9255",
+  "website": "",
+  "services": [
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "california",
+      "city": "BAKERSFIELD"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page california_pilot_car.html, row 5. Original cell colour: #ffffff."
+}

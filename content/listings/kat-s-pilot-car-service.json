@@ -1,0 +1,25 @@
+{
+  "businessName": "KAT' S PILOT CAR SERVICE",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "719-342-5255",
+  "phone2": "",
+  "website": "http://Katspilotcar.com",
+  "services": [],
+  "badges": [
+    "WITPAC",
+    "CEVO"
+  ],
+  "description": "",
+  "locations": [
+    {
+      "state": "colorado",
+      "city": "BURLINGTON"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page colorado_pilot_car.html, row 6. Original cell colour: #ffffff."
+}

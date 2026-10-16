@@ -1,0 +1,30 @@
+{
+  "businessName": "LANE 3 PILOT CAR",
+  "tier": "bold_listing",
+  "highlight": true,
+  "phone": "907-957-0107",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "multi_car"
+  ],
+  "badges": [
+    "WITPAC",
+    "NY CERT",
+    "TWIC",
+    "CEVO"
+  ],
+  "description": "",
+  "locations": [
+    {
+      "state": "tennessee",
+      "city": "JOHNSON CITY"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page tennesee_pilot_car.html, row 8. Original cell colour: #00ff00."
+}

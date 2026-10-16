@@ -1,0 +1,25 @@
+{
+  "businessName": "IOWA PILOT CARS",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "563-543-6188",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "iowa",
+      "city": "DUBUQUE"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page iowa_pilot_car.html, row 8. Original cell colour: white."
+}

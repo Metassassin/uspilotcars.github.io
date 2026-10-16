@@ -1,0 +1,22 @@
+{
+  "businessName": "Security Pilot Car Service LLC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "575-208-1398",
+  "phone2": "575-420-5058",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "new-mexico",
+      "city": "Roswell"
+    }
+  ],
+  "priority": 15,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": ""
+}

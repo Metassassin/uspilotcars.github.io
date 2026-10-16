@@ -1,0 +1,26 @@
+{
+  "businessName": "EASY PILOT CAR",
+  "tier": "bold_listing",
+  "highlight": true,
+  "phone": "256-466-5265",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "alabama",
+      "city": "DECATUR/HUNTSVILLE"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page alabama_pilot_car.html, row 12. Original cell colour: #00ff00."
+}

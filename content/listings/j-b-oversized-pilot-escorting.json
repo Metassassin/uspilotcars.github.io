@@ -1,0 +1,26 @@
+{
+  "businessName": "J & B OVERSIZED PILOT/ESCORTING",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "902-759-8055",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "steering"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "nova-scotia",
+      "city": "NEW GLASGOW"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page nova_scotia_pilot_cars.html, row 1. Original cell colour: #ffffff."
+}

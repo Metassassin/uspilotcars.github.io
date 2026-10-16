@@ -1,0 +1,22 @@
+{
+  "businessName": "ROGUE HOTSHOTS PCS LLC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "307-351-2322",
+  "phone2": "",
+  "website": "https://www.facebook.com/Rogue-Hotshots-PCS-LLC-101090",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "wyoming",
+      "city": "MOORCROFT"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page wyoming_pilot_car.html, row 19. Original cell colour: #ffffff."
+}

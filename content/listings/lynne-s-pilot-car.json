@@ -1,0 +1,24 @@
+{
+  "businessName": "LYNNE'S PILOT CAR",
+  "tier": "bold_listing",
+  "highlight": true,
+  "phone": "541-419-1241",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "oregon",
+      "city": "REDMOND"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page oregon_pilot_car.html, row 28. Original cell colour: #00ff00."
+}

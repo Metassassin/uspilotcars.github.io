@@ -1,0 +1,38 @@
+{
+  "businessName": "TAG & TITLE AT HILLTOP, P.E.V.O.",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "202-826-0186",
+  "phone2": "240-858-2730",
+  "website": "https://www.tagandtitleathilltop.com/",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "delaware",
+      "city": "NEWARK"
+    },
+    {
+      "state": "maryland",
+      "city": "BALTIMORE"
+    },
+    {
+      "state": "new-jersey",
+      "city": "NEWARK"
+    },
+    {
+      "state": "virginia",
+      "city": "ALEXANDRIA"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page new_jersey_pilot_car.html, row 2. Original cell colour: #ffffff. Combined from 4 old entries."
+}

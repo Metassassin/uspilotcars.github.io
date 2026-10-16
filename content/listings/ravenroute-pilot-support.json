@@ -1,0 +1,22 @@
+{
+  "businessName": "RAVENROUTE PILOT SUPPORT.",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "(509) 416-6162",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "washington",
+      "city": "PASCO"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page washington_pilot_car.html, row 8. Original cell colour: #ffffff."
+}

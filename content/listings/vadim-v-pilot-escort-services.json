@@ -1,0 +1,24 @@
+{
+  "businessName": "VADIM V PILOT ESCORT SERVICES",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "916-955-8647",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [
+    "PERMITS"
+  ],
+  "description": "",
+  "locations": [
+    {
+      "state": "south-carolina",
+      "city": "GREENVILLE"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page south_carolina_pilot_car.html, row 13. Original cell colour: #ffffff."
+}

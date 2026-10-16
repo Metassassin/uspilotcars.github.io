@@ -1,0 +1,27 @@
+{
+  "businessName": "BIG SKY PILOTS",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "406-697-5909",
+  "phone2": "",
+  "website": "http://BIGSKYPILOTS.COM",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "montana",
+      "city": "BILLINGS"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page montana_pilot_car.html, row 2. Original cell colour: #ffffff."
+}

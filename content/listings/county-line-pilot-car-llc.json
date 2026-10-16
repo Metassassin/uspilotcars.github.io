@@ -1,0 +1,34 @@
+{
+  "businessName": "COUNTY LINE PILOT CAR, LLC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "402-984-0976",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "iowa",
+      "city": "COUNCIL BLUFFS"
+    },
+    {
+      "state": "kansas",
+      "city": "SALINA"
+    },
+    {
+      "state": "nebraska",
+      "city": "GRAND ISLAND"
+    },
+    {
+      "state": "south-dakota",
+      "city": "YANKTON"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page iowa_pilot_car.html, row 4. Original cell colour: #ffffff. Combined from 4 old entries."
+}

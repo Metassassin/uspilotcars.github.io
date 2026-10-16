@@ -1,0 +1,22 @@
+{
+  "businessName": "Rockin' JT",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "719-641-9158",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "new-mexico",
+      "city": "Socorro"
+    }
+  ],
+  "priority": 16,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": ""
+}

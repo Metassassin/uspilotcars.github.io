@@ -1,0 +1,26 @@
+{
+  "businessName": "ROADWAY PILOTS LLC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "704-492-3643",
+  "phone2": "",
+  "website": "http://www.RoadwayPilots.com",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "south-carolina",
+      "city": "FORT MILL"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page south_carolina_pilot_car.html, row 11. Original cell colour: #ffffff."
+}

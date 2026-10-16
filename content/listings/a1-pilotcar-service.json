@@ -1,0 +1,27 @@
+{
+  "businessName": "A1 PILOTCAR SERVICE",
+  "tier": "bold_listing",
+  "highlight": true,
+  "phone": "205-269-2929",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey"
+  ],
+  "badges": [
+    "NATIONWIDE"
+  ],
+  "description": "Nationwide Service",
+  "locations": [
+    {
+      "state": "alabama",
+      "city": "BIRMINGHAM"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page alabama_pilot_car.html, row 4. Original cell colour: #00ff00."
+}

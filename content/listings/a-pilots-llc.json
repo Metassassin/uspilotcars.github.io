@@ -1,0 +1,22 @@
+{
+  "businessName": "A+ PILOTS, LLC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "712-335-2699",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "iowa",
+      "city": "SIOUX CITY"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page iowa_pilot_car.html, row 16. Original cell colour: #ffffff."
+}

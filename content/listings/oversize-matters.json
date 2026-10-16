@@ -1,0 +1,25 @@
+{
+  "businessName": "OverSIZE Matters",
+  "tier": "bold_listing",
+  "highlight": true,
+  "phone": "765-389-3168",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "Big Load Vehicle Escorts",
+  "locations": [
+    {
+      "state": "indiana",
+      "city": "ANDERSON"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page indiana_pilot_car.html, row 1. Original cell colour: #00ff00."
+}

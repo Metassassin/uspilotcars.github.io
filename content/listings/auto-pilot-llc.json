@@ -1,0 +1,22 @@
+{
+  "businessName": "AUTO PILOT LLC",
+  "tier": "bold_listing",
+  "highlight": true,
+  "phone": "360-430-5021",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "Just a call away!",
+  "locations": [
+    {
+      "state": "washington",
+      "city": "LONGVIEW"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page washington_pilot_car.html, row 3. Original cell colour: #00ff00."
+}

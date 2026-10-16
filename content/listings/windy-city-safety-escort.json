@@ -1,0 +1,25 @@
+{
+  "businessName": "WINDY CITY SAFETY ESCORT",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "219-671-3208",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "Adv notice only",
+  "locations": [
+    {
+      "state": "indiana",
+      "city": "HAMMOND"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page indiana_pilot_car.html, row 19. Original cell colour: #ffffff."
+}

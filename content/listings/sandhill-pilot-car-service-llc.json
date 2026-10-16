@@ -1,0 +1,24 @@
+{
+  "businessName": "SANDHILL PILOT CAR SERVICE LLC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "863-232-9211",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "arkansas",
+      "city": "FORT SMITH"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page arkansas_pilot_car.html, row 7. Original cell colour: white."
+}

@@ -1,0 +1,22 @@
+{
+  "businessName": "A Better Choice OES (Oversize Escort Service)",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "(208) 479-7290",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "new-mexico",
+      "city": "Pocatello, ID / Farmington, NM"
+    }
+  ],
+  "priority": 11,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": ""
+}

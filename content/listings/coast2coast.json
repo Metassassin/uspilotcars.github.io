@@ -1,0 +1,28 @@
+{
+  "businessName": "COAST2COAST",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "318-432-4270",
+  "phone2": "",
+  "website": "http://www.c2cescorts.com",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [
+    "FLAGGER"
+  ],
+  "description": "",
+  "locations": [
+    {
+      "state": "louisiana",
+      "city": "MONROE"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page louisiana_pilot_car.html, row 5. Original cell colour: #ffffff."
+}

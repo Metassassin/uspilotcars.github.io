@@ -1,0 +1,35 @@
+{
+  "businessName": "ANSTORM SABRE PCS, LLC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "402-270-2125",
+  "phone2": "",
+  "website": "https://marcyolsufka.wixsite.com/mysite",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "arizona",
+      "city": "TUCSON"
+    },
+    {
+      "state": "nebraska",
+      "city": "COLUMBUS"
+    },
+    {
+      "state": "new-mexico",
+      "city": "Albuquerque",
+      "style": "bold"
+    },
+    {
+      "state": "oklahoma",
+      "city": "OKLAHOMA CITY"
+    }
+  ],
+  "priority": 10,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page nebraska_pilot_car.html, row 5. Original cell colour: white. Combined from 4 old entries."
+}

@@ -1,0 +1,25 @@
+{
+  "businessName": "FRONTIER PILOT SERVICES, LLC",
+  "tier": "bold_listing",
+  "highlight": true,
+  "phone": "307-632-6409",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey"
+  ],
+  "badges": [],
+  "description": "RELIABLE SERVICE SINCE 1983",
+  "locations": [
+    {
+      "state": "wyoming",
+      "city": "CHEYENNE"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page wyoming_pilot_car.html, row 10. Original cell colour: #00ff00."
+}

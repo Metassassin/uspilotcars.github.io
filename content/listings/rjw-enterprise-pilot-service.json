@@ -1,0 +1,22 @@
+{
+  "businessName": "RJW ENTERPRISE PILOT SERVICE",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "604-512-8563",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "british-columbia",
+      "city": "MISSION"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page british_columbia_pilot_cars.html, row 1. Original cell colour: #ffffff."
+}

@@ -1,0 +1,22 @@
+{
+  "businessName": "OUTLAW ESCORT SERVICE",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "505-690-0445",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "arizona",
+      "city": "SPRINGERVILLE/SHOW LOW"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page arizona_pilot_car.html, row 13. Original cell colour: #ffffff."
+}

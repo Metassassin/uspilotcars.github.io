@@ -1,0 +1,22 @@
+{
+  "businessName": "SKINNY'S OILFIELD SERVICES LTD",
+  "tier": "bold_listing",
+  "highlight": true,
+  "phone": "587-830-2929",
+  "phone2": "",
+  "website": "http://http://www.sospilots.com/",
+  "services": [],
+  "badges": [],
+  "description": "PILOTING & TRAFFIC CONTROL-US/CA",
+  "locations": [
+    {
+      "state": "alberta",
+      "city": "OKOTOKS"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page alberta_pilot_cars.html, row 2. Original cell colour: #00ff00."
+}

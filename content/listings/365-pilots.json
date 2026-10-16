@@ -1,0 +1,223 @@
+{
+  "businessName": "365 PILOTS",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "866-795-0150",
+  "phone2": "",
+  "website": "https://365pilots.com/",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "alabama",
+      "city": "COLUMBUS"
+    },
+    {
+      "state": "alabama",
+      "city": "HUNTSVILLE"
+    },
+    {
+      "state": "alabama",
+      "city": "JASPER"
+    },
+    {
+      "state": "alabama",
+      "city": "LIVINGSTON"
+    },
+    {
+      "state": "alabama",
+      "city": "MOBILE"
+    },
+    {
+      "state": "arkansas",
+      "city": "BELLA VISTA"
+    },
+    {
+      "state": "arkansas",
+      "city": "BLYTHEVILLE"
+    },
+    {
+      "state": "arkansas",
+      "city": "FORT SMITH"
+    },
+    {
+      "state": "arkansas",
+      "city": "LITTLE ROCK"
+    },
+    {
+      "state": "georgia",
+      "city": "ATLANTA"
+    },
+    {
+      "state": "georgia",
+      "city": "AUGUSTA"
+    },
+    {
+      "state": "georgia",
+      "city": "LA GRANGE"
+    },
+    {
+      "state": "georgia",
+      "city": "LAVONIA"
+    },
+    {
+      "state": "georgia",
+      "city": "RINGGOLD"
+    },
+    {
+      "state": "georgia",
+      "city": "SAVANNAH"
+    },
+    {
+      "state": "georgia",
+      "city": "VALDOSTA"
+    },
+    {
+      "state": "illinois",
+      "city": "DANVILLE"
+    },
+    {
+      "state": "illinois",
+      "city": "GALESBURG"
+    },
+    {
+      "state": "illinois",
+      "city": "PERU"
+    },
+    {
+      "state": "illinois",
+      "city": "ROCK FORD"
+    },
+    {
+      "state": "illinois",
+      "city": "SPRINGFIELD"
+    },
+    {
+      "state": "indiana",
+      "city": "AUBURN"
+    },
+    {
+      "state": "indiana",
+      "city": "ELLIS"
+    },
+    {
+      "state": "indiana",
+      "city": "GARY"
+    },
+    {
+      "state": "indiana",
+      "city": "LAFAYETTE"
+    },
+    {
+      "state": "indiana",
+      "city": "POSEYVILLE"
+    },
+    {
+      "state": "indiana",
+      "city": "RICHMOND"
+    },
+    {
+      "state": "indiana",
+      "city": "SOUTH BEND"
+    },
+    {
+      "state": "indiana",
+      "city": "TERRE HAUTE"
+    },
+    {
+      "state": "kentucky",
+      "city": "BOWLING GREEN"
+    },
+    {
+      "state": "kentucky",
+      "city": "FRANK FORT"
+    },
+    {
+      "state": "kentucky",
+      "city": "LOUISVILLE"
+    },
+    {
+      "state": "kentucky",
+      "city": "PADUCAH"
+    },
+    {
+      "state": "north-carolina",
+      "city": "ASHEVILLE"
+    },
+    {
+      "state": "north-carolina",
+      "city": "CHARLOTTE"
+    },
+    {
+      "state": "north-carolina",
+      "city": "DUCK"
+    },
+    {
+      "state": "north-carolina",
+      "city": "LUMBERTON"
+    },
+    {
+      "state": "north-carolina",
+      "city": "ROCKY MOUNT"
+    },
+    {
+      "state": "north-carolina",
+      "city": "WILMINGTON"
+    },
+    {
+      "state": "south-carolina",
+      "city": "AIKEN"
+    },
+    {
+      "state": "south-carolina",
+      "city": "BLACKSBURG"
+    },
+    {
+      "state": "south-carolina",
+      "city": "CHARLESTON"
+    },
+    {
+      "state": "south-carolina",
+      "city": "COLUMBIA"
+    },
+    {
+      "state": "south-carolina",
+      "city": "DILLON"
+    },
+    {
+      "state": "south-carolina",
+      "city": "ROCK HILL"
+    },
+    {
+      "state": "tennessee",
+      "city": "CHATTANOOGA"
+    },
+    {
+      "state": "tennessee",
+      "city": "CLARKVILLE"
+    },
+    {
+      "state": "tennessee",
+      "city": "DYERSBURG"
+    },
+    {
+      "state": "tennessee",
+      "city": "KINGSPORT"
+    },
+    {
+      "state": "tennessee",
+      "city": "MEMPHIS"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page south_carolina_pilot_car.html, row 1. Original cell colour: #ffffff. Combined from 50 old entries."
+}

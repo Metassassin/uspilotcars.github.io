@@ -1,0 +1,52 @@
+{
+  "businessName": "TAMMY BZZZ'S PILOT CAR SERVICE",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "402-366-2028",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [
+    "WITPAC"
+  ],
+  "description": "",
+  "locations": [
+    {
+      "state": "kansas",
+      "city": "BELLEVILLE"
+    },
+    {
+      "state": "kansas",
+      "city": "SABETHA"
+    },
+    {
+      "state": "kansas",
+      "city": "TOPEKA"
+    },
+    {
+      "state": "missouri",
+      "city": "ROCK PORT"
+    },
+    {
+      "state": "nebraska",
+      "city": "YORK"
+    },
+    {
+      "state": "south-dakota",
+      "city": "PICKSTOWN"
+    },
+    {
+      "state": "south-dakota",
+      "city": "YANKTON"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page kansas_pilot_car.html, row 2. Original cell colour: #ffffff. Combined from 7 old entries."
+}

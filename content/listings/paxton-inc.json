@@ -1,0 +1,22 @@
+{
+  "businessName": "PAXTON INC",
+  "tier": "bold_listing",
+  "highlight": true,
+  "phone": "405-474-2181",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "13 YEARS EXPERIENCE",
+  "locations": [
+    {
+      "state": "oklahoma",
+      "city": "OKLAHOMA CITY"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page oklahoma_pilot_car.html, row 12. Original cell colour: #00ff00."
+}

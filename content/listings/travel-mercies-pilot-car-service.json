@@ -1,0 +1,22 @@
+{
+  "businessName": "TRAVEL MERCIES PILOT CAR SERVICE",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "561-335-8834",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "florida",
+      "city": "JACKSONVILLE"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page florida_pilot_car.html, row 6. Original cell colour: white."
+}

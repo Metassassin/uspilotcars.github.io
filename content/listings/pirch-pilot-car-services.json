@@ -1,0 +1,35 @@
+{
+  "businessName": "PIRCH PILOT CAR SERVICES",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "951-442-4476",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [],
+  "description": "Specialization: Loads into & Out of California",
+  "locations": [
+    {
+      "state": "arizona",
+      "city": "EHRENBERG"
+    },
+    {
+      "state": "california",
+      "city": "LONG BEACH",
+      "style": "highlight"
+    },
+    {
+      "state": "nevada",
+      "city": "PRIMM"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page arizona_pilot_car.html, row 2. Original cell colour: #ffffff. Combined from 3 old entries."
+}

@@ -1,0 +1,26 @@
+{
+  "businessName": "WHITE KNUCKLE EXPRESS LLC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "870-450-1822",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "mississippi",
+      "city": "HORN LAKE"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page mississippi_pilot_car.html, row 2. Original cell colour: #ffffff."
+}

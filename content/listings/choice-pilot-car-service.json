@@ -1,0 +1,35 @@
+{
+  "businessName": "CHOICE PILOT CAR SERVICE",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "503 303 8552",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "oregon",
+      "city": "BIGGS JUNCTION"
+    },
+    {
+      "state": "oregon",
+      "city": "MEDFORD"
+    },
+    {
+      "state": "oregon",
+      "city": "UMATILLA"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page oregon_pilot_car.html, row 5. Original cell colour: #ffffff. Combined from 3 old entries."
+}

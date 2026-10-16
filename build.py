@@ -202,7 +202,39 @@ def ad_sort_key(a):
     return (rank, a.get("priority", 999), a.get("businessName", "").lower())
 
 
-ALL_ADS = [a for a in (clean_listing(x) for x in load_folder("listings")) if a]
+STYLE_OVERRIDES = {"basic": ("basic_listing", False), "bold": ("bold_listing", False), "highlight": ("bold_listing", True)}
+
+
+def expand_company(x):
+    """One company entry -> one directory row per location.
+    A company lists its shared details once (name, phone, website, services,
+    listing type) plus Locations: state + city, each optionally with its own
+    phone, listing style, or pin. Older one-city-per-file listings pass
+    through unchanged."""
+    locs = x.get("locations")
+    if not isinstance(locs, list):
+        return [x]
+    rows = []
+    for loc in locs:
+        if not isinstance(loc, dict) or not (loc.get("state") or "").strip():
+            continue
+        r = {k: v for k, v in x.items() if k != "locations"}
+        r["placement"] = [loc["state"].strip()]
+        r["city"] = (loc.get("city") or "").strip()
+        if (loc.get("phone") or "").strip() or (loc.get("phone2") or "").strip():
+            r["phone"] = (loc.get("phone") or "").strip() or x.get("phone", "")
+            r["phone2"] = (loc.get("phone2") or "").strip()
+        style = (loc.get("style") or "").lower()
+        if style in STYLE_OVERRIDES:
+            r["tier"], r["highlight"] = STYLE_OVERRIDES[style]
+        r["pinned"] = bool(loc.get("pinned"))
+        rows.append(r)
+    if not rows:
+        print(f"  WARNING: content/listings/{x.get('_file')} has no locations, so it isn't shown anywhere")
+    return rows
+
+
+ALL_ADS = [a for a in (clean_listing(r) for x in load_folder("listings") for r in expand_company(x)) if a]
 ADS = [a for a in ALL_ADS if is_live(a)]
 
 

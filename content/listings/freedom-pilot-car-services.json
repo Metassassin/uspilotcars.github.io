@@ -1,0 +1,65 @@
+{
+  "businessName": "FREEDOM PILOT CAR SERVICES",
+  "tier": "bold_listing",
+  "highlight": true,
+  "phone": "307-757-5877",
+  "phone2": "307-369-3671",
+  "website": "http://freedompilotcars.com",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [],
+  "description": "VETERAN OWNED AND OPERATED",
+  "locations": [
+    {
+      "state": "colorado",
+      "city": "CHEYENNE, WY"
+    },
+    {
+      "state": "kansas",
+      "city": "GARDEN CITY"
+    },
+    {
+      "state": "montana",
+      "city": "BILLINGS",
+      "phone": "307-757-5877",
+      "phone2": "307-275-2743"
+    },
+    {
+      "state": "montana",
+      "city": "BUTTE",
+      "phone": "307-757-5877",
+      "phone2": "307-275-2743"
+    },
+    {
+      "state": "nebraska",
+      "city": "NORTH PLATTE"
+    },
+    {
+      "state": "oklahoma",
+      "city": "OKLAHOMA CITY"
+    },
+    {
+      "state": "texas",
+      "city": "HOUSTON AREA"
+    },
+    {
+      "state": "utah",
+      "city": "SALT LAKE CITY"
+    },
+    {
+      "state": "wyoming",
+      "city": "CHEYENNE",
+      "phone": "307-757-5877",
+      "phone2": "307-275-2743"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page montana_pilot_car.html, row 1. Original cell colour: #00ff00. Combined from 9 old entries."
+}

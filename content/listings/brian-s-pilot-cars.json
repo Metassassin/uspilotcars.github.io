@@ -1,0 +1,24 @@
+{
+  "businessName": "Brian's Pilot Cars",
+  "tier": "bold_listing",
+  "highlight": false,
+  "phone": "505-610-2121",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "steering"
+  ],
+  "badges": [],
+  "description": "Steering capable.",
+  "locations": [
+    {
+      "state": "new-mexico",
+      "city": "Albuquerque"
+    }
+  ],
+  "priority": 8,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": ""
+}

@@ -1,0 +1,26 @@
+{
+  "businessName": "R2 FLAG CAR SERVICE LLC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "803-530-9518",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "south-carolina",
+      "city": "GILBERT"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page south_carolina_pilot_car.html, row 12. Original cell colour: #ffffff."
+}

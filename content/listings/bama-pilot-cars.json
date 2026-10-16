@@ -1,0 +1,34 @@
+{
+  "businessName": "BAMA PILOT CARS",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "469-223-4620",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "texas",
+      "city": "GAINESVILLE"
+    },
+    {
+      "state": "texas",
+      "city": "SHERMAN"
+    },
+    {
+      "state": "texas",
+      "city": "TEXARKANA"
+    },
+    {
+      "state": "texas",
+      "city": "WASKOM"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page texas_pilot_car.html, row 32. Original cell colour: #ffffff. Combined from 4 old entries."
+}

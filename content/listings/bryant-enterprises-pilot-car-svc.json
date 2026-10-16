@@ -1,0 +1,25 @@
+{
+  "businessName": "BRYANT ENTERPRISES PILOT CAR SVC.",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "509-994-6690",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "washington",
+      "city": "SPOKANE"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page washington_pilot_car.html, row 13. Original cell colour: #ffffff."
+}

@@ -1,0 +1,28 @@
+{
+  "businessName": "MUTHERS PERMITS & PILOT CARS",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "718-351-0298",
+  "phone2": "718-351-0294",
+  "website": "http://www.muthersinc.com/",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [
+    "PERMITS"
+  ],
+  "description": "",
+  "locations": [
+    {
+      "state": "new-jersey",
+      "city": "HOWELL"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page new_jersey_pilot_car.html, row 1. Original cell colour: #ffffff."
+}

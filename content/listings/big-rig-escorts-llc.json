@@ -1,0 +1,24 @@
+{
+  "businessName": "BIG RIG ESCORTS, LLC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "413-441-0542",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole"
+  ],
+  "badges": [],
+  "description": "North East US",
+  "locations": [
+    {
+      "state": "massachusetts",
+      "city": "PITTSFIELD"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page massachusetts_pilot_car.html, row 1. Original cell colour: #ffffff."
+}

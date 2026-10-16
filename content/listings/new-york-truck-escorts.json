@@ -1,0 +1,24 @@
+{
+  "businessName": "NEW YORK TRUCK ESCORTS &",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "631-669-3742",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [
+    "PERMITS"
+  ],
+  "description": "",
+  "locations": [
+    {
+      "state": "new-york",
+      "city": "NY METRO AREA"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page new_york_pilot_car.html, row 11. Original cell colour: white."
+}

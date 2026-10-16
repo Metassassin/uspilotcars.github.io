@@ -1,0 +1,34 @@
+{
+  "businessName": "POLE PATROL LLC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "308-230-0245",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "indiana",
+      "city": "MICHIGAN CITY"
+    },
+    {
+      "state": "michigan",
+      "city": "DETROIT AREA"
+    },
+    {
+      "state": "michigan",
+      "city": "LANSING"
+    },
+    {
+      "state": "ohio",
+      "city": "TOLEDO"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page michigan_pilot_car.html, row 4. Original cell colour: #ffffff. Combined from 4 old entries."
+}

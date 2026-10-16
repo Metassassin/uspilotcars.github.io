@@ -1,0 +1,25 @@
+{
+  "businessName": "LITTLE LADIES PILOT CAR",
+  "tier": "bold_listing",
+  "highlight": true,
+  "phone": "385-392-6193",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "Safety Is Our #1 Priority",
+  "locations": [
+    {
+      "state": "utah",
+      "city": "SALT LAKE CITY"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page utah_pilot_car.html, row 8. Original cell colour: #00ff00."
+}

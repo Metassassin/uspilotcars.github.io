@@ -1,0 +1,25 @@
+{
+  "businessName": "CAROLINA REO SERVICES",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "704-202-3127",
+  "phone2": "",
+  "website": "http://Www.Carolinareoservices.com",
+  "services": [
+    "height_pole",
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "north-carolina",
+      "city": "CHARLOTTE"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page north_carolina_pilot_car.html, row 6. Original cell colour: #ffffff."
+}

@@ -1,0 +1,22 @@
+{
+  "businessName": "WOLF ESCORT, LLC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "612-437-7453",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "minnesota",
+      "city": "HASTING"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page minnesota_pilot_car.html, row 4. Original cell colour: #ffffff."
+}

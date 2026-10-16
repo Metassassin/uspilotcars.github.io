@@ -1,0 +1,26 @@
+{
+  "businessName": "CHANCE IT PILOT SERVICE LLC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "307-389-7285",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "wyoming",
+      "city": "CASPER"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page wyoming_pilot_car.html, row 3. Original cell colour: #ffffff."
+}

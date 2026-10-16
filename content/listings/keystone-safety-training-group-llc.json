@@ -1,0 +1,22 @@
+{
+  "businessName": "KEYSTONE SAFETY TRAINING GROUP LLC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "570-396-7637",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "new-york",
+      "city": "BINGHAMTON"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page new_york_pilot_car.html, row 2. Original cell colour: white."
+}

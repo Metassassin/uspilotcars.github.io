@@ -1,0 +1,27 @@
+{
+  "businessName": "APPLES AND ORANGES PILOTS",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "240-818-6454",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey"
+  ],
+  "badges": [
+    "FLAGGING"
+  ],
+  "description": "",
+  "locations": [
+    {
+      "state": "maryland",
+      "city": "BALTIMORE"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page maryland_pilot_car.html, row 3. Original cell colour: #ffffff."
+}

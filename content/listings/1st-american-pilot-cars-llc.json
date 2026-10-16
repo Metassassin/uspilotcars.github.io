@@ -1,0 +1,33 @@
+{
+  "businessName": "1ST AMERICAN PILOT CARS LLC",
+  "tier": "bold_listing",
+  "highlight": false,
+  "phone": "503-645-4276",
+  "phone2": "503-553-9944",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [],
+  "description": "Specialists in Safety Ecorting Since 2007",
+  "locations": [
+    {
+      "state": "oregon",
+      "city": "PORTLAND",
+      "style": "highlight"
+    },
+    {
+      "state": "oregon",
+      "city": "SALEM",
+      "style": "basic"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page oregon_pilot_car.html, row 20. Original cell colour: #00ff00. Combined from 2 old entries."
+}

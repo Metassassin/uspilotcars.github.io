@@ -1,0 +1,25 @@
+{
+  "businessName": "ELPIDOS PILOT CAR",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "660-596-1003",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "missouri",
+      "city": "SEDALIA"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page missouri_pilot_car.html, row 13. Original cell colour: white."
+}

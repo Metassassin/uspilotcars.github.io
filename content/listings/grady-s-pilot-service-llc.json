@@ -1,0 +1,24 @@
+{
+  "businessName": "GRADY'S PILOT SERVICE LLC",
+  "tier": "bold_listing",
+  "highlight": true,
+  "phone": "317-371-4228",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "30 YRS. OTR Trucking/Pilotcar",
+  "locations": [
+    {
+      "state": "indiana",
+      "city": "INDIANAPOLIS"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page indiana_pilot_car.html, row 23. Original cell colour: #00ff00."
+}

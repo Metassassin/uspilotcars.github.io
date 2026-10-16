@@ -1,0 +1,22 @@
+{
+  "businessName": "EAST WEST PILOT CAR SERVICE, LLC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "307-477-7771",
+  "phone2": "",
+  "website": "http://eastwestpilotcarllc.com",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "wyoming",
+      "city": "BURNS/"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page wyoming_pilot_car.html, row 1. Original cell colour: #ffffff."
+}

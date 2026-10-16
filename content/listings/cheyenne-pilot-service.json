@@ -1,0 +1,27 @@
+{
+  "businessName": "CHEYENNE PILOT SERVICE",
+  "tier": "bold_listing",
+  "highlight": true,
+  "phone": "307-421-1898",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey"
+  ],
+  "badges": [
+    "PERMITS"
+  ],
+  "description": "UT/NM INSP | CO CERT | NV/GA LIGHT PERMITS",
+  "locations": [
+    {
+      "state": "wyoming",
+      "city": "CHEYENNE"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page wyoming_pilot_car.html, row 7. Original cell colour: #00ff00."
+}

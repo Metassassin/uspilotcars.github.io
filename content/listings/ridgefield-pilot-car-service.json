@@ -1,0 +1,22 @@
+{
+  "businessName": "RIDGEFIELD PILOT CAR SERVICE",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "503-857-2556",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "washington",
+      "city": "RIDGEFIELD"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page washington_pilot_car.html, row 9. Original cell colour: #ffffff."
+}

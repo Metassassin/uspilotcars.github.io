@@ -1,0 +1,22 @@
+{
+  "businessName": "DEWEY'S PILOT SERVICES",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "(208) 718-0738",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "idaho",
+      "city": "CALDWELL"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page idaho_pilot_car.html, row 3. Original cell colour: #ffffff."
+}

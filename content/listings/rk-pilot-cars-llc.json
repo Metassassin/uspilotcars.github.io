@@ -1,0 +1,24 @@
+{
+  "businessName": "RK PILOT CARS LLC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "660-888-5773",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "missouri",
+      "city": "BOONVILLE"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page missouri_pilot_car.html, row 1. Original cell colour: white."
+}

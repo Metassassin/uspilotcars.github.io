@@ -1,0 +1,22 @@
+{
+  "businessName": "SAY WHEN TRUCK ESCORT L.L.C",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "337-255-7785",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "louisiana",
+      "city": "SHREVEPORT"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page louisiana_pilot_car.html, row 13. Original cell colour: #ffffff."
+}

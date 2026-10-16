@@ -1,0 +1,39 @@
+{
+  "businessName": "ABC COLT",
+  "tier": "bold_listing",
+  "highlight": true,
+  "phone": "716-222-2658",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [
+    "WITPAC",
+    "BUCKET TRUCK",
+    "CEVO"
+  ],
+  "description": "We never leave you hanging!",
+  "locations": [
+    {
+      "state": "new-york",
+      "city": "BUFFALO"
+    },
+    {
+      "state": "ohio",
+      "city": "YOUNGSTOWN"
+    },
+    {
+      "state": "pennsylvania",
+      "city": "ERIE"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page new_york_pilot_car.html, row 3. Original cell colour: #00ff00. Combined from 3 old entries."
+}

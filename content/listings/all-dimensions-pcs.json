@@ -1,0 +1,25 @@
+{
+  "businessName": "ALL DIMENSIONS PCS",
+  "tier": "bold_listing",
+  "highlight": true,
+  "phone": "307-680-0579",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "steering"
+  ],
+  "badges": [],
+  "description": "LEADING THE WAY!",
+  "locations": [
+    {
+      "state": "wyoming",
+      "city": "GILLETTE"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page wyoming_pilot_car.html, row 15. Original cell colour: #00ff00."
+}

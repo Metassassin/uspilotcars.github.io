@@ -1,0 +1,22 @@
+{
+  "businessName": "KIRBY PILOT ESCORT SERVICE",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "(405) 812-1666",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "oklahoma",
+      "city": "OKLAHOMA CITY"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page oklahoma_pilot_car.html, row 9. Original cell colour: #ffffff."
+}

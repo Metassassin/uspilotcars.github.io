@@ -1,0 +1,400 @@
+{
+  "businessName": "NORTH AMERICAN TRANSPORT SVCS.",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "217-860-2201",
+  "phone2": "",
+  "website": "http://na-pcs.com",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [
+    "CEVO",
+    "WITPAC"
+  ],
+  "description": "",
+  "locations": [
+    {
+      "state": "alabama",
+      "city": "BIRMINGHAM"
+    },
+    {
+      "state": "alabama",
+      "city": "COLUMBUS"
+    },
+    {
+      "state": "alabama",
+      "city": "LIVINGSTON"
+    },
+    {
+      "state": "alaska",
+      "city": "STATEWIDE"
+    },
+    {
+      "state": "arizona",
+      "city": "KINGMAN"
+    },
+    {
+      "state": "arkansas",
+      "city": "BLYTHEVILLE"
+    },
+    {
+      "state": "arkansas",
+      "city": "TEXARKANA"
+    },
+    {
+      "state": "california",
+      "city": "BARSTOW"
+    },
+    {
+      "state": "colorado",
+      "city": "CORTEZ"
+    },
+    {
+      "state": "connecticut",
+      "city": "HARTFORD"
+    },
+    {
+      "state": "delaware",
+      "city": "STATEWIDE"
+    },
+    {
+      "state": "florida",
+      "city": "JACKSON"
+    },
+    {
+      "state": "georgia",
+      "city": "ATLANTA"
+    },
+    {
+      "state": "georgia",
+      "city": "RINGGOLD"
+    },
+    {
+      "state": "georgia",
+      "city": "SAVANNAH"
+    },
+    {
+      "state": "idaho",
+      "city": "COEUR D'ALENE"
+    },
+    {
+      "state": "illinois",
+      "city": "DANVILLE"
+    },
+    {
+      "state": "illinois",
+      "city": "JOLIET"
+    },
+    {
+      "state": "illinois",
+      "city": "QUINCY"
+    },
+    {
+      "state": "illinois",
+      "city": "ROCKFORD"
+    },
+    {
+      "state": "indiana",
+      "city": "FORT WAYNE"
+    },
+    {
+      "state": "indiana",
+      "city": "GARY"
+    },
+    {
+      "state": "indiana",
+      "city": "RICHMOND"
+    },
+    {
+      "state": "indiana",
+      "city": "TERRE HAUTE"
+    },
+    {
+      "state": "iowa",
+      "city": "AVOCA"
+    },
+    {
+      "state": "iowa",
+      "city": "DAVENPORT"
+    },
+    {
+      "state": "iowa",
+      "city": "HAMBURG"
+    },
+    {
+      "state": "iowa",
+      "city": "NEWTON"
+    },
+    {
+      "state": "iowa",
+      "city": "SIOUX CITY"
+    },
+    {
+      "state": "kansas",
+      "city": "BELLEVILLE"
+    },
+    {
+      "state": "kansas",
+      "city": "KANSAS CITY"
+    },
+    {
+      "state": "kansas",
+      "city": "LIBERAL"
+    },
+    {
+      "state": "kansas",
+      "city": "OBERLIN"
+    },
+    {
+      "state": "kansas",
+      "city": "WICHITA/TOPEKA"
+    },
+    {
+      "state": "kentucky",
+      "city": "BOWLING GREEN"
+    },
+    {
+      "state": "kentucky",
+      "city": "FRANKFORT"
+    },
+    {
+      "state": "kentucky",
+      "city": "LOUISVILLE"
+    },
+    {
+      "state": "louisiana",
+      "city": "SHREVEPORT"
+    },
+    {
+      "state": "maine",
+      "city": "PORTLAND"
+    },
+    {
+      "state": "maryland",
+      "city": "BALTIMORE"
+    },
+    {
+      "state": "massachusetts",
+      "city": "SPRINGFIELD"
+    },
+    {
+      "state": "michigan",
+      "city": "COLDWATER"
+    },
+    {
+      "state": "michigan",
+      "city": "PORT HURON"
+    },
+    {
+      "state": "minnesota",
+      "city": "ALBERT LEE"
+    },
+    {
+      "state": "minnesota",
+      "city": "MINNEAPOLIS"
+    },
+    {
+      "state": "mississippi",
+      "city": "JACKSON"
+    },
+    {
+      "state": "mississippi",
+      "city": "VICKSBURG"
+    },
+    {
+      "state": "missouri",
+      "city": "JOPLIN"
+    },
+    {
+      "state": "missouri",
+      "city": "KANSAS CITY"
+    },
+    {
+      "state": "missouri",
+      "city": "ROCKPORT"
+    },
+    {
+      "state": "missouri",
+      "city": "ST. JOSEPH"
+    },
+    {
+      "state": "missouri",
+      "city": "ST. LOUIS"
+    },
+    {
+      "state": "montana",
+      "city": "BILLINGS"
+    },
+    {
+      "state": "nebraska",
+      "city": "BEATRICE"
+    },
+    {
+      "state": "nebraska",
+      "city": "LINCOLN"
+    },
+    {
+      "state": "nebraska",
+      "city": "OMAHA"
+    },
+    {
+      "state": "nevada",
+      "city": "RENO"
+    },
+    {
+      "state": "new-hampshire",
+      "city": "NASHUA"
+    },
+    {
+      "state": "new-jersey",
+      "city": "STATEWIDE"
+    },
+    {
+      "state": "new-mexico",
+      "city": "LAS CRUCES"
+    },
+    {
+      "state": "new-york",
+      "city": "NYC"
+    },
+    {
+      "state": "north-carolina",
+      "city": "CHARLOTTE"
+    },
+    {
+      "state": "north-dakota",
+      "city": "FARGO"
+    },
+    {
+      "state": "ohio",
+      "city": "CINCINNATI"
+    },
+    {
+      "state": "oklahoma",
+      "city": "OKLAHOMA CITY"
+    },
+    {
+      "state": "oklahoma",
+      "city": "TULSA"
+    },
+    {
+      "state": "oregon",
+      "city": "PORTLAND"
+    },
+    {
+      "state": "pennsylvania",
+      "city": "PHILADELPHIA"
+    },
+    {
+      "state": "rhode-island",
+      "city": "PROVIDENCE"
+    },
+    {
+      "state": "south-carolina",
+      "city": "CHARLESTON"
+    },
+    {
+      "state": "south-carolina",
+      "city": "COLUMBIA"
+    },
+    {
+      "state": "south-carolina",
+      "city": "ROCK HILL"
+    },
+    {
+      "state": "south-dakota",
+      "city": "SIOUX FALLS"
+    },
+    {
+      "state": "south-dakota",
+      "city": "YANKTON"
+    },
+    {
+      "state": "tennessee",
+      "city": "CHATTANOOGA",
+      "style": "highlight"
+    },
+    {
+      "state": "tennessee",
+      "city": "HARTFORD"
+    },
+    {
+      "state": "tennessee",
+      "city": "MEMPHIS"
+    },
+    {
+      "state": "texas",
+      "city": "AMARILLO"
+    },
+    {
+      "state": "texas",
+      "city": "DALLAS"
+    },
+    {
+      "state": "texas",
+      "city": "DENNISON"
+    },
+    {
+      "state": "texas",
+      "city": "GAINESVILLE"
+    },
+    {
+      "state": "texas",
+      "city": "HOUSTON"
+    },
+    {
+      "state": "texas",
+      "city": "ORANGE"
+    },
+    {
+      "state": "texas",
+      "city": "TEXARKANA",
+      "style": "highlight"
+    },
+    {
+      "state": "utah",
+      "city": "BRIGHAM CITY"
+    },
+    {
+      "state": "vermont",
+      "city": "BRATTLEBORO"
+    },
+    {
+      "state": "virginia",
+      "city": "LYNCHBURG"
+    },
+    {
+      "state": "washington",
+      "city": "VANCOUVER"
+    },
+    {
+      "state": "west-virginia",
+      "city": "CHARLESTON"
+    },
+    {
+      "state": "west-virginia",
+      "city": "WHEELING"
+    },
+    {
+      "state": "wisconsin",
+      "city": "BELOIT"
+    },
+    {
+      "state": "wyoming",
+      "city": "CHEYENNE"
+    },
+    {
+      "state": "wyoming",
+      "city": "GILLETTE"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page ohio_pilot_car.html, row 4. Original cell colour: #ffffff. Combined from 93 old entries."
+}

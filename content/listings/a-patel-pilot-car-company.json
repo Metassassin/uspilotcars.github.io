@@ -1,0 +1,167 @@
+{
+  "businessName": "A PATEL PILOT CAR COMPANY",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "785-206-0065",
+  "phone2": "",
+  "website": "http://www.patelpilotcar.com/",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "iowa",
+      "city": "AVOCA"
+    },
+    {
+      "state": "iowa",
+      "city": "DAVENPORT"
+    },
+    {
+      "state": "iowa",
+      "city": "HAMBURG"
+    },
+    {
+      "state": "iowa",
+      "city": "LAMONI"
+    },
+    {
+      "state": "iowa",
+      "city": "LINEVILLE"
+    },
+    {
+      "state": "iowa",
+      "city": "NEWTON"
+    },
+    {
+      "state": "kansas",
+      "city": "ARKANSAS CITY"
+    },
+    {
+      "state": "kansas",
+      "city": "BELLEVILLE"
+    },
+    {
+      "state": "kansas",
+      "city": "COFFEYVILLE"
+    },
+    {
+      "state": "kansas",
+      "city": "LIBERAL"
+    },
+    {
+      "state": "kansas",
+      "city": "MARYSVILLE"
+    },
+    {
+      "state": "kansas",
+      "city": "SABETHA"
+    },
+    {
+      "state": "kansas",
+      "city": "SOUTH HAVEN"
+    },
+    {
+      "state": "kansas",
+      "city": "TOPEKA"
+    },
+    {
+      "state": "kansas",
+      "city": "WICHITA"
+    },
+    {
+      "state": "missouri",
+      "city": "EAGLEVILLE"
+    },
+    {
+      "state": "missouri",
+      "city": "KANSAS CITY"
+    },
+    {
+      "state": "missouri",
+      "city": "ROCK PORT"
+    },
+    {
+      "state": "missouri",
+      "city": "ST. JOSEPH"
+    },
+    {
+      "state": "missouri",
+      "city": "ST. LOUIS"
+    },
+    {
+      "state": "nebraska",
+      "city": "BEATRICE"
+    },
+    {
+      "state": "nebraska",
+      "city": "BELLEVUE"
+    },
+    {
+      "state": "nebraska",
+      "city": "HEBRON"
+    },
+    {
+      "state": "nebraska",
+      "city": "LINCOLN"
+    },
+    {
+      "state": "nebraska",
+      "city": "NEBRASKA CITY"
+    },
+    {
+      "state": "oklahoma",
+      "city": "DAVIDSON"
+    },
+    {
+      "state": "oklahoma",
+      "city": "ERICK"
+    },
+    {
+      "state": "oklahoma",
+      "city": "GUYMON"
+    },
+    {
+      "state": "oklahoma",
+      "city": "PONCA CITY"
+    },
+    {
+      "state": "oklahoma",
+      "city": "TERRAL"
+    },
+    {
+      "state": "texas",
+      "city": "DALLAS"
+    },
+    {
+      "state": "texas",
+      "city": "DENISON"
+    },
+    {
+      "state": "texas",
+      "city": "GAINESVILLE"
+    },
+    {
+      "state": "texas",
+      "city": "HOUSTON"
+    },
+    {
+      "state": "texas",
+      "city": "ORANGE"
+    },
+    {
+      "state": "texas",
+      "city": "TEXARKANA"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page kansas_pilot_car.html, row 1. Original cell colour: #ffffff. Combined from 36 old entries."
+}

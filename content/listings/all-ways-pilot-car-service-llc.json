@@ -1,0 +1,25 @@
+{
+  "businessName": "ALL-WAYS PILOT CAR SERVICE, LLC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "307-286-3618",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "wyoming",
+      "city": "SUNDANCE/"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page wyoming_pilot_car.html, row 20. Original cell colour: #ffffff."
+}

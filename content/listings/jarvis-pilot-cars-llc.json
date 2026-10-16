@@ -1,0 +1,24 @@
+{
+  "businessName": "JARVIS PILOT CARS, LLC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "816-565-6460",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "missouri",
+      "city": "WARSAW"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page missouri_pilot_car.html, row 22. Original cell colour: white."
+}

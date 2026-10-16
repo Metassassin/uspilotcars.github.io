@@ -1,0 +1,24 @@
+{
+  "businessName": "SARATOGA PILOT CAR",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "518-683-8445",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "new-york",
+      "city": "SARATOGA SPRINGS"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page new_york_pilot_car.html, row 13. Original cell colour: #ffffff."
+}

@@ -1,0 +1,34 @@
+{
+  "businessName": "MN-PEVO",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "218-831-2777",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "minnesota",
+      "city": "FERGIS FALLS"
+    },
+    {
+      "state": "north-dakota",
+      "city": "MADISON"
+    },
+    {
+      "state": "south-dakota",
+      "city": "MADISON"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page minnesota_pilot_car.html, row 3. Original cell colour: #ffffff. Combined from 3 old entries."
+}

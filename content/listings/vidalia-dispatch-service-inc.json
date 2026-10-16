@@ -1,0 +1,44 @@
+{
+  "businessName": "VIDALIA DISPATCH SERVICE INC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "972-635-2480",
+  "phone2": "",
+  "website": "http://www.vidaliadispatch.com",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "arkansas",
+      "city": "TEXARKANA",
+      "phone": "870-397-2165"
+    },
+    {
+      "state": "louisiana",
+      "city": "SHREVEPORT"
+    },
+    {
+      "state": "texas",
+      "city": "DENISON"
+    },
+    {
+      "state": "texas",
+      "city": "ROYSE CITY"
+    },
+    {
+      "state": "texas",
+      "city": "TEXARKANA"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page texas_pilot_car.html, row 20. Original cell colour: #ffffff. Combined from 5 old entries."
+}

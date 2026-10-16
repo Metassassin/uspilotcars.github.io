@@ -1,0 +1,22 @@
+{
+  "businessName": "DALAINE'S PILOTCAR",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "(605) 545-2930",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "south-dakota",
+      "city": "RAPID CITY"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page south_dakota_pilot_car.html, row 3. Original cell colour: #ffffff."
+}

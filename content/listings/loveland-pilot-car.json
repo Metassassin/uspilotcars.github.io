@@ -1,0 +1,34 @@
+{
+  "businessName": "LOVELAND PILOT CAR",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "626-278-7545",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "arizona",
+      "city": "MESA/PHOENIX"
+    },
+    {
+      "state": "colorado",
+      "city": "DENVER/PUEBLO",
+      "style": "highlight"
+    },
+    {
+      "state": "utah",
+      "city": "SALT LAKE CITY PHOENIX"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page colorado_pilot_car.html, row 16. Original cell colour: #00ff00. Combined from 3 old entries."
+}

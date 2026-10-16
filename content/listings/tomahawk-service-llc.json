@@ -1,0 +1,26 @@
+{
+  "businessName": "TOMAHAWK SERVICE LLC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "480-239-7887",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "new-mexico",
+      "city": "Socorro"
+    },
+    {
+      "state": "texas",
+      "city": "EL PASO/PHOENIX"
+    }
+  ],
+  "priority": 17,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page texas_pilot_car.html, row 28. Original cell colour: #ffffff. Combined from 2 old entries."
+}

@@ -1,0 +1,22 @@
+{
+  "businessName": "PINER'S PILOT CAR SERVICE LLC CAN LEGAL",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "517-599-7616",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "michigan",
+      "city": "LANSING"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page michigan_pilot_car.html, row 7. Original cell colour: #ffffff."
+}

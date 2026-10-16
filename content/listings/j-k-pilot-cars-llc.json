@@ -1,0 +1,22 @@
+{
+  "businessName": "J - K PILOT CARS, LLC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "859-319-9597",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "kentucky",
+      "city": "DANVILLE"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page kentucky_pilot_car.html, row 5. Original cell colour: #ffffff."
+}

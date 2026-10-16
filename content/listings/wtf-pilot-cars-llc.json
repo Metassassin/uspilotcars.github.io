@@ -1,0 +1,26 @@
+{
+  "businessName": "WTF Pilot Cars, LLC",
+  "tier": "bold_listing",
+  "highlight": false,
+  "phone": "575-654-6796",
+  "phone2": "575-343-6656",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "Height pole, route survey, multiple cars.",
+  "locations": [
+    {
+      "state": "new-mexico",
+      "city": "Lordsburg"
+    }
+  ],
+  "priority": 12,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": ""
+}

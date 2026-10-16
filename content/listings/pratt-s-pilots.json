@@ -1,0 +1,26 @@
+{
+  "businessName": "PRATT'S PILOTS",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "205-299-0326",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "alabama",
+      "city": "BIRMINGHAM"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page alabama_pilot_car.html, row 3. Original cell colour: white."
+}

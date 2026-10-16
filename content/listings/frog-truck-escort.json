@@ -1,0 +1,48 @@
+{
+  "businessName": "FROG TRUCK ESCORT",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "318-469-3748",
+  "phone2": "318-393-6118",
+  "website": "http://www.Louisianafrog.com",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [],
+  "description": "Friendly, professional & experienced!",
+  "locations": [
+    {
+      "state": "arkansas",
+      "city": "TEXARKANA",
+      "phone": "318-469-3748"
+    },
+    {
+      "state": "louisiana",
+      "city": "SHREVEPORT",
+      "style": "highlight"
+    },
+    {
+      "state": "mississippi",
+      "city": "VICKSBURG",
+      "phone": "318-469-3748"
+    },
+    {
+      "state": "oklahoma",
+      "city": "IDABEL",
+      "phone": "318-469-3748"
+    },
+    {
+      "state": "texas",
+      "city": "WASKOM",
+      "phone": "318-469-3748"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page oklahoma_pilot_car.html, row 7. Original cell colour: #ffffff. Combined from 5 old entries."
+}

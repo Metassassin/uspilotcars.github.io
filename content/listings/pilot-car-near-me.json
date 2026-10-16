@@ -1,0 +1,25 @@
+{
+  "businessName": "PILOT CAR NEAR ME",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "519-574-8914",
+  "phone2": "",
+  "website": "https://pilotcarnearme.com/",
+  "services": [
+    "height_pole",
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "ontario",
+      "city": "KITCHENER"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page ontario_pilot_car.html, row 0. Original cell colour: white."
+}

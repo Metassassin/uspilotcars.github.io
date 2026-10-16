@@ -1,0 +1,28 @@
+{
+  "businessName": "PRO OVERSIZE",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "(623) 594-4082",
+  "phone2": "",
+  "website": "http://PROOVERSIZE.COM",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [
+    "PERMITS"
+  ],
+  "description": "",
+  "locations": [
+    {
+      "state": "arizona",
+      "city": "PHOENIX/KINGMAN"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page arizona_pilot_car.html, row 12. Original cell colour: #ffffff."
+}

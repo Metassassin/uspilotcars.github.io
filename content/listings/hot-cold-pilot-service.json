@@ -1,0 +1,30 @@
+{
+  "businessName": "HOT & COLD PILOT SERVICE",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "402-366-0730",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "kansas",
+      "city": "BELLEVILLE"
+    },
+    {
+      "state": "nebraska",
+      "city": "CHESTER, NE"
+    },
+    {
+      "state": "south-dakota",
+      "city": "YANKTON"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page kansas_pilot_car.html, row 5. Original cell colour: #ffffff. Combined from 3 old entries."
+}

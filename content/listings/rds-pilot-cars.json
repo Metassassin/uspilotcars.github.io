@@ -1,0 +1,30 @@
+{
+  "businessName": "RDS PILOT CARS",
+  "tier": "bold_listing",
+  "highlight": false,
+  "phone": "661-578-8041",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "california",
+      "city": "BAKERSFIELD",
+      "style": "highlight"
+    },
+    {
+      "state": "california",
+      "city": "PORT HUENEME",
+      "style": "basic"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page california_pilot_car.html, row 3. Original cell colour: #00ff00. Combined from 2 old entries."
+}

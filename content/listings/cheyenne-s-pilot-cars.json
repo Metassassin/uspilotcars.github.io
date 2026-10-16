@@ -1,0 +1,26 @@
+{
+  "businessName": "CHEYENNE'S PILOT CARS",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "301-774-9061",
+  "phone2": "",
+  "website": "http://CHEYENNESPILOTCARS.COM",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "maryland",
+      "city": "BROOKEVILLE"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page maryland_pilot_car.html, row 6. Original cell colour: #ffffff."
+}

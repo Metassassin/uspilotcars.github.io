@@ -1,0 +1,24 @@
+{
+  "businessName": "L & L PILOT CAR",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "563-380-5958",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "iowa",
+      "city": "WADENA"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page iowa_pilot_car.html, row 19. Original cell colour: #ffffff."
+}

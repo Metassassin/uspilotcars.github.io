@@ -1,0 +1,205 @@
+{
+  "businessName": "MIDWEST PILOT CARS",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "605-670-9654",
+  "phone2": "",
+  "website": "http://midwestpilotcars.com",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car",
+    "steering"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "alabama",
+      "city": "BIRMINGHAM/"
+    },
+    {
+      "state": "illinois",
+      "city": "DANVILLE"
+    },
+    {
+      "state": "illinois",
+      "city": "JOLIET/ROCKFORD"
+    },
+    {
+      "state": "illinois",
+      "city": "PEORIA"
+    },
+    {
+      "state": "illinois",
+      "city": "QUINCY"
+    },
+    {
+      "state": "indiana",
+      "city": "FORT WAYNE"
+    },
+    {
+      "state": "indiana",
+      "city": "FREMONT/BEND"
+    },
+    {
+      "state": "indiana",
+      "city": "TERRE HAUTE"
+    },
+    {
+      "state": "iowa",
+      "city": "DES MOINES"
+    },
+    {
+      "state": "iowa",
+      "city": "NEWTON"
+    },
+    {
+      "state": "iowa",
+      "city": "SIOUX CITY"
+    },
+    {
+      "state": "kansas",
+      "city": "GARDEN CITY"
+    },
+    {
+      "state": "kansas",
+      "city": "KANSAS CITY"
+    },
+    {
+      "state": "kansas",
+      "city": "LIBERAL"
+    },
+    {
+      "state": "kansas",
+      "city": "OBERLIN"
+    },
+    {
+      "state": "kansas",
+      "city": "WICHITA"
+    },
+    {
+      "state": "kentucky",
+      "city": "LOUISVILLE"
+    },
+    {
+      "state": "kentucky",
+      "city": "METROPOLIS",
+      "style": "highlight"
+    },
+    {
+      "state": "kentucky",
+      "city": "PADUCAH"
+    },
+    {
+      "state": "louisiana",
+      "city": "SHREVEPORT"
+    },
+    {
+      "state": "michigan",
+      "city": "PORT HURON"
+    },
+    {
+      "state": "minnesota",
+      "city": "ALBERT LEE"
+    },
+    {
+      "state": "minnesota",
+      "city": "MINNEAPOLIS"
+    },
+    {
+      "state": "mississippi",
+      "city": "JACKSON"
+    },
+    {
+      "state": "missouri",
+      "city": "JOPLIN"
+    },
+    {
+      "state": "missouri",
+      "city": "KANSAS CITY"
+    },
+    {
+      "state": "missouri",
+      "city": "ST. LOUIS"
+    },
+    {
+      "state": "nebraska",
+      "city": "OMAHA"
+    },
+    {
+      "state": "north-dakota",
+      "city": "GRAND FORKS"
+    },
+    {
+      "state": "ohio",
+      "city": "CINCINNATI"
+    },
+    {
+      "state": "oklahoma",
+      "city": "LAWTON"
+    },
+    {
+      "state": "oklahoma",
+      "city": "OKLAHOMA CITY"
+    },
+    {
+      "state": "oklahoma",
+      "city": "TULSA"
+    },
+    {
+      "state": "oregon",
+      "city": "PORTLAND"
+    },
+    {
+      "state": "south-dakota",
+      "city": "SIOUX FALLS"
+    },
+    {
+      "state": "texas",
+      "city": "AMARILLO"
+    },
+    {
+      "state": "texas",
+      "city": "DALLAS/FT. WORTH"
+    },
+    {
+      "state": "texas",
+      "city": "HOUSTON"
+    },
+    {
+      "state": "texas",
+      "city": "MIDLAND/ODESSA"
+    },
+    {
+      "state": "texas",
+      "city": "TEXARKANA"
+    },
+    {
+      "state": "virginia",
+      "city": "LYNCHBURG"
+    },
+    {
+      "state": "west-virginia",
+      "city": "WHEELING"
+    },
+    {
+      "state": "wisconsin",
+      "city": "BELOIT",
+      "style": "highlight"
+    },
+    {
+      "state": "wyoming",
+      "city": "CHEYENNE"
+    },
+    {
+      "state": "wyoming",
+      "city": "GILLETTE"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page minnesota_pilot_car.html, row 1. Original cell colour: white. Combined from 45 old entries."
+}

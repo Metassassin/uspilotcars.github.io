@@ -1,0 +1,22 @@
+{
+  "businessName": "AMERICAN PILOT SERVICE, INC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "",
+  "phone2": "",
+  "website": "http://WWW.AMERICANPILOTSERVICE.COM",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "california",
+      "city": "LOS ANGELES"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page california_pilot_car.html, row 22. Original cell colour: #ffffff."
+}

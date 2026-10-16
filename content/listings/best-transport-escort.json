@@ -1,0 +1,24 @@
+{
+  "businessName": "BEST TRANSPORT ESCORT",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "317-694-4444",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "indiana",
+      "city": "INDIANAPOLIS"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page indiana_pilot_car.html, row 21. Original cell colour: #ffffff."
+}

@@ -1,0 +1,38 @@
+{
+  "businessName": "BA'S PILOT CAR SERVICE",
+  "tier": "bold_listing",
+  "highlight": true,
+  "phone": "903-744-3166",
+  "phone2": "",
+  "website": "http://baspilotcarservice.com",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "arkansas",
+      "city": "TEXARKANA"
+    },
+    {
+      "state": "oklahoma",
+      "city": "DURANT"
+    },
+    {
+      "state": "texas",
+      "city": "GAINSVILLE"
+    },
+    {
+      "state": "texas",
+      "city": "TEXARKANA"
+    },
+    {
+      "state": "texas",
+      "city": "WICHITA FALLS"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page oklahoma_pilot_car.html, row 4. Original cell colour: #00ff00. Combined from 5 old entries."
+}

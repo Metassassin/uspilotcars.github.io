@@ -1,0 +1,22 @@
+{
+  "businessName": "JOURNEY PARTNERS PILOT CAR LLC",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "859-743-7333",
+  "phone2": "",
+  "website": "",
+  "services": [],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "kentucky",
+      "city": "FALMOUTH"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page kentucky_pilot_car.html, row 6. Original cell colour: #ffffff."
+}

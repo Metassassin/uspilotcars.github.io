@@ -1,0 +1,26 @@
+{
+  "businessName": "PAPAW'S PILOT SERVICE",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "308-529-8800",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "steering"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "ohio",
+      "city": "CINCINNATI"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page ohio_pilot_car.html, row 3. Original cell colour: #ffffff."
+}

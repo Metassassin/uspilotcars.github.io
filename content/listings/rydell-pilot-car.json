@@ -1,0 +1,29 @@
+{
+  "businessName": "RYDELL PILOT CAR",
+  "tier": "basic_listing",
+  "highlight": false,
+  "phone": "701-899-0173",
+  "phone2": "",
+  "website": "",
+  "services": [
+    "height_pole",
+    "multi_car"
+  ],
+  "badges": [],
+  "description": "",
+  "locations": [
+    {
+      "state": "oklahoma",
+      "city": "TULSA"
+    },
+    {
+      "state": "texas",
+      "city": "HOUSTON"
+    }
+  ],
+  "priority": 100,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "notes": "Imported from old site page texas_pilot_car.html, row 44. Original cell colour: #ffffff. Combined from 2 old entries."
+}
