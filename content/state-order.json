@@ -49,6 +49,14 @@
           "pinned": false
         }
       ]
+    },
+    {
+      "state": "louisiana",
+      "stateListings": [
+        {
+          "ad": "content/ads/frog-truck-escort.json"
+        }
+      ]
     }
   ]
 }
