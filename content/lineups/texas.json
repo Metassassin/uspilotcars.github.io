@@ -1,0 +1,17 @@
+{
+  "stateName": "Texas",
+  "state": "texas",
+  "stateListings": [
+    {
+      "ad": "content/ads/sentinel-pilot-car-services.json"
+    }
+  ],
+  "superListings": [
+    {
+      "ad": "content/ads/new-tex-pilot-services.json"
+    },
+    {
+      "ad": "content/ads/frog-truck-escort.json"
+    }
+  ]
+}

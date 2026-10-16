@@ -15,6 +15,7 @@ No third-party dependencies. Python 3.8+ standard library only.
 import json
 import os
 import shutil
+from html.parser import HTMLParser
 from datetime import date
 import re
 import html
@@ -140,7 +141,8 @@ def clean_listing(a):
     a["tier"] = normalize_tier(a.get("tier"), a.get("_file"))
     a["placement"] = normalize_placement(a.get("placement"), a.get("_file"))
     a["services"] = as_list(a.get("services"))
-    a["badges"] = [str(b).strip() for b in as_list(a.get("badges")) if str(b).strip()]
+    a["badges"] = [str(b).strip() for b in as_list(a.get("badges"))
+                   if str(b).strip() and not str(b).startswith(("unlisted_code", "undefined"))]
     a["highlight"] = bool(a.get("highlight"))
     a["pinned"] = bool(a.get("pinned"))
     for k in ("city", "phone", "phone2", "description"):
@@ -202,6 +204,82 @@ def ad_sort_key(a):
 
 ALL_ADS = [a for a in (clean_listing(x) for x in load_folder("listings")) if a]
 ADS = [a for a in ALL_ADS if is_live(a)]
+
+
+# ---------------------------------------------------------------- ads & lineups
+# Ads live in content/ads (one file per ad: artwork, text, contact, dates).
+# WHERE each ad shows, and in what ORDER, is decided by lineups:
+#   content/nationwide.json         -> Nationwide Sponsors, every page
+#   content/lineups/<state>.json    -> that state's State listings and
+#                                      Super listings, each its own order
+# The same ad can sit in any number of lineups, at a different position in
+# each. An ad that is switched off or past its end date drops out everywhere.
+def clean_ad(a):
+    a["businessName"] = (a.get("businessName") or a.get("name") or "").strip()
+    if not a["businessName"]:
+        print(f"  WARNING: skipped content/ads/{a.get('_file')} (no advertiser name)")
+        return None
+    for k in ("phone", "description", "location", "stripColor"):
+        a[k] = (a.get(k) or "").strip()
+    a["services"] = as_list(a.get("services"))
+    a["website"] = clean_url(a.get("website"))
+    img = (a.get("image") or "").strip()
+    if "placeholder" in os.path.basename(img).lower():
+        img = ""
+    a["image"] = img.lstrip("/")
+    a.setdefault("tier", "super_listing")
+    a.setdefault("placement", [])
+    return a
+
+
+AD_LIBRARY = {}
+for _a in (clean_ad(x) for x in load_folder("ads")):
+    if _a:
+        stem = os.path.splitext(_a["_file"])[0]
+        for key in (stem, _a["_file"], "content/ads/" + _a["_file"], "/content/ads/" + _a["_file"]):
+            AD_LIBRARY[key.lower()] = _a
+
+
+def resolve_ad(ref, where):
+    """A lineup entry -> the ad, or None (missing, switched off, or expired)."""
+    if isinstance(ref, dict):
+        ref = ref.get("ad")
+    key = (str(ref or "")).strip().lower()
+    if not key:
+        return None
+    ad = AD_LIBRARY.get(key) or AD_LIBRARY.get(os.path.splitext(os.path.basename(key))[0])
+    if ad is None:
+        print(f"  WARNING: {where} lists an ad that doesn't exist: {ref!r}")
+        return None
+    return ad if is_live(ad) else None
+
+
+def lineup_ads(items, where):
+    out, seen_ = [], set()
+    for it in items or []:
+        ad = resolve_ad(it, where)
+        if ad is not None and id(ad) not in seen_:
+            seen_.add(id(ad)); out.append(ad)
+    return out
+
+
+def _load_json(rel):
+    try:
+        with open(os.path.join(CONTENT, rel), encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return None
+    except Exception as e:
+        print(f"  WARNING: content/{rel} could not be read ({e})")
+        return None
+
+
+NATIONWIDE = _load_json("nationwide.json")
+print(f"Ads: {len({id(a) for a in AD_LIBRARY.values()})} in the Ads section")
+LINEUPS = {}
+for _doc in load_folder("lineups"):
+    if _doc.get("state"):
+        LINEUPS[_doc["state"]] = _doc
 _counts = {t_: sum(1 for a in ADS if a["tier"] == t_) for t_ in TIER_ORDER}
 print("Listings on the site: " + ", ".join(f"{n} {t_.replace('_', ' ')}" for t_, n in _counts.items())
       + f", {sum(1 for a in ADS if a['pinned'])} pinned"
@@ -451,10 +529,123 @@ def ad_card(ad, base, sidebar_style=False):
     """
 
 
+# ---------------------------------------------------------------- old-site ads
+# Ads imported from the old site keep their original design in "legacyBox":
+# a background (colour or picture) plus pieces laid out exactly as before,
+# with real text in its original fonts and colours.
+
+_LEGACY_STYLE_OK = {"color", "font-weight", "font-style", "text-decoration", "font-family",
+                    "line-height", "background-color", "text-align", "--fs"}
+_PHONE_RE = re.compile(r"\(?\b\d{3}\)?[\s.\-]?\d{3}[\s.\-]?\d{4}\b")
+
+
+class _LegacySanitizer(HTMLParser):
+    """Like the regulations sanitizer, but keeps the safe text styling the
+    old ads depend on, and makes phone numbers tap-to-call."""
+    ALLOWED = {"p", "br", "span", "a", "b", "strong", "i", "em", "u"}
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.out, self.in_a, self.skip = [], 0, 0
+
+    def _style(self, raw):
+        keep = []
+        for decl in (raw or "").split(";"):
+            if ":" not in decl:
+                continue
+            k, v = (x.strip() for x in decl.split(":", 1))
+            if k.lower() in _LEGACY_STYLE_OK and re.fullmatch(r"[#\w\s.,'\"%()-]+", v) and "url" not in v.lower() and "expression" not in v.lower():
+                keep.append(f"{k}:{v}")
+        return ";".join(keep)
+
+    def handle_starttag(self, tag, attrs):
+        if tag in ("script", "style", "iframe", "object", "embed", "form"):
+            self.skip += 1; return
+        if self.skip or tag not in self.ALLOWED:
+            return
+        a = dict(attrs)
+        if tag == "br":
+            self.out.append("<br>"); return
+        st = self._style(a.get("style"))
+        st_attr = f' style="{esc(st)}"' if st else ""
+        if tag == "a":
+            href = a.get("href", "") or ""
+            if re.match(r"^(https?://|mailto:|tel:)", href, re.I):
+                ext = ' target="_blank" rel="nofollow noopener"' if href.lower().startswith("http") else ""
+                self.out.append(f'<a href="{esc(href)}"{ext}{st_attr}>')
+            else:
+                self.out.append(f"<a{st_attr}>")
+            self.in_a += 1
+        else:
+            self.out.append(f"<{tag}{st_attr}>")
+
+    def handle_endtag(self, tag):
+        if tag in ("script", "style", "iframe", "object", "embed", "form"):
+            self.skip = max(0, self.skip - 1); return
+        if not self.skip and tag in self.ALLOWED and tag != "br":
+            if tag == "a":
+                self.in_a = max(0, self.in_a - 1)
+            self.out.append(f"</{tag}>")
+
+    def handle_data(self, data):
+        if self.skip:
+            return
+        if self.in_a:
+            self.out.append(esc(data)); return
+        last = 0
+        for m in _PHONE_RE.finditer(data):
+            self.out.append(esc(data[last:m.start()]))
+            self.out.append(f'<a class="lb-tel" href="{tel_href(m.group(0))}">{esc(m.group(0))}</a>')
+            last = m.end()
+        self.out.append(esc(data[last:]))
+
+
+def sanitize_legacy(raw):
+    s = _LegacySanitizer(); s.feed(raw or ""); s.close()
+    return "".join(s.out)
+
+
+def legacy_ad(ad, base):
+    box = ad.get("legacyBox") or {}
+    label = esc(ad["businessName"])
+    if box.get("flow"):
+        return (f'<div class="lbox-wrap lbox-wrap-flow"><div class="lbox lbox-flow" role="group" aria-label="{label}">'
+                f'{sanitize_legacy(box.get("html"))}</div></div>')
+    W, H = max(1, int(box.get("w") or 1)), max(1, int(box.get("h") or 1))
+    bg_color, bg_img, pieces = "", "", []
+    for p in box.get("parts") or []:
+        x, y, w, h = (float(p.get(k) or 0) for k in ("x", "y", "w", "h"))
+        covers = w * h >= 0.8 * W * H
+        if p.get("type") == "fill" and covers and not bg_color:
+            bg_color = p.get("color", ""); continue
+        if p.get("type") == "img" and covers and not bg_img:
+            bg_img = p.get("src", ""); continue
+        if p.get("type") == "text" and covers and p.get("color") and not bg_color:
+            bg_color = p["color"]; p = dict(p, color="")      # coloured panel fills the whole box
+        geo = f"left:{x / W * 100:.2f}%;top:{y / H * 100:.2f}%;width:{w / W * 100:.2f}%;height:{h / H * 100:.2f}%"
+        if p.get("type") == "fill":
+            pieces.append(f'<div class="lp lp-fill" style="{geo};background:{esc(p.get("color", ""))}"></div>')
+        elif p.get("type") == "img":
+            pieces.append(f'<img class="lp lp-img" src="{base}{esc(p.get("src", "").lstrip("/"))}" alt="" loading="lazy" style="{geo}">')
+        elif p.get("type") == "text":
+            fill = f";background:{esc(p['color'])}" if p.get("color") else ""
+            pieces.append(f'<div class="lp lp-text" style="{geo}{fill}">{sanitize_legacy(p.get("html"))}</div>')
+    bg = []
+    if bg_color and re.fullmatch(r"#[0-9a-fA-F]{6}", bg_color):
+        bg.append(f"background-color:{bg_color}")
+    if bg_img:
+        bg.append(f"background-image:url('{base}{esc(bg_img.lstrip('/'))}')")
+    style = f"--w:{W};aspect-ratio:{W} / {H};" + ";".join(bg)
+    return (f'<div class="lbox-wrap"><div class="lbox" style="{style}" role="group" aria-label="{label}">'
+            f'{"".join(pieces)}</div></div>')
+
+
 def banner_ad(ad, base):
     """A paid banner, shown the way the old site showed it: the advertiser's
     own artwork, full width, clickable. If there's no artwork yet, a clean
     text version so the advertiser still gets their space."""
+    if ad.get("legacyBox"):
+        return legacy_ad(ad, base)
     name = esc(ad["businessName"])
     href = ad.get("website") or ""
     if ad.get("image"):
@@ -472,8 +663,10 @@ def banner_ad(ad, base):
 
 
 def sitewide_banners():
-    """Every Sitewide Banner, whatever states are ticked -- the package
-    itself means 'top of every page'."""
+    """Nationwide Sponsors, in the order set in the editor. (Falls back to
+    the older 'Sitewide banner' package if no nationwide list exists yet.)"""
+    if NATIONWIDE is not None:
+        return lineup_ads(NATIONWIDE.get("sponsors"), "Nationwide Sponsors")
     return sorted([a for a in ADS if a["tier"] == "global_banner"], key=ad_sort_key)
 
 
@@ -481,19 +674,123 @@ SPONSOR_SECTION_TITLE = "Nationwide Sponsors"
 SPONSOR_SECTION_NOTE = "Featured on every page across the US &amp; Canada"
 
 
+def page_section(key, title, note, inner, count=None, extra_class=""):
+    """One collapsible section of a state page. Starts open; a visitor can
+    fold it away. Built on <details>, so it works without JavaScript and
+    with keyboards and screen readers."""
+    n = f'<span class="sec-count">{count}</span>' if count is not None else ""
+    return f"""<details class="page-section sec-{key} {extra_class}" open>
+      <summary class="sponsor-band-head">
+        <h2>{title} {n}</h2><span class="sb-note">{note}</span><span class="sec-toggle" aria-hidden="true"></span>
+      </summary>
+      <div class="sec-body">{inner}</div>
+    </details>"""
+
+
 def sitewide_banner_block(base):
-    """The Sitewide Banner ads, in their own labelled section so visitors can
-    tell they are the site's nationwide sponsors, not part of the page."""
+    """Section 3: Nationwide Sponsors -- under the title on every page."""
     ads = sitewide_banners()
     if not ads:
         return ""
-    return f"""<section class="sponsor-band" aria-labelledby="sponsor-band-title">
+    return page_section("national", "&#9733; " + SPONSOR_SECTION_TITLE, SPONSOR_SECTION_NOTE,
+                        f'<div class="banner-row">{"".join(banner_ad(a, base) for a in ads)}</div>',
+                        extra_class="sponsor-band")
+
+
+# Strip colours for text-only State listings, as on the old site
+# (blue Whispering Hills, red Glen's, aqua Jim's...). Ink is chosen for contrast.
+STRIP_COLORS = {"blue": ("#0000ff", "#ffffff"), "red": ("#e00000", "#ffffff"), "aqua": ("#00ffff", "#000000"),
+                "yellow": ("#ffff00", "#000000"), "green": ("#00ff00", "#000000"), "navy": ("#0f2436", "#ffffff"),
+                "white": ("#ffffff", "#0b1c2b")}
+
+
+def compact_ad(ad, base):
+    """Section 4, a State listing: a half-height strip, like the old site's
+    NY NJ Routing banner or its coloured one-line company boxes."""
+    if ad.get("legacyBox"):
+        return f'<div class="ad-strip ad-strip-legacy">{legacy_ad(ad, base)}</div>'
+    name = esc(ad["businessName"])
+    href = ad.get("website") or ""
+    if ad.get("image"):
+        img = f'<img src="{base}{esc(ad["image"])}" alt="{name} advertisement" loading="lazy" decoding="async">'
+        return (f'<a class="ad-strip ad-strip-img" href="{esc(href)}" target="_blank" rel="sponsored noopener">{img}</a>'
+                if href else f'<div class="ad-strip ad-strip-img">{img}</div>')
+    bg, ink = STRIP_COLORS.get(ad.get("stripColor", "").lower(), STRIP_COLORS["white"])
+    title = f'<a href="{esc(href)}" target="_blank" rel="sponsored noopener">{name}</a>' if href else name
+    phone = f' | <a class="as-phone" href="{tel_href(ad["phone"])}">{esc(ad["phone"])}</a>' if ad.get("phone") else ""
+    loc = f'{esc(ad["location"])} | ' if ad.get("location") else ""
+    line2 = f'<div class="as-line2">{esc(ad["description"])}</div>' if ad.get("description") else ""
+    return (f'<div class="ad-strip ad-strip-text" style="--strip:{bg};--strip-ink:{ink}">'
+            f'<div class="as-line1">{loc}<strong>{title}</strong>{phone}</div>{line2}</div>')
+
+
+def super_ad(ad, base):
+    """Section 5, a Super listing: a short text ad in the two-column block --
+    company name (with services), city, phone in red -- as on the old site."""
+    if ad.get("legacyBox"):
+        return f'<div class="super-entry">{legacy_ad(ad, base)}</div>'
+    name = esc(ad["businessName"])
+    href = ad.get("website") or ""
+    title = f'<a href="{esc(href)}" target="_blank" rel="sponsored noopener">{name}</a>' if href else name
+    svcs = "".join(f'<span class="se-svc">{esc(SERVICE_LABELS[s])}</span>' for s in ad.get("services") or [] if s in SERVICE_LABELS)
+    img = (f'<img class="se-img" src="{base}{esc(ad["image"])}" alt="{name} advertisement" loading="lazy">'
+           if ad.get("image") else "")
+    parts = [f'<div class="se-name">{title}</div>']
+    if svcs:
+        parts.append(f'<div class="se-svcs">{svcs}</div>')
+    if img:
+        parts.append(img)
+    if ad.get("location"):
+        parts.append(f'<div class="se-loc">{esc(ad["location"])}</div>')
+    if ad.get("description"):
+        parts.append(f'<div class="se-desc">{esc(ad["description"])}</div>')
+    if ad.get("phone"):
+        parts.append(f'<a class="se-phone" href="{tel_href(ad["phone"])}">{esc(ad["phone"])}</a>')
+    return f'<div class="super-entry">{"".join(parts)}</div>'
+
+
+# Section 5 uses two columns only when there are enough listings to fill
+# them (Oregon's 14 -> two columns; Wyoming's 4 -> one), as on the old site.
+SUPER_TWO_COLUMN_MIN = 6
+
+
+def state_sections(slug, state_name, base):
+    """Sections 4 and 5 for one state, from that state's lineup."""
+    lu = LINEUPS.get(slug) or {}
+    state_listings = lineup_ads(lu.get("stateListings"), f"{state_name} State listings")
+    supers = lineup_ads(lu.get("superListings"), f"{state_name} Super listings")
+    html_ = ""
+    if state_listings:
+        html_ += page_section("state", f"&#9670; {esc(state_name)} Listings", f"Pilot car companies advertising in {esc(state_name)}",
+                              f'<div class="strip-grid">{"".join(compact_ad(a, base) for a in state_listings)}</div>',
+                              count=len(state_listings), extra_class="sponsor-band in-content")
+    if supers:
+        html_ += page_section("super", "Super Listings", f"Featured {esc(state_name)} companies",
+                              f'<div class="super-list{" super-list-one" if len(supers) < SUPER_TWO_COLUMN_MIN else ""}">{"".join(super_ad(a, base) for a in supers)}</div>',
+                              count=len(supers), extra_class="sponsor-band in-content")
+    return html_, state_listings + supers
+
+
+def state_ads_section(region_ads, state_name, base):
+    """This state's own ads, grouped in a labelled section like the
+    Nationwide Sponsors: picture and box ads first, then the short text ads."""
+    ads = [a for a in region_ads if a["tier"] in ("state_banner", "super_listing")]
+    if not ads:
+        return ""
+    big = [a for a in ads if not (a.get("legacyBox") or {}).get("flow")]
+    small = [a for a in ads if (a.get("legacyBox") or {}).get("flow")]
+    def draw(a):
+        if a.get("legacyBox") or a["tier"] == "state_banner" or a.get("image"):
+            return banner_ad(a, base)
+        return ad_card(a, base)
+    return f"""<section class="sponsor-band state-band" aria-labelledby="state-band-title">
       <div class="sponsor-band-head">
-        <span class="sb-mark" aria-hidden="true">&#9733;</span>
-        <h2 id="sponsor-band-title">{SPONSOR_SECTION_TITLE}</h2>
-        <span class="sb-note">{SPONSOR_SECTION_NOTE}</span>
+        <span class="sb-mark" aria-hidden="true">&#9670;</span>
+        <h2 id="state-band-title">Featured in {esc(state_name)}</h2>
+        <span class="sb-note">Pilot car companies advertising in {esc(state_name)}</span>
       </div>
-      <div class="banner-row">{"".join(banner_ad(a, base) for a in ads)}</div>
+      {f'<div class="state-ad-grid">{"".join(draw(a) for a in big)}</div>' if big else ""}
+      {f'<div class="text-ad-grid">{"".join(draw(a) for a in small)}</div>' if small else ""}
     </section>"""
 
 
@@ -810,13 +1107,7 @@ def build_directory_state_pages():
         # Sitewide banners are already at the top of every page. Here: this
         # state's own paid ads, between that block and the listings table,
         # as on the old site.
-        state_banners = [a for a in region_ads if a["tier"] == "state_banner"]
-        supers = [a for a in region_ads if a["tier"] == "super_listing"]
-        featured_html = ""
-        if state_banners or supers:
-            featured_html = (f'<section class="featured-ads" aria-label="Featured in {esc(name)}">'
-                             + "".join(banner_ad(a, base) for a in state_banners)
-                             + "".join(ad_card(a, base) for a in supers) + "</section>")
+        featured_html, _lineup_ads = state_sections(slug, name, base)
 
         # 2. The city table: every company plus hotels, grouped by city.
         #    Within a city: hotel placement first, then companies by tier.
@@ -836,17 +1127,17 @@ def build_directory_state_pages():
 
         if rows or pinned:
             legend = "".join(f'<span class="svc-chip">{esc(v)}</span>' for v in SERVICE_LABELS.values())
-            table_html = f"""
-            <div class="panel">
-              <h2>{esc(name)} Pilot Car Listings</h2>
+            table_inner = f"""
               <p class="legend">Services offered are shown under each company: {legend}</p>
               <div class="table-scroll">
               <table class="listing-table">
                 <thead><tr><th>City</th><th>Company</th><th>Phone</th></tr></thead>
                 <tbody>{''.join(company_row(a, pinned=True) for a in pinned)}{''.join(row for *_, row in rows)}</tbody>
               </table>
-              </div>
-            </div>"""
+              </div>"""
+            table_html = page_section("basic", f"{esc(name)} Pilot Car Directory", "Every company, by city",
+                                      table_inner, count=len(pinned) + sum(1 for r_ in rows if r_[1] == 1),
+                                      extra_class="sponsor-band in-content")
         else:
             table_html = f"""
             <div class="panel">
@@ -1062,7 +1353,7 @@ def build_regulations_state_pages():
           <h1>{esc(name)} Pilot Car Regulations</h1>
           <p>Guidelines for {esc(name)} pilot car, escort car, and flag car regulations. Always confirm current requirements with the permit office.</p>
         </div>
-        <div class="content with-aside">
+        <div class="content{' with-aside' if sponsor_aside(base) else ''}" style="max-width:1180px">
           <div class="main-stack">{body_main}{nearby_html(slug, "regulations")}</div>
           {sponsor_aside(base)}
         </div>
@@ -1392,35 +1683,32 @@ def build_lineup():
         rows = "".join(
             f"<tr><td class='pos'>{i}</td><td><strong>{esc(a['businessName'])}</strong>"
             f"{'<div class=hotel-meta>' + esc(a['city']) + '</div>' if a.get('city') else ''}</td>"
-            f"<td>{esc(TIER_LABEL.get(a['tier'], a['tier']))}</td><td class='pos'>{a.get('priority', 100)}</td>"
+            f"<td>{esc(a.get('package') or TIER_LABEL.get(a.get('tier'), ''))}</td>"
             f"<td>{esc(a.get('endDate') or '')}</td></tr>"
             for i, a in enumerate(ads, 1))
         return ("<div class='table-scroll'><table class='data-table lineup'><thead><tr><th>#</th><th>Advertiser</th>"
-                "<th>Package</th><th>Order no.</th><th>Last day shown</th></tr></thead><tbody>" + rows + "</tbody></table></div>")
+                "<th>What they bought</th><th>Last day shown</th></tr></thead><tbody>" + rows + "</tbody></table></div>")
 
-    sections = [
-        ("Nationwide Sponsors &mdash; under the title of every page", table(sitewide_banners())),
-        ("Sponsor column &mdash; right side of regulations pages",
-         table(sorted([a for a in ADS if "sitewide" in a["placement"] and a["tier"] != "global_banner"], key=ad_sort_key))),
-    ]
+    sections = [("Nationwide Sponsors &mdash; under the title of every page", table(sitewide_banners()))]
     state_blocks = []
     for r in ALL_REGIONS:
-        region_ads = ads_for_placement(r["slug"])
-        featured = ([a for a in region_ads if a["tier"] == "state_banner"]
-                    + [a for a in region_ads if a["tier"] == "super_listing"])
-        pinned = [a for a in region_ads if a.get("pinned")]
-        if not featured and not pinned:
+        lu = LINEUPS.get(r["slug"]) or {}
+        sl = lineup_ads(lu.get("stateListings"), r["name"])
+        su = lineup_ads(lu.get("superListings"), r["name"])
+        pinned = [a for a in ads_for_placement(r["slug"]) if a.get("pinned")]
+        if not (sl or su or pinned):
             continue
         state_blocks.append(f"""<details class="panel lineup-state"><summary><strong>{esc(r['name'])}</strong>
-          <span class="hotel-meta">{len(featured)} featured, {len(pinned)} pinned</span></summary>
-          <h3>Featured at the top of the {esc(r['name'])} page</h3>{table(featured)}
-          <h3>Pinned to the top of the {esc(r['name'])} list</h3>{table(pinned)}</details>""")
+          <span class="hotel-meta">{len(sl)} state listings, {len(su)} super listings, {len(pinned)} pinned</span></summary>
+          <h3>State listings</h3>{table(sl)}
+          <h3>Super listings</h3>{table(su)}
+          <h3>Pinned to the top of the company list</h3>{table(pinned)}</details>""")
 
     body = f"""
     <div class="page-header"><div class="eyebrow">For the site owner</div><h1>Ad lineup</h1>
-      <p>Every paid position, in the order visitors see it. To move an ad, change its
-      <strong>Order within its package</strong> number in the editor (lower shows first). A higher package
-      always sits above a lower one. Changes appear here and on the site a couple of minutes after saving.</p></div>
+      <p>Every paid position, in the order visitors see it. To change the order, open
+      <strong>Nationwide Sponsors</strong> or the state under <strong>State pages</strong> in the editor and
+      move the ad up or down its list. Changes appear here and on the site a couple of minutes after saving.</p></div>
     <div class="content" style="max-width:1000px">
       {''.join(f'<div class="panel"><h2>{h}</h2>{b}</div>' for h, b in sections)}
       <h2 style="margin:28px 0 10px">By state</h2>

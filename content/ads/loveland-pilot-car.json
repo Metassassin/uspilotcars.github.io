@@ -1,0 +1,20 @@
+{
+  "businessName": "Loveland Pilot Car",
+  "package": "Super listing",
+  "image": "",
+  "description": "Height pole and multiple-car capable.",
+  "location": "Albuquerque, NM / Phoenix, AZ",
+  "services": [
+    "height_pole",
+    "multi_car"
+  ],
+  "stripColor": "white",
+  "phone": "626-278-7545",
+  "website": null,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Moved from Directory listings into Ads. Check this against grandma's records."
+}

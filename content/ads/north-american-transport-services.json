@@ -1,0 +1,21 @@
+{
+  "businessName": "North American Transport Services",
+  "package": "Nationwide sponsor",
+  "image": "/assets/images/advertisements/na-pcs-com.png",
+  "description": "Permit division, bucket truck division, escorts, route survey, height pole, hot stick (LA, MS, AR only), steerman, escort coordinators specific to carrier, multi-car / national service.",
+  "location": "",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "stripColor": "white",
+  "phone": "866-259-2750",
+  "website": "http://na-pcs.com",
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Moved from Directory listings into Ads. Check this against grandma's records."
+}

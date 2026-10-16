@@ -1,0 +1,10 @@
+{
+  "stateName": "California",
+  "state": "california",
+  "stateListings": [
+    {
+      "ad": "content/ads/sentinel-pilot-car-services.json"
+    }
+  ],
+  "superListings": []
+}

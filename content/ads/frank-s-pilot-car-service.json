@@ -1,0 +1,21 @@
+{
+  "businessName": "Frank's Pilot Car Service",
+  "package": "State listing",
+  "image": "",
+  "description": "All-states certified. Very experienced. Height pole & route surveys are our specialty.",
+  "location": "Albuquerque, NM",
+  "services": [
+    "height_pole",
+    "route_survey",
+    "multi_car"
+  ],
+  "stripColor": "white",
+  "phone": "505-330-6188",
+  "website": null,
+  "active": true,
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Moved from Directory listings into Ads. Check this against grandma's records."
+}

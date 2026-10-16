@@ -634,3 +634,166 @@ footer.site-footer .links{ display:flex; gap:16px; flex-wrap:wrap; margin-top:10
 .sidebar-brand .brand-tagline{ display:block; margin-top:8px; font-size:.72rem; letter-spacing:.06em;
   text-transform:uppercase; color:#9fb0bd; }
 .topbar .logo-link{ display:block; width:140px; }
+
+/* ===================================================================
+   Ads imported from the old site, drawn in their original design
+   =================================================================== */
+.lbox-wrap{ container-type:inline-size; width:100%; }
+.lbox{ position:relative; width:100%; overflow:hidden; background:#fff center / 100% 100% no-repeat;
+  border-radius:var(--radius-sm); box-shadow:0 1px 3px rgba(0,0,0,.18); }
+.lbox .lp{ position:absolute; margin:0; overflow:hidden; }
+.lbox .lp-img{ object-fit:fill; }
+.lbox p{ margin:0; }
+.lbox [style*="--fs"]{ font-size:calc(var(--fs) * 100cqw / var(--w)); }
+.lbox a{ color:inherit; }
+.lbox a.lb-tel{ text-decoration:none; }
+.lbox a.lb-tel:hover{ text-decoration:underline; }
+/* Narrow screens: keep the background, let the text flow at a readable size */
+@container (max-width: 460px){
+  .lbox:not(.lbox-flow){ aspect-ratio:auto !important; padding:12px 10px; display:flex; flex-direction:column;
+    align-items:center; gap:6px; }
+  .lbox:not(.lbox-flow) .lp{ position:static; width:auto !important; height:auto !important; }
+  .lbox:not(.lbox-flow) .lp-img{ max-width:60%; max-height:110px; object-fit:contain; }
+  .lbox:not(.lbox-flow) .lp-fill{ display:none; }
+  .lbox:not(.lbox-flow) [style*="--fs"]{ font-size:calc(var(--fs) * 1px); }
+}
+/* Short text ads from the old text-ad columns */
+.lbox-flow{ padding:12px 14px; text-align:center; background:#fff; border:1px solid var(--border); box-shadow:none; }
+.lbox-flow [style*="--fs"]{ font-size:calc(var(--fs) * 1.08px); }
+
+.state-ad-grid{ display:grid; gap:14px; grid-template-columns:repeat(auto-fit, minmax(min(100%, 380px), 1fr)); }
+.text-ad-grid{ display:grid; gap:10px; margin-top:14px; grid-template-columns:repeat(auto-fill, minmax(min(100%, 230px), 1fr)); }
+.state-band{ border-top-color:var(--navy-700); }
+.state-band .sb-mark{ color:var(--navy-700); }
+.content-wide > .state-band{ margin:0 0 20px; }
+@media (max-width: 640px){
+  .banner-row > .lbox-wrap{ flex:0 0 88%; scroll-snap-align:start; }
+}
+
+/* Fixes after visual check */
+.banner-row, .state-ad-grid{ align-items:start; }
+.banner-ad{ background:transparent; }
+/* Leave a little room: the old boxes were sized to Tahoma/Rockwell exactly,
+   and a substitute font can run slightly larger. Never clip text. */
+.lbox [style*="--fs"]{ font-size:calc(var(--fs) * 93cqw / var(--w)); }
+.lbox .lp-text{ overflow:visible; }
+.lbox{ overflow:visible; }
+/* Text fitting (see main.js): --fit shrinks a panel's text only when needed.
+   The box itself clips, so nothing can ever spill onto a neighbouring ad. */
+.lbox [style*="--fs"]{ font-size:calc(var(--fs) * 99cqw / var(--w) * var(--fit, 1)); }
+.lbox{ overflow:hidden; }
+.lbox .lp-text{ overflow:hidden; }
+@container (max-width: 460px){
+  .lbox:not(.lbox-flow) .lp-text{ overflow:visible; }
+  .lbox:not(.lbox-flow) [style*="--fs"]{ font-size:calc(var(--fs) * 1px); }
+}
+/* The old ads' paragraphs used an 11px base (WebPlus "Normal" style). Without
+   this, each line inherits the site's 16px body text and spacing, so lines
+   stay ~24px tall however small the text -- too airy, and impossible to fit. */
+.lbox .lp-text{ font-size:calc(11 * 99cqw / var(--w) * var(--fit, 1)); line-height:1.18; }
+.lbox .lp-text p, .lbox-flow p{ line-height:inherit; }
+.lbox-flow{ font-size:12px; line-height:1.22; }
+@container (max-width: 460px){ .lbox .lp-text{ font-size:11px; } }
+
+/* ===================================================================
+   State page structure (sketch): 3 Nationwide Sponsors, 4 State listings,
+   5 Super listings, 6 Basic listings -- each a collapsible section.
+   =================================================================== */
+details.page-section > summary{ list-style:none; cursor:pointer; user-select:none; }
+details.page-section > summary::-webkit-details-marker{ display:none; }
+details.page-section > summary h2{ display:inline; }
+.sec-count{ font-size:.78rem; font-weight:700; padding:1px 8px; border-radius:999px;
+  background:var(--navy-900); color:#fff; }
+.sec-toggle{ margin-left:auto; width:28px; height:28px; display:inline-flex; align-items:center; justify-content:center;
+  border:1px solid var(--border-strong); border-radius:50%; }
+.sec-toggle::before{ content:"\25BE"; font-size:.9rem; transition:transform .15s ease; }
+details.page-section:not([open]) .sec-toggle::before{ transform:rotate(-90deg); }
+details.page-section:not([open]) > summary{ margin-bottom:0; }
+details.page-section > summary:focus-visible{ outline:2px solid var(--amber-500); outline-offset:4px; border-radius:4px; }
+.sponsor-band.in-content{ margin:0 0 20px; }
+.sec-state{ border-top-color:var(--navy-700); }
+.sec-super{ border-top-color:var(--amber-600); }
+.sec-basic{ border-top-color:var(--navy-900); }
+.sec-basic .legend{ margin-top:0; }
+
+/* 4. State listings: about half a banner's height, several per row */
+.compact-grid{ display:grid; gap:10px; align-items:start;
+  grid-template-columns:repeat(auto-fill, minmax(min(100%, 240px), 1fr)); }
+.ad-compact{ display:block; border-radius:var(--radius-sm); overflow:hidden; }
+.ad-compact-img img{ display:block; width:100%; height:auto; max-height:120px; object-fit:contain; background:#fff; }
+.ad-compact-text{ border:1px solid var(--border); padding:10px 12px; background:#fff; display:flex; flex-direction:column; gap:3px; }
+.ac-name{ font-size:.98rem; }
+.ac-desc{ font-size:.85rem; color:var(--ink-muted); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.ac-phone{ font-weight:700; color:var(--amber-600); text-decoration:none; }
+
+/* 5. Super listings: two side by side */
+.super-grid{ display:grid; gap:16px; grid-template-columns:repeat(2, minmax(0, 1fr)); align-items:start; }
+@media (max-width: 760px){ .super-grid{ grid-template-columns:1fr; } }
+.super-ad{ border:1px solid var(--border); border-radius:var(--radius-sm); overflow:hidden; background:#fff; }
+.super-img{ display:block; }
+.super-img img{ display:block; width:100%; height:auto; }
+.super-body{ padding:12px 16px 16px; }
+.super-body h3{ margin:0 0 6px; font-size:1.1rem; }
+.super-body p{ margin:0 0 10px; color:var(--ink-muted); }
+.super-actions{ display:flex; flex-wrap:wrap; gap:8px; }
+@media (max-width: 640px){
+  details.page-section > summary{ flex-wrap:wrap; }
+  details.page-section > summary h2{ font-size:.92rem; }
+  .sec-toggle{ width:26px; height:26px; }
+}
+/* Phones: fold arrow stays on the title line; the note drops beneath */
+details.page-section > summary .sec-toggle{ order:2; }
+details.page-section > summary .sb-note{ order:3; }
+@media (max-width: 640px){ details.page-section > summary .sb-note{ flex-basis:100%; } }
+
+/* ---- 4. State listings: half-height strips, two per row ---------------- */
+.strip-grid{ display:grid; gap:10px; align-items:start;
+  grid-template-columns:repeat(auto-fill, minmax(min(100%, 380px), 1fr)); }
+.ad-strip{ display:block; border-radius:var(--radius-sm); overflow:hidden; }
+.ad-strip-img img{ display:block; width:100%; height:auto; max-height:120px; object-fit:contain; background:#fff; }
+.ad-strip-text{ background:var(--strip); color:var(--strip-ink); padding:9px 12px; text-align:center;
+  border:1px solid rgba(0,0,0,.18); min-height:58px; display:flex; flex-direction:column; justify-content:center; gap:3px; }
+.ad-strip-text a{ color:inherit; }
+.as-line1{ font-size:.98rem; }
+.as-line2{ font-size:.82rem; font-weight:600; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.as-phone{ font-weight:700; text-decoration:none; white-space:nowrap; }
+
+/* ---- 5. Super listings: the two-column block of short text ads ---------- */
+.super-list{ columns:2 280px; column-gap:28px; column-rule:1px solid var(--border);
+  border:1px solid var(--border-strong); background:#fff; padding:14px 16px; }
+.super-entry{ break-inside:avoid; margin:0 0 16px; font-size:.9rem; line-height:1.3; }
+.se-name{ font-weight:700; text-transform:uppercase; }
+.se-name a{ color:#0000cc; }
+.se-svcs{ margin:2px 0; }
+.se-svc{ display:inline-block; font-size:.68rem; font-weight:700; color:#c00000; margin-right:6px; }
+.se-loc{ font-weight:700; text-transform:uppercase; font-size:.84rem; }
+.se-desc{ font-size:.82rem; color:var(--ink-muted); }
+.se-phone{ display:inline-block; font-weight:700; color:#d40000; text-decoration:none; }
+.se-phone:hover{ text-decoration:underline; }
+.se-img{ display:block; max-width:100%; height:auto; margin:4px 0; }
+/* Desktop: note beside the title, fold arrow at the far right.
+   Phones: arrow stays on the title line, note drops beneath. */
+details.page-section > summary .sb-note{ order:2; }
+details.page-section > summary .sec-toggle{ order:3; }
+@media (max-width: 640px){
+  details.page-section > summary .sec-toggle{ order:2; }
+  details.page-section > summary .sb-note{ order:3; flex-basis:100%; }
+}
+.sponsor-band-head h2 .sec-count{ vertical-align:2px; margin-left:4px; }
+@media (max-width: 640px){
+  details.page-section > summary{ display:grid; grid-template-columns:minmax(0,1fr) auto; gap:4px 10px; align-items:center; }
+  details.page-section > summary h2{ grid-column:1; grid-row:1; }
+  details.page-section > summary .sec-toggle{ grid-column:2; grid-row:1; margin:0; }
+  details.page-section > summary .sb-note{ grid-column:1 / -1; grid-row:2; }
+}
+.svc-chip{ display:inline-block; white-space:nowrap; }
+.super-list-one{ columns:1; column-rule:none; }
+
+/* Nationwide Sponsors fill column by column (down the left, then the right),
+   like the old page -- keeps the owner's order and leaves no gaps. */
+.sec-national .banner-row{ display:block; columns:2 380px; column-gap:14px; }
+.sec-national .banner-row > *{ break-inside:avoid; margin:0 0 14px; display:block; }
+@media (max-width: 640px){
+  .sec-national .banner-row{ display:flex; columns:auto; }
+  .sec-national .banner-row > *{ margin:0; }
+}

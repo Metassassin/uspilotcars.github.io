@@ -96,4 +96,28 @@
     var id = el.getAttribute("data-table-search") || el.getAttribute("data-table-state");
     el.addEventListener(el.tagName === "SELECT" ? "change" : "input", function () { applyFilters(id); });
   });
+  // ---- Old-site ads: fit text to its box -------------------------------
+  // The original boxes were sized for fonts like Tahoma and Rockwell. If a
+  // visitor's device substitutes a slightly larger font, shrink that panel's
+  // text a step at a time until it fits, instead of cutting it off or letting
+  // it run over the next advertiser's ad.
+  function fitLegacy() {
+    document.querySelectorAll(".lbox:not(.lbox-flow) .lp-text").forEach(function (el) {
+      if (getComputedStyle(el).position !== "absolute") { el.style.removeProperty("--fit"); return; }
+      var s = 1;
+      el.style.setProperty("--fit", s);
+      while ((el.scrollHeight > el.clientHeight + 1 || el.scrollWidth > el.clientWidth + 1) && s > 0.6) {
+        s -= 0.03;
+        el.style.setProperty("--fit", s.toFixed(2));
+      }
+    });
+  }
+  var fitTimer;
+  function scheduleFit() { clearTimeout(fitTimer); fitTimer = setTimeout(fitLegacy, 120); }
+  if (document.querySelector(".lbox")) {
+    fitLegacy();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitLegacy);
+    window.addEventListener("load", fitLegacy);
+    window.addEventListener("resize", scheduleFit);
+  }
 })();
