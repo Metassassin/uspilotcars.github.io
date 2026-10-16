@@ -36,5 +36,23 @@
     "borderColor": "black",
     "borderStyle": "solid"
   },
-  "active": true
+  "active": true,
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "colorado",
+        "new-mexico"
+      ],
+      "background": "solid",
+      "color1": "bright-green",
+      "direction": "right",
+      "nameBigger": false,
+      "font": "tahoma",
+      "align": "center",
+      "border": "none",
+      "borderColor": "black",
+      "borderStyle": "solid"
+    }
+  ]
 }
