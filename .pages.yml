@@ -343,7 +343,7 @@ content:
           description: The strip appears in the State Listings section of each state ticked here.
           required: true
         - name: lines
-          label: Lines of text
+          label: Lines of text (left column)
           type: object
           list:
             collapsible:
@@ -386,6 +386,10 @@ content:
             label: Underline
             type: boolean
             default: false
+          - name: spaced
+            label: Spaced-out letters
+            type: boolean
+            default: false
           - name: color
             label: Colour for this line (optional)
             type: select
@@ -415,6 +419,8 @@ content:
                 label: Gold
               - name: bright-green
                 label: Bright green
+              - name: mid-green
+                label: Green (medium)
               - name: green
                 label: Green
               - name: dark-green
@@ -455,6 +461,133 @@ content:
                 label: Times New Roman
               - name: impact
                 label: Impact (tall, heavy)
+              - name: courier
+                label: Courier (typewriter)
+              - name: decorative
+                label: Decorative capitals (Algerian / Copperplate style)
+        - name: linesRight
+          label: Second column of text (optional)
+          type: object
+          list:
+            collapsible:
+              collapsed: true
+              summary: '{text}'
+          description: 'For a two-column strip, like Valid: name on the left, phone and details on the right. Leave
+            empty for one column.'
+          fields:
+          - name: text
+            label: Text
+            type: string
+            required: true
+          - name: size
+            label: Size
+            type: select
+            default: normal
+            options:
+              values:
+              - name: small
+                label: Small
+              - name: normal
+                label: Normal
+              - name: medium
+                label: Medium
+              - name: large
+                label: Large
+              - name: x-large
+                label: Extra large
+              - name: huge
+                label: Huge
+          - name: bold
+            label: Bold
+            type: boolean
+            default: true
+          - name: italic
+            label: Italic
+            type: boolean
+            default: false
+          - name: underline
+            label: Underline
+            type: boolean
+            default: false
+          - name: spaced
+            label: Spaced-out letters
+            type: boolean
+            default: false
+          - name: color
+            label: Colour for this line (optional)
+            type: select
+            options:
+              values:
+              - name: black
+                label: Black
+              - name: white
+                label: White
+              - name: light-gray
+                label: Light gray
+              - name: gray
+                label: Gray
+              - name: red
+                label: Red
+              - name: dark-red
+                label: Dark red
+              - name: pink
+                label: Pink
+              - name: light-pink
+                label: Light pink
+              - name: orange
+                label: Orange
+              - name: yellow
+                label: Yellow
+              - name: gold
+                label: Gold
+              - name: bright-green
+                label: Bright green
+              - name: mid-green
+                label: Green (medium)
+              - name: green
+                label: Green
+              - name: dark-green
+                label: Dark green
+              - name: olive
+                label: Olive
+              - name: aqua
+                label: Aqua
+              - name: teal
+                label: Teal
+              - name: blue
+                label: Blue
+              - name: navy
+                label: Navy
+              - name: purple
+                label: Purple
+              - name: brown
+                label: Brown
+            description: Leave empty to use the normal text colour.
+          - name: font
+            label: Font for this line (optional)
+            type: select
+            options:
+              values:
+              - name: tahoma
+                label: Tahoma (the old site's usual)
+              - name: verdana
+                label: Verdana
+              - name: arial
+                label: Arial
+              - name: arial-black
+                label: Arial Black (heavy)
+              - name: rockwell
+                label: Rockwell (slab serif)
+              - name: georgia
+                label: Georgia (serif)
+              - name: times
+                label: Times New Roman
+              - name: impact
+                label: Impact (tall, heavy)
+              - name: courier
+                label: Courier (typewriter)
+              - name: decorative
+                label: Decorative capitals (Algerian / Copperplate style)
         - name: logo
           label: Logo or small picture (optional)
           type: image
@@ -508,6 +641,8 @@ content:
               label: Gold
             - name: bright-green
               label: Bright green
+            - name: mid-green
+              label: Green (medium)
             - name: green
               label: Green
             - name: dark-green
@@ -556,6 +691,8 @@ content:
               label: Gold
             - name: bright-green
               label: Bright green
+            - name: mid-green
+              label: Green (medium)
             - name: green
               label: Green
             - name: dark-green
@@ -604,6 +741,8 @@ content:
               label: Gold
             - name: bright-green
               label: Bright green
+            - name: mid-green
+              label: Green (medium)
             - name: green
               label: Green
             - name: dark-green
@@ -666,6 +805,8 @@ content:
               label: Gold
             - name: bright-green
               label: Bright green
+            - name: mid-green
+              label: Green (medium)
             - name: green
               label: Green
             - name: dark-green
@@ -714,6 +855,8 @@ content:
               label: Gold
             - name: bright-green
               label: Bright green
+            - name: mid-green
+              label: Green (medium)
             - name: green
               label: Green
             - name: dark-green
@@ -736,6 +879,32 @@ content:
           label: Make the company name a size bigger
           type: boolean
           default: false
+        - name: nameFont
+          label: Company name font (optional)
+          type: select
+          options:
+            values:
+            - name: tahoma
+              label: Tahoma (the old site's usual)
+            - name: verdana
+              label: Verdana
+            - name: arial
+              label: Arial
+            - name: arial-black
+              label: Arial Black (heavy)
+            - name: rockwell
+              label: Rockwell (slab serif)
+            - name: georgia
+              label: Georgia (serif)
+            - name: times
+              label: Times New Roman
+            - name: impact
+              label: Impact (tall, heavy)
+            - name: courier
+              label: Courier (typewriter)
+            - name: decorative
+              label: Decorative capitals (Algerian / Copperplate style)
+          description: Use a different font just for the company name, e.g. Decorative capitals.
         - name: phoneColor
           label: Phone number colour (optional)
           type: select
@@ -765,6 +934,8 @@ content:
               label: Gold
             - name: bright-green
               label: Bright green
+            - name: mid-green
+              label: Green (medium)
             - name: green
               label: Green
             - name: dark-green
@@ -826,6 +997,8 @@ content:
                 label: Gold
               - name: bright-green
                 label: Bright green
+              - name: mid-green
+                label: Green (medium)
               - name: green
                 label: Green
               - name: dark-green
@@ -844,6 +1017,10 @@ content:
                 label: Purple
               - name: brown
                 label: Brown
+          - name: underline
+            label: Underline these words
+            type: boolean
+            default: false
         - name: font
           label: Font
           type: select
@@ -866,6 +1043,10 @@ content:
               label: Times New Roman
             - name: impact
               label: Impact (tall, heavy)
+            - name: courier
+              label: Courier (typewriter)
+            - name: decorative
+              label: Decorative capitals (Algerian / Copperplate style)
         - name: align
           label: Text position
           type: select
@@ -917,6 +1098,8 @@ content:
               label: Gold
             - name: bright-green
               label: Bright green
+            - name: mid-green
+              label: Green (medium)
             - name: green
               label: Green
             - name: dark-green
