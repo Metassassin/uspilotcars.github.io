@@ -206,8 +206,614 @@ content:
     - name: image
       label: Ad picture
       type: image
-      description: The artwork. For State listings, a wide short strip works best (about 500 x 100). Without a picture,
-        the ad shows as text.
+      description: A finished picture of the ad (e.g. a banner). For State listings you can use this OR design one
+        below -- if the design has lines, the design is used.
+    - name: strip
+      label: State listing design
+      type: object
+      description: Build a State listing right here -- no picture needed. Fill in the lines, then pick colours.
+        Leave the lines empty to use the Ad picture instead.
+      fields:
+      - name: lines
+        label: Lines of text
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: '{text}'
+        description: Usually 2 or 3 lines, e.g. "CHEYENNE, WY | FRONTIER PILOT SERVICES, LLC | 307-632-6409". The
+          company name and phone numbers are coloured automatically (see below).
+        fields:
+        - name: text
+          label: Text
+          type: string
+          required: true
+        - name: size
+          label: Size
+          type: select
+          default: normal
+          options:
+            values:
+            - name: small
+              label: Small
+            - name: normal
+              label: Normal
+            - name: medium
+              label: Medium
+            - name: large
+              label: Large
+            - name: x-large
+              label: Extra large
+            - name: huge
+              label: Huge
+        - name: bold
+          label: Bold
+          type: boolean
+          default: true
+        - name: italic
+          label: Italic
+          type: boolean
+          default: false
+        - name: underline
+          label: Underline
+          type: boolean
+          default: false
+        - name: color
+          label: Colour for this line (optional)
+          type: select
+          options:
+            values:
+            - name: black
+              label: Black
+            - name: white
+              label: White
+            - name: light-gray
+              label: Light gray
+            - name: gray
+              label: Gray
+            - name: red
+              label: Red
+            - name: dark-red
+              label: Dark red
+            - name: pink
+              label: Pink
+            - name: light-pink
+              label: Light pink
+            - name: orange
+              label: Orange
+            - name: yellow
+              label: Yellow
+            - name: gold
+              label: Gold
+            - name: bright-green
+              label: Bright green
+            - name: green
+              label: Green
+            - name: dark-green
+              label: Dark green
+            - name: olive
+              label: Olive
+            - name: aqua
+              label: Aqua
+            - name: teal
+              label: Teal
+            - name: blue
+              label: Blue
+            - name: navy
+              label: Navy
+            - name: purple
+              label: Purple
+            - name: brown
+              label: Brown
+          description: Leave empty to use the normal text colour.
+        - name: font
+          label: Font for this line (optional)
+          type: select
+          options:
+            values:
+            - name: tahoma
+              label: Tahoma (the old site's usual)
+            - name: verdana
+              label: Verdana
+            - name: arial
+              label: Arial
+            - name: arial-black
+              label: Arial Black (heavy)
+            - name: rockwell
+              label: Rockwell (slab serif)
+            - name: georgia
+              label: Georgia (serif)
+            - name: times
+              label: Times New Roman
+            - name: impact
+              label: Impact (tall, heavy)
+      - name: background
+        label: Background
+        type: select
+        default: solid
+        options:
+          values:
+          - name: solid
+            label: One colour
+          - name: gradient
+            label: Gradient (blend of colours)
+          - name: picture
+            label: Picture
+      - name: color1
+        label: Background colour (or gradient start)
+        type: select
+        options:
+          values:
+          - name: black
+            label: Black
+          - name: white
+            label: White
+          - name: light-gray
+            label: Light gray
+          - name: gray
+            label: Gray
+          - name: red
+            label: Red
+          - name: dark-red
+            label: Dark red
+          - name: pink
+            label: Pink
+          - name: light-pink
+            label: Light pink
+          - name: orange
+            label: Orange
+          - name: yellow
+            label: Yellow
+          - name: gold
+            label: Gold
+          - name: bright-green
+            label: Bright green
+          - name: green
+            label: Green
+          - name: dark-green
+            label: Dark green
+          - name: olive
+            label: Olive
+          - name: aqua
+            label: Aqua
+          - name: teal
+            label: Teal
+          - name: blue
+            label: Blue
+          - name: navy
+            label: Navy
+          - name: purple
+            label: Purple
+          - name: brown
+            label: Brown
+        default: white
+      - name: color2
+        label: 'Gradient: second colour'
+        type: select
+        options:
+          values:
+          - name: black
+            label: Black
+          - name: white
+            label: White
+          - name: light-gray
+            label: Light gray
+          - name: gray
+            label: Gray
+          - name: red
+            label: Red
+          - name: dark-red
+            label: Dark red
+          - name: pink
+            label: Pink
+          - name: light-pink
+            label: Light pink
+          - name: orange
+            label: Orange
+          - name: yellow
+            label: Yellow
+          - name: gold
+            label: Gold
+          - name: bright-green
+            label: Bright green
+          - name: green
+            label: Green
+          - name: dark-green
+            label: Dark green
+          - name: olive
+            label: Olive
+          - name: aqua
+            label: Aqua
+          - name: teal
+            label: Teal
+          - name: blue
+            label: Blue
+          - name: navy
+            label: Navy
+          - name: purple
+            label: Purple
+          - name: brown
+            label: Brown
+        description: Only for Gradient.
+      - name: color3
+        label: 'Gradient: third colour (optional)'
+        type: select
+        options:
+          values:
+          - name: black
+            label: Black
+          - name: white
+            label: White
+          - name: light-gray
+            label: Light gray
+          - name: gray
+            label: Gray
+          - name: red
+            label: Red
+          - name: dark-red
+            label: Dark red
+          - name: pink
+            label: Pink
+          - name: light-pink
+            label: Light pink
+          - name: orange
+            label: Orange
+          - name: yellow
+            label: Yellow
+          - name: gold
+            label: Gold
+          - name: bright-green
+            label: Bright green
+          - name: green
+            label: Green
+          - name: dark-green
+            label: Dark green
+          - name: olive
+            label: Olive
+          - name: aqua
+            label: Aqua
+          - name: teal
+            label: Teal
+          - name: blue
+            label: Blue
+          - name: navy
+            label: Navy
+          - name: purple
+            label: Purple
+          - name: brown
+            label: Brown
+        description: 'Only for Gradient. Like Kirby: light red, dark red, red.'
+      - name: direction
+        label: Gradient direction
+        type: select
+        default: right
+        options:
+          values:
+          - name: right
+            label: Left to right
+          - name: down
+            label: Top to bottom
+          - name: diagonal
+            label: Diagonal
+          - name: shine
+            label: Shine from the middle
+      - name: backgroundImage
+        label: Background picture
+        type: image
+        description: Only for Picture backgrounds.
+      - name: textColor
+        label: Normal text colour
+        type: select
+        options:
+          values:
+          - name: black
+            label: Black
+          - name: white
+            label: White
+          - name: light-gray
+            label: Light gray
+          - name: gray
+            label: Gray
+          - name: red
+            label: Red
+          - name: dark-red
+            label: Dark red
+          - name: pink
+            label: Pink
+          - name: light-pink
+            label: Light pink
+          - name: orange
+            label: Orange
+          - name: yellow
+            label: Yellow
+          - name: gold
+            label: Gold
+          - name: bright-green
+            label: Bright green
+          - name: green
+            label: Green
+          - name: dark-green
+            label: Dark green
+          - name: olive
+            label: Olive
+          - name: aqua
+            label: Aqua
+          - name: teal
+            label: Teal
+          - name: blue
+            label: Blue
+          - name: navy
+            label: Navy
+          - name: purple
+            label: Purple
+          - name: brown
+            label: Brown
+        description: Leave empty and it picks black or white to suit the background.
+      - name: nameColor
+        label: Company name colour (optional)
+        type: select
+        options:
+          values:
+          - name: black
+            label: Black
+          - name: white
+            label: White
+          - name: light-gray
+            label: Light gray
+          - name: gray
+            label: Gray
+          - name: red
+            label: Red
+          - name: dark-red
+            label: Dark red
+          - name: pink
+            label: Pink
+          - name: light-pink
+            label: Light pink
+          - name: orange
+            label: Orange
+          - name: yellow
+            label: Yellow
+          - name: gold
+            label: Gold
+          - name: bright-green
+            label: Bright green
+          - name: green
+            label: Green
+          - name: dark-green
+            label: Dark green
+          - name: olive
+            label: Olive
+          - name: aqua
+            label: Aqua
+          - name: teal
+            label: Teal
+          - name: blue
+            label: Blue
+          - name: navy
+            label: Navy
+          - name: purple
+            label: Purple
+          - name: brown
+            label: Brown
+      - name: nameBigger
+        label: Make the company name a size bigger
+        type: boolean
+        default: false
+      - name: phoneColor
+        label: Phone number colour (optional)
+        type: select
+        options:
+          values:
+          - name: black
+            label: Black
+          - name: white
+            label: White
+          - name: light-gray
+            label: Light gray
+          - name: gray
+            label: Gray
+          - name: red
+            label: Red
+          - name: dark-red
+            label: Dark red
+          - name: pink
+            label: Pink
+          - name: light-pink
+            label: Light pink
+          - name: orange
+            label: Orange
+          - name: yellow
+            label: Yellow
+          - name: gold
+            label: Gold
+          - name: bright-green
+            label: Bright green
+          - name: green
+            label: Green
+          - name: dark-green
+            label: Dark green
+          - name: olive
+            label: Olive
+          - name: aqua
+            label: Aqua
+          - name: teal
+            label: Teal
+          - name: blue
+            label: Blue
+          - name: navy
+            label: Navy
+          - name: purple
+            label: Purple
+          - name: brown
+            label: Brown
+        description: Red is the classic choice.
+      - name: highlights
+        label: Extra coloured words (optional)
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: '{text}'
+        description: Words to pick out in their own colour, e.g. "Bucket Trucks" in Teal.
+        fields:
+        - name: text
+          label: Words
+          type: string
+          required: true
+        - name: color
+          label: Colour
+          type: select
+          options:
+            values:
+            - name: black
+              label: Black
+            - name: white
+              label: White
+            - name: light-gray
+              label: Light gray
+            - name: gray
+              label: Gray
+            - name: red
+              label: Red
+            - name: dark-red
+              label: Dark red
+            - name: pink
+              label: Pink
+            - name: light-pink
+              label: Light pink
+            - name: orange
+              label: Orange
+            - name: yellow
+              label: Yellow
+            - name: gold
+              label: Gold
+            - name: bright-green
+              label: Bright green
+            - name: green
+              label: Green
+            - name: dark-green
+              label: Dark green
+            - name: olive
+              label: Olive
+            - name: aqua
+              label: Aqua
+            - name: teal
+              label: Teal
+            - name: blue
+              label: Blue
+            - name: navy
+              label: Navy
+            - name: purple
+              label: Purple
+            - name: brown
+              label: Brown
+      - name: font
+        label: Font
+        type: select
+        default: tahoma
+        options:
+          values:
+          - name: tahoma
+            label: Tahoma (the old site's usual)
+          - name: verdana
+            label: Verdana
+          - name: arial
+            label: Arial
+          - name: arial-black
+            label: Arial Black (heavy)
+          - name: rockwell
+            label: Rockwell (slab serif)
+          - name: georgia
+            label: Georgia (serif)
+          - name: times
+            label: Times New Roman
+          - name: impact
+            label: Impact (tall, heavy)
+      - name: align
+        label: Text position
+        type: select
+        default: center
+        options:
+          values:
+          - name: center
+            label: Centred
+          - name: left
+            label: Left
+      - name: border
+        label: Border
+        type: select
+        default: none
+        options:
+          values:
+          - name: none
+            label: None
+          - name: thin
+            label: Thin
+          - name: thick
+            label: Thick
+      - name: borderColor
+        label: Border colour
+        type: select
+        options:
+          values:
+          - name: black
+            label: Black
+          - name: white
+            label: White
+          - name: light-gray
+            label: Light gray
+          - name: gray
+            label: Gray
+          - name: red
+            label: Red
+          - name: dark-red
+            label: Dark red
+          - name: pink
+            label: Pink
+          - name: light-pink
+            label: Light pink
+          - name: orange
+            label: Orange
+          - name: yellow
+            label: Yellow
+          - name: gold
+            label: Gold
+          - name: bright-green
+            label: Bright green
+          - name: green
+            label: Green
+          - name: dark-green
+            label: Dark green
+          - name: olive
+            label: Olive
+          - name: aqua
+            label: Aqua
+          - name: teal
+            label: Teal
+          - name: blue
+            label: Blue
+          - name: navy
+            label: Navy
+          - name: purple
+            label: Purple
+          - name: brown
+            label: Brown
+        default: black
+      - name: borderStyle
+        label: Border style
+        type: select
+        default: solid
+        options:
+          values:
+          - name: solid
+            label: Solid
+          - name: dashed
+            label: Dashed
+      - name: logo
+        label: Small logo (optional)
+        type: image
+        description: Shown at the left of the strip.
     - name: description
       label: Ad text (one short line)
       type: text
@@ -231,26 +837,6 @@ content:
           label: Multiple cars
         - name: steering
           label: Steering
-    - name: stripColor
-      label: Strip colour (State listings without a picture)
-      type: select
-      options:
-        values:
-        - name: white
-          label: White
-        - name: blue
-          label: Blue
-        - name: red
-          label: Red
-        - name: aqua
-          label: Aqua
-        - name: yellow
-          label: Yellow
-        - name: green
-          label: Green
-        - name: navy
-          label: Navy
-      description: Only used when this ad has no picture and appears in a State listings section.
     - name: phone
       label: Phone
       type: string
@@ -351,7 +937,7 @@ content:
           label: '{businessName}'
           search: businessName,package
       name: stateListings
-      label: State listings (smaller, several per row)
+      label: State Listings (coloured strips, several per row)
       description: Add ads for this state, in order. The first one shows first.
     - type: object
       list:
@@ -368,9 +954,14 @@ content:
           value: '{path}'
           label: '{businessName}'
           search: businessName,package
+      - name: pinned
+        label: Pin to the top (paid upgrade)
+        type: boolean
+        default: false
+        description: Shows this listing above the others, highlighted and marked "Top listing", on this state only.
       name: superListings
       label: Super listings (large, two side by side)
-      description: Add ads for this state, in order. The same ad can also be in State listings.
+      description: Add ads for this state, in order. Tick "Pin to the top" for customers who pay for the top spot.
 - name: directory
   label: Directory
   type: group
