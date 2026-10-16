@@ -1,16 +1,5 @@
 {
   "businessName": "North American Transport Services (New Mexico)",
-  "package": "Super listing",
-  "image": "",
-  "description": "Height pole, route survey, multiple cars, steering.",
-  "location": "Las Cruces, NM",
-  "services": [
-    "height_pole",
-    "route_survey",
-    "multi_car",
-    "steering"
-  ],
-  "stripColor": "white",
   "phone": "217-860-2201",
   "website": "http://na-pcs.com",
   "active": true,
@@ -18,5 +7,23 @@
   "endDate": "",
   "contactName": "",
   "contactEmail": "",
-  "notes": "Moved from Directory listings into Ads. Check this against grandma's records."
+  "notes": "Moved from Directory listings into Ads. Check this against grandma's records.",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "new-mexico"
+      ],
+      "location": "Las Cruces, NM",
+      "services": [
+        "height_pole",
+        "route_survey",
+        "multi_car",
+        "steering"
+      ],
+      "text": "Height pole, route survey, multiple cars, steering.",
+      "pinStates": [],
+      "image": ""
+    }
+  ]
 }

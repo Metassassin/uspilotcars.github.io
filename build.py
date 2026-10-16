@@ -340,10 +340,24 @@ def _load_json(rel):
 
 NATIONWIDE = _load_json("nationwide.json")
 print(f"Ads: {len({id(a) for a in AD_LIBRARY.values()})} in the Ads section")
+# Per-state order: ONE page in the editor (content/state-order.json), like
+# Nationwide Sponsors -- a list where a state is added only when its order
+# needs controlling. (Older one-file-per-state lineups are still read.)
 LINEUPS = {}
 for _doc in load_folder("lineups"):
     if _doc.get("state"):
         LINEUPS[_doc["state"]] = _doc
+_STATE_ORDER = _load_json("state-order.json")
+if _STATE_ORDER is not None:
+    LINEUPS = {}
+    for _doc in _STATE_ORDER.get("states") or []:
+        _s = (_doc.get("state") or "").strip() if isinstance(_doc, dict) else ""
+        if not _s:
+            continue
+        if _s in LINEUPS:
+            print(f"  WARNING: State page order lists {_s} twice -- using the first one")
+            continue
+        LINEUPS[_s] = _doc
 _counts = {t_: sum(1 for a in ADS if a["tier"] == t_) for t_ in TIER_ORDER}
 print("Listings on the site: " + ", ".join(f"{n} {t_.replace('_', ' ')}" for t_, n in _counts.items())
       + f", {sum(1 for a in ADS if a['pinned'])} pinned"
@@ -896,7 +910,9 @@ def built_strip(ad, base):
         lines.append(f'<div class="sl-line" style="{";".join(css)}">{strip_line_html(text, ad, st, ink)}</div>')
     logo = (f'<img class="sl-logo" src="{base}{esc(st["logo"].lstrip("/"))}" alt="" loading="lazy">'
             if st.get("logo") else "")
-    return (f'<div class="ad-strip ad-strip-built" style="{bg_css}{border_css};color:{ink};font-family:{font};text-align:{align}">'
+    right = (st.get("logoPosition") or "left").lower() == "right"
+    cls = "ad-strip ad-strip-built" + (" logo-right" if right else "")
+    return (f'<div class="{cls}" style="{bg_css}{border_css};color:{ink};font-family:{font};text-align:{align}">'
             f'{logo}<div class="sl-lines">{"".join(lines)}</div></div>')
 
 
@@ -955,11 +971,9 @@ def super_ad(ad, base, pinned=False):
     return f'<div class="super-entry{" super-pinned" if pinned else ""}">{"".join(parts)}</div>'
 
 
-# Section 5 uses two columns only when there are enough listings to fill
-# them (Oregon's 14 -> two columns; Wyoming's 4 -> one), as on the old site.
-SUPER_TWO_COLUMN_MIN = 6
-
-
+# Section 5 is always two columns, filled like reading a book: left to
+# right across each row, then down. So listing #1 is top-left, #2 top-right,
+# #3 starts the next row -- the order set in the editor reads naturally.
 def state_ads_for(slug, state_name):
     """Who appears in this state's State Listings and Super Listings, in
     order -- used by the state pages AND the owner's lineup page, so the two
@@ -990,8 +1004,7 @@ def state_sections(slug, state_name, base):
         if pinned:
             inner += f'<div class="super-pinned-row">{"".join(super_ad(a, base, pinned=True) for a in pinned)}</div>'
         if rest:
-            one = " super-list-one" if len(rest) < SUPER_TWO_COLUMN_MIN else ""
-            inner += f'<div class="super-list{one}">{"".join(super_ad(a, base) for a in rest)}</div>'
+            inner += f'<div class="super-list">{"".join(super_ad(a, base) for a in rest)}</div>'
         html_ += page_section("super", "Super Listings", f"Featured companies serving {esc(state_name)}",
                               inner, count=len(pinned) + len(rest), extra_class="sponsor-band in-content")
     return html_, state_listings + pinned + rest

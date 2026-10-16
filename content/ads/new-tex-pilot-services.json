@@ -1,14 +1,5 @@
 {
   "businessName": "New-Tex Pilot Services",
-  "package": "Super listing",
-  "image": "",
-  "description": "Certified, insured. Height pole, multiple vehicles, transporter. Serving Carlsbad, Eunice, Hobbs, and Jal, NM, and Midland / Lubbock / Pecos, TX.",
-  "location": "Carlsbad / Eunice / Hobbs / Jal, NM",
-  "services": [
-    "height_pole",
-    "multi_car"
-  ],
-  "stripColor": "white",
   "phone": "(432) 250-5865",
   "website": null,
   "active": true,
@@ -16,5 +7,22 @@
   "endDate": "",
   "contactName": "",
   "contactEmail": "",
-  "notes": "Moved from Directory listings into Ads. Check this against grandma's records."
+  "notes": "Moved from Directory listings into Ads. Check this against grandma's records.",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "new-mexico",
+        "texas"
+      ],
+      "location": "Carlsbad / Eunice / Hobbs / Jal, NM",
+      "services": [
+        "height_pole",
+        "multi_car"
+      ],
+      "text": "Certified, insured. Height pole, multiple vehicles, transporter. Serving Carlsbad, Eunice, Hobbs, and Jal, NM, and Midland / Lubbock / Pecos, TX.",
+      "pinStates": [],
+      "image": ""
+    }
+  ]
 }

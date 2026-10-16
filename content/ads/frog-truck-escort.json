@@ -1,18 +1,48 @@
 {
   "businessName": "FROG TRUCK ESCORT",
-  "package": "Super listing",
-  "image": "/assets/images/advertisements/louisianafrog-com.png",
-  "stripColor": "white",
+  "phone": "318-469-3748",
   "website": "http://www.Louisianafrog.com",
   "active": true,
-  "notes": "Imported ad from old site. Shown on 5 directory pages. Image 229x86. Moved from Directory listings into Ads. Check this against grandma's records.",
+  "startDate": "",
+  "endDate": "",
+  "contactName": "",
+  "contactEmail": "",
+  "notes": "Moved from Super Listing to State Listing: on the old site Frog was a grey box ad (logo with 'Height Pole * Route Surveys' and 'Certified * All Credit Cards'), not a text listing. Check against grandma's records.",
   "placements": [
     {
-      "type": "state_picture",
+      "type": "state_design",
       "states": [
-        "louisiana"
+        "arkansas",
+        "louisiana",
+        "mississippi",
+        "oklahoma",
+        "texas"
       ],
-      "image": "/assets/images/advertisements/louisianafrog-com.png"
+      "background": "solid",
+      "color1": "light-gray",
+      "border": "none",
+      "font": "tahoma",
+      "align": "center",
+      "textColor": "black",
+      "phoneColor": "dark-green",
+      "logo": "/assets/images/advertisements/louisianafrog-com.png",
+      "lines": [
+        {
+          "text": "FROG TRUCK ESCORT | 318-469-3748",
+          "size": "medium",
+          "bold": true
+        },
+        {
+          "text": "HEIGHT POLE * ROUTE SURVEYS",
+          "size": "small",
+          "bold": true
+        },
+        {
+          "text": "CERTIFIED * ALL CREDIT CARDS",
+          "size": "small",
+          "bold": true
+        }
+      ]
     }
   ]
 }

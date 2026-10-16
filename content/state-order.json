@@ -1,0 +1,51 @@
+{
+  "states": [
+    {
+      "state": "new-mexico",
+      "stateListings": [
+        {
+          "ad": "content/ads/frank-s-pilot-car-service.json"
+        },
+        {
+          "ad": "content/ads/valid-transportation-pilot-car-service.json"
+        }
+      ],
+      "superListings": [
+        {
+          "ad": "content/ads/north-american-transport-services-new-mexico.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/new-tex-pilot-services.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/road-runner-pilot-service-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/loveland-pilot-car.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/hartsfield-escort-pcs.json",
+          "pinned": false
+        }
+      ]
+    },
+    {
+      "state": "texas",
+      "stateListings": [
+        {
+          "ad": "content/ads/sentinel-pilot-car-services.json"
+        }
+      ],
+      "superListings": [
+        {
+          "ad": "content/ads/new-tex-pilot-services.json",
+          "pinned": false
+        }
+      ]
+    }
+  ]
+}

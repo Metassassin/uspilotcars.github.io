@@ -1,11 +1,5 @@
 {
   "businessName": "VIDALIA DISPATCH SERVICE INC",
-  "package": "Nationwide sponsor",
-  "image": "/assets/images/advertisements/vidaliadispatch-com.jpg",
-  "description": "",
-  "location": "",
-  "services": [],
-  "stripColor": "white",
   "phone": "",
   "website": "http://vidaliadispatch.com",
   "active": true,
@@ -13,5 +7,11 @@
   "endDate": "",
   "contactName": "",
   "contactEmail": "",
-  "notes": "Imported ad from old site. Shown on 56 directory pages. Image 503x217. Moved from Directory listings into Ads. Check this against grandma's records."
+  "notes": "Imported ad from old site. Shown on 56 directory pages. Image 503x217. Moved from Directory listings into Ads. Check this against grandma's records.",
+  "placements": [
+    {
+      "type": "nationwide",
+      "image": "/assets/images/advertisements/vidaliadispatch-com.jpg"
+    }
+  ]
 }

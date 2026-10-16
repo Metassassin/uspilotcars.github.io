@@ -1,14 +1,5 @@
 {
   "businessName": "Hartsfield Escort & PCS",
-  "package": "Super listing",
-  "image": "",
-  "description": "Height pole and multiple-car capable.",
-  "location": "Farmington, NM",
-  "services": [
-    "height_pole",
-    "multi_car"
-  ],
-  "stripColor": "white",
   "phone": "505-486-9835",
   "website": null,
   "active": true,
@@ -16,5 +7,21 @@
   "endDate": "",
   "contactName": "",
   "contactEmail": "",
-  "notes": "Moved from Directory listings into Ads. Check this against grandma's records."
+  "notes": "Moved from Directory listings into Ads. Check this against grandma's records.",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "new-mexico"
+      ],
+      "location": "Farmington, NM",
+      "services": [
+        "height_pole",
+        "multi_car"
+      ],
+      "text": "Height pole and multiple-car capable.",
+      "pinStates": [],
+      "image": ""
+    }
+  ]
 }

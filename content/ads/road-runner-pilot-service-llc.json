@@ -1,13 +1,5 @@
 {
   "businessName": "Road Runner Pilot Service LLC",
-  "package": "Super listing",
-  "image": "",
-  "description": "Route survey capable.",
-  "location": "Albuquerque, NM",
-  "services": [
-    "route_survey"
-  ],
-  "stripColor": "white",
   "phone": "505-377-5773",
   "website": "http://swpilotcars.com",
   "active": true,
@@ -15,5 +7,20 @@
   "endDate": "",
   "contactName": "",
   "contactEmail": "",
-  "notes": "Moved from Directory listings into Ads. Check this against grandma's records."
+  "notes": "Moved from Directory listings into Ads. Check this against grandma's records.",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "new-mexico"
+      ],
+      "location": "Albuquerque, NM",
+      "services": [
+        "route_survey"
+      ],
+      "text": "Route survey capable.",
+      "pinStates": [],
+      "image": ""
+    }
+  ]
 }

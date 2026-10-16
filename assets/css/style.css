@@ -815,3 +815,19 @@ details.page-section > summary .sec-toggle{ order:3; }
 .super-entry.super-pinned{ margin:0; padding:10px 12px; background:#eef4ff; border:1px solid var(--navy-700);
   border-left:4px solid var(--navy-700); border-radius:var(--radius-sm); }
 .super-pinned .pin-tag{ margin-bottom:3px; }
+
+/* Super Listings: always two columns, in reading order (row by row).
+   Grid fills left-to-right then down; a centre rule keeps the old look. */
+.super-list{ display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); column-gap:28px; row-gap:14px;
+  columns:auto; column-rule:none; position:relative; align-items:start; }
+.super-list::before{ content:""; position:absolute; top:14px; bottom:14px; left:50%; border-left:1px solid var(--border); }
+.super-list .super-entry{ margin:0; }
+.super-list-one{ columns:auto; }
+.super-pinned-row{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+@media (max-width: 640px){
+  .super-list, .super-pinned-row{ grid-template-columns:1fr; }
+  .super-list::before{ display:none; }
+}
+/* Logo beside the text -- left (default) or right, never behind it */
+.ad-strip-built.logo-right .sl-logo{ order:2; }
+.ad-strip-built .sl-logo{ max-height:72px; max-width:28%; width:auto; height:auto; }
