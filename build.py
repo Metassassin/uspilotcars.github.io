@@ -254,6 +254,16 @@ def resolve_ad(ref, where):
     return ad if is_live(ad) else None
 
 
+def lineup_entries(items, where):
+    """Like lineup_ads, but keeps each entry's own settings (e.g. pinned)."""
+    out, seen_ = [], set()
+    for it in items or []:
+        ad = resolve_ad(it, where)
+        if ad is not None and id(ad) not in seen_:
+            seen_.add(id(ad)); out.append((ad, it if isinstance(it, dict) else {}))
+    return out
+
+
 def lineup_ads(items, where):
     out, seen_ = [], set()
     for it in items or []:
@@ -697,34 +707,168 @@ def sitewide_banner_block(base):
                         extra_class="sponsor-band")
 
 
-# Strip colours for text-only State listings, as on the old site
-# (blue Whispering Hills, red Glen's, aqua Jim's...). Ink is chosen for contrast.
-STRIP_COLORS = {"blue": ("#0000ff", "#ffffff"), "red": ("#e00000", "#ffffff"), "aqua": ("#00ffff", "#000000"),
-                "yellow": ("#ffff00", "#000000"), "green": ("#00ff00", "#000000"), "navy": ("#0f2436", "#ffffff"),
-                "white": ("#ffffff", "#0b1c2b")}
+# ---------------------------------------------------------------- strip builder
+# State listings designed right in the editor. Every option below comes from
+# a survey of the 66 coloured strip ads on the old site: their backgrounds,
+# text colours, fonts and sizes.
+PALETTE = {
+    "black": "#000000", "white": "#ffffff", "light-gray": "#ebebeb", "gray": "#808080",
+    "red": "#ff0000", "dark-red": "#a80000", "pink": "#ff6b6b", "light-pink": "#fff5ff",
+    "orange": "#ff8000", "yellow": "#ffff00", "gold": "#e6b800",
+    "bright-green": "#00ff00", "green": "#07b300", "dark-green": "#006400", "olive": "#adca56",
+    "aqua": "#00ffff", "teal": "#008080", "blue": "#0000ff", "navy": "#000080", "purple": "#800080",
+    "brown": "#553f1f",
+}
+FONTS = {
+    "tahoma": "Tahoma, Verdana, 'Segoe UI', Arial, sans-serif",
+    "verdana": "Verdana, Tahoma, Arial, sans-serif",
+    "arial": "Arial, Helvetica, sans-serif",
+    "arial-black": "'Arial Black', 'Arial Bold', Gadget, Arial, sans-serif",
+    "rockwell": "'Rockwell Extra Bold', Rockwell, 'Roboto Slab', Georgia, 'Times New Roman', serif",
+    "georgia": "Georgia, 'Times New Roman', serif",
+    "times": "'Times New Roman', Times, Georgia, serif",
+    "impact": "Impact, 'Arial Narrow Bold', 'Arial Black', sans-serif",
+}
+SIZES = {"small": 9, "normal": 11, "medium": 13, "large": 15, "x-large": 19, "huge": 24}   # old-site px
+DIRECTIONS = {"right": "to right", "down": "to bottom", "diagonal": "135deg"}
+# Older ads saved before the builder existed: one plain strip colour.
+STRIP_COLORS = {"blue": "blue", "red": "red", "aqua": "aqua", "yellow": "yellow", "green": "bright-green",
+                "navy": "navy", "white": "white"}
+
+
+def _col(name, default):
+    return PALETTE.get((name or "").strip().lower(), PALETTE.get(default, default))
+
+
+def _ink_for(bg_hex):
+    r, g, b = (int(bg_hex[i:i + 2], 16) for i in (1, 3, 5))
+    return "#000000" if (0.299 * r + 0.587 * g + 0.114 * b) > 150 else "#ffffff"
+
+
+def strip_background(st, base):
+    kind = (st.get("background") or "solid").lower()
+    c1 = _col(st.get("color1"), "white")
+    if kind == "gradient":
+        stops = [c1] + ([_col(st["color2"], "white")] if st.get("color2") else []) + \
+                ([_col(st["color3"], "white")] if st.get("color3") else [])
+        if len(stops) == 1:
+            stops.append(c1)
+        d = (st.get("direction") or "right").lower()
+        if d == "shine":
+            return f"background:radial-gradient(ellipse at center, {', '.join(reversed(stops))})", c1
+        return f"background:linear-gradient({DIRECTIONS.get(d, 'to right')}, {', '.join(stops)})", c1
+    if kind == "picture" and st.get("backgroundImage"):
+        img = esc(st["backgroundImage"].lstrip("/"))
+        return f"background:{c1} url('{base}{img}') center / 100% 100% no-repeat", c1
+    return f"background:{c1}", c1
+
+
+def strip_line_html(text, ad, st, ink):
+    """One line of a designed strip. Coloured automatically, the way the old
+    strips were: the company name (linked to their website, optionally a size
+    bigger), phone numbers (tap-to-call), and any extra words picked out in
+    their own colour (e.g. "Bucket Trucks" in teal)."""
+    name = ad["businessName"]
+    name_c = _col(st.get("nameColor"), ink) if st.get("nameColor") else None
+    phone_c = _col(st.get("phoneColor"), ink) if st.get("phoneColor") else None
+    extra = {}
+    for h in st.get("highlights") or []:
+        w = (h.get("text") or "").strip()
+        if w:
+            extra[w.lower()] = _col(h.get("color"), ink)
+    alts = []
+    if name:
+        alts.append("(?P<name>" + re.escape(name) + ")")
+    if extra:
+        alts.append("(?P<extra>" + "|".join(re.escape(w) for w in sorted(extra, key=len, reverse=True)) + ")")
+    alts.append(r"(?P<phone>\(?\b\d{3}\)?[\s.\-]?\d{3}[\s.\-]?\d{4}\b)")
+    pattern = re.compile("|".join(alts), re.I)
+    out, last = [], 0
+    for m in pattern.finditer(text):
+        out.append(esc(text[last:m.start()]))
+        seg = m.group(0)
+        if m.lastgroup == "name":
+            css = []
+            if name_c:
+                css.append(f"color:{name_c}")
+            if st.get("nameBigger"):
+                css.append("font-size:1.25em")
+            style = f' style="{";".join(css)}"' if css else ""
+            out.append(f'<a class="sl-name" href="{esc(ad["website"])}" target="_blank" rel="sponsored noopener"{style}>{esc(seg)}</a>'
+                       if ad.get("website") else f'<span class="sl-name"{style}>{esc(seg)}</span>')
+        elif m.lastgroup == "extra":
+            out.append(f'<span style="color:{extra[seg.lower()]}">{esc(seg)}</span>')
+        else:
+            style = f' style="color:{phone_c}"' if phone_c else ""
+            out.append(f'<a class="sl-phone" href="{tel_href(seg)}"{style}>{esc(seg)}</a>')
+        last = m.end()
+    out.append(esc(text[last:]))
+    return "".join(out)
+
+
+def built_strip(ad, base):
+    st = ad.get("strip") or {}
+    bg_css, c1 = strip_background(st, base)
+    ink = _col(st.get("textColor"), _ink_for(c1))
+    font = FONTS.get((st.get("font") or "tahoma").lower(), FONTS["tahoma"])
+    border = (st.get("border") or "none").lower()
+    bw = {"thin": 2, "thick": 4}.get(border, 0)
+    border_css = (f";border:{bw}px {'dashed' if (st.get('borderStyle') or '').lower() == 'dashed' else 'solid'} "
+                  f"{_col(st.get('borderColor'), 'black')}") if bw else ";border:1px solid rgba(0,0,0,.15)"
+    align = "left" if (st.get("align") or "").lower() == "left" else "center"
+    lines = []
+    for ln in st.get("lines") or []:
+        text = (ln.get("text") or "").strip()
+        if not text:
+            continue
+        px = SIZES.get((ln.get("size") or "normal").lower(), 11)
+        css = [f"--fs:{px}"]
+        css.append("font-weight:700" if ln.get("bold", True) is not False else "font-weight:400")
+        if ln.get("italic"):
+            css.append("font-style:italic")
+        if ln.get("underline"):
+            css.append("text-decoration:underline")
+        if ln.get("color"):
+            css.append(f"color:{_col(ln['color'], ink)}")
+        if ln.get("font") and ln["font"].lower() in FONTS:
+            css.append(f"font-family:{FONTS[ln['font'].lower()]}")
+        lines.append(f'<div class="sl-line" style="{";".join(css)}">{strip_line_html(text, ad, st, ink)}</div>')
+    logo = (f'<img class="sl-logo" src="{base}{esc(st["logo"].lstrip("/"))}" alt="" loading="lazy">'
+            if st.get("logo") else "")
+    return (f'<div class="ad-strip ad-strip-built" style="{bg_css}{border_css};color:{ink};font-family:{font};text-align:{align}">'
+            f'{logo}<div class="sl-lines">{"".join(lines)}</div></div>')
+
+
+def auto_strip(ad):
+    """No design yet: make one from the ad's own details, so a new ad shows
+    sensibly the moment it is added."""
+    loc = f'{ad["location"]} | ' if ad.get("location") else ""
+    lines = [{"text": f'{loc}{ad["businessName"]}{" | " + ad["phone"] if ad.get("phone") else ""}', "size": "medium"}]
+    if ad.get("description"):
+        lines.append({"text": ad["description"], "size": "normal"})
+    color = STRIP_COLORS.get((ad.get("stripColor") or "white").lower(), "white")
+    return {"background": "solid", "color1": color, "nameColor": "", "phoneColor": "red" if color in ("white", "yellow", "aqua", "bright-green", "light-gray") else "",
+            "lines": lines}
 
 
 def compact_ad(ad, base):
-    """Section 4, a State listing: a half-height strip, like the old site's
-    NY NJ Routing banner or its coloured one-line company boxes."""
+    """Section 4, a State listing: a half-height strip. Designed in the editor
+    (strip builder), or a picture, or -- for a brand-new ad -- made
+    automatically from its details."""
     if ad.get("legacyBox"):
         return f'<div class="ad-strip ad-strip-legacy">{legacy_ad(ad, base)}</div>'
-    name = esc(ad["businessName"])
-    href = ad.get("website") or ""
+    st = ad.get("strip") or {}
+    if any((l or {}).get("text") for l in st.get("lines") or []):
+        return built_strip(ad, base)
     if ad.get("image"):
+        name = esc(ad["businessName"]); href = ad.get("website") or ""
         img = f'<img src="{base}{esc(ad["image"])}" alt="{name} advertisement" loading="lazy" decoding="async">'
         return (f'<a class="ad-strip ad-strip-img" href="{esc(href)}" target="_blank" rel="sponsored noopener">{img}</a>'
                 if href else f'<div class="ad-strip ad-strip-img">{img}</div>')
-    bg, ink = STRIP_COLORS.get(ad.get("stripColor", "").lower(), STRIP_COLORS["white"])
-    title = f'<a href="{esc(href)}" target="_blank" rel="sponsored noopener">{name}</a>' if href else name
-    phone = f' | <a class="as-phone" href="{tel_href(ad["phone"])}">{esc(ad["phone"])}</a>' if ad.get("phone") else ""
-    loc = f'{esc(ad["location"])} | ' if ad.get("location") else ""
-    line2 = f'<div class="as-line2">{esc(ad["description"])}</div>' if ad.get("description") else ""
-    return (f'<div class="ad-strip ad-strip-text" style="--strip:{bg};--strip-ink:{ink}">'
-            f'<div class="as-line1">{loc}<strong>{title}</strong>{phone}</div>{line2}</div>')
+    return built_strip(dict(ad, strip=auto_strip(ad)), base)
 
 
-def super_ad(ad, base):
+def super_ad(ad, base, pinned=False):
     """Section 5, a Super listing: a short text ad in the two-column block --
     company name (with services), city, phone in red -- as on the old site."""
     if ad.get("legacyBox"):
@@ -735,7 +879,8 @@ def super_ad(ad, base):
     svcs = "".join(f'<span class="se-svc">{esc(SERVICE_LABELS[s])}</span>' for s in ad.get("services") or [] if s in SERVICE_LABELS)
     img = (f'<img class="se-img" src="{base}{esc(ad["image"])}" alt="{name} advertisement" loading="lazy">'
            if ad.get("image") else "")
-    parts = [f'<div class="se-name">{title}</div>']
+    parts = ['<div class="pin-tag">&#9733; Top listing</div>'] if pinned else []
+    parts.append(f'<div class="se-name">{title}</div>')
     if svcs:
         parts.append(f'<div class="se-svcs">{svcs}</div>')
     if img:
@@ -746,7 +891,7 @@ def super_ad(ad, base):
         parts.append(f'<div class="se-desc">{esc(ad["description"])}</div>')
     if ad.get("phone"):
         parts.append(f'<a class="se-phone" href="{tel_href(ad["phone"])}">{esc(ad["phone"])}</a>')
-    return f'<div class="super-entry">{"".join(parts)}</div>'
+    return f'<div class="super-entry{" super-pinned" if pinned else ""}">{"".join(parts)}</div>'
 
 
 # Section 5 uses two columns only when there are enough listings to fill
@@ -755,43 +900,30 @@ SUPER_TWO_COLUMN_MIN = 6
 
 
 def state_sections(slug, state_name, base):
-    """Sections 4 and 5 for one state, from that state's lineup."""
+    """Sections 4 and 5 for one state, from that state's lineup.
+    Section 4 is titled "State Listings" on every page (not the state's name):
+    companies from anywhere can advertise on any state's page."""
     lu = LINEUPS.get(slug) or {}
     state_listings = lineup_ads(lu.get("stateListings"), f"{state_name} State listings")
-    supers = lineup_ads(lu.get("superListings"), f"{state_name} Super listings")
+    supers = lineup_entries(lu.get("superListings"), f"{state_name} Super listings")
+    # Paid "pin to top": pinned Super listings come first, in their list order.
+    pinned = [a for a, it in supers if it.get("pinned")]
+    rest = [a for a, it in supers if not it.get("pinned")]
     html_ = ""
     if state_listings:
-        html_ += page_section("state", f"&#9670; {esc(state_name)} Listings", f"Pilot car companies advertising in {esc(state_name)}",
+        html_ += page_section("state", "&#9670; State Listings", f"Pilot car companies serving {esc(state_name)}",
                               f'<div class="strip-grid">{"".join(compact_ad(a, base) for a in state_listings)}</div>',
                               count=len(state_listings), extra_class="sponsor-band in-content")
     if supers:
-        html_ += page_section("super", "Super Listings", f"Featured {esc(state_name)} companies",
-                              f'<div class="super-list{" super-list-one" if len(supers) < SUPER_TWO_COLUMN_MIN else ""}">{"".join(super_ad(a, base) for a in supers)}</div>',
-                              count=len(supers), extra_class="sponsor-band in-content")
-    return html_, state_listings + supers
-
-
-def state_ads_section(region_ads, state_name, base):
-    """This state's own ads, grouped in a labelled section like the
-    Nationwide Sponsors: picture and box ads first, then the short text ads."""
-    ads = [a for a in region_ads if a["tier"] in ("state_banner", "super_listing")]
-    if not ads:
-        return ""
-    big = [a for a in ads if not (a.get("legacyBox") or {}).get("flow")]
-    small = [a for a in ads if (a.get("legacyBox") or {}).get("flow")]
-    def draw(a):
-        if a.get("legacyBox") or a["tier"] == "state_banner" or a.get("image"):
-            return banner_ad(a, base)
-        return ad_card(a, base)
-    return f"""<section class="sponsor-band state-band" aria-labelledby="state-band-title">
-      <div class="sponsor-band-head">
-        <span class="sb-mark" aria-hidden="true">&#9670;</span>
-        <h2 id="state-band-title">Featured in {esc(state_name)}</h2>
-        <span class="sb-note">Pilot car companies advertising in {esc(state_name)}</span>
-      </div>
-      {f'<div class="state-ad-grid">{"".join(draw(a) for a in big)}</div>' if big else ""}
-      {f'<div class="text-ad-grid">{"".join(draw(a) for a in small)}</div>' if small else ""}
-    </section>"""
+        inner = ""
+        if pinned:
+            inner += f'<div class="super-pinned-row">{"".join(super_ad(a, base, pinned=True) for a in pinned)}</div>'
+        if rest:
+            one = " super-list-one" if len(rest) < SUPER_TWO_COLUMN_MIN else ""
+            inner += f'<div class="super-list{one}">{"".join(super_ad(a, base) for a in rest)}</div>'
+        html_ += page_section("super", "Super Listings", f"Featured companies serving {esc(state_name)}",
+                              inner, count=len(supers), extra_class="sponsor-band in-content")
+    return html_, state_listings + [a for a, _ in supers]
 
 
 def place_after_page_banner(body, block):
@@ -1694,14 +1826,15 @@ def build_lineup():
     for r in ALL_REGIONS:
         lu = LINEUPS.get(r["slug"]) or {}
         sl = lineup_ads(lu.get("stateListings"), r["name"])
-        su = lineup_ads(lu.get("superListings"), r["name"])
+        su_e = lineup_entries(lu.get("superListings"), r["name"])
+        su = [a for a, it in su_e if it.get("pinned")] + [a for a, it in su_e if not it.get("pinned")]
         pinned = [a for a in ads_for_placement(r["slug"]) if a.get("pinned")]
         if not (sl or su or pinned):
             continue
         state_blocks.append(f"""<details class="panel lineup-state"><summary><strong>{esc(r['name'])}</strong>
           <span class="hotel-meta">{len(sl)} state listings, {len(su)} super listings, {len(pinned)} pinned</span></summary>
           <h3>State listings</h3>{table(sl)}
-          <h3>Super listings</h3>{table(su)}
+          <h3>Super listings{(" &mdash; " + str(sum(1 for _, it in su_e if it.get("pinned"))) + " pinned to the top") if any(it.get("pinned") for _, it in su_e) else ""}</h3>{table(su)}
           <h3>Pinned to the top of the company list</h3>{table(pinned)}</details>""")
 
     body = f"""
