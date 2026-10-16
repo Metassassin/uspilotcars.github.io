@@ -37,6 +37,9 @@
       "state": "texas",
       "stateListings": [
         {
+          "ad": "content/ads/frog-truck-escort.json"
+        },
+        {
           "ad": "content/ads/sentinel-pilot-car-services.json"
         }
       ],
