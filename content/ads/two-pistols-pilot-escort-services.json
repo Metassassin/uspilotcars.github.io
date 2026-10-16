@@ -44,15 +44,28 @@
         "colorado",
         "new-mexico"
       ],
+      "lines": [
+        {
+          "text": "RIFLE, CO",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false
+        }
+      ],
       "background": "solid",
       "color1": "bright-green",
       "direction": "right",
+      "textColor": "black",
+      "nameColor": "black",
       "nameBigger": false,
+      "phoneColor": "red",
       "font": "tahoma",
       "align": "center",
-      "border": "none",
+      "border": "thin",
       "borderColor": "black",
       "borderStyle": "solid"
     }
-  ]
+  ],
+  "phone": "970-274-1337 | 970-948-4276"
 }
