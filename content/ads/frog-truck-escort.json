@@ -2,16 +2,17 @@
   "businessName": "FROG TRUCK ESCORT",
   "package": "Super listing",
   "image": "/assets/images/advertisements/louisianafrog-com.png",
-  "description": "",
-  "location": "",
-  "services": [],
   "stripColor": "white",
-  "phone": "",
   "website": "http://www.Louisianafrog.com",
   "active": true,
-  "startDate": "",
-  "endDate": "",
-  "contactName": "",
-  "contactEmail": "",
-  "notes": "Imported ad from old site. Shown on 5 directory pages. Image 229x86. Moved from Directory listings into Ads. Check this against grandma's records."
+  "notes": "Imported ad from old site. Shown on 5 directory pages. Image 229x86. Moved from Directory listings into Ads. Check this against grandma's records.",
+  "placements": [
+    {
+      "type": "state_picture",
+      "states": [
+        "louisiana"
+      ],
+      "image": "/assets/images/advertisements/louisianafrog-com.png"
+    }
+  ]
 }
