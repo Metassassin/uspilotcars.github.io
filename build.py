@@ -874,11 +874,26 @@ def strip_line_html(text, ad, st, ink):
     name = ad["businessName"]
     name_c = _col(st.get("nameColor"), ink) if st.get("nameColor") else None
     phone_c = _col(st.get("phoneColor"), ink) if st.get("phoneColor") else None
+    # "Words to style differently": each entry can change colour, bold,
+    # italic and underline for just those words.
     extra = {}
     for h in st.get("highlights") or []:
         w = (h.get("text") or "").strip()
-        if w:
-            extra[w.lower()] = (_col(h.get("color"), ink), bool(h.get("underline")))
+        if not w:
+            continue
+        css = []
+        if h.get("color"):
+            css.append(f"color:{_col(h['color'], ink)}")
+        weight = (h.get("weight") or "").lower()
+        if weight == "bold":
+            css.append("font-weight:700")
+        elif weight == "regular":
+            css.append("font-weight:400")
+        if h.get("italic"):
+            css.append("font-style:italic")
+        if h.get("underline"):
+            css.append("text-decoration:underline")
+        extra[w.lower()] = ";".join(css)
     alts = []
     if name:
         alts.append("(?P<name>" + re.escape(name) + ")")
@@ -902,8 +917,8 @@ def strip_line_html(text, ad, st, ink):
             out.append(f'<a class="sl-name" href="{esc(ad["website"])}" target="_blank" rel="sponsored noopener"{style}>{esc(seg)}</a>'
                        if ad.get("website") else f'<span class="sl-name"{style}>{esc(seg)}</span>')
         elif m.lastgroup == "extra":
-            c_, u_ = extra[seg.lower()]
-            out.append(f'<span style="color:{c_}{";text-decoration:underline" if u_ else ""}">{esc(seg)}</span>')
+            style = extra[seg.lower()]
+            out.append(f'<span style="{style}">{esc(seg)}</span>' if style else esc(seg))
         else:
             style = f' style="color:{phone_c}"' if phone_c else ""
             out.append(f'<a class="sl-phone" href="{tel_href(seg)}"{style}>{esc(seg)}</a>')
