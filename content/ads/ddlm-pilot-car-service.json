@@ -1,0 +1,20 @@
+{
+  "businessName": "DDLM PILOT CAR SERVICE ",
+  "phone": "251-377-7409",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "alabama"
+      ],
+      "location": "CUBA, AL",
+      "services": [
+        "height_pole",
+        "route_survey",
+        "multi_car"
+      ],
+      "text": "WITPAC"
+    }
+  ],
+  "active": true
+}
