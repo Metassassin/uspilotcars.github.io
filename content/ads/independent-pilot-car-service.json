@@ -1,0 +1,14 @@
+{
+  "businessName": "INDEPENDENT PILOT CAR SERVICE",
+  "phone": "912-401-9545",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "georgia"
+      ],
+      "location": "SAVANNAH, GA"
+    }
+  ],
+  "active": true
+}
