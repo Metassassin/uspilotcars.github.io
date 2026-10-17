@@ -24,6 +24,14 @@
           "italic": false,
           "underline": false,
           "spaced": false
+        },
+        {
+          "text": "LEAD/CHASE, HEIGHT POLE, ROUTE SURVEY, MULTIPLE CARS",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
         }
       ],
       "logoPosition": "left",
