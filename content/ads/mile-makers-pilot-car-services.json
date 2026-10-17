@@ -1,0 +1,51 @@
+{
+  "businessName": "MILE MAKERS PILOT CAR SERVICES",
+  "phone": "301-305-7563",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "connecticut"
+      ],
+      "lines": [
+        {
+          "text": "$1M INSURED | 24/7 NATIONWIDE SERVICE",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": true
+        },
+        {
+          "text": "MILE MAKERS PILOT CAR SERVICES",
+          "size": "x-large",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "CERTIFIED-NY/FL/NM/WA | 301-305-7563 | HEIGHT POLE/LEAD/CHASE",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": true
+        }
+      ],
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "gray",
+      "direction": "right",
+      "textColor": "black",
+      "nameBigger": true,
+      "phoneColor": "red",
+      "font": "tahoma",
+      "align": "center",
+      "border": "thick",
+      "borderColor": "black",
+      "borderStyle": "solid"
+    }
+  ],
+  "active": true
+}
