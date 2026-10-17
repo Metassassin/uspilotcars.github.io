@@ -5,7 +5,8 @@
     {
       "type": "super",
       "states": [
-        "alabama"
+        "alabama",
+        "florida"
       ],
       "location": "CUBA, AL",
       "services": [
