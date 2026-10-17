@@ -1,0 +1,52 @@
+{
+  "businessName": "BLACK BEARD",
+  "phone": "386-243-1420",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "alabama",
+        "florida"
+      ],
+      "lines": [
+        {
+          "text": "BLACK BEARD",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "LAKE CITY, FL | 386-243-1420",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "CASH, MONEY ORDER, COMCHECK, BUSINESS CHECK",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        }
+      ],
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "pink",
+      "direction": "right",
+      "textColor": "black",
+      "nameBigger": false,
+      "phoneColor": "red",
+      "font": "tahoma",
+      "align": "center",
+      "border": "thin",
+      "borderColor": "black",
+      "borderStyle": "solid"
+    }
+  ],
+  "active": true
+}
