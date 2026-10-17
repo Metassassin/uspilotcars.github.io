@@ -1,0 +1,64 @@
+{
+  "businessName": "BLACKSHEEP PILOT CARS",
+  "phone": "775-560-5896",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "arizona",
+        "nevada"
+      ],
+      "lines": [
+        {
+          "text": "BLACKSHEEP PILOT CARS | 775-560-5896",
+          "size": "medium",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "FLEXIBLE RATES | 3 CARS POLE & CHASE | INSURED & CERTIFIED",
+          "size": "normal",
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "WE’LL GET YOU WHERE YOU’RE GOING!!!!!!",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        }
+      ],
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "black",
+      "direction": "right",
+      "textColor": "white",
+      "nameBigger": false,
+      "phoneColor": "red",
+      "font": "tahoma",
+      "align": "center",
+      "border": "thin",
+      "borderColor": "black",
+      "borderStyle": "solid"
+    },
+    {
+      "type": "super",
+      "states": [
+        "arizona",
+        "nevada"
+      ],
+      "location": "RENO, NV",
+      "services": [
+        "height_pole",
+        "multi_car"
+      ]
+    }
+  ],
+  "active": true
+}
