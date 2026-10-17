@@ -6,7 +6,8 @@
       "type": "state_design",
       "states": [
         "alabama",
-        "mississippi"
+        "mississippi",
+        "arkansas"
       ],
       "lines": [
         {
@@ -36,7 +37,7 @@
       ],
       "logoPosition": "left",
       "background": "solid",
-      "color1": "red",
+      "color1": "dark-red",
       "direction": "right",
       "textColor": "black",
       "nameBigger": true,
