@@ -1,0 +1,21 @@
+{
+  "businessName": "PIT ROW PILOT CAR SVCS. LLC",
+  "phone": "844-474-8769",
+  "website": "http://www.pitrow.services/pilotcars",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "florida"
+      ],
+      "location": "LINCOLN/MOBILE, AL",
+      "services": [
+        "steering",
+        "multi_car",
+        "route_survey",
+        "height_pole"
+      ]
+    }
+  ],
+  "active": true
+}
