@@ -1,23 +1,16 @@
 {
   "businessName": "S & G Transport LLC",
   "phone": "928-651-2140",
-  "website": "",
   "active": true,
-  "startDate": "",
-  "endDate": "",
-  "contactName": "",
-  "contactEmail": "",
   "notes": "Added from the New Mexico page on the old site.",
   "placements": [
     {
       "type": "super",
       "states": [
-        "new-mexico"
+        "new-mexico",
+        "arizona"
       ],
-      "location": "HOLBROOK/FLAGSTAFF/PAYSON, AZ",
-      "services": [],
-      "text": "",
-      "pinStates": []
+      "location": "HOLBROOK/FLAGSTAFF/PAYSON, AZ"
     }
   ]
 }
