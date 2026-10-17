@@ -1,0 +1,15 @@
+{
+  "businessName": "THOM HEAVY HAUL ESCORT LLC",
+  "phone": "218-329-7606",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "minnesota",
+        "arizona"
+      ],
+      "location": "MOORHEAD, MN"
+    }
+  ],
+  "active": true
+}
