@@ -1,0 +1,18 @@
+{
+  "businessName": "COLORADO TRANSPORT",
+  "phone": "308-249-4899",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "colorado"
+      ],
+      "location": "FORT MORGAN, CO",
+      "services": [
+        "height_pole",
+        "route_survey"
+      ]
+    }
+  ],
+  "active": true
+}
