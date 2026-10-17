@@ -1,0 +1,60 @@
+{
+  "businessName": "GRAHAM’S PILOT CAR ",
+  "phone": "251-957-2841",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "alabama"
+      ],
+      "lines": [
+        {
+          "text": "MOBILE, AL | GRAHAM’S PILOT CAR | 251-957-2841",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "22 YEARS IN BUSINESS | 16 CERTIFIED/INSURED ESCORTS",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "HEIGHT POLE/ROUTE SURVEYS/ NIGHT MOVES | CALL NOW!",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        }
+      ],
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "gray",
+      "direction": "right",
+      "textColor": "black",
+      "nameBigger": true,
+      "phoneColor": "red",
+      "highlights": [
+        {
+          "text": "CALL NOW!",
+          "color": "red",
+          "weight": "same",
+          "italic": false,
+          "underline": false
+        }
+      ],
+      "font": "tahoma",
+      "align": "center",
+      "border": "thin",
+      "borderColor": "black",
+      "borderStyle": "solid"
+    }
+  ],
+  "active": true
+}
