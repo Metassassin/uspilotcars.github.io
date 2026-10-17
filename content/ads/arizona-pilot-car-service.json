@@ -39,6 +39,7 @@
       "color1": "olive",
       "direction": "right",
       "textColor": "black",
+      "nameColor": "blue",
       "nameBigger": true,
       "phoneColor": "red",
       "font": "tahoma",
