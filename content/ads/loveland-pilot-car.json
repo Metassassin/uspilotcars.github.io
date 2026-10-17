@@ -8,9 +8,10 @@
       "type": "super",
       "states": [
         "new-mexico",
-        "arizona"
+        "arizona",
+        "colorado"
       ],
-      "location": "ALBUQUERQUE, NM/PHOENIX, AZ",
+      "location": "ALBUQUERQUE, NM/ PHOENIX, AZ / DENVER/PUEBLO, CO",
       "services": [
         "height_pole",
         "multi_car"
