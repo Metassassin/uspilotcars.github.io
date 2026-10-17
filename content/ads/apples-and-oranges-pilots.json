@@ -1,0 +1,20 @@
+{
+  "businessName": "APPLES AND ORANGES PILOTS",
+  "phone": "240-818-6454",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "delaware",
+        "maryland"
+      ],
+      "location": "BALTIMORE, MD",
+      "services": [
+        "height_pole",
+        "route_survey"
+      ],
+      "text": "FLAGGING"
+    }
+  ],
+  "active": true
+}
