@@ -269,6 +269,83 @@
           "pinned": false
         }
       ]
+    },
+    {
+      "state": "arkansas",
+      "stateListings": [
+        {
+          "ad": "content/ads/whispering-hills-pilot-cars-llc.json"
+        },
+        {
+          "ad": "content/ads/glens-movin-on-pc-llc.json"
+        },
+        {
+          "ad": "content/ads/jims-pilot-car-service.json"
+        },
+        {
+          "ad": "content/ads/frog-truck-escort.json"
+        },
+        {
+          "ad": "content/ads/coast-2-coast-escorts.json"
+        },
+        {
+          "ad": "content/ads/tcb-escorts-llc.json"
+        }
+      ],
+      "superListings": [
+        {
+          "ad": "content/ads/glens-movin-on-pc-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/marks-pilot-car-service.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/bas-pilot-car-service.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/jims-pilot-car-service.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/a-to-b-pilot-car-escort-service.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/frog-truck-escort.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/c-and-h-pilot-transport-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/coast-2-coast-escorts.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/gc-pilot-car-supply-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/spartan-pilot-car-services.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/tcb-escorts-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/dwl-transport-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/rubber-to-road-pilot-escort-llc.json",
+          "pinned": false
+        }
+      ]
     }
   ]
 }
