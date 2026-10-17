@@ -3,27 +3,21 @@
   "phone": "559-363-5656",
   "website": "https://validtransportationpilotcarservice.com/",
   "active": true,
-  "startDate": "",
-  "endDate": "",
-  "contactName": "",
-  "contactEmail": "",
   "notes": "Moved from Directory listings into Ads. Check this against grandma's records.",
   "placements": [
     {
       "type": "state_design",
       "states": [
-        "new-mexico"
+        "new-mexico",
+        "arizona"
       ],
-      "background": "solid",
-      "color1": "mid-green",
-      "border": "thick",
-      "font": "tahoma",
-      "align": "center",
       "lines": [
         {
           "text": "VALID",
           "size": "x-large",
           "bold": true,
+          "italic": false,
+          "underline": false,
           "spaced": true,
           "font": "times"
         },
@@ -32,6 +26,8 @@
           "size": "medium",
           "bold": true,
           "italic": true,
+          "underline": false,
+          "spaced": false,
           "font": "times"
         },
         {
@@ -39,6 +35,8 @@
           "size": "medium",
           "bold": true,
           "italic": true,
+          "underline": false,
+          "spaced": false,
           "font": "times"
         }
       ],
@@ -47,33 +45,54 @@
           "text": "559-363-5656",
           "size": "x-large",
           "bold": true,
+          "italic": false,
+          "underline": false,
           "spaced": true,
           "font": "times"
         },
         {
           "text": "“YOUR LOADS ARE SAFE & SOUND WITH US!”",
           "size": "normal",
-          "bold": true
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
         },
         {
           "text": "SERVING CALIFORNIA & THE WESTERN US * HEIGHT POLE * ROUTE SURVEYS",
           "size": "small",
-          "bold": true
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
         },
         {
           "text": "UTAH CERTIFICATION * MULTIPLE VEHICLES * STEERING",
           "size": "small",
-          "bold": true
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
         }
       ],
-      "borderColor": "black",
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "mid-green",
+      "direction": "right",
       "textColor": "black",
-      "phoneColor": "white"
+      "nameBigger": false,
+      "phoneColor": "white",
+      "font": "tahoma",
+      "align": "center",
+      "border": "thick",
+      "borderColor": "black",
+      "borderStyle": "solid"
     },
     {
       "type": "super",
       "states": [
-        "new-mexico"
+        "new-mexico",
+        "arizona"
       ],
       "location": "MADERA, CA",
       "services": [
@@ -81,9 +100,7 @@
         "route_survey",
         "multi_car",
         "steering"
-      ],
-      "text": "",
-      "pinStates": []
+      ]
     }
   ]
 }
