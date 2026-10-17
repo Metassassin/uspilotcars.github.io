@@ -14,6 +14,61 @@
         "route_survey",
         "multi_car"
       ]
+    },
+    {
+      "type": "state_design",
+      "states": [
+        "georgia",
+        "alabama"
+      ],
+      "lines": [
+        {
+          "text": "256-466-5265| EASY PILOT CAR | PROUD VETERAN",
+          "size": "medium",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false,
+          "font": "times"
+        },
+        {
+          "text": "DECATUR/HUNTSVILLE/BIRMINGHAM, AL",
+          "size": "medium",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "CERTIFIED & INSURED | CALL FOR A QUOTE!V",
+          "size": "medium",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        }
+      ],
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "gray",
+      "direction": "right",
+      "textColor": "black",
+      "nameBigger": true,
+      "phoneColor": "red",
+      "highlights": [
+        {
+          "text": "CALL FOR A QUOTE!",
+          "color": "red",
+          "weight": "same",
+          "italic": false,
+          "underline": false
+        }
+      ],
+      "font": "tahoma",
+      "align": "center",
+      "border": "thin",
+      "borderColor": "black",
+      "borderStyle": "solid"
     }
   ],
   "active": true
