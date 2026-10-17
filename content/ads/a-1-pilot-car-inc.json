@@ -1,0 +1,20 @@
+{
+  "businessName": "A-1 PILOT CAR INC",
+  "phone": "719-330-6080",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "colorado"
+      ],
+      "location": "LIMON, CO",
+      "services": [
+        "height_pole",
+        "route_survey",
+        "multi_car"
+      ],
+      "text": "WITPAC"
+    }
+  ],
+  "active": true
+}
