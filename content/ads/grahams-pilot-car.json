@@ -54,6 +54,18 @@
       "border": "thin",
       "borderColor": "black",
       "borderStyle": "solid"
+    },
+    {
+      "type": "super",
+      "states": [
+        "alabama"
+      ],
+      "location": "MOBILE, AL",
+      "services": [
+        "height_pole",
+        "route_survey",
+        "multi_car"
+      ]
     }
   ],
   "active": true
