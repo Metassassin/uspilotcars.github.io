@@ -1,0 +1,15 @@
+{
+  "businessName": "ALTERNA PILOT CAR SERVICE, LLC",
+  "phone": "503-970-5821 / 503-819-3481",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "california",
+        "oregon"
+      ],
+      "location": "PORTLAND/SALEM, OR"
+    }
+  ],
+  "active": true
+}
