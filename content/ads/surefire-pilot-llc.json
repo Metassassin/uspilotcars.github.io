@@ -1,0 +1,17 @@
+{
+  "businessName": "SUREFIRE PILOT, LLC",
+  "phone": "970-217-1334",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "colorado"
+      ],
+      "location": "FORT COLLINS, CO",
+      "services": [
+        "height_pole"
+      ]
+    }
+  ],
+  "active": true
+}
