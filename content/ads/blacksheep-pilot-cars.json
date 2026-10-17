@@ -6,7 +6,8 @@
       "type": "state_design",
       "states": [
         "arizona",
-        "nevada"
+        "nevada",
+        "california"
       ],
       "lines": [
         {
