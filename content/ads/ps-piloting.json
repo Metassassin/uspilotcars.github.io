@@ -1,0 +1,20 @@
+{
+  "businessName": "PS PILOTING",
+  "phone": "397-970-6965",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "colorado",
+        "wyoming"
+      ],
+      "location": "GREELEY, CO/CHEYENNE, WY",
+      "services": [
+        "height_pole",
+        "route_survey"
+      ],
+      "text": "WITPAC"
+    }
+  ],
+  "active": true
+}
