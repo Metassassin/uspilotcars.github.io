@@ -11,7 +11,7 @@
       "lines": [
         {
           "text": "BLACK BEARD",
-          "size": "normal",
+          "size": "medium",
           "bold": true,
           "italic": false,
           "underline": false,
@@ -19,7 +19,7 @@
         },
         {
           "text": "LAKE CITY, FL | 386-243-1420",
-          "size": "normal",
+          "size": "medium",
           "bold": true,
           "italic": false,
           "underline": false,
