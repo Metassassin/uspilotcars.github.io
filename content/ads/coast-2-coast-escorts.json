@@ -3,15 +3,75 @@
   "phone": "318-432-4270",
   "website": "https://www.c2cescorts.com/",
   "active": true,
-  "startDate": "",
-  "endDate": "",
-  "contactName": "",
-  "contactEmail": "",
   "notes": "Nationwide sponsor. Picture made from its original old-site design. To change it, upload a new picture.",
   "placements": [
     {
       "type": "nationwide",
       "image": "/assets/images/advertisements/coast-2-coast-escorts.png"
+    },
+    {
+      "type": "state_design",
+      "states": [
+        "arkansas",
+        "louisiana",
+        "mississippi"
+      ],
+      "lines": [
+        {
+          "text": "318-432-4270",
+          "size": "medium",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false,
+          "color": "red"
+        },
+        {
+          "text": "PERMITS * BUCKET TRUCKS * ROUTE SURVEYS * STEERMAN",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false,
+          "color": "yellow"
+        },
+        {
+          "text": "HEIGHT POLES * HOT STICK (LA,MS,AR ONLY) * MULTI-CARS",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false,
+          "color": "yellow"
+        }
+      ],
+      "logo": "/assets/images/advertisements/c2cescorts-com.png",
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "black",
+      "direction": "right",
+      "textColor": "yellow",
+      "nameBigger": false,
+      "font": "tahoma",
+      "align": "center",
+      "border": "thin",
+      "borderColor": "black",
+      "borderStyle": "solid"
+    },
+    {
+      "type": "super",
+      "states": [
+        "arkansas",
+        "louisiana",
+        "missouri"
+      ],
+      "location": "NORTHEAST, MO",
+      "services": [
+        "height_pole",
+        "route_survey",
+        "multi_car"
+      ],
+      "text": "FLAGGER"
     }
   ]
 }
