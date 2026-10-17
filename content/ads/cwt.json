@@ -1,0 +1,14 @@
+{
+  "businessName": "CWT",
+  "phone": "928-920-7350",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "arizona"
+      ],
+      "location": "YUMA, AZ"
+    }
+  ],
+  "active": true
+}
