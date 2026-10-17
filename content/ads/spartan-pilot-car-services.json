@@ -1,0 +1,22 @@
+{
+  "businessName": "SPARTAN PILOT CAR SERVICES",
+  "phone": "904-903-9300",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "alabama",
+        "tennessee"
+      ],
+      "location": "MEMPHIS, TN",
+      "services": [
+        "height_pole",
+        "route_survey",
+        "multi_car",
+        "steering"
+      ],
+      "text": "TWIC/WITPAC"
+    }
+  ],
+  "active": true
+}
