@@ -1,0 +1,20 @@
+{
+  "businessName": "DALE DEALING PILOT ESCORT SVC.",
+  "phone": "904-699-0435",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "florida"
+      ],
+      "location": "JACKSONVILLE/PENSACOLA, FL",
+      "services": [
+        "steering",
+        "route_survey",
+        "height_pole",
+        "multi_car"
+      ]
+    }
+  ],
+  "active": true
+}
