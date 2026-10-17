@@ -1,0 +1,62 @@
+{
+  "businessName": "DTS PILOT CAR SERVICE",
+  "phone": "775-842-2633",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "california",
+        "nevada"
+      ],
+      "lines": [
+        {
+          "text": "RENO, NV | DTS PILOT CAR SERVICE | 775-842-2633 |TRUCKEE, CA",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "Height Pole / Traffic Control / Multiple Cars / SINCE 2007",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "COMPREHENSIVE SPECIALTY ROUTE SURVEYS",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false,
+          "color": "red"
+        }
+      ],
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "white",
+      "direction": "right",
+      "textColor": "black",
+      "nameBigger": true,
+      "phoneColor": "red",
+      "highlights": [
+        {
+          "text": "Since 2007",
+          "color": "green",
+          "weight": "same",
+          "italic": false,
+          "underline": false
+        }
+      ],
+      "font": "tahoma",
+      "align": "center",
+      "border": "thin",
+      "borderColor": "black",
+      "borderStyle": "solid"
+    }
+  ],
+  "active": true
+}
