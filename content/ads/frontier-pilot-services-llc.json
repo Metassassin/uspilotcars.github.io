@@ -1,0 +1,64 @@
+{
+  "businessName": "FRONTIER PILOT SERVICES, LLC",
+  "phone": "307-632-6409",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "colorado",
+        "wyoming"
+      ],
+      "lines": [
+        {
+          "text": "CHEYENNE | FRONTIER PILOT SERVICES, LLC | 307-632-6409",
+          "size": "large",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "*RELIABLE SERVICE SINCE 1983*",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "HEIGHT POLE / ROUTE SURVEY / MULTIPLE CARS",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        }
+      ],
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "orange",
+      "direction": "right",
+      "nameBigger": true,
+      "phoneColor": "white",
+      "font": "tahoma",
+      "align": "center",
+      "border": "thin",
+      "borderColor": "black",
+      "borderStyle": "solid"
+    },
+    {
+      "type": "super",
+      "states": [
+        "colorado",
+        "wyoming"
+      ],
+      "location": "CHEYENNE, WY",
+      "services": [
+        "height_pole",
+        "route_survey",
+        "multi_car"
+      ]
+    }
+  ],
+  "active": true
+}
