@@ -1,0 +1,60 @@
+{
+  "businessName": "VIPER PILOT CARS",
+  "phone": "623-300-4353",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "nevada"
+      ],
+      "lines": [
+        {
+          "text": "VIPER PILOT CARS | 623-300-4353 | 24 HOURS A DAY 7 DAYS A WEEK",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "Over 20 years experience | Over 25 experienced, certified, insured pilots",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "Fully insured $1M | Cash, Credit Card, Com Check, Fleet One",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        }
+      ],
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "gray",
+      "direction": "right",
+      "textColor": "black",
+      "nameBigger": true,
+      "phoneColor": "red",
+      "highlights": [
+        {
+          "text": "Cash, Credit Card, Com Check, Fleet One",
+          "color": "green",
+          "weight": "same",
+          "italic": false,
+          "underline": false
+        }
+      ],
+      "font": "tahoma",
+      "align": "center",
+      "border": "thin",
+      "borderColor": "black",
+      "borderStyle": "solid"
+    }
+  ],
+  "active": true
+}
