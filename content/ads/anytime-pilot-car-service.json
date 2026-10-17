@@ -1,0 +1,18 @@
+{
+  "businessName": "ANYTIME PILOT CAR SERVICE",
+  "phone": "707-592-4294",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "california"
+      ],
+      "location": "FAIRFIELD, CA",
+      "services": [
+        "height_pole",
+        "multi_car"
+      ]
+    }
+  ],
+  "active": true
+}
