@@ -1,0 +1,20 @@
+{
+  "businessName": "T BAR M INC. (PILOT CAR DIV.)",
+  "phone": "775-745-5840",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "california",
+        "nevada"
+      ],
+      "location": "RENO, NV",
+      "services": [
+        "height_pole",
+        "route_survey",
+        "multi_car"
+      ]
+    }
+  ],
+  "active": true
+}
