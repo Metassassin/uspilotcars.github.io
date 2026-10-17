@@ -1,0 +1,15 @@
+{
+  "businessName": "PAUL’S PILOT CAR SERVICES",
+  "phone": "951-378-2992",
+  "website": "https://g.page/paul-s-pilot-car-service?share",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "california"
+      ],
+      "location": "LONG BEACH, CA"
+    }
+  ],
+  "active": true
+}
