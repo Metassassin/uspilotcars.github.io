@@ -1,0 +1,70 @@
+{
+  "businessName": "PENN EAGLE PILOTS",
+  "phone": "717-420-0218 | 609-468-5633",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "delaware",
+        "new-jersey"
+      ],
+      "lines": [
+        {
+          "text": "717-420-0218| PENN EAGLE PILOTS |609-468-5633",
+          "size": "medium",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false,
+          "color": "yellow"
+        },
+        {
+          "text": "NO NONSENSE, STRAIGHT ARROW PILOTING | WOMAN/VET OWNED",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "ALL MAJOR CREDIT CARDS | PAYMENT DUE AT TIME OF SERVICES",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        }
+      ],
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "bright-green",
+      "direction": "right",
+      "textColor": "black",
+      "nameBigger": true,
+      "phoneColor": "yellow",
+      "highlights": [
+        {
+          "text": "PAYMENT DUE AT TIME OF SERVICES",
+          "color": "yellow",
+          "weight": "same",
+          "italic": false,
+          "underline": false
+        }
+      ],
+      "font": "tahoma",
+      "align": "center",
+      "border": "thin",
+      "borderColor": "black",
+      "borderStyle": "solid"
+    },
+    {
+      "type": "super",
+      "states": [
+        "delaware",
+        "new-jersey"
+      ],
+      "location": "TRENTON, NJ"
+    }
+  ],
+  "active": true
+}
