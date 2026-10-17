@@ -1,0 +1,15 @@
+{
+  "businessName": "CONNIE’S PILOT SERVICE",
+  "phone": "435-790-1226",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "colorado",
+        "utah"
+      ],
+      "location": "VERNAL, UT"
+    }
+  ],
+  "active": true
+}
