@@ -1,0 +1,21 @@
+{
+  "businessName": "C & H PILOT TRANSPORT, LLC",
+  "phone": "402-803-0644",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "arkansas",
+        "nebraska"
+      ],
+      "location": "NORFOLK, NE",
+      "services": [
+        "height_pole",
+        "route_survey",
+        "steering"
+      ],
+      "text": "WITPAC"
+    }
+  ],
+  "active": true
+}
