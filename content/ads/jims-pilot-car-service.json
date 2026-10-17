@@ -1,0 +1,75 @@
+{
+  "businessName": "JIM’S PILOT CAR SERVICE",
+  "phone": "918-682-9636",
+  "website": "http://www.jimpilotcar.com/",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "arkansas",
+        "oklahoma"
+      ],
+      "lines": [
+        {
+          "text": "SALLISAW, OK | JIM’S PILOT CAR SERVICE | 918-682-9636",
+          "size": "medium",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "FULL SERVICE PILOT CAR COMPANY (18 yrs. exp.)",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "BUCKET TRUCK SERVICE | Height Pole | Route Surveys | 12 Vehicles",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        }
+      ],
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "white",
+      "direction": "right",
+      "textColor": "black",
+      "nameColor": "blue",
+      "nameBigger": true,
+      "phoneColor": "red",
+      "highlights": [
+        {
+          "text": "BUCKET TRUCK SERVICE ",
+          "weight": "same",
+          "italic": false,
+          "underline": true
+        }
+      ],
+      "font": "tahoma",
+      "align": "center",
+      "border": "none",
+      "borderColor": "black",
+      "borderStyle": "solid"
+    },
+    {
+      "type": "super",
+      "states": [
+        "arkansas",
+        "oklahoma"
+      ],
+      "location": "SALLISAW, OK",
+      "services": [
+        "height_pole",
+        "route_survey"
+      ],
+      "text": "BUCKET TRUCK"
+    }
+  ],
+  "active": true
+}
