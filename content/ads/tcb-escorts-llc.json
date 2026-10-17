@@ -12,8 +12,8 @@
       "lines": [
         {
           "text": "JACKSON, MS | TCB ESCORTS LLC | 601-612-0106",
-          "size": "normal",
-          "bold": false,
+          "size": "medium",
+          "bold": true,
           "italic": false,
           "underline": false,
           "spaced": false
@@ -21,7 +21,7 @@
         {
           "text": "YOUR SAFETY IS OUR PRIORITY!",
           "size": "small",
-          "bold": false,
+          "bold": true,
           "italic": false,
           "underline": false,
           "spaced": false
@@ -29,7 +29,7 @@
         {
           "text": "Nationwite * Steer * Height Pole * Multiple Cars * NY Cert.",
           "size": "small",
-          "bold": false,
+          "bold": true,
           "italic": false,
           "underline": false,
           "spaced": false
