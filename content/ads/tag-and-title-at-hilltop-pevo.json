@@ -1,0 +1,57 @@
+{
+  "businessName": "TAG & TITLE AT HILLTOP, P.E.V.O.",
+  "phone": "202-826-0186 | 240-858-2730",
+  "website": "https://www.tagandtitleathilltop.com/",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "delaware"
+      ],
+      "lines": [
+        {
+          "text": "TAG & TITLE AT HILLTOP, P.E.V.O.",
+          "size": "medium",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "MID-ATLANTIC REGION-202-826-0186 / 240-858-2730",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        }
+      ],
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "white",
+      "direction": "right",
+      "textColor": "black",
+      "nameColor": "blue",
+      "nameBigger": true,
+      "phoneColor": "red",
+      "font": "tahoma",
+      "align": "center",
+      "border": "thin",
+      "borderColor": "black",
+      "borderStyle": "solid"
+    },
+    {
+      "type": "super",
+      "states": [
+        "delaware"
+      ],
+      "location": "NEWARK, DE",
+      "services": [
+        "height_pole",
+        "route_survey",
+        "multi_car"
+      ]
+    }
+  ],
+  "active": true
+}
