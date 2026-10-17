@@ -3,21 +3,15 @@
   "phone": "520-535-9580",
   "website": "http://www.aztransportservice.com",
   "active": true,
-  "startDate": "",
-  "endDate": "",
-  "contactName": "",
-  "contactEmail": "",
   "notes": "Added from the New Mexico page on the old site.",
   "placements": [
     {
       "type": "super",
       "states": [
-        "new-mexico"
+        "new-mexico",
+        "california"
       ],
-      "location": "SAHUARITA, AZ",
-      "services": [],
-      "text": "",
-      "pinStates": []
+      "location": "SAHUARITA, AZ"
     }
   ]
 }
