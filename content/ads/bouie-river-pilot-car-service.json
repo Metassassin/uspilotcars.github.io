@@ -1,0 +1,15 @@
+{
+  "businessName": "BOUIE RIVER PILOT CAR SERVICE",
+  "phone": "601-517-3789",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "florida",
+        "mississippi"
+      ],
+      "location": "SEMINARY, MS"
+    }
+  ],
+  "active": true
+}
