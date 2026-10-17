@@ -1,0 +1,18 @@
+{
+  "businessName": "LIGHTHOUSE PILOT CAR",
+  "phone": "760-223-2397",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "california"
+      ],
+      "location": "BAKERSFIELD, CA",
+      "services": [
+        "multi_car",
+        "height_pole"
+      ]
+    }
+  ],
+  "active": true
+}
