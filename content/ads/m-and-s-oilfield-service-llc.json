@@ -1,0 +1,15 @@
+{
+  "businessName": "M & S OILFIELD SERVICE LLC",
+  "phone": "307-277-5895 | 801-870-6382",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "colorado",
+        "wyoming"
+      ],
+      "location": "CASPER, WY"
+    }
+  ],
+  "active": true
+}
