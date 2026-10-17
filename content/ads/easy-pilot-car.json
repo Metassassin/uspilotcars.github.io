@@ -1,0 +1,19 @@
+{
+  "businessName": "EASY PILOT CAR",
+  "phone": "256-466-5265",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "alabama"
+      ],
+      "location": "DECATUR/HUNTSVILLE/BIRMINGHAM, AL",
+      "services": [
+        "height_pole",
+        "route_survey",
+        "multi_car"
+      ]
+    }
+  ],
+  "active": true
+}
