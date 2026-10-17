@@ -3,15 +3,19 @@
   "phone": "(631) 669-3742",
   "website": "http://www.newyorktruckescorts.com",
   "active": true,
-  "startDate": "",
-  "endDate": "",
-  "contactName": "",
-  "contactEmail": "",
   "notes": "Nationwide sponsor. Picture made from its original old-site design. To change it, upload a new picture.",
   "placements": [
     {
       "type": "nationwide",
       "image": "/assets/images/advertisements/ny-truck-escorts.png"
+    },
+    {
+      "type": "state_picture",
+      "states": [
+        "new-york",
+        "connecticut"
+      ],
+      "image": "/assets/images/advertisements/ny-truck-escorts-strip.png"
     }
   ]
 }
