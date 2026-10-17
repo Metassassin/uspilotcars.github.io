@@ -1,0 +1,19 @@
+{
+  "businessName": "A & J'S ESCORT & FLAG CAR SVC., INC.",
+  "phone": "803-604-1220",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "georgia"
+      ],
+      "location": "ATLANTA/CONYERS, GA",
+      "services": [
+        "height_pole",
+        "route_survey",
+        "multi_car"
+      ]
+    }
+  ],
+  "active": true
+}
