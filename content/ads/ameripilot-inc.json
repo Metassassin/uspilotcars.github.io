@@ -1,0 +1,15 @@
+{
+  "businessName": "AMERIPILOT, INC.",
+  "phone": "216-30PILOT",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "delaware",
+        "ohio"
+      ],
+      "location": "MALVERN, OH"
+    }
+  ],
+  "active": true
+}
