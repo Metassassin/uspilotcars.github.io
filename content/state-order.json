@@ -346,6 +346,88 @@
           "pinned": false
         }
       ]
+    },
+    {
+      "state": "california",
+      "stateListings": [
+        {
+          "ad": "content/ads/blacksheep-pilot-cars.json"
+        },
+        {
+          "ad": "content/ads/sentinel-pilot-car-services.json"
+        },
+        {
+          "ad": "content/ads/panther-pilot-car.json"
+        },
+        {
+          "ad": "content/ads/pirch-pilot-car-services.json"
+        },
+        {
+          "ad": "content/ads/valid-transportation-pilot-car-service.json"
+        }
+      ],
+      "superListings": [
+        {
+          "ad": "content/ads/first-choice-pilot-cars.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/alterna-pilot-car-service-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/anytime-pilot-car-service.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/rochelle-s-pc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/northwest-pilot-cars.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/panther-pilot-car.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/t-bar-m-inc-pilot-car-div.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/lighthouse-pilot-car.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/pauls-pilot-car-services.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/american-pilot-car-service.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/zephyr-pilot-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/valid-transportation-pilot-car-service.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/pirch-pilot-car-services.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/familia-hernandez-pilot-service-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/az-transport-services.json",
+          "pinned": false
+        }
+      ]
     }
   ]
 }
