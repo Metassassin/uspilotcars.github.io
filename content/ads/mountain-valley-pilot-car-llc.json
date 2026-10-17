@@ -39,7 +39,7 @@
       "color2": "white",
       "color3": "dark-green",
       "direction": "diagonal",
-      "textColor": "white",
+      "textColor": "gray",
       "nameBigger": true,
       "phoneColor": "red",
       "font": "tahoma",
