@@ -1,0 +1,18 @@
+{
+  "businessName": "METRO PILOT CARS, LLC.",
+  "phone": "678-749-1822",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "georgia"
+      ],
+      "location": "ATLANTA/TEMPLE, GA",
+      "services": [
+        "height_pole",
+        "route_survey"
+      ]
+    }
+  ],
+  "active": true
+}
