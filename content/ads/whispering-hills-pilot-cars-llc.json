@@ -1,0 +1,60 @@
+{
+  "businessName": "WHISPERING HILLS PILOT CARS LLC",
+  "phone": "402-690-2100",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "arkansas"
+      ],
+      "lines": [
+        {
+          "text": "WHISPERING HILLS PILOT CARS LLC  | 402-690-2100 | F-712-486-2327",
+          "size": "medium",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "FAST & RELIABLE, ON TIME & NATIONWIDE SERVICE | HEIGHT POLE & ROUTE SURVEY",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "TILLERMAN, LEAD/CHASE CAR | CLICK HERE FOR E-MAIL",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        }
+      ],
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "blue",
+      "direction": "right",
+      "textColor": "white",
+      "nameBigger": true,
+      "phoneColor": "red",
+      "highlights": [
+        {
+          "text": "712-486-2327",
+          "color": "red",
+          "weight": "same",
+          "italic": false,
+          "underline": false
+        }
+      ],
+      "font": "tahoma",
+      "align": "center",
+      "border": "thin",
+      "borderColor": "black",
+      "borderStyle": "solid"
+    }
+  ],
+  "active": true
+}
