@@ -1,0 +1,14 @@
+{
+  "businessName": "BIG DOG SERVICES, INC",
+  "phone": "720-810-6155",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "colorado"
+      ],
+      "location": "BRIGHTON/FORT COLLINS, CO"
+    }
+  ],
+  "active": true
+}
