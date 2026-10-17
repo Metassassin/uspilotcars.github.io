@@ -1,0 +1,60 @@
+{
+  "businessName": "PRATT'S PILOTS",
+  "phone": "205-299-0326",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "alabama"
+      ],
+      "lines": [
+        {
+          "text": "205-299-0326 | PRATT'S PILOTS | BIRMINGHAM, AL",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "3 CARS * HEIGHT POLE * ROUTE SURVEYS",
+          "size": "small",
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "GREAT RATES! | QUICK PAY OR SLOW PAY | CALL FOR A QUOTE!",
+          "size": "small",
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        }
+      ],
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "red",
+      "direction": "right",
+      "textColor": "black",
+      "nameBigger": true,
+      "phoneColor": "white",
+      "highlights": [
+        {
+          "text": "CALL FOR A QUOTE!",
+          "color": "white",
+          "weight": "same",
+          "italic": false,
+          "underline": false
+        }
+      ],
+      "font": "tahoma",
+      "align": "center",
+      "border": "none",
+      "borderColor": "black",
+      "borderStyle": "solid"
+    }
+  ],
+  "active": true
+}
