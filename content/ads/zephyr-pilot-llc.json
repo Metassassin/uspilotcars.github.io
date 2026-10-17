@@ -1,0 +1,14 @@
+{
+  "businessName": "ZEPHYR PILOT, LLC",
+  "phone": "530-526-9765",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "california"
+      ],
+      "location": "SACRAMENTO, CA"
+    }
+  ],
+  "active": true
+}
