@@ -103,6 +103,17 @@
       "border": "thin",
       "borderColor": "black",
       "borderStyle": "solid"
+    },
+    {
+      "type": "super",
+      "states": [
+        "colorado"
+      ],
+      "location": "RIFLE, CO",
+      "services": [
+        "height_pole",
+        "multi_car"
+      ]
     }
   ],
   "phone": "970-274-1337 | 970-948-4276 | 303-667-7007",
