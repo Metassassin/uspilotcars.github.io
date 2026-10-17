@@ -1,0 +1,15 @@
+{
+  "businessName": "GATOR’S HIGHWAY ESCORT SVC, LLC",
+  "phone": "504-610-4162",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "alabama",
+        "louisiana"
+      ],
+      "location": "GONZALES/BATON ROUGE, LA"
+    }
+  ],
+  "active": true
+}
