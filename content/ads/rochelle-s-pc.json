@@ -1,26 +1,20 @@
 {
   "businessName": "Rochelle's PC",
   "phone": "928-210-3435",
-  "website": "",
   "active": true,
-  "startDate": "",
-  "endDate": "",
-  "contactName": "",
-  "contactEmail": "",
   "notes": "Added from the New Mexico page on the old site.",
   "placements": [
     {
       "type": "super",
       "states": [
-        "new-mexico"
+        "new-mexico",
+        "arizona"
       ],
       "location": "YUMA, AZ",
       "services": [
         "height_pole",
         "route_survey"
-      ],
-      "text": "",
-      "pinStates": []
+      ]
     }
   ]
 }
