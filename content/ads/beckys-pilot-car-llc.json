@@ -1,0 +1,18 @@
+{
+  "businessName": "BECKY'S PILOT CAR, LLC",
+  "phone": "719-429-9617",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "colorado"
+      ],
+      "location": "CANON CITY, CO",
+      "services": [
+        "height_pole",
+        "multi_car"
+      ]
+    }
+  ],
+  "active": true
+}
