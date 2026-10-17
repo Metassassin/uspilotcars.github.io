@@ -9,7 +9,54 @@
         "wyoming"
       ],
       "location": "BURNS/CHEYENNE, WY"
+    },
+    {
+      "type": "state_design",
+      "states": [
+        "wyoming",
+        "colorado"
+      ],
+      "lines": [
+        {
+          "text": "EAST WEST PILOT CAR SERVICE, LLC",
+          "size": "medium",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false,
+          "color": "blue"
+        },
+        {
+          "text": "BURNS/CHEYENNE, WY | 307-477-7771",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "40 YRS TRANSPORTATION EXPERIENCE / CERTIFIED*INSURED",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        }
+      ],
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "yellow",
+      "direction": "right",
+      "textColor": "black",
+      "nameBigger": true,
+      "phoneColor": "red",
+      "font": "tahoma",
+      "align": "center",
+      "border": "thin",
+      "borderColor": "black",
+      "borderStyle": "solid"
     }
   ],
-  "active": true
+  "active": true,
+  "website": "http://eastwestpilotcarllc.com/"
 }
