@@ -1,0 +1,19 @@
+{
+  "businessName": "ROADWAY PILOTS LLC",
+  "phone": "704-492-3643",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "georgia"
+      ],
+      "location": "FORT MILL, SC",
+      "services": [
+        "height_pole",
+        "route_survey",
+        "multi_car"
+      ]
+    }
+  ],
+  "active": true
+}
