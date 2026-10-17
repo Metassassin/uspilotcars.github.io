@@ -1,0 +1,18 @@
+{
+  "businessName": "PATRIOT CERTIFIED PILOT CARS, LLC",
+  "phone": "203-994-2620",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "connecticut"
+      ],
+      "location": "CT",
+      "services": [
+        "height_pole",
+        "route_survey"
+      ]
+    }
+  ],
+  "active": true
+}
