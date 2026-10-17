@@ -541,6 +541,33 @@
           "pinned": false
         }
       ]
+    },
+    {
+      "state": "connecticut",
+      "stateListings": [
+        {
+          "ad": "content/ads/ny-truck-escorts-permits.json"
+        },
+        {
+          "ad": "content/ads/mile-makers-pilot-car-services.json"
+        },
+        {
+          "ad": "content/ads/ny-nj-routing-pilot-cars.json"
+        },
+        {
+          "ad": "content/ads/patriot-certified-pilot-cars-llc.json"
+        }
+      ],
+      "superListings": [
+        {
+          "ad": "content/ads/ny-nj-routing-pilot-cars.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/patriot-certified-pilot-cars-llc.json",
+          "pinned": false
+        }
+      ]
     }
   ]
 }
