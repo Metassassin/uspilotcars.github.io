@@ -1,0 +1,65 @@
+{
+  "businessName": "MOUNTAIN VALLEY PILOT CAR LLC",
+  "phone": "719-371-5700",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "colorado"
+      ],
+      "lines": [
+        {
+          "text": "MOUNTAIN VALLEY PILOT CAR LLC",
+          "size": "medium",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "CANON CITY, CO ~719-371-5700~ CRIPPLE CREEK, CO",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "LEAD ~ CHASE ~ MULTI-CAR ESCORTS ~ FAST ~ RELIABLE ~ FAIR RATES",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        }
+      ],
+      "logoPosition": "left",
+      "background": "gradient",
+      "color1": "green",
+      "color2": "white",
+      "color3": "dark-green",
+      "direction": "diagonal",
+      "textColor": "white",
+      "nameBigger": true,
+      "phoneColor": "red",
+      "font": "tahoma",
+      "align": "center",
+      "border": "thin",
+      "borderColor": "black",
+      "borderStyle": "solid"
+    },
+    {
+      "type": "super",
+      "states": [
+        "colorado"
+      ],
+      "location": "CANON CITY/CRIPPLE CREEK, CO",
+      "services": [
+        "route_survey",
+        "height_pole",
+        "multi_car"
+      ]
+    }
+  ],
+  "active": true
+}
