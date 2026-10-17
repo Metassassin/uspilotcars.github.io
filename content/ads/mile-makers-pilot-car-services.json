@@ -39,7 +39,7 @@
       "direction": "right",
       "textColor": "black",
       "nameBigger": true,
-      "phoneColor": "red",
+      "phoneColor": "dark-red",
       "font": "tahoma",
       "align": "center",
       "border": "thick",
