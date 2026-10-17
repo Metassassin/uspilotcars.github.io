@@ -431,6 +431,116 @@
           "pinned": false
         }
       ]
+    },
+    {
+      "state": "colorado",
+      "stateListings": [
+        {
+          "ad": "content/ads/two-pistols-pilot-escort-services.json"
+        },
+        {
+          "ad": "content/ads/frontier-pilot-services-llc.json"
+        },
+        {
+          "ad": "content/ads/east-west-pilot-car-service-llc.json"
+        },
+        {
+          "ad": "content/ads/mountain-valley-pilot-car-llc.json"
+        },
+        {
+          "ad": "content/ads/gc-pilot-car-supply-llc.json"
+        }
+      ],
+      "superListings": [
+        {
+          "ad": "content/ads/m-and-s-oilfield-service-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/r-and-b-pilot-car-service.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/surefire-pilot-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/two-pistols-pilot-escort-services.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/siler-ranch-pilot-service.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/east-west-pilot-car-service-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/colorado-transport.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/connies-pilot-service.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/roadrunner-pilot-car.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/professional-oversize-escort-services.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/frontier-pilot-services-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/a-1-pilot-car-inc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/loveland-pilot-car.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/c-and-h-pilot-transport-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/aaa-mountain-pilot-car-service.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/beckys-pilot-car-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/s-g-transport-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/gc-pilot-car-supply-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/mountain-valley-pilot-car-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/big-dog-services-inc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/hartsfield-escort-pcs.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/ps-piloting.json",
+          "pinned": false
+        }
+      ]
     }
   ]
 }
