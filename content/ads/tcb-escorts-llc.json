@@ -5,7 +5,8 @@
     {
       "type": "state_design",
       "states": [
-        "alabama"
+        "alabama",
+        "mississippi"
       ],
       "lines": [
         {
