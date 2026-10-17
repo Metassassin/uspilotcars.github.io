@@ -1,0 +1,71 @@
+{
+  "businessName": "PANTHER PILOT CAR",
+  "phone": "916-459-7079",
+  "website": "https://www.facebook.com/profile.php?id=100090369883495",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "california",
+        "nevada"
+      ],
+      "lines": [
+        {
+          "text": "PANTHER PILOT CAR | 916-459-7079 | Sacramento, CA Based",
+          "size": "medium",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "Pro Equipped & $1M Insured | Cash Discount | UT,NY,NM,KS Certified",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "Steerman, Height Pole, Route Survey, Lead, Chase, TWIC",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        }
+      ],
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "yellow",
+      "direction": "right",
+      "textColor": "black",
+      "nameColor": "blue",
+      "nameBigger": true,
+      "phoneColor": "red",
+      "highlights": [
+        {
+          "text": "Cash Discount",
+          "color": "green",
+          "weight": "same",
+          "italic": false,
+          "underline": false
+        }
+      ],
+      "font": "tahoma",
+      "align": "center",
+      "border": "thin",
+      "borderColor": "black",
+      "borderStyle": "solid"
+    },
+    {
+      "type": "super",
+      "states": [
+        "california",
+        "nevada"
+      ],
+      "location": "SACRAMENTO, CA/RENO, NV"
+    }
+  ],
+  "active": true
+}
