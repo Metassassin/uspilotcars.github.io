@@ -1,0 +1,52 @@
+{
+  "businessName": "PIRCH PILOT CAR SERVICES",
+  "phone": "951-442-4476",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "arizona",
+        "california"
+      ],
+      "lines": [
+        {
+          "text": "LONG BEACH * PIRCH PILOT CAR SERVICES * 951-442-4476",
+          "size": "medium",
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "SPECIALIZATION: LOADS INTO & OUT OF CALIFORNIA",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "HEIGHT POLE * 10 VEHICLES * STEERING",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        }
+      ],
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "orange",
+      "direction": "right",
+      "textColor": "black",
+      "nameBigger": true,
+      "phoneColor": "white",
+      "font": "tahoma",
+      "align": "center",
+      "border": "thin",
+      "borderColor": "black",
+      "borderStyle": "solid"
+    }
+  ],
+  "active": true
+}
