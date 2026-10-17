@@ -1,26 +1,20 @@
 {
   "businessName": "Loveland Pilot Car",
   "phone": "626-278-7545",
-  "website": null,
   "active": true,
-  "startDate": "",
-  "endDate": "",
-  "contactName": "",
-  "contactEmail": "",
   "notes": "Moved from Directory listings into Ads. Check this against grandma's records.",
   "placements": [
     {
       "type": "super",
       "states": [
-        "new-mexico"
+        "new-mexico",
+        "arizona"
       ],
       "location": "ALBUQUERQUE, NM/PHOENIX, AZ",
       "services": [
         "height_pole",
         "multi_car"
-      ],
-      "text": "",
-      "pinStates": []
+      ]
     }
   ]
 }
