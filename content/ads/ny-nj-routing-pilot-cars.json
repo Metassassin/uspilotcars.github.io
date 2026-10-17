@@ -16,6 +16,20 @@
         "connecticut"
       ],
       "image": "/assets/images/advertisements/ny-nj-routing.png"
+    },
+    {
+      "type": "super",
+      "states": [
+        "connecticut",
+        "new-jersey",
+        "new-york"
+      ],
+      "location": "NYC/LONG ISLAND, NY",
+      "services": [
+        "height_pole",
+        "route_survey",
+        "multi_car"
+      ]
     }
   ]
 }
