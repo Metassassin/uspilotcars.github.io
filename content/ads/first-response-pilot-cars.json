@@ -1,0 +1,76 @@
+{
+  "businessName": "FIRST RESPONSE PILOT CARS",
+  "phone": "423-355-0213",
+  "website": "https://firstresponsepilotcars.godaddysites.com/",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "alabama",
+        "tennessee"
+      ],
+      "lines": [
+        {
+          "text": "423-355-0213 * FIRST RESPONSE PILOT CARS * CHATTANOOGA",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "Our Family. Helping Yours!",
+          "size": "normal",
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "Height Pole * Route Survey * Traffic Control * NY, FL Certs. * LA Permit",
+          "size": "small",
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        }
+      ],
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "orange",
+      "direction": "right",
+      "textColor": "black",
+      "nameBigger": true,
+      "phoneColor": "white",
+      "highlights": [
+        {
+          "text": "Chattanooga",
+          "color": "white",
+          "weight": "same",
+          "italic": false,
+          "underline": false
+        },
+        {
+          "text": "Route Survey",
+          "color": "white",
+          "weight": "same",
+          "italic": false,
+          "underline": false
+        },
+        {
+          "text": "NY, FL Certs.",
+          "color": "white",
+          "weight": "same",
+          "italic": false,
+          "underline": false
+        }
+      ],
+      "font": "tahoma",
+      "align": "center",
+      "border": "thin",
+      "borderColor": "black",
+      "borderStyle": "solid"
+    }
+  ],
+  "active": true
+}
