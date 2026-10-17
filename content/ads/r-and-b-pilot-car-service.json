@@ -1,0 +1,14 @@
+{
+  "businessName": "R & B PILOT CAR SERVICE",
+  "phone": "303-550-1452",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "colorado"
+      ],
+      "location": "AURORA, CO"
+    }
+  ],
+  "active": true
+}
