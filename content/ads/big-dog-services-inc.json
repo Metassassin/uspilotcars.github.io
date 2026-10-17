@@ -7,8 +7,13 @@
       "states": [
         "colorado"
       ],
-      "location": "BRIGHTON/FORT COLLINS, CO"
+      "location": "BRIGHTON/FORT COLLINS, CO",
+      "services": [
+        "height_pole",
+        "route_survey"
+      ]
     }
   ],
-  "active": true
+  "active": true,
+  "website": "http://bigdogservices.us/"
 }
