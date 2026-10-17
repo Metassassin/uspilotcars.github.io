@@ -1,46 +1,54 @@
 {
   "businessName": "GC Pilot Car Supply, LLC",
   "phone": "620-272-4563 | 520-395-7739",
-  "website": "",
   "active": true,
-  "startDate": "",
-  "endDate": "",
-  "contactName": "",
-  "contactEmail": "",
   "notes": "Added from the New Mexico page on the old site.",
   "placements": [
     {
       "type": "state_design",
       "states": [
-        "new-mexico"
+        "new-mexico",
+        "arkansas"
       ],
-      "background": "solid",
-      "color1": "white",
-      "border": "thick",
-      "font": "tahoma",
-      "align": "center",
       "lines": [
         {
           "text": "NATIONWIDE | GC PILOT CAR SUPPLY, LLC",
           "size": "normal",
-          "bold": true
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
         },
         {
           "text": "620-272-4563 | 520-395-7739",
           "size": "large",
-          "bold": true
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
         },
         {
           "text": "Highly Experienced * Height Pole * Route Surveys * Steering",
           "size": "normal",
-          "bold": true
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
         }
       ],
-      "borderColor": "black",
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "white",
+      "direction": "right",
       "textColor": "black",
-      "phoneColor": "red",
+      "nameBigger": true,
       "nameFont": "courier",
-      "nameBigger": true
+      "phoneColor": "red",
+      "font": "tahoma",
+      "align": "center",
+      "border": "thick",
+      "borderColor": "black",
+      "borderStyle": "solid"
     },
     {
       "type": "super",
@@ -53,9 +61,7 @@
         "route_survey",
         "multi_car",
         "steering"
-      ],
-      "text": "",
-      "pinStates": []
+      ]
     }
   ]
 }
