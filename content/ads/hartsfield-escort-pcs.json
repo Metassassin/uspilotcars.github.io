@@ -1,26 +1,20 @@
 {
   "businessName": "Hartsfield Escort & PCS",
   "phone": "505-486-9835",
-  "website": null,
   "active": true,
-  "startDate": "",
-  "endDate": "",
-  "contactName": "",
-  "contactEmail": "",
   "notes": "Moved from Directory listings into Ads. Check this against grandma's records.",
   "placements": [
     {
       "type": "super",
       "states": [
-        "new-mexico"
+        "new-mexico",
+        "colorado"
       ],
       "location": "FARMINGTON, NM",
       "services": [
         "height_pole",
         "multi_car"
-      ],
-      "text": "",
-      "pinStates": []
+      ]
     }
   ]
 }
