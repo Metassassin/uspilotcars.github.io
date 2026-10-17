@@ -568,6 +568,35 @@
           "pinned": false
         }
       ]
+    },
+    {
+      "state": "delaware",
+      "stateListings": [
+        {
+          "ad": "content/ads/penn-eagle-pilots.json"
+        },
+        {
+          "ad": "content/ads/tag-and-title-at-hilltop-pevo.json"
+        }
+      ],
+      "superListings": [
+        {
+          "ad": "content/ads/ameripilot-inc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/penn-eagle-pilots.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/apples-and-oranges-pilots.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/tag-and-title-at-hilltop-pevo.json",
+          "pinned": false
+        }
+      ]
     }
   ]
 }
