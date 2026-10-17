@@ -1,0 +1,17 @@
+{
+  "businessName": "VINCENT PILOT CAR SERVICE",
+  "phone": "205-902-1738",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "alabama"
+      ],
+      "location": "BIRMINGHAM, AL",
+      "services": [
+        "height_pole"
+      ]
+    }
+  ],
+  "active": true
+}
