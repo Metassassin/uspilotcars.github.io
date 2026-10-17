@@ -42,7 +42,7 @@
       "phoneColor": "white",
       "font": "tahoma",
       "align": "center",
-      "border": "none",
+      "border": "thin",
       "borderColor": "black",
       "borderStyle": "solid"
     }
