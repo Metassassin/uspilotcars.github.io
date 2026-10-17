@@ -1,0 +1,15 @@
+{
+  "businessName": "NORTHWEST PILOT CARS",
+  "website": "541-823-7039",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "california",
+        "oregon"
+      ],
+      "location": "ONTARIO, OR"
+    }
+  ],
+  "active": true
+}
