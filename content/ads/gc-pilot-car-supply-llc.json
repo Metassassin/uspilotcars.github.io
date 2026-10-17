@@ -53,7 +53,8 @@
     {
       "type": "super",
       "states": [
-        "new-mexico"
+        "new-mexico",
+        "arkansas"
       ],
       "location": "NATIONWIDE",
       "services": [
