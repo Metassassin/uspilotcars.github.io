@@ -46,6 +46,19 @@
       "border": "thin",
       "borderColor": "black",
       "borderStyle": "solid"
+    },
+    {
+      "type": "super",
+      "states": [
+        "california",
+        "arizona"
+      ],
+      "location": "LONG BEACH, CA",
+      "services": [
+        "height_pole",
+        "multi_car",
+        "steering"
+      ]
     }
   ],
   "active": true
