@@ -1,0 +1,65 @@
+{
+  "businessName": "GLEN’S MOVIN’ ON PC LLC",
+  "phone": "660-281-6307",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "missouri",
+        "arkansas"
+      ],
+      "location": "WARSAW, MO",
+      "services": [
+        "height_pole",
+        "route_survey",
+        "multi_car"
+      ]
+    },
+    {
+      "type": "state_design",
+      "states": [
+        "arkansas",
+        "missouri"
+      ],
+      "lines": [
+        {
+          "text": "GLEN’S MOVIN’ ON PC LLC | 660-281-6307| 24/7/ 365",
+          "size": "medium",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false,
+          "color": "white"
+        },
+        {
+          "text": "HEIGHT POLE, ROUTE SURVEY, FRONT, CHASE",
+          "size": "normal",
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "NATIONWIDE, FAST, RELIABLE, ON-TIME | 100 YRS COMBINED EXPERIENCE!",
+          "size": "normal",
+          "bold": false,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        }
+      ],
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "red",
+      "direction": "right",
+      "textColor": "black",
+      "nameBigger": true,
+      "font": "tahoma",
+      "align": "center",
+      "border": "thin",
+      "borderColor": "black",
+      "borderStyle": "solid"
+    }
+  ],
+  "active": true
+}
