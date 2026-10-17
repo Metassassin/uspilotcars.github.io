@@ -129,6 +129,79 @@
           "pinned": false
         }
       ]
+    },
+    {
+      "state": "alabama",
+      "stateListings": [
+        {
+          "ad": "content/ads/tcb-escorts-llc.json"
+        },
+        {
+          "ad": "content/ads/pratts-pilots.json"
+        },
+        {
+          "ad": "content/ads/first-response-pilot-cars.json"
+        },
+        {
+          "ad": "content/ads/grahams-pilot-car.json"
+        },
+        {
+          "ad": "content/ads/black-beard.json"
+        },
+        {
+          "ad": "content/ads/easy-pilot-car.json"
+        }
+      ],
+      "superListings": [
+        {
+          "ad": "content/ads/grahams-pilot-car.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/e-and-e-pilot-car-service.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/brunos-pilot-car-escort-service-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/spartan-pilot-car-services.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/gators-highway-escort-svc-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/vincent-pilot-car-service.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/tcb-escorts-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/easy-pilot-car.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/first-response-pilot-cars.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/pratts-pilots.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/ddlm-pilot-car-service.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/decurtis-enterprises.json",
+          "pinned": false
+        }
+      ]
     }
   ]
 }
