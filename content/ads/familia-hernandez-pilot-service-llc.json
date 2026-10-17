@@ -1,0 +1,15 @@
+{
+  "businessName": "FAMILIA HERNANDEZ PILOT SERVICE LLC",
+  "phone": "http://www.fhpsllc.com/",
+  "website": "209-901-6130",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "california"
+      ],
+      "location": "STOCKTON, CA"
+    }
+  ],
+  "active": true
+}
