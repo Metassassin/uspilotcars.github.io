@@ -202,6 +202,73 @@
           "pinned": false
         }
       ]
+    },
+    {
+      "state": "arizona",
+      "stateListings": [
+        {
+          "ad": "content/ads/blacksheep-pilot-cars.json"
+        },
+        {
+          "ad": "content/ads/arizona-pilot-car-service.json"
+        },
+        {
+          "ad": "content/ads/pirch-pilot-car-services.json"
+        },
+        {
+          "ad": "content/ads/valid-transportation-pilot-car-service.json"
+        }
+      ],
+      "superListings": [
+        {
+          "ad": "content/ads/cwt.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/thom-heavy-haul-escort-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/rochelle-s-pc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/loveland-pilot-car.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/anstorm-sabre-pcs-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/aaa-mountain-pilot-car-service.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/blue-sky-pilot-car-service.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/blacksheep-pilot-cars.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/arizona-pilot-car-service.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/valid-transportation-pilot-car-service.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/s-g-transport-llc.json",
+          "pinned": false
+        },
+        {
+          "ad": "content/ads/pirch-pilot-car-services.json",
+          "pinned": false
+        }
+      ]
     }
   ]
 }
