@@ -1,0 +1,19 @@
+{
+  "businessName": "DeCURTIS ENTERPRISES",
+  "phone": "850-496-7303",
+  "placements": [
+    {
+      "type": "super",
+      "states": [
+        "alabama",
+        "florida"
+      ],
+      "location": "DEFUNIAK SPRINGS, FL",
+      "services": [
+        "steering"
+      ],
+      "text": "TWIC/WITPAC"
+    }
+  ],
+  "active": true
+}
