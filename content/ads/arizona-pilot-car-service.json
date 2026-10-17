@@ -1,0 +1,63 @@
+{
+  "businessName": "ARIZONA PILOT CAR SERVICE",
+  "phone": "602-699-5755",
+  "website": "https://arizonapilotcar.com/",
+  "placements": [
+    {
+      "type": "state_design",
+      "states": [
+        "arizona"
+      ],
+      "lines": [
+        {
+          "text": "602-699-5755 * ARIZONA PILOT CAR SERVICE",
+          "size": "medium",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "Dedicated to Delivering Professional & Dependable Pilot Services!",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "Height Pole * Route Surveys * Load Security",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        }
+      ],
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "olive",
+      "direction": "right",
+      "textColor": "black",
+      "nameBigger": true,
+      "phoneColor": "red",
+      "font": "tahoma",
+      "align": "center",
+      "border": "thin",
+      "borderColor": "black",
+      "borderStyle": "solid"
+    },
+    {
+      "type": "super",
+      "states": [
+        "arizona"
+      ],
+      "location": "PHOENIX, AZ",
+      "services": [
+        "height_pole",
+        "route_survey"
+      ]
+    }
+  ],
+  "active": true
+}
