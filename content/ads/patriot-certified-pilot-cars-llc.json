@@ -12,6 +12,60 @@
         "height_pole",
         "route_survey"
       ]
+    },
+    {
+      "type": "state_design",
+      "states": [
+        "connecticut"
+      ],
+      "lines": [
+        {
+          "text": "PATRIOT CERTIFIED PILOT CARS, LLC  | 203-994-2620 | $1M Insurance",
+          "size": "medium",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "Dispatch 24/7 | Height Pole, Route Surveys, Lead, Chase, Mobile Fax, GPS, Web-Cam",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        },
+        {
+          "text": "Volume Discounts | The Highest Standards | Call for Quote!",
+          "size": "normal",
+          "bold": true,
+          "italic": false,
+          "underline": false,
+          "spaced": false
+        }
+      ],
+      "logoPosition": "left",
+      "background": "solid",
+      "color1": "white",
+      "direction": "right",
+      "textColor": "black",
+      "nameColor": "blue",
+      "nameBigger": false,
+      "phoneColor": "red",
+      "highlights": [
+        {
+          "text": "Call for Quote!",
+          "color": "red",
+          "weight": "same",
+          "italic": false,
+          "underline": false
+        }
+      ],
+      "font": "tahoma",
+      "align": "center",
+      "border": "thin",
+      "borderColor": "black",
+      "borderStyle": "solid"
     }
   ],
   "active": true
